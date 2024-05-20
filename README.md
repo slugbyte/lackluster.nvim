@@ -1,3 +1,4 @@
+
 # airhead
 > muted colors
 
@@ -25,6 +26,9 @@ require('lualine').setup({
     },
 })
 ```
+
+## todo
+* rename lackluster.nvim
 
 ## Supported plugins
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)

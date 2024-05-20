@@ -19,7 +19,6 @@ local C_GRAY6 = "#8f8f8f"
 local C_GRAY7 = "#aaaaaa"
 local C_GRAY8 = "#cccccc"
 
-
 M.colors = {
     debug = C_GREEN,
     error = C_RED,
@@ -100,13 +99,6 @@ local bg = function(name, bg)
     return cc(name, c.none, bg)
 end
 
-M.test_garbage = function()
-    local wat = false
-    if wat and true then
-        print("cool\n that is sick")
-    end
-end
-
 -- this is a comment
 M.theme = function()
     return {
@@ -128,6 +120,12 @@ M.theme = function()
         cc('VISUAL', c.black, c.white),
         cc('VISUALNOS', c.black, c.white),
 
+        -- message
+        fg('ErrorMsg', c.error),
+        fg('WarningMsg', c.warn),
+        fg('ModeMsg', c.mild),
+        fg('MsgArea', c.normal),
+
         -- UI
         cc('NormalFloat', c.normal, c.menu_bg),
         cc('FloatTitle', c.normal, c.menu_bg),
@@ -137,16 +135,21 @@ M.theme = function()
         cc('PmenuSel', c.select_fg, c.select_bg),
 
         -- SYNTAX
-        fg('Keyword', c.keyword),
         fg('Function', c.func),
         fg('Type', c.type),
         fg('Variable', c.normal),
-        fg('Special', c.orange),
-        -- TODO: move Special to builtin color? and then fix escapse and suff?
+        fg('Special', c.builtin),
+        fg('Keyword', c.keyword),
+        fg('Conditional', c.keyword),
+        fg('Repeat', c.keyword),
+        fg('Label', c.keyword),
+        fg('Exception', c.warn),
+        fg('PreProc', c.builtin),
 
         -- literals
-        fg('String', c.string),
         fg('Constant', c.constant),
+        fg('String', c.string),
+        fg('Character', c.string),
         fg('Number', c.constant),
         fg('Boolean', c.constant),
         fg('Float', c.constant),
@@ -155,8 +158,7 @@ M.theme = function()
         fg('Quote', c.string),
         fg('Operator', c.punctuation),
         fg('Delimiter', c.punctuation),
-        fg('@punctuation.bracket', c.punctuation),
-        fg('@punctuation.special', c.punctuation),
+        cc('MatchParen', c.orange, c.white),
 
         -- comment
         fg('Comment', c.comment),
@@ -178,31 +180,31 @@ M.theme = function()
         fg('@lsp.type.property', c.normal),
         fg('@constant.builtin.lua', c.gray4),
 
+        -- treesitter
+        fg('@punctuation.bracket', c.punctuation),
+        fg('@punctuation.special', c.punctuation),
+        fg('@type.builtin', c.primitave),
+        fg('@function.call', c.func),
+        fg('@constant.builtin', c.gray4),
+        fg('@function.builtin', c.builtin),
+        fg('@variable.parameter', c.gray4),
+        fg('@variable.member', c.gray7),
+        fg('@attribute', c.keyword),
+        fg('@property', c.normal),
+        fg('@string.escape', c.orange),
+
+        -- diff
+        fg('diffAdded', c.green),
+        fg('diffRemoved', c.error),
+        fg('diffChanged', c.mild),
+        fg('diffOldFile', c.warn),
+        fg('diffNewFile', c.green),
+        fg('diffFile', c.mild),
+        fg('diffLine', c.mild),
+        fg('diffIndexLine', c.mild),
+
         -- lua
-        fg('@function.builtin.lua', c.builtin),
         fg('@constructor.lua', c.punctuation),
-        fg('@variable.member.lua', c.gray7),
-        fg('@function.call.lua', c.func),
-
-        -- go
-        fg('@lsp.type.type.go', c.primitave),
-        fg('@constant.builtin.go', c.gray4),
-        fg('@function.builtin.go', c.builtin),
-        fg('@variable.parameter.go', c.gray4),
-        fg('@variable.member.go', c.gray7),
-        fg('@function.call.go', c.func),
-        fg('@property.go', c.normal),
-
-        -- zig
-        fg('@lsp.type.type.zig', c.primitave),
-        fg('@constant.builtin.zig', c.gray4),
-        fg('@function.builtin.zig', c.builtin),
-        fg('@lsp.type.builtin.zig', c.builtin),
-        fg('@keyword.import.zig', c.builtin),
-        fg('@function.call.zig', c.func),
-        fg('@variable.parameter.zig', c.gray4),
-        fg('@variable.member.zig', c.gray7),
-        fg('@attribute.zig', c.keyword),
 
         -- html
         fg('htmlTagName', c.gray4),
@@ -224,17 +226,19 @@ M.theme = function()
         fg('@tag.css', c.normal),
 
         -- markdown
-        fg('@markup.quote.markdown', c.gray5),
-        cc('@markup.raw.block.markdown', c.none, c.block),
-        fg('@markup.list.unchecked.markdown', c.red),
-        fg('@markup.list.checked.markdown', c.sky),
+        fg('@markup.quote', c.gray5),
+        fg('@markup.list.unchecked', c.red),
+        fg('@markup.list.checked', c.sky),
         fg('@markup.strong', c.gray3),
         fg('@markup.italic', c.gray3),
         fg('@markup.strikethrough', c.gray3),
-        fg('@markup.list.markdown', c.gray4),
-        fg('@markup.link.label.markdown_inline', c.sky),
-        fg('@markup.link.url.markdown_inline', c.gray3),
+        fg('@markup.list', c.gray3),
+        fg('@markup.link', c.gray5),
+        fg('@markup.link.label', c.gray5),
+        fg('@markup.link.url', c.gray3),
+        fg('@markup.math', c.orange),
         fg('markdownCodeDelimiter', c.green),
+        fg('markdownLinkDelimiter', c.gray5),
 
         -- sql
         fg('sqlType', c.builtin),
@@ -242,11 +246,13 @@ M.theme = function()
         fg('sqlStatement', c.gray7),
         fg('sqlVariable', c.primitave),
 
-        -- bash
-        fg('@function.builtin.bash', c.builtin),
+        -- javascript
+        fg("@function.builtin.javascript", c.orange),
+        fg("@function.builtin.typescript", c.orange),
+        fg("@keyword.exception.javascript", c.orange),
+        fg("@keyword.exception.typescript", c.orange),
 
         -- make
-        fg('@function.builtin.make', c.builtin),
         fg('@string.special.symbol.make', c.string),
         fg('makeSpecial', c.blue),
 
@@ -268,6 +274,7 @@ M.theme = function()
         fg('WhichKey', c.white),
         fg('WhichKeyGroup', c.string),
         fg('WhichKeyDesc', c.normal),
+        fg('WhichKeySeparator', c.mild),
 
         -- oil
         fg('OilFile', c.fs_file),
