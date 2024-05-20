@@ -1,4 +1,4 @@
-local colors = require("airhead").colors
+local colors = require("lackluster").colors
 
 local lualine_theme = {
     normal = {
