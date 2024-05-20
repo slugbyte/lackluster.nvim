@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: get you a new green
 local C_GREEN = "#637a60"
 local C_BLUE = "#3e6792"
 local C_RED = "#D70000"
@@ -141,6 +142,7 @@ M.theme = function()
         fg('Type', c.type),
         fg('Variable', c.normal),
         fg('Special', c.orange),
+        -- TODO: move Special to builtin color? and then fix escapse and suff?
 
         -- literals
         fg('String', c.string),
@@ -202,7 +204,6 @@ M.theme = function()
         fg('@variable.member.zig', c.gray7),
         fg('@attribute.zig', c.keyword),
 
-
         -- html
         fg('htmlTagName', c.gray4),
         fg('@tag.html', c.gray4),
@@ -236,7 +237,7 @@ M.theme = function()
         fg('markdownCodeDelimiter', c.green),
 
         -- sql
-        fg('sqlType', c.primitave),
+        fg('sqlType', c.builtin),
         fg('sqlKeyword', c.gray7),
         fg('sqlStatement', c.gray7),
         fg('sqlVariable', c.primitave),
