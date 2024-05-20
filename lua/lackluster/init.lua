@@ -7,8 +7,7 @@ local C_RED = "#D70000"
 local C_ORANGE = '#f5aa85'
 
 local C_SHELL = "#cdecf3"
-local C_SKY = "#9fbdf5"
-local C_MILD = '#7c859b'
+local C_MILD = '#5d626b'
 
 local C_GRAY1 = "#080808"
 local C_GRAY2 = "#191919"
@@ -26,7 +25,7 @@ M.colors = {
 
     fs_dir = C_MILD,
     fs_file = C_SHELL,
-    fs_link = C_SKY,
+    fs_link = C_BLUE,
     fs_link_target = C_BLUE,
     fs_socket = C_ORANGE,
 
@@ -38,7 +37,6 @@ M.colors = {
     white = "#ffffff",
     black = "#000000",
 
-    sky = C_SKY,
     mild = C_MILD,
 
     menu_bg = C_GRAY2,
@@ -54,14 +52,13 @@ M.colors = {
     constant = C_GRAY7,
     comment = '#2a2a2c',
     keyword = C_GRAY5,
-    -- builtin = '#936363',
-    -- builtin = '#897676',
-    builtin = '#576066',
+    -- builtin = '#576076',
+    builtin = '#5c6375',
+
     punctuation = C_GRAY5,
     func = C_GRAY7,
     string = C_MILD,
-
-    block = "#0a0a0a",
+    string_escape = '#8e95af',
 
     gray1 = C_GRAY1,
     gray2 = C_GRAY2,
@@ -76,7 +73,8 @@ M.colors = {
 
 local c = M.colors
 
-local cc = function(name, fg, bg)
+local cc = function(name, fg, bg, opts)
+    opts = opts or {}
     if fg == nil then
         assert(false, name .. " fg cannot be nil")
     end
@@ -84,11 +82,11 @@ local cc = function(name, fg, bg)
         assert(false, name .. " bg cannot be nil")
     end
 
-    return {
+    return vim.tbl_extend("force", opts, {
         name = name,
         fg = fg,
         bg = bg,
-    }
+    })
 end
 
 local fg = function(name, fg)
@@ -102,8 +100,11 @@ end
 -- this is a comment
 M.theme = function()
     return {
-        cc('Normal', c.normal, c.gray1),
+        cc('Normal', c.normal, '#0a0a0a'),
         fg('Title', c.title),
+        cc('Spell', c.none, c.none, {
+            underline = true,
+        }),
 
         -- CURSOR
         cc('CursorLine', c.none, c.gray2),
@@ -112,7 +113,7 @@ M.theme = function()
         bg('ColorColumn', c.black),
 
         -- SEARCH
-        cc('Search', c.black, c.sky),
+        cc('Search', c.black, c.mild),
         cc('IncSearch', c.black, c.white),
         cc('CurSearch', c.black, c.white),
 
@@ -158,7 +159,7 @@ M.theme = function()
         fg('Quote', c.string),
         fg('Operator', c.punctuation),
         fg('Delimiter', c.punctuation),
-        cc('MatchParen', c.orange, c.white),
+        cc('MatchParen', c.white, c.mild),
 
         -- comment
         fg('Comment', c.comment),
@@ -191,7 +192,7 @@ M.theme = function()
         fg('@variable.member', c.gray7),
         fg('@attribute', c.keyword),
         fg('@property', c.normal),
-        fg('@string.escape', c.orange),
+        fg('@string.escape', c.string_escape),
 
         -- diff
         fg('diffAdded', c.green),
@@ -205,6 +206,9 @@ M.theme = function()
 
         -- lua
         fg('@constructor.lua', c.punctuation),
+
+        -- zig
+        fg('@keyword.import.zig', c.builtin),
 
         -- html
         fg('htmlTagName', c.gray4),
@@ -228,7 +232,7 @@ M.theme = function()
         -- markdown
         fg('@markup.quote', c.gray5),
         fg('@markup.list.unchecked', c.red),
-        fg('@markup.list.checked', c.sky),
+        fg('@markup.list.checked', c.string_escape),
         fg('@markup.strong', c.gray3),
         fg('@markup.italic', c.gray3),
         fg('@markup.strikethrough', c.gray3),
@@ -304,7 +308,7 @@ end
 
 M.load = function()
     local dedup_set = {}
-    vim.cmd("hi clear")
+    -- vim.cmd("hi clear")
     for _, hi_spec in ipairs(M.theme()) do
         local name = hi_spec.name
         if dedup_set[name] then
