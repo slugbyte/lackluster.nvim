@@ -134,6 +134,7 @@ M.theme = function()
         cc('Pmenu', c.menu_fg, c.menu_bg),
         cc('PmenuThumb', c.menu_fg, c.menu_bg),
         cc('PmenuSel', c.select_fg, c.select_bg),
+        fg('WinSeparator', c.mild),
 
         -- SYNTAX
         fg('Function', c.func),
