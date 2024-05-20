@@ -50,10 +50,13 @@ M.colors = {
     title = C_MILD,
 
     type = C_GRAY7,
+    primitave = C_ORANGE,
     constant = C_GRAY7,
     comment = '#2a2a2c',
     keyword = C_GRAY5,
-    builtin = C_BLUE,
+    -- builtin = '#936363',
+    -- builtin = '#897676',
+    builtin = '#576066',
     punctuation = C_GRAY5,
     func = C_GRAY7,
     string = C_MILD,
@@ -171,26 +174,34 @@ M.theme = function()
         -- lsp
         fg('@lsp.type.function', c.gray8),
         fg('@lsp.type.property', c.normal),
+        fg('@constant.builtin.lua', c.gray4),
 
         -- lua
         fg('@function.builtin.lua', c.builtin),
         fg('@constructor.lua', c.punctuation),
         fg('@variable.member.lua', c.gray7),
+        fg('@function.call.lua', c.func),
 
         -- go
+        fg('@lsp.type.type.go', c.primitave),
+        fg('@constant.builtin.go', c.gray4),
         fg('@function.builtin.go', c.builtin),
         fg('@variable.parameter.go', c.gray4),
         fg('@variable.member.go', c.gray7),
+        fg('@function.call.go', c.func),
         fg('@property.go', c.normal),
 
         -- zig
-        fg('@lsp.type.type.zig', c.orange),
+        fg('@lsp.type.type.zig', c.primitave),
+        fg('@constant.builtin.zig', c.gray4),
         fg('@function.builtin.zig', c.builtin),
         fg('@lsp.type.builtin.zig', c.builtin),
         fg('@keyword.import.zig', c.builtin),
-        fg('@function.call.zig', c.gray6),
+        fg('@function.call.zig', c.func),
         fg('@variable.parameter.zig', c.gray4),
         fg('@variable.member.zig', c.gray7),
+        fg('@attribute.zig', c.keyword),
+
 
         -- html
         fg('htmlTagName', c.gray4),
@@ -225,10 +236,10 @@ M.theme = function()
         fg('markdownCodeDelimiter', c.green),
 
         -- sql
-        fg('sqlType', c.orange),
+        fg('sqlType', c.primitave),
         fg('sqlKeyword', c.gray7),
         fg('sqlStatement', c.gray7),
-        fg('sqlVariable', c.orange),
+        fg('sqlVariable', c.primitave),
 
         -- bash
         fg('@function.builtin.bash', c.builtin),
