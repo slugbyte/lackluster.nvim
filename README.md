@@ -28,8 +28,14 @@ require('lualine').setup({
 })
 ```
 
-## todo
-* rename lackluster.nvim
+## HELP WANTED
+Suggestions and bug fixes, or help with expanding plugin support are appreciated :)
+
+See the [Contributing Guide](./CONTRIBUTING.md)
+
+## SELF-PROMO
+If you like this project star the GitHub repository :)
+
 
 ## Supported plugins
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
