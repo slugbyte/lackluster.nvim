@@ -5,6 +5,8 @@
 
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
 
+![a picture of the lackluster colorpallet](./asset/lackluster-pallet.png)
+
 ## INSTALL
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`
