@@ -1,34 +1,16 @@
 local M = {}
 
--- TODO: get you a new green
-local C_GREEN = "#637a60"
-local C_BLUE = "#3e6792"
-local C_RED = "#D70000"
-local C_ORANGE = '#f5aa85'
-
-local C_SHELL = "#cdecf3"
-local C_MILD = '#5d626b'
-
-local C_GRAY1 = "#080808"
-local C_GRAY2 = "#191919"
-local C_GRAY3 = "#444444"
-local C_GRAY4 = "#555555"
-local C_GRAY5 = "#7a7a7a"
-local C_GRAY6 = "#8f8f8f"
-local C_GRAY7 = "#aaaaaa"
-local C_GRAY8 = "#cccccc"
-
 M.col = {
-    green = "#637a60",
-    blue = "#3e6792",
     red = "#D70000",
+    blue = "#3e6792",
+    green = "#637a60",
     orange = '#f5aa85',
 
-    mild = '#5d626b',
+    luster = "#cdecf3",
+    lack = '#5d626b',
 
     black = '#000000',
     white = '#ffffff',
-    shell = "#cdecf3",
 
     gray1 = "#080808",
     gray2 = "#191919",
@@ -42,7 +24,7 @@ M.col = {
 }
 
 M.col.log = {
-    info = M.col.shell,
+    info = M.col.luster,
     debug = M.col.gray3,
     warn = M.col.orange,
     error = M.col.red,
@@ -50,8 +32,8 @@ M.col.log = {
 }
 
 M.col.fs = {
-    dir = M.col.mild,
-    file = M.col.shell,
+    dir = M.col.lack,
+    file = M.col.luster,
     link = M.col.blue,
     link_target = M.col.blue,
     socket = M.col.orange,
@@ -65,12 +47,12 @@ M.col.diff = {
 }
 
 M.col.ui = {
-    normal        = M.col.shell,
+    normal        = M.col.luster,
     title         = M.col.gray7,
-    visual_bg     = M.col.black,
-    visual_fg     = M.col.white,
+    visual_bg     = M.col.white,
+    visual_fg     = M.col.black,
     search_fg     = M.col.black,
-    search_inc_bg = M.col.mild,
+    search_inc_bg = M.col.lack,
     search_cur_bg = M.col.white,
     cursorline    = M.col.gray2,
     colorcolumn   = M.col.black,
@@ -78,22 +60,22 @@ M.col.ui = {
     menu_fg       = M.col.gray5,
     line_num      = M.col.gray3,
     line_num_cur  = M.col.gray7,
-    win_seperator = M.col.mild,
+    win_seperator = M.col.lack,
 }
 
 M.col.syntax = {
-    var = M.col.shell,
+    var = M.col.luster,
     const = M.col.gray7,
     const_builtin = M.col.gray4,
     func = M.col.gray7,
     -- func_builtin = '#5c6375',
     func_builtin = M.col.gray3,
     func_param = M.col.gray4,
-    special = M.col.mild,
+    special = M.col.lack,
     type = M.col.gray7,
     type_primitave = M.col.gray7,
     keyword = M.col.gray5,
-    str = M.col.mild,
+    str = M.col.lack,
     str_esc = '#8e95af',
     punctuation = M.col.gray5,
     comment = '#2a2a2a',
@@ -312,9 +294,9 @@ M.theme = function()
 
         -- which key
         fg('WhichKey', c.white),
-        fg('WhichKeyGroup', c.mild),
+        fg('WhichKeyGroup', c.lack),
         fg('WhichKeyDesc', c.ui.normal),
-        fg('WhichKeySeparator', c.mild),
+        fg('WhichKeySeparator', c.lack),
 
         -- oil
         fg('OilFile', c.fs.file),
