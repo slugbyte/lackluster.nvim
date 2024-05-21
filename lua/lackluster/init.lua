@@ -2,7 +2,8 @@ local M = {}
 
 M.col = {
     red = "#D70000",
-    blue = "#3e6792",
+    -- blue = "#3e6792",
+    blue = '#5b6d87',
     green = "#637a60",
     orange = '#f5aa85',
 
@@ -286,7 +287,7 @@ M.theme = function()
         fg('TelescopeMultiSelection', c.green),
         fg('TelescopeMultiIcon', c.green),
         fg('TelescopePromptPrefix', c.gray5),
-        fg('TelescopePromptCounter', c.orange),
+        fg('TelescopePromptCounter', c.blue),
         cc('TelescopeSelection', c.gray1, c.white),
 
         -- nvim cmp
