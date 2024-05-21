@@ -3,6 +3,8 @@
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
 
+![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
+
 ## INSTALL
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`

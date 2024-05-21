@@ -8,27 +8,27 @@ local lualine_theme = {
     },
     insert = {
         a = { bg = col.lack, fg = col.white, gui = 'bold' },
-        b = { bg = col.gray2, fg = col.lack },
-        c = { bg = col.black, fg = col.lack },
+        b = { bg = col.gray2, fg = col.gray7 },
+        c = { bg = col.gray2, fg = col.gray7 },
     },
     visual = {
         a = { bg = col.white, fg = col.black, gui = 'bold' },
-        b = { bg = col.gray2, fg = col.white },
-        c = { bg = col.black, fg = col.white },
+        b = { bg = col.gray2, fg = col.gray7 },
+        c = { bg = col.gray2, fg = col.gray7 },
     },
     replace = {
         a = { bg = col.white, fg = col.black, gui = 'bold' },
-        b = { bg = col.gray2, fg = col.white },
-        c = { bg = col.black, fg = col.white },
+        b = { bg = col.gray2, fg = col.gray7 },
+        c = { bg = col.gray2, fg = col.gray7 },
     },
     command = {
         a = { bg = col.lack, fg = col.black, gui = 'bold' },
-        b = { bg = col.gray2, fg = col.lack },
-        c = { bg = col.black, fg = col.lack },
+        b = { bg = col.gray2, fg = col.gray7 },
+        c = { bg = col.gray2, fg = col.gray7 },
     },
     inactive = {
         a = { bg = col.black, fg = col.gray2, gui = 'bold' },
-        b = { bg = col.black, fg = col.gray2 },
+        b = { bg = col.gray2, fg = col.gray7 },
         c = { bg = col.black, fg = col.gray5 },
     },
 }
