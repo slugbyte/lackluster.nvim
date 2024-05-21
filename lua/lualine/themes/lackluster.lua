@@ -22,7 +22,7 @@ local lualine_theme = {
         c = { bg = col.gray2, fg = col.gray7 },
     },
     command = {
-        a = { bg = col.lack, fg = col.black, gui = 'bold' },
+        a = { bg = col.lack, fg = col.white, gui = 'bold' },
         b = { bg = col.gray2, fg = col.gray7 },
         c = { bg = col.gray2, fg = col.gray7 },
     },
