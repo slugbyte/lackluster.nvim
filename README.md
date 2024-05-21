@@ -1,5 +1,5 @@
 # lackluster
-> a delightful grayscale colorscheme thats soft on the eyes
+> a delightful grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
 
@@ -48,4 +48,9 @@ If you like this project star the GitHub repository :)
 * [nvim\_cmp](https://github.com/hrsh7th/nvim-cmp)
 * [oil.nvim](https://github.com/stevearc/oil.nvim)
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+* [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+* [lazy.nvim](https://github.com/folke/lazy.nvim)
+* [mini.diff](https://github.com/echasnovski/mini.diff)
+* [sneak.vim](https://github.com/justinmk/vim-sneak)

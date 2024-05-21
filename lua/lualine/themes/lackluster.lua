@@ -29,7 +29,7 @@ local lualine_theme = {
     inactive = {
         a = { bg = col.black, fg = col.gray2, gui = 'bold' },
         b = { bg = col.gray2, fg = col.gray7 },
-        c = { bg = col.black, fg = col.gray5 },
+        c = { bg = col.black, fg = col.gray6 },
     },
 }
 
