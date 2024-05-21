@@ -7,7 +7,6 @@ const Color = union(enum) {
     RGBA: struct { r: u8, g: u8, b: u8, a: u8 },
     HSLA: struct { h: f32, s: f32, l: f32, a: f32 },
 
-    // WARN: assumes big endian
     fn rgbaFromU32(value: u32) Color {
         return Color{ .RGBA = .{
             .r = @truncate(value >> 24),
@@ -25,9 +24,9 @@ const Color = union(enum) {
         const raw_a: f32 = @floatFromInt(value & 0xff);
         return Color{ .HSLA = .{
             .h = (raw_h / 255.0) * 360.0,
-            .s = (raw_s / 255.0),
-            .l = (raw_l / 255.0),
-            .a = (raw_a / 255.0),
+            .s = raw_s / 255.0,
+            .l = raw_l / 255.0,
+            .a = raw_a / 255.0,
         } };
     }
 
