@@ -18,60 +18,88 @@ local C_GRAY6 = "#8f8f8f"
 local C_GRAY7 = "#aaaaaa"
 local C_GRAY8 = "#cccccc"
 
-M.colors = {
-    debug = C_GREEN,
-    error = C_RED,
-    warn = C_ORANGE,
+M.col = {
+    green = "#637a60",
+    blue = "#3e6792",
+    red = "#D70000",
+    orange = '#f5aa85',
 
-    fs_dir = C_MILD,
-    fs_file = C_SHELL,
-    fs_link = C_BLUE,
-    fs_link_target = C_BLUE,
-    fs_socket = C_ORANGE,
+    mild = '#5d626b',
 
-    green = C_GREEN,
-    blue = C_BLUE,
-    red = C_RED,
-    orange = C_ORANGE,
+    black = '#000000',
+    white = '#ffffff',
+    shell = "#cdecf3",
 
-    white = "#ffffff",
-    black = "#000000",
-
-    mild = C_MILD,
-
-    menu_bg = C_GRAY2,
-    menu_fg = C_GRAY5,
-    select_bg = C_SHELL,
-    select_fg = C_GRAY2,
-
-    normal = C_SHELL,
-    title = C_MILD,
-
-    type = C_GRAY7,
-    primitave = C_ORANGE,
-    constant = C_GRAY7,
-    comment = '#2a2a2c',
-    keyword = C_GRAY5,
-    -- builtin = '#576076',
-    builtin = '#5c6375',
-
-    punctuation = C_GRAY5,
-    func = C_GRAY7,
-    string = C_MILD,
-    string_escape = '#8e95af',
-
-    gray1 = C_GRAY1,
-    gray2 = C_GRAY2,
-    gray3 = C_GRAY3,
-    gray4 = C_GRAY4,
-    gray5 = C_GRAY5,
-    gray6 = C_GRAY6,
-    gray7 = C_GRAY7,
-    gray8 = C_GRAY8,
-    none = 'NONE',
+    gray1 = "#080808",
+    gray2 = "#191919",
+    gray3 = "#444444",
+    gray4 = "#555555",
+    gray5 = "#7a7a7a",
+    gray6 = "#8f8f8f",
+    gray7 = "#aaaaaa",
+    gray8 = "#cccccc",
+    none = "none",
 }
 
-local c = M.colors
+M.col.log = {
+    info = M.col.shell,
+    debug = M.col.gray3,
+    warn = M.col.orange,
+    error = M.col.red,
+    hint = M.col.blue,
+}
+
+M.col.fs = {
+    dir = M.col.mild,
+    file = M.col.shell,
+    link = M.col.blue,
+    link_target = M.col.blue,
+    socket = M.col.orange,
+}
+
+M.col.diff = {
+    add = M.col.green,
+    change = M.col.blue,
+    delete = M.col.orange,
+    info = M.col.gray4,
+}
+
+M.col.ui = {
+    normal        = M.col.shell,
+    title         = M.col.gray7,
+    visual_bg     = M.col.black,
+    visual_fg     = M.col.white,
+    search_fg     = M.col.black,
+    search_inc_bg = M.col.mild,
+    search_cur_bg = M.col.white,
+    cursorline    = M.col.gray2,
+    colorcolumn   = M.col.black,
+    menu_bg       = M.col.gray2,
+    menu_fg       = M.col.gray5,
+    line_num      = M.col.gray3,
+    line_num_cur  = M.col.gray7,
+    win_seperator = M.col.mild,
+}
+
+M.col.syntax = {
+    var = M.col.shell,
+    const = M.col.gray7,
+    const_builtin = M.col.gray4,
+    func = M.col.gray7,
+    -- func_builtin = '#5c6375',
+    func_builtin = M.col.gray3,
+    func_param = M.col.gray4,
+    special = M.col.mild,
+    type = M.col.gray7,
+    type_primitave = M.col.gray7,
+    keyword = M.col.gray5,
+    str = M.col.mild,
+    str_esc = '#8e95af',
+    punctuation = M.col.gray5,
+    comment = '#2a2a2a',
+}
+
+local c = M.col
 
 local cc = function(name, fg, bg, opts)
     opts = opts or {}
@@ -97,119 +125,126 @@ local bg = function(name, bg)
     return cc(name, c.none, bg)
 end
 
+local ln = function(name, link)
+    return {
+        name = name,
+        link = link,
+    }
+end
+
 -- this is a comment
 M.theme = function()
     return {
-        cc('Normal', c.normal, '#0a0a0a'),
-        fg('Title', c.title),
+        cc('Normal', c.ui.normal, '#0a0a0a'),
+        fg('Title', c.ui.title),
         cc('Spell', c.none, c.none, {
             underline = true,
         }),
 
         -- CURSOR
-        cc('CursorLine', c.none, c.gray2),
-        fg('CursorLineNr', c.gray7),
-        fg('LineNr', c.gray3),
-        bg('ColorColumn', c.black),
+        cc('CursorLine', c.none, c.ui.cursorline),
+        fg('CursorLineNr', c.ui.line_num_cur),
+        fg('LineNr', c.ui.line_num),
+        bg('ColorColumn', c.ui.colorcolumn),
 
         -- SEARCH
-        cc('Search', c.black, c.mild),
-        cc('IncSearch', c.black, c.white),
-        cc('CurSearch', c.black, c.white),
+        cc('Search', c.ui.search_fg, c.ui.search_inc_bg),
+        cc('CurSearch', c.ui.search_fg, c.ui.search_cur_bg),
+        ln('IncSearch', 'CurSearch'),
 
         -- VISUAL
-        cc('VISUAL', c.black, c.white),
-        cc('VISUALNOS', c.black, c.white),
+        cc('VISUAL', c.ui.visual_fg, c.ui.visual_bg),
+        ln('VISUALNOS', 'VISUAL'),
 
         -- message
-        fg('ErrorMsg', c.error),
-        fg('WarningMsg', c.warn),
-        fg('ModeMsg', c.mild),
-        fg('MsgArea', c.normal),
+        fg('ErrorMsg', c.log.error),
+        fg('WarningMsg', c.log.warn),
+        fg('ModeMsg', c.log.info),
+        fg('MsgArea', c.log.info),
 
         -- UI
-        cc('NormalFloat', c.normal, c.menu_bg),
-        cc('FloatTitle', c.normal, c.menu_bg),
-        cc('FloatBorder', c.normal, c.menu_bg),
-        cc('Pmenu', c.menu_fg, c.menu_bg),
-        cc('PmenuThumb', c.menu_fg, c.menu_bg),
-        cc('PmenuSel', c.select_fg, c.select_bg),
-        fg('WinSeparator', c.mild),
+        cc('NormalFloat', c.ui.normal, c.ui.menu_bg),
+        cc('FloatTitle', c.ui.normal, c.ui.menu_bg),
+        cc('FloatBorder', c.ui.normal, c.ui.menu_bg),
+        cc('Pmenu', c.ui.menu_fg, c.ui.menu_bg),
+        cc('PmenuThumb', c.ui.menu_fg, c.ui.menu_bg),
+        cc('PmenuSel', c.ui.search_fg, c.ui.search_cur_bg),
+        fg('WinSeparator', c.ui.win_seperator),
 
         -- SYNTAX
-        fg('Function', c.func),
-        fg('Type', c.type),
-        fg('Variable', c.normal),
-        fg('Special', c.builtin),
-        fg('Keyword', c.keyword),
-        fg('Conditional', c.keyword),
-        fg('Repeat', c.keyword),
-        fg('Label', c.keyword),
-        fg('Exception', c.warn),
-        fg('PreProc', c.builtin),
+        fg('Function', c.syntax.func),
+        fg('Type', c.syntax.type),
+        fg('Variable', c.syntax.var),
+        fg('Special', c.syntax.special),
+        fg('Keyword', c.syntax.keyword),
+        ln('Conditional', 'Keyword'),
+        ln('Repeat', 'Keyword'),
+        ln('Label', 'Keyword'),
+        ln('Exception', 'Keyword'),
+        ln('PreProc', 'Keyword'),
 
         -- literals
-        fg('Constant', c.constant),
-        fg('String', c.string),
-        fg('Character', c.string),
-        fg('Number', c.constant),
-        fg('Boolean', c.constant),
-        fg('Float', c.constant),
+        fg('String', c.syntax.str),
+        ln('Character', 'String'),
+        fg('Constant', c.syntax.const),
+        ln('Number', 'Constant'),
+        ln('Boolean', 'Constant'),
+        ln('Float', 'Constant'),
 
         -- puctuation
-        fg('Quote', c.string),
-        fg('Operator', c.punctuation),
-        fg('Delimiter', c.punctuation),
-        cc('MatchParen', c.white, c.mild),
+        fg('Quote', c.syntax.str),
+        fg('Operator', c.syntax.punctuation),
+        fg('Delimiter', c.syntax.punctuation),
+        cc('MatchParen', c.ui.search_cur_bg, c.ui.search_inc_bg),
 
         -- comment
-        fg('Comment', c.comment),
-        fg('SpecialComment', c.comment),
+        fg('Comment', c.syntax.comment),
+        fg('SpecialComment', c.syntax.comment),
 
         -- diagnostics
-        fg('DiagnosticHint', c.gray3),
-        fg('DiagnosticInfo', c.gray3),
-        fg('DiagnosticWarn', c.warn),
-        fg('DiagnosticError', c.error),
+        fg('DiagnosticHint', c.log.debug),
+        fg('DiagnosticInfo', c.log.debug),
+        fg('DiagnosticWarn', c.log.warn),
+        fg('DiagnosticError', c.log.error),
 
-        fg('DiagnosticSignHint', c.green),
-        fg('DiagnosticSignInfo', c.blue),
-        fg('DiagnosticSignWarn', c.warn),
-        fg('DiagnosticSignError', c.error),
+        fg('DiagnosticSignHint', c.log.hint),
+        fg('DiagnosticSignInfo', c.log.debug),
+        fg('DiagnosticSignWarn', c.log.warn),
+        fg('DiagnosticSignError', c.log.error),
 
         -- lsp
         fg('@lsp.type.function', c.gray8),
-        fg('@lsp.type.property', c.normal),
+        fg('@lsp.type.property', c.ui.normal),
         fg('@constant.builtin.lua', c.gray4),
 
         -- treesitter
-        fg('@punctuation.bracket', c.punctuation),
-        fg('@punctuation.special', c.punctuation),
-        fg('@type.builtin', c.primitave),
-        fg('@function.call', c.func),
-        fg('@constant.builtin', c.gray4),
-        fg('@function.builtin', c.builtin),
-        fg('@variable.parameter', c.gray4),
-        fg('@variable.member', c.gray7),
-        fg('@attribute', c.keyword),
-        fg('@property', c.normal),
-        fg('@string.escape', c.string_escape),
+        fg('@punctuation.bracket', c.syntax.punctuation),
+        fg('@punctuation.special', c.syntax.punctuation),
+        fg('@type.builtin', c.syntax.type_primitave),
+        fg('@function.call', c.syntax.func),
+        fg('@function.builtin', c.syntax.func_builtin),
+        fg('@variable.parameter', c.syntax.func_param),
+        fg('@constant.builtin', c.syntax.const_builtin),
+        fg('@variable.member', c.syntax.type),
+        fg('@attribute', c.syntax.keyword),
+        fg('@property', c.ui.normal),
+        fg('@string.escape', c.syntax.str_esc),
 
         -- diff
-        fg('diffAdded', c.green),
-        fg('diffRemoved', c.error),
-        fg('diffChanged', c.mild),
-        fg('diffOldFile', c.warn),
-        fg('diffNewFile', c.green),
-        fg('diffFile', c.mild),
-        fg('diffLine', c.mild),
-        fg('diffIndexLine', c.mild),
+        fg('diffAdded', c.diff.add),
+        fg('diffRemoved', c.diff.delete),
+        fg('diffChanged', c.diff.change),
+        fg('diffOldFile', c.diff.info),
+        fg('diffNewFile', c.diff.add),
+        fg('diffFile', c.diff.change),
+        fg('diffLine', c.diff.change),
+        fg('diffIndexLine', c.diff.info),
 
         -- lua
-        fg('@constructor.lua', c.punctuation),
+        fg('@constructor.lua', c.syntax.punctuation),
 
         -- zig
-        fg('@keyword.import.zig', c.builtin),
+        fg('@keyword.import.zig', c.syntax.func_builtin),
 
         -- html
         fg('htmlTagName', c.gray4),
@@ -218,22 +253,22 @@ M.theme = function()
         fg('@tag.attribute.html', c.green),
 
         -- css
-        fg('cssMediaProp', c.normal),
-        fg('cssTransitionProp', c.normal),
-        fg('cssTextProp', c.normal),
-        fg('cssBoxProp', c.normal),
-        fg('cssFontProp', c.normal),
-        fg('cssPositioningProp', c.normal),
-        fg('cssBorderProp', c.normal),
-        fg('cssBackgroundProp', c.normal),
-        fg('cssTransformProp', c.normal),
-        fg('@property.css', c.normal),
-        fg('@tag.css', c.normal),
+        fg('cssMediaProp', c.ui.normal),
+        fg('cssTransitionProp', c.ui.normal),
+        fg('cssTextProp', c.ui.normal),
+        fg('cssBoxProp', c.ui.normal),
+        fg('cssFontProp', c.ui.normal),
+        fg('cssPositioningProp', c.ui.normal),
+        fg('cssBorderProp', c.ui.normal),
+        fg('cssBackgroundProp', c.ui.normal),
+        fg('cssTransformProp', c.ui.normal),
+        fg('@property.css', c.ui.normal),
+        fg('@tag.css', c.ui.normal),
 
         -- markdown
         fg('@markup.quote', c.gray5),
         fg('@markup.list.unchecked', c.red),
-        fg('@markup.list.checked', c.string_escape),
+        fg('@markup.list.checked', c.syntax.str_esc),
         fg('@markup.strong', c.gray3),
         fg('@markup.italic', c.gray3),
         fg('@markup.strikethrough', c.gray3),
@@ -246,30 +281,30 @@ M.theme = function()
         fg('markdownLinkDelimiter', c.gray5),
 
         -- sql
-        fg('sqlType', c.builtin),
-        fg('sqlKeyword', c.gray7),
-        fg('sqlStatement', c.gray7),
-        fg('sqlVariable', c.primitave),
+        fg('sqlType', c.syntax.str),
+        fg('sqlKeyword', c.syntax.keyword),
+        fg('sqlStatement', c.syntax.keyword),
+        fg('sqlVariable', c.syntax.special),
 
         -- javascript
-        fg("@function.builtin.javascript", c.orange),
-        fg("@function.builtin.typescript", c.orange),
-        fg("@keyword.exception.javascript", c.orange),
-        fg("@keyword.exception.typescript", c.orange),
+        fg("@function.builtin.javascript", c.log.warn),
+        fg("@function.builtin.typescript", c.log.warn),
+        fg("@keyword.exception.javascript", c.log.warn),
+        fg("@keyword.exception.typescript", c.log.warn),
 
         -- make
-        fg('@string.special.symbol.make', c.string),
-        fg('makeSpecial', c.blue),
+        fg('@string.special.symbol.make', c.syntax.str),
+        fg('makeSpecial', c.syntax.special),
 
         -- telescope
-        fg('TelescopeNormal', c.white),
-        fg('TelescopeMatching', c.gray3),
+        fg('TelescopeNormal', c.ui.normal),
         fg('TelescopeResultsNormal', c.gray4),
+        fg('TelescopeMatching', c.gray3),
         fg('TelescopeBorder', c.gray3),
         fg('TelescopeMultiSelection', c.green),
         fg('TelescopeMultiIcon', c.green),
         fg('TelescopePromptPrefix', c.gray5),
-        fg('TelescopePromptCounter', c.string),
+        fg('TelescopePromptCounter', c.orange),
         cc('TelescopeSelection', c.gray1, c.white),
 
         -- nvim cmp
@@ -277,33 +312,33 @@ M.theme = function()
 
         -- which key
         fg('WhichKey', c.white),
-        fg('WhichKeyGroup', c.string),
-        fg('WhichKeyDesc', c.normal),
+        fg('WhichKeyGroup', c.mild),
+        fg('WhichKeyDesc', c.ui.normal),
         fg('WhichKeySeparator', c.mild),
 
         -- oil
-        fg('OilFile', c.fs_file),
-        fg('OilDir', c.fs_dir),
-        fg('OilDirIcon', c.fs_dir),
-        fg('OilLink', c.fs_link),
-        fg('OilLinkTarget', c.fs_link_target),
+        fg('OilFile', c.fs.file),
+        fg('OilDir', c.fs.dir),
+        fg('OilDirIcon', c.fs.dir),
+        fg('OilLink', c.fs.link),
+        ln('OilLinkTarget', 'OilLink'),
 
         -- git signs
-        fg('GitSignsAdd', c.gray3),
-        fg('GitSignsChange', c.blue),
-        fg('GitSignsDelete', c.warn),
-        fg('GitSignsChangeDelete', c.warn),
+        fg('GitSignsAdd', c.diff.info),
+        fg('GitSignsChange', c.diff.change),
+        fg('GitSignsDelete', c.diff.delete),
+        fg('GitSignsChangeDelete', c.diff.delete),
 
         -- todo
-        fg('TodoBgTodo', c.green),
-        fg('TodoBgNote', c.blue),
-        fg('TodoBgFix', c.red),
-        fg('TodoBgWarn', c.warn),
-        fg('TodoBgPerf', c.warn),
-        fg('TodoBgHack', c.warn),
+        fg('TodoBgTodo', c.log.info),
+        fg('TodoBgNote', c.log.hint),
+        fg('TodoBgFix', c.log.error),
+        ln('TodoBgWarn', 'TodoBgFix'),
+        ln('TodoBgPerf', 'TodoBgFix'),
+        ln('TodoBgHack', 'TodoBgFix'),
 
         -- lightbulb
-        fg('LightBulbSign', c.gray3),
+        fg('LightBulbSign', c.log.debug),
     }
 end
 
