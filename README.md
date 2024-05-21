@@ -1,5 +1,5 @@
 # lackluster
-> a mostly muted colorscheme
+> a delightful grayscale colorscheme thats soft on the eyes
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
 
