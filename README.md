@@ -1,11 +1,13 @@
 # lackluster
 > a delightful grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-wide.png)
 
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
 
 ![a picture of the lackluster colorpallet](./asset/lackluster-pallet.png)
+
+[more screenshots](./SCREENSHOT.md)
 
 ## INSTALL
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
