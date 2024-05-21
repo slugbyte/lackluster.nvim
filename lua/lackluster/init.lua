@@ -426,7 +426,7 @@ M.theme = function()
         fg('MiniDiffSignDelete', c.diff.delete),
 
         -- todo-comments.nvim
-        fg('TodoBgTodo', c.green),
+        fg('TodoBgTodo', c.blue),
         fg('TodoBgNote', c.blue),
         ln('TodoBgPerf', 'TodoBgNote'),
         fg('TodoBgWarn', c.log.warn),
@@ -447,14 +447,18 @@ M.theme = function()
         bg('SneakScope', c.ui.search_inc_bg),
 
         -- lazy.nvim
-        fg('LazyNormal', c.luster),
-        fg('LazyComment', c.blue),
-        fg('LazySpecial', c.blue),
+        co('LazyNormal', c.gray8, c.gray3),
+        co('LazyButton', c.gray6, c.gray3),
+        co('LazyButtonActive', c.gray5, c.gray2),
+        co('LazyH1', c.gray5, c.gray2),
+        fg('LazyComment', c.lack),
+        fg('LazySpecial', c.gray2),
     }
 end
 
 M.load = function()
     local dedup_set = {}
+
     for _, hi_spec in ipairs(M.theme()) do
         local name = hi_spec.name
         if dedup_set[name] then
