@@ -140,6 +140,7 @@ M.theme = function()
         ln('VISUALNOS', 'VISUAL'),
 
         -- message
+        fg('Error', c.log.error),
         fg('ErrorMsg', c.log.error),
         fg('WarningMsg', c.log.warn),
         fg('ModeMsg', c.log.info),
@@ -153,6 +154,7 @@ M.theme = function()
         cc('PmenuThumb', c.ui.menu_fg, c.ui.menu_bg),
         cc('PmenuSel', c.ui.search_fg, c.ui.search_cur_bg),
         fg('WinSeparator', c.ui.win_seperator),
+        fg('EndOfBuffer', c.gray3),
 
         -- SYNTAX
         fg('Function', c.syntax.func),
@@ -214,14 +216,21 @@ M.theme = function()
         fg('@string.escape', c.syntax.str_esc),
 
         -- diff
-        fg('diffAdded', c.diff.add),
-        fg('diffRemoved', c.diff.delete),
-        fg('diffChanged', c.diff.change),
-        fg('diffOldFile', c.diff.info),
-        fg('diffNewFile', c.diff.add),
-        fg('diffFile', c.diff.change),
-        fg('diffLine', c.diff.change),
-        fg('diffIndexLine', c.diff.info),
+        fg('Added', c.diff.add),
+        fg('Changed', c.diff.change),
+        fg('Removed', c.diff.delete),
+        fg('DiffAdd', c.diff.add),
+        fg('DiffChange', c.diff.change),
+        fg('DiffDelete', c.diff.delete),
+        fg('DiffText', c.diff.info),
+        fg('DiffAdded', c.diff.add),
+        fg('DiffRemoved', c.diff.delete),
+        fg('DiffChanged', c.diff.change),
+        fg('DiffOldFile', c.diff.info),
+        fg('DiffNewFile', c.diff.add),
+        fg('DiffFile', c.diff.change),
+        fg('DiffLine', c.diff.change),
+        fg('DiffIndexLine', c.diff.info),
 
         -- lua
         fg('@constructor.lua', c.syntax.punctuation),
@@ -300,6 +309,7 @@ M.theme = function()
         fg('WhichKeySeparator', c.lack),
 
         -- oil
+        fg('Directory', c.fs.dir),
         fg('OilFile', c.fs.file),
         fg('OilDir', c.fs.dir),
         fg('OilDirIcon', c.fs.dir),
