@@ -14,6 +14,7 @@
 ![](./asset/lackluster-telescope.png)
 
 ## nvim_cmp
+> darker gray options are deprecated
 ![](./asset/lackluster-nvim-cmp.png)
 
 ## which-key.nvim

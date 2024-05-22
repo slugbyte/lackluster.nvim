@@ -154,7 +154,6 @@ M.theme = function()
         op('Spell', {
             underline = true,
         }),
-        fg('TODO', c.log.hint),
 
         -- CURSOR
         co('CursorLine', c.none, c.ui.cursorline),
@@ -189,6 +188,7 @@ M.theme = function()
         fg('EndOfBuffer', c.gray4),
 
         -- SYNTAX
+        fg('Identifier', c.syntax.type),
         fg('Function', c.syntax.func),
         fg('Type', c.syntax.type),
         fg('Variable', c.syntax.var),
@@ -215,6 +215,7 @@ M.theme = function()
         co('MatchParen', c.ui.search_cur_bg, c.ui.search_inc_bg),
 
         -- comment
+        fg('Todo', c.log.hint),
         fg('Comment', c.syntax.comment),
         fg('SpecialComment', c.syntax.documentation),
 
@@ -240,12 +241,7 @@ M.theme = function()
         fg('DiagnosticSignError', c.diagnostic.error),
         fg('DiagnosticSignDeprecated', c.diagnostic.depricated),
 
-        -- lsp
-        fg('@lsp.type.function', c.gray8),
-        fg('@lsp.type.property', c.ui.normal),
-        fg('@constant.builtin.lua', c.gray5),
-
-        -- treesitter
+        -- treesitter overrides
         fg('@punctuation.bracket', c.syntax.punctuation),
         fg('@punctuation.special', c.syntax.punctuation),
         fg('@punctuation.delimiter', c.syntax.punctuation),
@@ -253,6 +249,7 @@ M.theme = function()
         fg('@variable', c.syntax.var),
         fg('@property', c.luster),
         fg('@type.builtin', c.syntax.type_primitave),
+        fg('@function', c.syntax.func),
         fg('@function.call', c.syntax.func),
         fg('@function.builtin', c.syntax.func_builtin),
         fg('@variable.parameter', c.syntax.func_param),
@@ -443,11 +440,7 @@ M.theme = function()
         ln('TodoFgHack', 'TodoFgTodo'),
 
         -- nvim-lightbulb
-        fg('LightBulbSign', c.diagnostic.info),
-
-        -- sneak.vim
-        co('Sneak', c.ui.search_fg, c.ui.search_cur_bg),
-        bg('SneakScope', c.ui.search_inc_bg),
+        fg('LightBulbSign', c.diagnostic.text),
 
         -- lazy.nvim
         co('LazyNormal', c.gray8, c.gray3),
