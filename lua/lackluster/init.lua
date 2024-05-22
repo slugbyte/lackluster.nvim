@@ -14,7 +14,9 @@ M.col = {
 
     -- if the status bar value is slightly offset from all grays used in the normal config
     -- it allways looks good against popups
-    _gray_stausbar_only = '#222222',
+    _special_gray_background = "#0a0a0a",
+    _special_gray_popup_dark = '#0f0f0f',
+    _special_gray_statusline = '#222222',
 
     gray1 = "#080808",
     gray2 = "#191919",
@@ -49,11 +51,12 @@ M.col.diagnostic = {
 }
 
 M.col.fs = {
-    dir = M.col.lack,
+    dir = M.col.gray5,
     file = M.col.luster,
-    link = M.col.blue,
-    link_target = M.col.blue,
-    socket = M.col.orange,
+    exec = M.col.green,
+    link = M.col.lack,
+    binary_data = M.col.gray6,
+    socket = M.col.gray6,
 }
 
 M.col.diff = {
@@ -64,20 +67,30 @@ M.col.diff = {
 }
 
 M.col.ui = {
-    normal        = M.col.gray8,
-    title         = M.col.gray7,
-    visual_bg     = M.col.white,
-    visual_fg     = M.col.black,
-    search_fg     = M.col.black,
-    search_inc_bg = M.col.lack,
-    search_cur_bg = M.col.white,
-    cursorline    = M.col.gray2,
-    colorcolumn   = M.col.black,
-    menu_bg       = M.col.gray2,
-    menu_fg       = M.col.gray6,
-    line_num      = M.col.gray4,
-    line_num_cur  = M.col.gray7,
-    win_seperator = M.col.lack,
+    fg_normal        = M.col.gray8,
+    bg_normal        = M.gray1,
+
+    fg_title         = M.col.gray7,
+    fg_border        = M.col.lack,
+    fg_line_num      = M.col.gray4,
+    fg_line_num_cur  = M.col.gray7,
+    bg_colorcolumn   = M.col.black,
+    bg_cursorline    = M.col.gray2,
+
+    bg_visual        = M.col.white,
+    fg_visual        = M.col.black,
+
+    fg_search        = M.col.black,
+    bg_search_item   = M.col.lack,
+    bg_search_cur    = M.col.gray8,
+
+    bg_menu          = M.col.gray2,
+    fg_menu          = M.col.gray6,
+
+    bg_scroll_bar    = M.col.gray6,
+    bg_scroll_slider = M.col.gray3,
+    bg_popup_dark    = M.col._special_gray_popup_dark,
+    bg_popup_light   = M.col.gray2,
 }
 
 M.col.syntax = {
@@ -154,25 +167,26 @@ end
 M.theme = function()
     return {
         -- TEXT
-        co('Normal', c.ui.normal, '#0a0a0a'),
-        fg('Title', c.ui.title),
+        co('Normal', c.ui.fg_normal, '#0a0a0a'),
+        fg('Title', c.ui.fg_title),
         op('Spell', {
             underline = true,
         }),
 
         -- CURSOR
-        co('CursorLine', c.none, c.ui.cursorline),
-        fg('CursorLineNr', c.ui.line_num_cur),
-        fg('LineNr', c.ui.line_num),
-        bg('ColorColumn', c.ui.colorcolumn),
+        co('CursorLine', c.none, c.ui.bg_cursorline),
+        fg('CursorLineNr', c.ui.fg_line_num_cur),
+        fg('LineNr', c.ui.fg_line_num),
+        bg('ColorColumn', c.ui.bg_colorcolumn),
 
         -- SEARCH
-        co('Search', c.ui.search_fg, c.ui.search_inc_bg),
-        co('CurSearch', c.ui.search_fg, c.ui.search_cur_bg),
+        co('Search', c.ui.fg_search, c.ui.bg_search_item),
+        co('CurSearch', c.ui.fg_search, c.ui.bg_search_cur),
         ln('IncSearch', 'CurSearch'),
+        fg('QuickFixLine', c.green),
 
         -- VISUAL
-        co('VISUAL', c.ui.visual_fg, c.ui.visual_bg),
+        co('VISUAL', c.ui.fg_visual, c.ui.bg_visual),
         ln('VISUALNOS', 'VISUAL'),
 
         -- message
@@ -183,18 +197,19 @@ M.theme = function()
         fg('MsgArea', c.log.info),
 
         -- UI
-        co('StatusLine', c.gray7, c._gray_stausbar_only),
+        co('StatusLine', c.gray7, c._special_gray_statusline),
         co('StatusLineNC', c.gray4, c.gray1),
         co('Tabline', c.gray4, c.gray2),
-        co('TablineFill', c.gray7, c._gray_stausbar_only),
+        co('TablineFill', c.gray7, c._special_gray_statusline),
         co('TablineSel', c.gray1, c.gray8),
-        co('NormalFloat', c.ui.normal, c.ui.menu_bg),
-        co('FloatTitle', c.ui.normal, c.ui.menu_bg),
-        co('FloatBorder', c.ui.normal, c.ui.menu_bg),
-        co('Pmenu', c.ui.menu_fg, c.ui.menu_bg),
-        co('PmenuThumb', c.ui.menu_fg, c.ui.menu_bg),
-        co('PmenuSel', c.ui.search_fg, c.ui.search_cur_bg),
-        fg('WinSeparator', c.ui.win_seperator),
+        co('NormalFloat', c.ui.fg_normal, c.ui.bg_menu),
+        co('FloatBorder', c.ui.fg_border, c.ui.bg_menu),
+        co('FloatTitle', c.ui.fg_normal, c.ui.bg_menu),
+        co('Pmenu', c.ui.fg_menu, c.ui.bg_menu),
+        co('PmenuSbar', c.ui.bg_scroll_bar, c.ui.bg_scroll_bar),
+        co('PmenuThumb', c.ui.bg_scroll_slider, c.ui.bg_scroll_slider),
+        co('PmenuSel', c.ui.fg_search, c.ui.bg_search_cur),
+        fg('WinSeparator', c.ui.fg_border),
         fg('EndOfBuffer', c.gray4),
 
         -- SYNTAX
@@ -222,10 +237,11 @@ M.theme = function()
         fg('Quote', c.syntax.str),
         fg('Operator', c.syntax.punctuation),
         fg('Delimiter', c.syntax.punctuation),
-        co('MatchParen', c.ui.search_cur_bg, c.ui.search_inc_bg),
+        co('MatchParen', c.ui.bg_search_cur, c.ui.bg_search_item),
 
         -- comment
         fg('Todo', c.log.hint),
+        fg('Question', c.log.hint),
         fg('Comment', c.syntax.comment),
         fg('SpecialComment', c.syntax.documentation),
 
@@ -333,17 +349,17 @@ M.theme = function()
         fg('texBeginEnd', c.gray5),
 
         -- css
-        fg('cssMediaProp', c.ui.normal),
-        fg('cssTransitionProp', c.ui.normal),
-        fg('cssTextProp', c.ui.normal),
-        fg('cssBoxProp', c.ui.normal),
-        fg('cssFontProp', c.ui.normal),
-        fg('cssPositioningProp', c.ui.normal),
-        fg('cssBorderProp', c.ui.normal),
-        fg('cssBackgroundProp', c.ui.normal),
-        fg('cssTransformProp', c.ui.normal),
-        fg('@property.css', c.ui.normal),
-        fg('@tag.css', c.ui.normal),
+        fg('cssMediaProp', c.ui.fg_normal),
+        fg('cssTransitionProp', c.ui.fg_normal),
+        fg('cssTextProp', c.ui.fg_normal),
+        fg('cssBoxProp', c.ui.fg_normal),
+        fg('cssFontProp', c.ui.fg_normal),
+        fg('cssPositioningProp', c.ui.fg_normal),
+        fg('cssBorderProp', c.ui.fg_normal),
+        fg('cssBackgroundProp', c.ui.fg_normal),
+        fg('cssTransformProp', c.ui.fg_normal),
+        fg('@property.css', c.ui.fg_normal),
+        fg('@tag.css', c.ui.fg_normal),
 
         -- markdown
         fg('@markup.quote', c.gray6),
@@ -378,15 +394,15 @@ M.theme = function()
         fg('makeSpecial', c.syntax.special),
 
         -- telescope
-        fg('TelescopeNormal', c.ui.normal),
-        fg('TelescopeResultsNormal', c.gray5),
+        co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
+        co('TelescopeBorder', c.ui.fg_border, c._special_gray_popup_dark),
+        co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
         fg('TelescopeMatching', c.gray4),
-        fg('TelescopeBorder', c.gray4),
         fg('TelescopeMultiSelection', c.green),
         fg('TelescopeMultiIcon', c.green),
         fg('TelescopePromptPrefix', c.gray6),
         fg('TelescopePromptCounter', c.blue),
-        co('TelescopeSelection', c.gray1, c.white),
+        co('TelescopeSelection', c.gray1, c.gray8),
 
         -- nvim_cmp
         fg('CmpItemKind', c.gray7),
@@ -453,10 +469,10 @@ M.theme = function()
         fg('LightBulbSign', c.diagnostic.text),
 
         -- lazy.nvim
-        co('LazyNormal', c.gray8, c.gray3),
-        co('LazyButton', c.gray6, c.gray3),
-        co('LazyButtonActive', c.gray5, c.gray2),
-        co('LazyH1', c.gray5, c.gray2),
+        co('LazyNormal', c.gray8, c.ui.bg_popup_light),
+        co('LazyButton', c.gray6, c.ui.bg_popup_light),
+        co('LazyButtonActive', c.gray4, c.gray8),
+        ln('LazyH1', 'LazyButtonActive'),
         fg('LazyComment', c.lack),
         fg('LazySpecial', c.gray2),
 
@@ -468,6 +484,27 @@ M.theme = function()
         fg('TroubleInformation', c.gray7),
         fg('TroubleTextError', c.diagnostic.error),
         fg('TroubleTextWarning', c.gray7),
+
+        -- nvim tree
+        fg('NvimTreeExecFile', c.fs.exec),
+        fg('NvimTreeSymlink', c.fs.link),
+        fg('NvimTreeImageFile', c.fs.binary_data),
+        fg('NvimTreeRootFolder', c.fs.dir),
+        fg('NvimTreeFolder', c.fs.dir),
+        fg('NvimTreeFolderIcon', c.fs.dir),
+        fg('NvimTreeBookmarkIcon', c.lack),
+        fg('NvimTreeBookmarkHl', c.lack),
+        fg('NvimTreeGitDeletedIcon', c.diff.delete),
+        fg('NvimTreeGitMergeIcon', c.diff.change),
+        fg('NvimTreeGitRenamedIcon', c.diff.change),
+        fg('NvimTreeGitNewIcon', c.diff.add),
+        fg('NvimTreeGitDirtyIcon', c.diff.change),
+        fg('NvimTreeModifiedIcon', c.diff.change),
+        co('NvimTreeWindowPicker', c.gray8, c.lack),
+        fg('NvimTreeDiagnosticErrorFileHl', c.diagnostic.error),
+        fg('NvimTreeDiagnosticInfoFileHl', c.diagnostic.info),
+        fg('NvimTreeDiagnosticHintFileHl', c.diagnostic.hint),
+        fg('NvimTreeDiagnosticWarnFileHl', c.diagnostic.warn),
     }
 end
 
