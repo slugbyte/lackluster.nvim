@@ -1,5 +1,6 @@
 ## lualine
 >  the statusline with a black background is used when a window out of focus
+
 ![](./asset/lackluster-lualine.png)
 
 ## lackluster tabs
@@ -35,7 +36,6 @@
 
 ## mason.nvim
 ![](./asset/lackluster-mason.png)
-
 
 ## which-key.nvim
 ![](./asset/lackluster-which-key.png)

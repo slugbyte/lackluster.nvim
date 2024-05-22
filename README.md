@@ -9,8 +9,7 @@
 
 ![a picture of the lackluster colorpallet](./asset/lackluster-pallet.png)
 
-
-[more screenshots](./SCREENSHOT.md)
+[a bunch more screenshots...](./SCREENSHOT.md)
 
 ## INSTALL
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
@@ -37,8 +36,9 @@ require('lualine').setup({
 })
 ```
 
-## Explicitly supported plugins
+## EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
+* [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 * [lazy.nvim](https://github.com/folke/lazy.nvim)
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
@@ -58,10 +58,10 @@ require('lualine').setup({
 ## HELP WANTED
 If you find in bugs, or syntax issues feel free to open a ticket!
 
-Is `lackluster` missing support for a plugin you want? Feel free to open a PR with a
+Is `lackluster` missing support for a plugin you love? Feel free to open a PR with a
 suggested implementation! Your contribution is mega much appreciated.
 
-See the [Contributing Guide](./CONTRIBUTING.md)
+See the [CONTRIBUTING](./CONTRIBUTING.md) and [DEVELOPMENT](./DEVELOPMENT.md) Guides!
 
 ## SELF-PROMO
 If you like this project star the GitHub repository :)
