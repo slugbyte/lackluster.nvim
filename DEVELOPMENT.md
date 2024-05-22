@@ -52,6 +52,11 @@ return {
 }
 ```
 
+## COLOR NAMES
+> don't let the main readme fool you, the actual color names are red, orange, green, and blue
+
+![](./asset/lackluster-pallet-dev.png)
+
 ## API
 * `lackluster_dev.lackluster_reload()` - reload any changes made to lackluster
 * `lackluster_dev.try_fg(hl_group, color_name)` - test out a lackluster color on a hl\_group
