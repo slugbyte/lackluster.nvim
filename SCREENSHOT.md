@@ -1,5 +1,5 @@
 ## lualine
->  the statusline with a black background is used when a window out of focus
+>  the statusline with a dark background is used for out of focus
 
 ![](./asset/lackluster-lualine.png)
 
