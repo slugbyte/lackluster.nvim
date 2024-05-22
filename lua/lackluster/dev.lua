@@ -34,7 +34,7 @@ M.lackluster_reload = function()
 end
 
 --- try out a lackluster color on a hl_group
-M.color_fg = function(hl_group, color_name)
+M.try_fg = function(hl_group, color_name)
     local color = lackluster.color[color_name]
     if color == nil then
         return err("ERROR: %s is not a valid lackluster color", color_name)
@@ -45,7 +45,7 @@ M.color_fg = function(hl_group, color_name)
 end
 
 --- try out a lackluster color on a hl_group
-M.color_bg = function(hl_group, color_name)
+M.try_bg = function(hl_group, color_name)
     local color = lackluster.color[color_name]
     if color == nil then
         return err("ERROR: %s is not a valid lackluster color", color_name)
@@ -57,7 +57,7 @@ end
 
 
 -- define LLFG LLFB and LLR usercommands
-M.setup = function()
+M.create_usrcmds = function()
     -- reload colorscheme
     vim.api.nvim_create_user_command('LLR', function()
         M.lackluster_reload()
@@ -70,7 +70,7 @@ M.setup = function()
     vim.api.nvim_create_user_command('LLFG', function(opt)
         local hl_group = opt.fargs[1]
         local color_name = opt.fargs[2]
-        M.color_fg(hl_group, color_name)
+        M.try_fg(hl_group, color_name)
     end, {
         desc = ":LLFG <hl_group> <lackluster_color_name> (apply color to fg)",
         nargs = '*',
@@ -81,7 +81,7 @@ M.setup = function()
     vim.api.nvim_create_user_command('LLBG', function(opt)
         local hl_group = opt.fargs[1]
         local color_name = opt.fargs[2]
-        M.color_bg(hl_group, color_name)
+        M.try_bg(hl_group, color_name)
     end, {
         desc = ":LLFG <hl_group> <lackluster_color_name> (apply color to bg)",
         nargs = '*',
