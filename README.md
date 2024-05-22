@@ -36,7 +36,7 @@ require('lualine').setup({
 })
 ```
 
-## EXPLICITLY SUPPORTED PLUGINS
+#### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -55,6 +55,9 @@ require('lualine').setup({
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 
+## SELF-PROMO
+If you like this project star the GitHub repository :)
+
 ## HELP WANTED
 If you find in bugs, or syntax issues feel free to open a ticket!
 
@@ -63,10 +66,7 @@ suggested implementation! Your contribution is mega much appreciated.
 
 See the [CONTRIBUTING](./CONTRIBUTING.md) and [DEVELOPMENT](./DEVELOPMENT.md) Guides!
 
-## SELF-PROMO
-If you like this project star the GitHub repository :)
-
-## Acknowledgement
+### ACKNOWLEDGEMENT
 > I referenced the following colorschemes when creating lackluster
 * [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim/tree/main)
 * [nyoom-engineering/oxocarbon.nvim](https://github.com/nyoom-engineering/oxocarbon.nvim)
