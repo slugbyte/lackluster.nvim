@@ -65,3 +65,9 @@ See the [Contributing Guide](./CONTRIBUTING.md)
 
 ## SELF-PROMO
 If you like this project star the GitHub repository :)
+
+## Acknowledgement
+> I referenced the following colorschemes when creating lackluster
+* [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim/tree/main)
+* [nyoom-engineering/oxocarbon.nvim](https://github.com/nyoom-engineering/oxocarbon.nvim)
+* [rose-pine/neovim](https://github.com/rose-pine/neovim)

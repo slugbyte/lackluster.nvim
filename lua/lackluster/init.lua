@@ -9,16 +9,15 @@ M.color = {
     luster = "#cfecf3",
     lack = '#5d656d',
 
-    black = '#000000',
-    white = '#ffffff',
 
     -- NOTE: special colors are for special cases and should only be used for backgrounds,
     -- they help make sure other highlights dont look garbage when placed on top or adjacent
     _special_gray_background = "#0a0a0a",
     _special_gray_popup_dark = '#101010',
-    _special_gray_popup_pale = '#1c1c1c',
+    _special_gray_popup_pale = '#1a1a1c',
     _special_gray_statusline = '#242424',
 
+    black = '#000000',
     gray1 = "#080808",
     gray2 = "#191919",
     gray3 = "#2a2a2a",
@@ -27,6 +26,7 @@ M.color = {
     gray6 = "#7a7a7a",
     gray7 = "#aaaaaa",
     gray8 = "#cccccc",
+    gray9 = '#DDDDDD',
     none = "none",
 }
 
@@ -69,7 +69,7 @@ M.color.diff = {
 
 M.color.ui = {
     fg_normal         = M.color.gray8,
-    fg_title          = M.color.gray7,
+    fg_title          = M.color.gray5,
     bg_normal         = M.color._special_gray_background,
 
     bg_statusline     = M.color.gray1,
@@ -80,10 +80,10 @@ M.color.ui = {
     fg_border         = M.color.lack,
     fg_line_num       = M.color.gray4,
     fg_line_num_cur   = M.color.gray7,
-    bg_colorcolumn    = M.color.black,
+    bg_colorcolumn    = M.color.gray1,
     bg_cursorline     = M.color.gray2,
 
-    bg_visual         = M.color.white,
+    bg_visual         = M.color.gray9,
     fg_visual         = M.color.black,
 
     fg_search         = M.color.black,
@@ -109,13 +109,13 @@ M.color.syntax = {
     func_param = M.color.gray5,
     special = M.color.lack,
     type = M.color.gray7,
-    type_primitave = M.color.gray7,
+    type_primitave = M.color.gray8,
     keyword = M.color.gray6,
     str = M.color.lack,
     str_esc = M.color.blue,
     punctuation = M.color.gray6,
     comment = M.color.gray4,
-    documentation = M.color.gray5,
+    documentation = M.color.gray4,
 }
 
 local c = M.color
@@ -190,10 +190,12 @@ M.theme = function()
         co('Search', c.ui.fg_search, c.ui.bg_search_item),
         co('CurSearch', c.ui.fg_search, c.ui.bg_search_cur),
         ln('IncSearch', 'CurSearch'),
+        ln('Substitue', 'Search'),
 
         -- VISUAL
         co('VISUAL', c.ui.fg_visual, c.ui.bg_visual),
         ln('VISUALNOS', 'VISUAL'),
+
 
         -- MESSAGE
         fg('Error', c.log.error),
