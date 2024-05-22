@@ -114,6 +114,7 @@ M.color.syntax = {
     var = M.color.gray8,
     const = M.color.gray7,
     const_builtin = M.color.gray5,
+    tag = M.color.gray5,
     func = M.color.gray7,
     func_builtin = M.color.gray4,
     func_param = M.color.gray5,
@@ -186,9 +187,6 @@ M.theme = function()
         -- TEXT
         co('Normal', c.ui.fg_normal, c.ui.bg_normal),
         fg('Title', c.ui.fg_title),
-        op('Spell', {
-            underline = true,
-        }),
 
         -- CURSOR
         co('CursorLine', c.none, c.ui.bg_cursorline),
@@ -298,22 +296,106 @@ M.theme = function()
         fg('DiagnosticSignDeprecated', c.diagnostic.depricated),
 
         -- treesitter overrides
+        fg('@keyword', c.syntax.keyword),
+        fg('@attribute', c.syntax.keyword),
+        fg('@type', c.syntax.type),
+        fg('@property', c.luster),
+        fg('@label', c.ui.fg_title),
+
+        -- treesitter variable
+        fg('@variable', c.syntax.var),
+        fg('@variable.member', c.syntax.type),
+
+        -- treesistter constant
+        fg('@constant', c.syntax.const),
+        fg('@boolean', c.syntax.const),
+        fg('@number', c.syntax.const),
+
+        -- treesitter punctuation
+        fg('@operator', c.syntax.punctuation),
         fg('@punctuation.bracket', c.syntax.punctuation),
         fg('@punctuation.special', c.syntax.punctuation),
         fg('@punctuation.delimiter', c.syntax.punctuation),
         fg('@constructor', c.syntax.punctuation),
-        fg('@variable', c.syntax.var),
-        fg('@property', c.luster),
-        fg('@type.builtin', c.syntax.type_primitave),
+
+        -- treesitter func
         fg('@function', c.syntax.func),
         fg('@function.call', c.syntax.func),
-        fg('@function.builtin', c.syntax.func_builtin),
         fg('@variable.parameter', c.syntax.func_param),
-        fg('@constant.builtin', c.syntax.const_builtin),
-        fg('@variable.member', c.syntax.type),
-        fg('@attribute', c.syntax.keyword),
+
+        -- treesiter string
+        fg('@string', c.syntax.str),
+        fg('@character', c.syntax.str),
         fg('@string.escape', c.syntax.str_esc),
+        fg('@string.special', c.syntax.str_esc),
+        fg('@string.regexp', c.syntax.str_esc),
+
+        -- treesitter comment
+        -- QUESTION: not sure if (todo, note, warn should actual bye c.syntax.comment)
+        -- if it ends up highlighting the whole line I thing i would prefer .comment
+        fg('@comment', c.syntax.comment),
+        fg('@comment.todo', c.diagnostic.hint),
+        fg('@comment.note', c.diagnostic.hint),
+        fg('@comment.warn', c.diagnostic.warn),
+        fg('@comment.error', c.diagnostic.error),
         fg('@comment.documentation', c.syntax.documentation),
+
+        -- treesitter markup
+        fg('@markup.heading', c.gray4),
+        fg('@markup.quote', c.gray6),
+
+        fg('@markup.strong', c.gray4),
+        fg('@markup.italic', c.gray4),
+        fg('@markup.strikethrough', c.gray4),
+        op('@markup.underline', {
+            undercurl = true,
+        }),
+
+        fg('@markup.list', c.gray4),
+        fg('@markup.list.checked', c.syntax.str_esc),
+        fg('@markup.list.unchecked', c.red),
+
+        fg('@markup.link', c.gray6),
+        fg('@markup.link.label', c.gray6),
+        fg('@markup.link.url', c.gray4),
+
+        fg('@markup.math', c.orange),
+
+        -- treesitter tags
+        fg('@tag', c.syntax.tag),
+        fg('@tag.delimiter', c.syntax.tag),
+        fg('@tag.attribute', c.gray4),
+
+        -- treesitter builtin
+        fg('@type.builtin', c.syntax.type_primitave),
+        fg('@tag.builtin', c.syntax.tag),
+        fg('@function.builtin', c.syntax.func_builtin),
+        fg('@constant.builtin', c.syntax.const_builtin),
+
+        -- treesitter diff
+        fg('@diff.pluss', c.diff.add),
+        fg('@diff.minus', c.diff.delete),
+        fg('@diff.delta', c.diff.change),
+
+        -- lsp links to treesiter
+        ln('@lsp.type.keyword', '@keyword'),
+        ln('@lsp.type.function', '@function'),
+        ln('@lsp.type.variable', '@variable'),
+        ln('@lsp.type.operator', '@operator'),
+        ln('@lsp.type.type', '@type'),
+        ln('@lsp.type.string', '@string'),
+        ln('@lsp.type.number', '@number'),
+        ln('@lsp.type.boolean', '@boolean'),
+        ln('@lsp.type.enumMember', '@variable.memeber'),
+
+        --spell
+        -- fg('SpellBad', c.diagnostic.error),
+        op('SpellBad', {
+            undercurl = true,
+        }),
+        ln('SpellLocal', 'SpellBad'),
+        ln('SpellCap', 'SpellBad'),
+        ln('SpellRare', 'SpellBad'),
 
         -- diff
         fg('Added', c.diff.add),
@@ -338,6 +420,8 @@ M.theme = function()
         fg('@function.go', c.gray6),
 
         -- lua
+        -- NOTE: i find it a lot nicer to find the (end) of a lua func if has a
+        -- different color than other (end) keywords
         fg('@keyword.function.lua', c.lack),
 
         -- zig
@@ -359,10 +443,7 @@ M.theme = function()
         fg('xmlAttrib', c.gray4),
 
         -- html
-        fg('htmlTagName', c.gray5),
-        fg('@tag', c.gray5),
-        fg('@tag.delimiter', c.gray5),
-        fg('@tag.attribute', c.gray4),
+        fg('htmlTagName', c.syntax.tag),
 
         -- text
         fg('texStatement', c.gray5),
@@ -386,20 +467,13 @@ M.theme = function()
         fg('@property.css', c.ui.fg_normal),
         fg('@tag.css', c.ui.fg_normal),
 
+
         -- markdown
-        fg('@markup.quote', c.gray6),
-        fg('@markup.list.unchecked', c.red),
-        fg('@markup.list.checked', c.syntax.str_esc),
-        fg('@markup.strong', c.gray4),
-        fg('@markup.italic', c.gray4),
-        fg('@markup.strikethrough', c.gray4),
-        fg('@markup.list', c.gray4),
-        fg('@markup.link', c.gray6),
-        fg('@markup.link.label', c.gray6),
-        fg('@markup.link.url', c.gray4),
-        fg('@markup.math', c.orange),
         fg('markdownCodeDelimiter', c.green),
         fg('markdownLinkDelimiter', c.gray6),
+        ln('markdownLinkTextDelimiter', '@markup.link'),
+        ln('markdownLinkText', '@markup.link'),
+        ln('markdownUrl', '@markup.link.url'),
 
         -- sql
         fg('sqlType', c.syntax.str),

@@ -7,7 +7,7 @@
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
 
-![a picture of the lackluster colorpallet](./asset/lackluster-pallet.png)
+![a picture of the lackluster color pallet](./asset/lackluster-pallet.png)
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
