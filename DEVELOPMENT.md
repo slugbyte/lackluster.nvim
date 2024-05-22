@@ -1,22 +1,12 @@
 # how to use the lackluster dev tools!
 > these tools are not required for development but they make life easier
 
-## how to setup a dev env at a custom location
-1. fork this repository
-2. create a directory where you want to develop neovim plugins 
-  * like `mkdir ~/code/neovim_dev`
-3. add your directory to the vim runtime path
-  * `vim.opt.runtimepath:append(',~/code/neovim_dev')`
-4. clone your fork into your development direcotry
-  * `cd ~/code/neovim_dev`
-  * `git clone <your fork>`
-5. load the dev lib and user commands
-```lua
-local lackluster_dev = require("lackluster.dev")
-lackluster_dev.create_usercmds()
-```
+## SETUP DEVELOPMENT ENVIRONMENT
 
-## how to setup dev env with lazy.nvim
+<details>
+
+<summary>(recomended) How to setup dev env with lazy.nvim</summary>
+
 1. fork this repository
 2. create a directory where you want to develop neovim plugins
   * like `mkdir ~/code/neovim_dev`
@@ -51,6 +41,27 @@ return {
     end,
 }
 ```
+</details>
+
+<details>
+
+<summary>How to setup a dev environment at a custom location</summary>
+
+1. fork this repository
+2. create a directory where you want to develop neovim plugins 
+  * like `mkdir ~/code/neovim_dev`
+3. add your directory to the vim runtime path
+  * `vim.opt.runtimepath:append(',~/code/neovim_dev')`
+4. clone your fork into your development direcotry
+  * `cd ~/code/neovim_dev`
+  * `git clone <your fork>`
+5. load the dev lib and user commands
+```lua
+local lackluster_dev = require("lackluster.dev")
+lackluster_dev.create_usercmds()
+```
+</details>
+
 
 ## COLOR NAMES
 > don't let the main readme fool you, the actual color names are red, orange, green, and blue
