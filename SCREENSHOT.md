@@ -1,7 +1,9 @@
 ## pallet
+> a minimal but flexible and good looking pallet made from beautiful hex codes
+
 ![](./asset/lackluster-pallet.png)
 
-# lackluster screenshots
+# lackluster
 ![](./asset/lackluster.png)
 
 ## lualine
