@@ -154,6 +154,7 @@ M.theme = function()
         op('Spell', {
             underline = true,
         }),
+        fg('TODO', c.log.hint),
 
         -- CURSOR
         co('CursorLine', c.none, c.ui.cursorline),
@@ -284,7 +285,6 @@ M.theme = function()
         fg('DiffLine', c.diff.change),
         fg('DiffIndexLine', c.diff.info),
 
-
         -- go
         fg('@type.builtin.go', c.gray5),
         fg('@variable.parameter.go', c.gray8),
@@ -296,6 +296,9 @@ M.theme = function()
         -- zig
         fg('@keyword.import.zig', c.syntax.func_builtin),
         fg('@variable.member.zig', c.gray6),
+
+        -- zsh
+        fg('zshFunction', c.syntax.func),
 
         -- json,yaml,toml
         fg('@property.json', c.gray5),

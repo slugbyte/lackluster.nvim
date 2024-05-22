@@ -1,8 +1,6 @@
 const std = @import("std");
 const Allocator = std.mem.Allocator;
 
-// TODO: create RGBA<->SLA conversion fns
-
 const Color = union(enum) {
     RGBA: struct { r: u8, g: u8, b: u8, a: u8 },
     HSLA: struct { h: f32, s: f32, l: f32, a: f32 },
