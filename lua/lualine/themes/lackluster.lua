@@ -1,4 +1,4 @@
-local col = require("lackluster").col
+local col = require("lackluster").color
 
 local lualine_theme = {
     normal = {

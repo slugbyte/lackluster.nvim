@@ -1,6 +1,6 @@
 local M = {}
 
-M.col = {
+M.color = {
     red = "#D70000",
     blue = '#7788AA',
     green = "#789978",
@@ -30,95 +30,95 @@ M.col = {
     none = "none",
 }
 
-M.col.log = {
-    success = M.col.green,
-    info = M.col.luster,
-    warn = M.col.orange,
-    error = M.col.red,
-    hint = M.col.blue,
+M.color.log = {
+    success = M.color.green,
+    info = M.color.luster,
+    warn = M.color.orange,
+    error = M.color.red,
+    hint = M.color.blue,
 }
 
-M.col.diagnostic = {
+M.color.diagnostic = {
     -- NOTE: text often is used for hover/virtual text and the colors are used as signs
     -- this reduces visual noise (except for error text which should always be red)
-    text = M.col.gray4,
-    ok = M.col.green,
-    hint = M.col.blue,
-    error = M.col.red,
-    info = M.col.blue,
-    warn = M.col.orange,
-    unnecessary = M.col.gray4,
-    depricated = M.col.orange,
+    text = M.color.gray4,
+    ok = M.color.green,
+    hint = M.color.blue,
+    error = M.color.red,
+    info = M.color.blue,
+    warn = M.color.orange,
+    unnecessary = M.color.gray4,
+    depricated = M.color.orange,
 }
 
-M.col.fs = {
-    dir = M.col.gray5,
-    file = M.col.luster,
-    exec = M.col.green,
-    link = M.col.lack,
-    binary_data = M.col.gray6,
-    socket = M.col.gray6,
+M.color.fs = {
+    dir = M.color.gray5,
+    file = M.color.luster,
+    exec = M.color.green,
+    link = M.color.lack,
+    binary_data = M.color.gray6,
+    socket = M.color.gray6,
 }
 
-M.col.diff = {
-    add = M.col.green,
-    change = M.col.blue,
-    delete = M.col.orange,
-    info = M.col.gray5,
+M.color.diff = {
+    add = M.color.green,
+    change = M.color.blue,
+    delete = M.color.orange,
+    info = M.color.gray5,
 }
 
-M.col.ui = {
-    fg_normal         = M.col.gray8,
-    fg_title          = M.col.gray7,
-    bg_normal         = M.col._special_gray_background,
+M.color.ui = {
+    fg_normal         = M.color.gray8,
+    fg_title          = M.color.gray7,
+    bg_normal         = M.color._special_gray_background,
 
-    bg_statusline     = M.col.gray1,
-    bg_statusline_cur = M.col._special_gray_statusline,
-    bg_tab            = M.col.gray2,
-    bg_tab_cur        = M.col.gray8,
+    bg_statusline     = M.color.gray1,
+    bg_statusline_cur = M.color._special_gray_statusline,
+    bg_tab            = M.color.gray2,
+    bg_tab_cur        = M.color.gray8,
 
-    fg_border         = M.col.lack,
-    fg_line_num       = M.col.gray4,
-    fg_line_num_cur   = M.col.gray7,
-    bg_colorcolumn    = M.col.black,
-    bg_cursorline     = M.col.gray2,
+    fg_border         = M.color.lack,
+    fg_line_num       = M.color.gray4,
+    fg_line_num_cur   = M.color.gray7,
+    bg_colorcolumn    = M.color.black,
+    bg_cursorline     = M.color.gray2,
 
-    bg_visual         = M.col.white,
-    fg_visual         = M.col.black,
+    bg_visual         = M.color.white,
+    fg_visual         = M.color.black,
 
-    fg_search         = M.col.black,
-    bg_search_item    = M.col.lack,
-    bg_search_cur     = M.col.gray8,
+    fg_search         = M.color.black,
+    bg_search_item    = M.color.lack,
+    bg_search_cur     = M.color.gray8,
 
 
-    bg_scrollbar    = M.col.gray3,
-    fg_scrollbar    = M.col.gray5,
+    bg_scrollbar    = M.color.gray3,
+    fg_scrollbar    = M.color.gray5,
 
-    fg_popup        = M.col.gray6,
-    bg_popup_dark   = M.col._special_gray_popup_dark,
-    bg_popup_normal = M.col.gray2,
-    bg_popup_pale   = M.col._special_gray_popup_pale,
+    fg_popup        = M.color.gray6,
+    bg_popup_dark   = M.color._special_gray_popup_dark,
+    bg_popup_normal = M.color.gray2,
+    bg_popup_pale   = M.color._special_gray_popup_pale,
 }
 
-M.col.syntax = {
-    var = M.col.gray8,
-    const = M.col.gray7,
-    const_builtin = M.col.gray5,
-    func = M.col.gray7,
-    func_builtin = M.col.gray4,
-    func_param = M.col.gray5,
-    special = M.col.lack,
-    type = M.col.gray7,
-    type_primitave = M.col.gray7,
-    keyword = M.col.gray6,
-    str = M.col.lack,
-    str_esc = M.col.blue,
-    punctuation = M.col.gray6,
-    comment = M.col.gray4,
-    documentation = M.col.gray5,
+M.color.syntax = {
+    var = M.color.gray8,
+    const = M.color.gray7,
+    const_builtin = M.color.gray5,
+    func = M.color.gray7,
+    func_builtin = M.color.gray4,
+    func_param = M.color.gray5,
+    special = M.color.lack,
+    type = M.color.gray7,
+    type_primitave = M.color.gray7,
+    keyword = M.color.gray6,
+    str = M.color.lack,
+    str_esc = M.color.blue,
+    punctuation = M.color.gray6,
+    comment = M.color.gray4,
+    documentation = M.color.gray5,
 }
 
-local c = M.col
+local c = M.color
 
 --- create a color spec
 --- @param fg string

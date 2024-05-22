@@ -14,7 +14,7 @@ const Color = union(enum) {
         } };
     }
 
-    /// (h) will be 0-360 degrees, (s,l,a) will be between 0-1
+    // (h) will be 0-360 degrees, (s,l,a) will be between 0-1
     pub fn hslaFromU32(value: u32) Color {
         const raw_h: f32 = @floatFromInt((value >> 24) & 0xff);
         const raw_s: f32 = @floatFromInt((value >> 16) & 0xff);
