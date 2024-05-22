@@ -1,8 +1,3 @@
-## pallet
-> a minimal but flexible and good looking pallet made from beautiful hex codes
-
-![](./asset/lackluster-pallet.png)
-
 # lackluster
 ![](./asset/lackluster.png)
 

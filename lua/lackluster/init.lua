@@ -12,11 +12,12 @@ M.col = {
     black = '#000000',
     white = '#ffffff',
 
-    -- if the status bar value is slightly offset from all grays used in the normal config
-    -- it allways looks good against popups
+    -- NOTE: special colors are for special cases and should only be used for backgrounds,
+    -- they help make sure other highlights dont look garbage when placed on top or adjacent
     _special_gray_background = "#0a0a0a",
-    _special_gray_popup_dark = '#0f0f0f',
-    _special_gray_statusline = '#222222',
+    _special_gray_popup_dark = '#101010',
+    _special_gray_popup_pale = '#1c1c1c',
+    _special_gray_statusline = '#242424',
 
     gray1 = "#080808",
     gray2 = "#191919",
@@ -67,30 +68,36 @@ M.col.diff = {
 }
 
 M.col.ui = {
-    fg_normal        = M.col.gray8,
-    bg_normal        = M.gray1,
+    fg_normal         = M.col.gray8,
+    fg_title          = M.col.gray7,
+    bg_normal         = M.col._special_gray_background,
 
-    fg_title         = M.col.gray7,
-    fg_border        = M.col.lack,
-    fg_line_num      = M.col.gray4,
-    fg_line_num_cur  = M.col.gray7,
-    bg_colorcolumn   = M.col.black,
-    bg_cursorline    = M.col.gray2,
+    bg_statusline     = M.col.gray1,
+    bg_statusline_cur = M.col._special_gray_statusline,
+    bg_tab            = M.col.gray2,
+    bg_tab_cur        = M.col.gray8,
 
-    bg_visual        = M.col.white,
-    fg_visual        = M.col.black,
+    fg_border         = M.col.lack,
+    fg_line_num       = M.col.gray4,
+    fg_line_num_cur   = M.col.gray7,
+    bg_colorcolumn    = M.col.black,
+    bg_cursorline     = M.col.gray2,
 
-    fg_search        = M.col.black,
-    bg_search_item   = M.col.lack,
-    bg_search_cur    = M.col.gray8,
+    bg_visual         = M.col.white,
+    fg_visual         = M.col.black,
 
-    bg_menu          = M.col.gray2,
-    fg_menu          = M.col.gray6,
+    fg_search         = M.col.black,
+    bg_search_item    = M.col.lack,
+    bg_search_cur     = M.col.gray8,
 
-    bg_scroll_bar    = M.col.gray6,
-    bg_scroll_slider = M.col.gray3,
-    bg_popup_dark    = M.col._special_gray_popup_dark,
-    bg_popup_light   = M.col.gray2,
+
+    bg_scrollbar    = M.col.gray3,
+    fg_scrollbar    = M.col.gray5,
+
+    fg_popup        = M.col.gray6,
+    bg_popup_dark   = M.col._special_gray_popup_dark,
+    bg_popup_normal = M.col.gray2,
+    bg_popup_pale   = M.col._special_gray_popup_pale,
 }
 
 M.col.syntax = {
@@ -107,8 +114,8 @@ M.col.syntax = {
     str = M.col.lack,
     str_esc = M.col.blue,
     punctuation = M.col.gray6,
-    comment = M.col.gray3,
-    documentation = M.col.gray4,
+    comment = M.col.gray4,
+    documentation = M.col.gray5,
 }
 
 local c = M.col
@@ -167,7 +174,7 @@ end
 M.theme = function()
     return {
         -- TEXT
-        co('Normal', c.ui.fg_normal, '#0a0a0a'),
+        co('Normal', c.ui.fg_normal, c.ui.bg_normal),
         fg('Title', c.ui.fg_title),
         op('Spell', {
             underline = true,
@@ -183,34 +190,46 @@ M.theme = function()
         co('Search', c.ui.fg_search, c.ui.bg_search_item),
         co('CurSearch', c.ui.fg_search, c.ui.bg_search_cur),
         ln('IncSearch', 'CurSearch'),
-        fg('QuickFixLine', c.green),
 
         -- VISUAL
         co('VISUAL', c.ui.fg_visual, c.ui.bg_visual),
         ln('VISUALNOS', 'VISUAL'),
 
-        -- message
+        -- MESSAGE
         fg('Error', c.log.error),
-        ln('ErrorMsg', 'Error'),
-        fg('WarningMsg', c.log.warn),
         fg('ModeMsg', c.log.info),
         fg('MsgArea', c.log.info),
+        ln('ErrorMsg', 'Error'),
+        fg('WarningMsg', c.log.warn),
+        fg('NvimInternalError', c.log.error),
+        fg('healthError', c.log.error),
+        fg('healthSuccess', c.log.success),
+        fg('healthWarning', c.log.warn),
 
-        -- UI
-        co('StatusLine', c.gray7, c._special_gray_statusline),
-        co('StatusLineNC', c.gray4, c.gray1),
-        co('Tabline', c.gray4, c.gray2),
-        co('TablineFill', c.gray7, c._special_gray_statusline),
-        co('TablineSel', c.gray1, c.gray8),
-        co('NormalFloat', c.ui.fg_normal, c.ui.bg_menu),
-        co('FloatBorder', c.ui.fg_border, c.ui.bg_menu),
-        co('FloatTitle', c.ui.fg_normal, c.ui.bg_menu),
-        co('Pmenu', c.ui.fg_menu, c.ui.bg_menu),
-        co('PmenuSbar', c.ui.bg_scroll_bar, c.ui.bg_scroll_bar),
-        co('PmenuThumb', c.ui.bg_scroll_slider, c.ui.bg_scroll_slider),
+        -- StatusLine
+        co('StatusLine', c.gray7, c.ui.bg_statusline_cur),
+        co('StatusLineNC', c.gray4, c.ui.bg_statusline),
+
+        -- TABLINE
+        co('Tabline', c.gray4, c.ui.bg_tab),
+        co('TablineFill', c.gray7, c.ui.bg_statusline_cur),
+        co('TablineSel', c.gray1, c.ui.bg_tab_cur),
+
+        -- FLOAT
+        co('NormalFloat', c.ui.fg_normal, c.ui.bg_popup_pale),
+        co('FloatBorder', c.ui.fg_border, c.ui.bg_popup_normal),
+        fg('FloatTitle', c.ui.fg_title),
+
+        -- MENU
+        co('Pmenu', c.ui.fg_popup, c.ui.bg_popup_normal),
+        co('PmenuSbar', c.ui.bg_scrollbar, c.ui.bg_scrollbar),
+        co('PmenuThumb', c.ui.fg_scrollbar, c.ui.fg_scrollbar),
         co('PmenuSel', c.ui.fg_search, c.ui.bg_search_cur),
+
+        -- OTHER UI
         fg('WinSeparator', c.ui.fg_border),
         fg('EndOfBuffer', c.gray4),
+        fg('QuickFixLine', c.green),
 
         -- SYNTAX
         fg('Identifier', c.syntax.type),
@@ -284,12 +303,6 @@ M.theme = function()
         fg('@attribute', c.syntax.keyword),
         fg('@string.escape', c.syntax.str_esc),
         fg('@comment.documentation', c.syntax.documentation),
-
-        -- neovim
-        fg('NvimInternalError', c.log.error),
-        fg('healthError', c.log.error),
-        fg('healthSuccess', c.log.success),
-        fg('healthWarning', c.log.warn),
 
         -- diff
         fg('Added', c.diff.add),
@@ -383,7 +396,7 @@ M.theme = function()
         fg('sqlVariable', c.syntax.special),
 
         -- javascript
-        -- NOTE: warn because js builtins are sketchy and throw errors when not expected
+        -- NOTE: warn because js builtins are sketchy and throw errors willy nilly
         fg("@function.builtin.javascript", c.log.warn),
         fg("@function.builtin.typescript", c.log.warn),
         fg("@keyword.exception.javascript", c.log.warn),
@@ -410,10 +423,10 @@ M.theme = function()
         fg('CmpItemAbbrDeprecated', c.gray4),
 
         -- which-key.nvim
-        fg('WhichKey', c.gray4),
+        fg('WhichKey', c.gray5),
         fg('WhichKeyGroup', c.lack),
-        fg('WhichKeyDesc', c.gray4),
-        fg('WhichKeySeparator', c.gray3),
+        fg('WhichKeyDesc', c.gray5),
+        fg('WhichKeySeparator', c.gray4),
 
         -- oil.nvim
         fg('Directory', c.fs.dir),
@@ -465,19 +478,29 @@ M.theme = function()
         ln('TodoFgWarn', 'TodoFgTodo'),
         ln('TodoFgHack', 'TodoFgTodo'),
 
-        -- nvim-lightbulb
-        fg('LightBulbSign', c.diagnostic.text),
+        -- nvim-darkbulb
+        fg('lightbulbSign', c.diagnostic.text),
+
+        -- nvim-lspconfig
+        fg('lspInfoTip', c.gray5),
 
         -- lazy.nvim
-        co('LazyNormal', c.gray8, c.ui.bg_popup_light),
-        co('LazyButton', c.gray6, c.ui.bg_popup_light),
+        co('LazyNormal', c.gray8, c.ui.bg_popup_pale),
+        co('LazyButton', c.gray5, c.ui.bg_popup_pale),
+        fg('LazySpecial', c.gray5),
         co('LazyButtonActive', c.gray4, c.gray8),
         ln('LazyH1', 'LazyButtonActive'),
         fg('LazyComment', c.lack),
-        fg('LazySpecial', c.gray2),
+
+        -- mason.nvim
+        fg('MasonHighlight', c.lack),
+        co('MasonHeader', c.gray8, c.lack),
+        co('MasonHighlightBlockBold', c.gray5, c.gray8),
+        co('MasonHighlightBlock', c.gray4, c.gray8),
+        co('MasonMutedBlock', c.gray5, c.ui.bg_popup_pale),
 
         -- trouble.nvim
-        co('TroubleNormal', c.gray5, c.gray2),
+        co('TroubleNormal', c.gray5, c.ui.bg_popup_normal),
         fg('TroubleSource', c.gray5),
         fg('TroubleCode', c.gray6),
         fg('TroubleLocation', c.gray5),
@@ -514,7 +537,7 @@ M.load = function()
     for _, hi_spec in ipairs(M.theme()) do
         local name = hi_spec.name
         if dedup_set[name] then
-            vim.notify("error: duplicate hilight :: " .. name, vim.log.levels.ERROR)
+            vim.notify("error: duplicate hidark :: " .. name, vim.log.levels.ERROR)
         else
             dedup_set[name] = true
             hi_spec.name = nil
