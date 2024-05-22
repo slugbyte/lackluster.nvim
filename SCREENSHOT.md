@@ -6,11 +6,13 @@
 # lackluster
 ![](./asset/lackluster.png)
 
-## lualine
-![](./asset/lackluster-lualine.png)
-
 ## visual select
 ![](./asset/lackluster-visual.png)
+
+## lualine
+>  the statusline with a black background is used when a window out of focus
+
+![](./asset/lackluster-lualine.png)
 
 ## telescope.nvim
 ![](./asset/lackluster-telescope.png)

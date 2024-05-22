@@ -449,6 +449,15 @@ M.theme = function()
         co('LazyH1', c.gray5, c.gray2),
         fg('LazyComment', c.lack),
         fg('LazySpecial', c.gray2),
+
+        -- trouble.nvim
+        co('TroubleNormal', c.gray5, c.gray2),
+        fg('TroubleSource', c.gray5),
+        fg('TroubleCode', c.gray6),
+        fg('TroubleLocation', c.gray5),
+        fg('TroubleInformation', c.gray7),
+        fg('TroubleTextError', c.diagnostic.error),
+        fg('TroubleTextWarning', c.gray7),
     }
 end
 
