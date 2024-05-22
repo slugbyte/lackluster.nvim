@@ -5,10 +5,8 @@ M.color = {
     blue = '#7788AA',
     green = "#789978",
     orange = '#ffaa88',
-
     luster = "#cfecf3",
     lack = '#5d656d',
-
 
     -- NOTE: special colors are for special cases and should only be used for backgrounds,
     -- they help make sure other highlights dont look garbage when placed on top or adjacent
@@ -80,7 +78,7 @@ M.color.ui = {
     fg_border         = M.color.lack,
     fg_line_num       = M.color.gray4,
     fg_line_num_cur   = M.color.gray7,
-    bg_colorcolumn    = M.color.gray1,
+    bg_colorcolumn    = M.color.black,
     bg_cursorline     = M.color.gray2,
 
     bg_visual         = M.color.gray9,
@@ -195,7 +193,6 @@ M.theme = function()
         -- VISUAL
         co('VISUAL', c.ui.fg_visual, c.ui.bg_visual),
         ln('VISUALNOS', 'VISUAL'),
-
 
         -- MESSAGE
         fg('Error', c.log.error),
@@ -339,9 +336,10 @@ M.theme = function()
         fg('zshFunction', c.syntax.func),
 
         -- json,yaml,toml
-        fg('@property.json', c.gray5),
-        fg('@property.yaml', c.gray5),
-        fg('@property.toml', c.gray5),
+        fg('@property.json', c.gray6),
+        fg('@property.yaml', c.gray6),
+        fg('@property.toml', c.gray6),
+        fg('@type.toml', c.gray8),
 
         -- xml
         fg('xmlTag', c.gray5),
@@ -513,6 +511,8 @@ M.theme = function()
         -- nvim tree
         fg('NvimTreeExecFile', c.fs.exec),
         fg('NvimTreeSymlink', c.fs.link),
+        fg('NvimTreeSymlinkIcon', c.fs.link),
+        fg('NvimTreeSymlinkFolderName', c.fs.link),
         fg('NvimTreeImageFile', c.fs.binary_data),
         fg('NvimTreeRootFolder', c.fs.dir),
         fg('NvimTreeFolder', c.fs.dir),
