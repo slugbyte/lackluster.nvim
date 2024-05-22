@@ -1,17 +1,28 @@
 ## lualine
 >  the statusline with a black background is used when a window out of focus
-<!-- ![](./asset/lackluster-lualine.png) -->
+![](./asset/lackluster-lualine.png)
 
-# lackluster tabs
+## lackluster tabs
 ![](./asset/lackluster-tabs.png)
 
 ## visual select
 ![](./asset/lackluster-visual.png)
 
+## nvim_cmp
+> darker gray options are deprecated
+
+![](./asset/lackluster-cmp.png)
+
 ## telescope.nvim
-![](./asset/lackluster-telescope-find.png)
-![](./asset/lackluster-telescope-search.png)
+> with preview
+
 ![](./asset/lackluster-telescope-preview.png)
+> without preview
+
+![](./asset/lackluster-telescope-find.png)
+> fuzzy search buffer
+
+![](./asset/lackluster-telescope-search.png)
 
 ## nvim-tree-lua
 ![](./asset/lackluster-tree.png)
@@ -25,9 +36,6 @@
 ## mason.nvim
 ![](./asset/lackluster-mason.png)
 
-## nvim_cmp
-> darker gray options are deprecated
-![](./asset/lackluster-cmp.png)
 
 ## which-key.nvim
 ![](./asset/lackluster-which-key.png)
