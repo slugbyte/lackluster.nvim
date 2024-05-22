@@ -45,6 +45,7 @@ require('lualine').setup({
 * [oil.nvim](https://github.com/stevearc/oil.nvim)
 * [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 * [todo-comments.nvim](https://github.com/folke/todo-comments.nvim)
+* [trouble.nvim](https://github.com/folke/trouble.nvim)
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 

@@ -12,6 +12,10 @@ M.col = {
     black = '#000000',
     white = '#ffffff',
 
+    -- if the status bar value is slightly offset from all grays used in the normal config
+    -- it allways looks good against popups
+    _gray_stausbar_only = '#222222',
+
     gray1 = "#080808",
     gray2 = "#191919",
     gray3 = "#2a2a2a",
@@ -149,6 +153,7 @@ end
 
 M.theme = function()
     return {
+        -- TEXT
         co('Normal', c.ui.normal, '#0a0a0a'),
         fg('Title', c.ui.title),
         op('Spell', {
@@ -178,6 +183,11 @@ M.theme = function()
         fg('MsgArea', c.log.info),
 
         -- UI
+        co('StatusLine', c.gray7, c._gray_stausbar_only),
+        co('StatusLineNC', c.gray4, c.gray1),
+        co('Tabline', c.gray4, c.gray2),
+        co('TablineFill', c.gray7, c._gray_stausbar_only),
+        co('TablineSel', c.gray1, c.gray8),
         co('NormalFloat', c.ui.normal, c.ui.menu_bg),
         co('FloatTitle', c.ui.normal, c.ui.menu_bg),
         co('FloatBorder', c.ui.normal, c.ui.menu_bg),
