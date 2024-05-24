@@ -1,7 +1,15 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
+
+> lackluster night
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
+
+> lackluster dark 
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
 
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
 
