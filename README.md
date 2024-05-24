@@ -36,7 +36,7 @@ return {
 
 > lackluster-dark
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
 
 #### LUALINE SETUP
 ```lua
