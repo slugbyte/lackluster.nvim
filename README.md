@@ -3,14 +3,6 @@
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
 
-> lackluster night
-
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
-
-> lackluster dark 
-
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
-
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
@@ -31,9 +23,20 @@ return {
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
+        -- vim.cmd.colorscheme("lackluster-night")
+        -- vim.cmd.colorscheme("lackluster-dark")
     end,
 }
 ```
+
+#### VARIATIONS
+> lackluster-night
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
+
+> lackluster-dark
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
 
 #### LUALINE SETUP
 ```lua
