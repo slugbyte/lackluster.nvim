@@ -1,7 +1,7 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster.png)
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
 
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
 
@@ -11,9 +11,10 @@
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
-## INSTALL
+## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`
+2. Set your colorscheme to `lackluster`, `lackluster-night` or `lackluster-dark`
+3. (optional) setup lualine
 
 ```lua 
 -- example lazy.nvim install setup
@@ -23,18 +24,30 @@ return {
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
+        -- vim.cmd.colorscheme("lackluster-night")
+        -- vim.cmd.colorscheme("lackluster-dark")
     end,
 }
 ```
 
-#### LUALINE SETUP
+##### LUALINE SETUP
 ```lua
 require('lualine').setup({
-    options = {
-        theme = "lackluster",
-    },
+  options = {
+    theme = "lackluster",
+  },
 })
 ```
+
+#### VARIATIONS
+> lackluster-night
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
+
+> lackluster-dark
+
+![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
+
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!

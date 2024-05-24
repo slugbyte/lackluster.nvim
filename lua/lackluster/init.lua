@@ -26,6 +26,7 @@ M.color = {
     _special_gray_popup_dark = '#101010',
     _special_gray_popup_pale = '#1a1a1c',
     _special_gray_statusline = '#242424',
+    _special_comment = '#343434',
 
     black = '#000000',
     gray1 = "#080808",
@@ -110,7 +111,26 @@ M.color.ui = {
     bg_popup_pale   = M.color._special_gray_popup_pale,
 }
 
-M.color.syntax = {
+M.color.syntax_default = {
+    var = M.color.gray8,
+    const = M.color.gray7,
+    const_builtin = M.color.gray7,
+    tag = M.color.gray5,
+    func = M.color.gray7,
+    func_builtin = M.color.gray6,
+    func_param = M.color.gray6,
+    special = M.color.lack,
+    type = M.color.gray7,
+    type_primitave = M.color.gray8,
+    keyword = M.color.gray6,
+    str = M.color.lack,
+    str_esc = M.color.blue,
+    punctuation = M.color.gray6,
+    comment = M.color.gray4,
+    documentation = M.color.gray4,
+}
+
+M.color.syntax_dark = {
     var = M.color.gray8,
     const = M.color.gray7,
     const_builtin = M.color.gray5,
@@ -129,7 +149,24 @@ M.color.syntax = {
     documentation = M.color.gray4,
 }
 
-local c = M.color
+M.color.syntax_night = {
+    var = M.color.gray8,
+    const = M.color.gray7,
+    const_builtin = M.color.gray7,
+    tag = M.color.gray5,
+    func = M.color.gray7,
+    func_builtin = M.color.lack,
+    func_param = M.color.gray6,
+    special = M.color.lack,
+    type = M.color.gray7,
+    type_primitave = M.color.gray8,
+    keyword = M.color.gray6,
+    str = M.color.lack,
+    str_esc = M.color.blue,
+    punctuation = M.color.gray6,
+    comment = M.color._special_comment,
+    documentation = M.color._special_comment,
+}
 
 --- create a color spec
 --- @param fg string
@@ -155,21 +192,21 @@ end
 --- @param name string
 --- @param fg string
 local fg = function(name, fg)
-    return co(name, fg, c.none)
+    return co(name, fg, M.color.none)
 end
 
 --- set only background
 --- @param name string
 --- @param bg string
 local bg = function(name, bg)
-    return co(name, c.none, bg)
+    return co(name, M.color.none, bg)
 end
 
 --- set only options
 --- @param name string
 --- @param opts {[string]: any}
 local op = function(name, opts)
-    return co(name, c.none, c.none, opts)
+    return co(name, M.color.none, M.color.none, opts)
 end
 
 --- create a hi link
@@ -182,7 +219,7 @@ local ln = function(name, link)
     }
 end
 
-M.theme = function()
+M.theme = function(c)
     return {
         -- TEXT
         co('Normal', c.ui.fg_normal, c.ui.bg_normal),
@@ -341,7 +378,7 @@ M.theme = function()
         fg('@comment.documentation', c.syntax.documentation),
 
         -- treesitter markup
-        fg('@markup.heading', c.gray4),
+        fg('@markup.heading', c.ui.fg_title),
         fg('@markup.quote', c.gray6),
 
         fg('@markup.strong', c.gray4),
@@ -558,7 +595,7 @@ M.theme = function()
         ln('TodoBgHack', 'TodoBgWarn'),
         fg('TodoBgFix', c.log.error),
         fg('TodoFgFix', c.log.error),
-        fg('TodoFgTodo', c.gray4),
+        fg('TodoFgTodo', c.syntax.comment),
         ln('TodoFgNote', 'TodoFgTodo'),
         ln('TodoFgPerf', 'TodoFgTodo'),
         ln('TodoFgWarn', 'TodoFgTodo'),
@@ -619,10 +656,23 @@ M.theme = function()
     }
 end
 
-M.load = function()
+M.load = function(opt)
+    opt = opt or {}
     local dedup_set = {}
 
-    for _, hi_spec in ipairs(M.theme()) do
+    local c = M.color
+
+    c.syntax = c.syntax_default
+
+    if opt.theme == "night" then
+        c.syntax = c.syntax_night
+    end
+
+    if opt.theme == "dark" then
+        c.syntax = c.syntax_dark
+    end
+
+    for _, hi_spec in ipairs(M.theme(c)) do
         local name = hi_spec.name
         if dedup_set[name] then
             vim.notify("error: duplicate hidark :: " .. name, vim.log.levels.ERROR)
