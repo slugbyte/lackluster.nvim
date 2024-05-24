@@ -11,9 +11,10 @@
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
-## INSTALL
+## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`
+3. (optional) setup lualine
 
 ```lua 
 -- example lazy.nvim install setup
@@ -29,6 +30,20 @@ return {
 }
 ```
 
+<details>
+
+<summary>LUALINE SETUP...</summary>
+
+```lua
+require('lualine').setup({
+  options = {
+    theme = "lackluster",
+  },
+})
+```
+
+</details>
+
 #### VARIATIONS
 > lackluster-night
 
@@ -38,14 +53,6 @@ return {
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
 
-#### LUALINE SETUP
-```lua
-require('lualine').setup({
-    options = {
-        theme = "lackluster",
-    },
-})
-```
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
