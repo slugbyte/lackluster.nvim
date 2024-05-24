@@ -13,7 +13,7 @@
 
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`
+2. Set your colorscheme to `lackluster`, `lackluster-night` or `lackluster-dark`
 3. (optional) setup lualine
 
 ```lua 
@@ -30,10 +30,7 @@ return {
 }
 ```
 
-<details>
-
-<summary>LUALINE SETUP...</summary>
-
+##### LUALINE SETUP
 ```lua
 require('lualine').setup({
   options = {
@@ -41,8 +38,6 @@ require('lualine').setup({
   },
 })
 ```
-
-</details>
 
 #### VARIATIONS
 > lackluster-night

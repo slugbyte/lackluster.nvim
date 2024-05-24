@@ -378,7 +378,7 @@ M.theme = function(c)
         fg('@comment.documentation', c.syntax.documentation),
 
         -- treesitter markup
-        fg('@markup.heading', c.gray4),
+        fg('@markup.heading', c.ui.fg_title),
         fg('@markup.quote', c.gray6),
 
         fg('@markup.strong', c.gray4),
