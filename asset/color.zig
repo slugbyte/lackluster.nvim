@@ -35,7 +35,7 @@ const Color = union(enum) {
                 return std.fmt.allocPrint(allocator, fmt, .{ rgba.r, rgba.g, rgba.b, rgba.a });
             },
             .HSLA => |hsla| {
-                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})";
+                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})\n";
                 return std.fmt.allocPrint(allocator, fmt, .{ hsla.h, hsla.s, hsla.l, hsla.a });
             },
         }
