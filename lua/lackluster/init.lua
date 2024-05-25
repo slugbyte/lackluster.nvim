@@ -46,7 +46,7 @@ M.color.log = {
     info = M.color.luster,
     warn = M.color.orange,
     error = M.color.red,
-    hint = M.color.blue,
+    hint = M.color.gray6,
 }
 
 M.color.diagnostic = {
@@ -54,9 +54,9 @@ M.color.diagnostic = {
     -- this reduces visual noise (except for error text which should always be red)
     text = M.color.gray4,
     ok = M.color.green,
-    hint = M.color.blue,
+    hint = M.color.gray6,
     error = M.color.red,
-    info = M.color.blue,
+    info = M.color.gray6,
     warn = M.color.orange,
     unnecessary = M.color.gray4,
     depricated = M.color.orange,
@@ -73,7 +73,7 @@ M.color.fs = {
 
 M.color.diff = {
     add = M.color.green,
-    change = M.color.blue,
+    change = M.color.gray6,
     delete = M.color.orange,
     info = M.color.gray5,
 }
@@ -116,15 +116,16 @@ M.color.syntax_default = {
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.gray7,
+    func = M.color.gray6,
     func_builtin = M.color.gray6,
-    func_param = M.color.gray6,
+    func_param = M.color.gray7,
     special = M.color.lack,
     type = M.color.gray7,
-    type_primitave = M.color.gray8,
+    type_def = M.color.gray7,
+    type_primitave = M.color.green,
     keyword = M.color.gray6,
     str = M.color.lack,
-    str_esc = M.color.blue,
+    str_esc = M.color.gray6,
     punctuation = M.color.gray6,
     comment = M.color.gray4,
     documentation = M.color.gray4,
@@ -135,15 +136,16 @@ M.color.syntax_dark = {
     const = M.color.gray7,
     const_builtin = M.color.gray5,
     tag = M.color.gray5,
-    func = M.color.gray7,
+    func = M.color.gray6,
     func_builtin = M.color.gray4,
     func_param = M.color.gray5,
     special = M.color.lack,
     type = M.color.gray7,
-    type_primitave = M.color.gray8,
+    type_def = M.color.gray7,
+    type_primitave = M.color.green,
     keyword = M.color.gray6,
     str = M.color.lack,
-    str_esc = M.color.blue,
+    str_esc = M.color.gray6,
     punctuation = M.color.gray6,
     comment = M.color.gray4,
     documentation = M.color.gray4,
@@ -154,20 +156,40 @@ M.color.syntax_night = {
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.gray7,
+    func = M.color.lack,
     func_builtin = M.color.lack,
     func_param = M.color.gray6,
     special = M.color.lack,
     type = M.color.gray7,
-    type_primitave = M.color.gray8,
+    type_def = M.color.gray7,
+    type_primitave = M.color.green,
     keyword = M.color.gray6,
     str = M.color.lack,
-    str_esc = M.color.blue,
+    str_esc = M.color.gray6,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
     documentation = M.color._special_comment,
 }
 
+M.color.syntax_color = {
+    var = M.color.gray8,
+    const = M.color.gray7,
+    const_builtin = M.color.gray7,
+    tag = M.color.gray5,
+    func = M.color.blue,
+    func_builtin = M.color.gray6,
+    func_param = M.color.gray7,
+    special = M.color.lack,
+    type = M.color.gray7,
+    type_def = M.color.green,
+    type_primitave = M.color.green,
+    keyword = M.color.gray6,
+    str = M.color.lack,
+    str_esc = M.color.gray6,
+    punctuation = M.color.gray6,
+    comment = M.color.gray4,
+    documentation = M.color.gray4,
+}
 --- create a color spec
 --- @param fg string
 --- @param bg string
@@ -282,6 +304,7 @@ M.theme = function(c)
         fg('Function', c.syntax.func),
         fg('Type', c.syntax.type),
         fg('Variable', c.syntax.var),
+        fg('Statement', c.syntax.var),
         fg('Special', c.syntax.special),
         fg('Keyword', c.syntax.keyword),
         ln('Conditional', 'Keyword'),
@@ -336,7 +359,8 @@ M.theme = function(c)
         fg('@keyword', c.syntax.keyword),
         fg('@attribute', c.syntax.keyword),
         fg('@type', c.syntax.type),
-        fg('@property', c.luster),
+        fg('@type.definition', c.syntax.type_def),
+        fg('@property', c.gray7),
         fg('@label', c.ui.fg_title),
 
         -- treesitter variable
@@ -358,6 +382,8 @@ M.theme = function(c)
         -- treesitter func
         fg('@function', c.syntax.func),
         fg('@function.call', c.syntax.func),
+        fg('@function.method', c.syntax.func),
+        fg('@function.methodcall', c.syntax.func),
         fg('@variable.parameter', c.syntax.func_param),
 
         -- treesiter string
@@ -452,9 +478,14 @@ M.theme = function(c)
         fg('DiffIndexLine', c.diff.info),
 
         -- go
-        fg('@type.builtin.go', c.gray5),
-        fg('@variable.parameter.go', c.gray8),
-        fg('@function.go', c.gray6),
+        fg('@type.builtin.go', c.syntax.const_builtin),
+        -- fg('@variable.parameter.go', c.syntax.func_param),
+
+        -- fg('@function.go', c.gray6),
+        -- fg('@function.method.go', c.gray6),
+        -- fg('@function.call.go', c.gray6),
+        -- fg('@function.method.call.go', c.gray6),
+        -- fg('@type.definition.go', c.green),
 
         -- lua
         -- NOTE: i find it a lot nicer to find the (end) of a lua func if has a
@@ -463,7 +494,7 @@ M.theme = function(c)
 
         -- zig
         fg('@keyword.import.zig', c.syntax.func_builtin),
-        fg('@variable.member.zig', c.gray6),
+        -- fg('@variable.member.zig', c.syntax.func_param),
 
         -- zsh
         fg('zshFunction', c.syntax.func),
@@ -537,7 +568,7 @@ M.theme = function(c)
         fg('TelescopeMultiSelection', c.green),
         fg('TelescopeMultiIcon', c.green),
         fg('TelescopePromptPrefix', c.gray6),
-        fg('TelescopePromptCounter', c.blue),
+        fg('TelescopePromptCounter', c.gray6),
         co('TelescopeSelection', c.gray1, c.gray8),
 
         -- nvim_cmp
@@ -588,8 +619,8 @@ M.theme = function(c)
         fg('MiniDiffSignDelete', c.diff.delete),
 
         -- todo-comments.nvim
-        fg('TodoBgTodo', c.blue),
-        fg('TodoBgNote', c.blue),
+        fg('TodoBgTodo', c.gray6),
+        fg('TodoBgNote', c.gray6),
         ln('TodoBgPerf', 'TodoBgNote'),
         fg('TodoBgWarn', c.log.warn),
         ln('TodoBgHack', 'TodoBgWarn'),
@@ -670,6 +701,10 @@ M.load = function(opt)
 
     if opt.theme == "dark" then
         c.syntax = c.syntax_dark
+    end
+
+    if opt.theme == "color" then
+        c.syntax = c.syntax_color
     end
 
     for _, hi_spec in ipairs(M.theme(c)) do
