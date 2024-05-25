@@ -11,6 +11,11 @@
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
+### COLORSCHEME UNDER CONSTRUCTION
+This colorscheme's highlights are still under development and will likely change in the
+next few weeks, I'm still tweeking for better readability :) The languages I am useing as
+a reference point are zig, go, lua, html, sql, and javascript/typescript.
+
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-night` or `lackluster-dark`
