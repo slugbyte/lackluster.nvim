@@ -6,7 +6,7 @@ const Color = union(enum) {
     HSLA: struct { h: f32, s: f32, l: f32, a: f32 },
 
     fn rgbaFromU32(value: u32) Color {
-        return Color{ .RGBA = .{
+        return Color{ .RkBA = .{
             .r = @truncate(value >> 24),
             .g = @truncate(value >> 16),
             .b = @truncate(value >> 8),
