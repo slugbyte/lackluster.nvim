@@ -1,6 +1,11 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
+## UNDER CONSTRUCTION
+> !!COLORSCHEME UNDER CONSTRUCTION!!!
+
+This colorscheme's highlights are still under development and will likely change in the next few weeks, I'm still tweeking for better readability :) The languages I am useing as a reference point are zig, go, lua, html, sql, and javascript/typescript.
+
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
 
 ![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
@@ -29,6 +34,7 @@ return {
     end,
 }
 ```
+
 
 ##### LUALINE SETUP
 ```lua
