@@ -24,12 +24,17 @@ local rand_emoticon = function()
     return emoticon_list[math.random(1, #emoticon_list)]
 end
 
-M.lackluster_reload = function()
+M.lackluster_reload = function(opt)
+    opt = opt or {}
     if not plenary_found then
         return err("ERROR: lackluster_reload could not find dependency plenary.nvim")
     end
     plenary_reload.reload_module("lackluster")
-    require("lackluster").load()
+    require("lackluster").load(opt)
+    if opt.theme then
+        print(string.format("%s lackluster-%s reloaded!", rand_emoticon(), opt.theme))
+        return
+    end
     print(rand_emoticon() .. " lackluster reloaded!")
 end
 

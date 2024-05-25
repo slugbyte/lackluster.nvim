@@ -1,10 +1,11 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-## UNDER CONSTRUCTION
-> !!COLORSCHEME UNDER CONSTRUCTION!!!
+## !!COLORSCHEME UNDER CONSTRUCTION!!
+This colorscheme's highlights are still under development and will likely change in the
+next few weeks, I'm still tweeking for better readability :) The languages I am useing as
+a reference point are zig, go, lua, html, sql, and javascript/typescript.
 
-This colorscheme's highlights are still under development and will likely change in the next few weeks, I'm still tweeking for better readability :) The languages I am useing as a reference point are zig, go, lua, html, sql, and javascript/typescript.
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
 
@@ -16,9 +17,10 @@ This colorscheme's highlights are still under development and will likely change
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
+
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`, `lackluster-night` or `lackluster-dark`
+2. Set your colorscheme to `lackluster`, `lackluster-night`, `lackluster-mint` or `lackluster-dark`
 3. (optional) setup lualine
 
 ```lua 
@@ -30,6 +32,7 @@ return {
     init = function()
         vim.cmd.colorscheme("lackluster")
         -- vim.cmd.colorscheme("lackluster-night")
+        -- vim.cmd.colorscheme("lackluster-mint")
         -- vim.cmd.colorscheme("lackluster-dark")
     end,
 }
@@ -48,11 +51,15 @@ require('lualine').setup({
 #### VARIATIONS
 > lackluster-night
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-night.png)
+![a screenshot of neovim with the lackluster-night colorscheme](./asset/lackluster-theme-night.png)
+
+> lackluster-mint
+
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/lackluster-theme-mint.png)
 
 > lackluster-dark
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-dark.png)
+![a screenshot of neovim with the lackluster-dark colorscheme](./asset/lackluster-theme-dark.png)
 
 
 #### EXPLICITLY SUPPORTED PLUGINS
