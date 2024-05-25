@@ -122,7 +122,7 @@ M.color.syntax_default = {
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray7,
-    type_primitave = M.color.green,
+    type_primitave = M.color.gray8,
     keyword = M.color.gray6,
     str = M.color.lack,
     str_esc = M.color.gray6,
@@ -132,7 +132,7 @@ M.color.syntax_default = {
 }
 
 M.color.syntax_dark = {
-    var = M.color.gray8,
+    var = M.color.gray7,
     const = M.color.gray7,
     const_builtin = M.color.gray5,
     tag = M.color.gray5,
@@ -142,12 +142,12 @@ M.color.syntax_dark = {
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray7,
-    type_primitave = M.color.green,
-    keyword = M.color.gray6,
+    type_primitave = M.color.gray6,
+    keyword = M.color.gray5,
     str = M.color.lack,
     str_esc = M.color.gray6,
     punctuation = M.color.gray6,
-    comment = M.color.gray4,
+    comment = M.color.gray3,
     documentation = M.color.gray4,
 }
 
@@ -156,14 +156,14 @@ M.color.syntax_night = {
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.lack,
+    func = M.color.gray6,
     func_builtin = M.color.lack,
     func_param = M.color.gray6,
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray7,
-    type_primitave = M.color.green,
-    keyword = M.color.gray6,
+    type_primitave = M.color.blue,
+    keyword = M.color.lack,
     str = M.color.lack,
     str_esc = M.color.gray6,
     punctuation = M.color.gray6,
@@ -171,13 +171,13 @@ M.color.syntax_night = {
     documentation = M.color._special_comment,
 }
 
-M.color.syntax_color = {
+M.color.syntax_mint = {
     var = M.color.gray8,
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
     func = M.color.blue,
-    func_builtin = M.color.gray6,
+    func_builtin = M.color.lack,
     func_param = M.color.gray7,
     special = M.color.lack,
     type = M.color.gray7,
@@ -703,8 +703,8 @@ M.load = function(opt)
         c.syntax = c.syntax_dark
     end
 
-    if opt.theme == "color" then
-        c.syntax = c.syntax_color
+    if opt.theme == "mint" then
+        c.syntax = c.syntax_mint
     end
 
     for _, hi_spec in ipairs(M.theme(c)) do
