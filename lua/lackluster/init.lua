@@ -17,8 +17,8 @@ M.color = {
     blue = '#7788AA',
     green = "#789978",
     orange = '#ffaa88',
-    luster = "#cfecf3",
-    lack = '#5d656d',
+    luster = "#deeeed",
+    lack = "#667788",
 
     -- NOTE: special colors are for special cases and should only be used for backgrounds,
     -- they help make sure other highlights dont look garbage when placed on top or adjacent
@@ -113,17 +113,18 @@ M.color.ui = {
 
 M.color.syntax_default = {
     var = M.color.gray8,
+    var_member = M.color.gray7,
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.gray6,
+    func_call = M.color.gray6,
     func_def = M.color.luster,
     func_builtin = M.color.gray6,
     func_param = M.color.gray7,
     special = M.color.lack,
     type = M.color.gray7,
-    type_def = M.color.luster,
-    type_primitave = M.color.gray8,
+    type_def = M.color.gray8,
+    type_primitave = M.color.gray7,
     keyword = M.color.gray6,
     str = M.color.lack,
     str_esc = M.color.gray6,
@@ -134,16 +135,17 @@ M.color.syntax_default = {
 
 M.color.syntax_dark = {
     var = M.color.lack,
+    var_member = M.color.gray6,
     const = M.color.gray6,
     const_builtin = M.color.gray5,
     tag = M.color.gray5,
-    func = M.color.gray5,
-    func_def = M.color.gray5,
+    func_call = M.color.gray5,
+    func_def = M.color.gray6,
     func_builtin = M.color.gray4,
     func_param = M.color.gray5,
     special = M.color.lack,
     type = M.color.gray6,
-    type_def = M.color.gray7,
+    type_def = M.color.gray6,
     type_primitave = M.color.gray5,
     keyword = M.color.gray5,
     str = M.color.gray6,
@@ -155,16 +157,17 @@ M.color.syntax_dark = {
 
 M.color.syntax_night = {
     var = M.color.gray7,
+    var_member = M.color.gray7,
     const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.lack,
+    func_call = M.color.lack,
     func_def = M.color.lack,
     func_builtin = M.color.lack,
     func_param = M.color.gray6,
     special = M.color.lack,
     type = M.color.gray7,
-    type_def = M.color.gray7,
+    type_def = M.color.lack,
     type_primitave = M.color.blue,
     keyword = M.color.gray6,
     str = M.color.lack,
@@ -176,10 +179,11 @@ M.color.syntax_night = {
 
 M.color.syntax_mint = {
     var = M.color.gray7,
-    const = M.color.gray8,
+    var_member = M.color.gray8,
+    const = M.color.gray7,
     const_builtin = M.color.gray7,
     tag = M.color.gray5,
-    func = M.color.gray6,
+    func_call = M.color.gray6,
     func_def = M.color.blue,
     func_builtin = M.color.lack,
     func_param = M.color.gray6,
@@ -195,25 +199,6 @@ M.color.syntax_mint = {
     documentation = M.color._special_comment,
 }
 
--- M.color.syntax_mint = {
---     var = M.color.gray7,
---     const = M.color.gray8,
---     const_builtin = M.color.gray7,
---     tag = M.color.gray5,
---     func = M.color.blue,
---     func_builtin = M.color.lack,
---     func_param = M.color.gray6,
---     special = M.color.lack,
---     type = M.color.gray7,
---     type_def = M.color.greeqqn,
---     type_primitave = M.color.green,
---     keyword = M.color.gray6,
---     str = M.color.lack,
---     str_esc = M.color.blue,
---     punctuation = M.color.lack,
---     comment = M.color._special_comment,
---     documentation = M.color._special_comment,
--- }
 --- create a color spec
 --- @param fg string
 --- @param bg string
@@ -325,7 +310,7 @@ M.theme = function(c)
 
         -- SYNTAX
         fg('Identifier', c.syntax.type),
-        fg('Function', c.syntax.func),
+        fg('Function', c.syntax.func_call),
         fg('Type', c.syntax.type),
         fg('Variable', c.syntax.var),
         fg('Statement', c.syntax.var),
@@ -389,7 +374,7 @@ M.theme = function(c)
 
         -- treesitter variable
         fg('@variable', c.syntax.var),
-        fg('@variable.member', c.syntax.type),
+        fg('@variable.member', c.syntax.var_member),
 
         -- treesistter constant
         fg('@constant', c.syntax.const),
@@ -406,8 +391,8 @@ M.theme = function(c)
         -- treesitter func
         fg('@function', c.syntax.func_def),
         fg('@function.method', c.syntax.func_def),
-        fg('@function.call', c.syntax.func),
-        fg('@function.method.call', c.syntax.func),
+        fg('@function.call', c.syntax.func_call),
+        fg('@function.method.call', c.syntax.func_call),
         fg('@variable.parameter', c.syntax.func_param),
 
         -- treesiter string
@@ -521,7 +506,7 @@ M.theme = function(c)
         -- fg('@variable.member.zig', c.syntax.func_param),
 
         -- zsh
-        fg('zshFunction', c.syntax.func),
+        fg('zshFunction', c.syntax.func_def),
 
         -- json,yaml,toml
         fg('@property.json', c.gray6),

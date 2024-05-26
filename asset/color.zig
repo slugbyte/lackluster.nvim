@@ -5,13 +5,19 @@ const Color = union(enum) {
     RGBA: struct { r: u8, g: u8, b: u8, a: u8 },
     HSLA: struct { h: f32, s: f32, l: f32, a: f32 },
 
-    fn rgbaFromU32(value: u32) Color {
-        return Color{ .RkBA = .{
-            .r = @truncate(value >> 24),
-            .g = @truncate(value >> 16),
-            .b = @truncate(value >> 8),
-            .a = @truncate(value),
-        } };
+    fn toStr(self: Color, alloc: Allocator) ![]const u8 {
+        switch (self) {
+            .RGBA => |rgba| {
+                const fmt = "#{x}{x}{x}{x}";
+                const args = .{ rgba.r, rgba.g, rgba.b, rgba.a };
+                return std.fmt.allocPrint(alloc, fmt, args);
+            },
+            .HSLA => |hsla| {
+                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})\n";
+                const args = .{ hsla.h, hsla.s, hsla.l, hsla.a };
+                return std.fmt.allocPrint(alloc, fmt, args);
+            },
+        }
     }
 
     // (h) will be 0-360 degrees, (s,l,a) will be between 0-1
@@ -28,17 +34,13 @@ const Color = union(enum) {
         } };
     }
 
-    fn toStr(self: Color, allocator: Allocator) ![]const u8 {
-        switch (self) {
-            .RGBA => |rgba| {
-                const fmt = "#{x}{x}{x}{x}";
-                return std.fmt.allocPrint(allocator, fmt, .{ rgba.r, rgba.g, rgba.b, rgba.a });
-            },
-            .HSLA => |hsla| {
-                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})\n";
-                return std.fmt.allocPrint(allocator, fmt, .{ hsla.h, hsla.s, hsla.l, hsla.a });
-            },
-        }
+    fn rgbaFromU32(value: u32) Color {
+        return Color{ .RGBA = .{
+            .r = @truncate(value >> 24),
+            .g = @truncate(value >> 16),
+            .b = @truncate(value >> 8),
+            .a = @truncate(value),
+        } };
     }
 };
 
