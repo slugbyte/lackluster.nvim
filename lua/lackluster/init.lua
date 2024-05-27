@@ -18,15 +18,18 @@ M.color = {
     green = "#789978",
     orange = '#ffaa88',
     luster = "#deeeed",
-    lack = "#667788",
+    lack = "#718493",
 
     -- NOTE: special colors are for special cases and should only be used for backgrounds,
     -- they help make sure other highlights dont look garbage when placed on top or adjacent
-    _special_gray_background = "#0a0a0a",
+    _special_gray_background = "#101010",
     _special_gray_popup_dark = '#101010',
     _special_gray_popup_pale = '#1a1a1c',
     _special_gray_statusline = '#242424',
     _special_comment = '#343434',
+    _special_return = '#505050',
+    _special_keyword = "#666666",
+    _special_dark_string = "#aa6666",
 
     black = '#000000',
     gray1 = "#080808",
@@ -115,84 +118,61 @@ M.color.syntax_default = {
     var = M.color.gray8,
     var_member = M.color.gray7,
     const = M.color.gray7,
-    const_builtin = M.color.gray7,
+    const_builtin = M.color.gray6,
     tag = M.color.gray5,
-    func_call = M.color.gray6,
     func_def = M.color.luster,
-    func_builtin = M.color.gray6,
+    func_call = M.color.gray6,
+    func_builtin = M.color.gray5,
     func_param = M.color.gray7,
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray8,
     type_primitave = M.color.gray7,
-    keyword = M.color.gray6,
+    keyword = M.color._special_keyword,
+    keyword_return = M.color._special_return,
+    keyword_exception = M.color._special_return,
     str = M.color.lack,
-    str_esc = M.color.gray6,
+    str_esc = M.color.green,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
     documentation = M.color._special_comment,
 }
 
+M.color.syntax_trace = vim.tbl_deep_extend("force", M.color.syntax_default, {
+    keyword_return = M.color.green,
+    keyword_exception = M.color.blue,
+})
+
+M.color.syntax_mint = vim.tbl_deep_extend("force", M.color.syntax_default, {
+    type = M.color.green,
+    type_def = M.color.green,
+    type_primitave = M.color.green,
+})
+
+M.color.syntax_night = vim.tbl_deep_extend("force", M.color.syntax_default, {
+    keyword = M.color.blue,
+    keyword_return = M.color.blue,
+    keyword_exception = M.color.blue,
+})
+
 M.color.syntax_dark = {
-    var = M.color.lack,
+    var = M.color.gray6,
     var_member = M.color.gray6,
-    const = M.color.gray6,
+    const = M.color.gray5,
     const_builtin = M.color.gray5,
     tag = M.color.gray5,
     func_call = M.color.gray5,
-    func_def = M.color.gray6,
+    func_def = M.color._special_keyword,
     func_builtin = M.color.gray4,
-    func_param = M.color.gray5,
+    func_param = M.color.gray6,
     special = M.color.lack,
-    type = M.color.gray6,
-    type_def = M.color.gray6,
+    type = M.color.gray5,
+    type_def = M.color.gray5,
     type_primitave = M.color.gray5,
     keyword = M.color.gray5,
-    str = M.color.gray6,
-    str_esc = M.color.blue,
-    punctuation = M.color.gray6,
-    comment = M.color._special_comment,
-    documentation = M.color._special_comment,
-}
-
-M.color.syntax_night = {
-    var = M.color.gray7,
-    var_member = M.color.gray7,
-    const = M.color.gray7,
-    const_builtin = M.color.gray7,
-    tag = M.color.gray5,
-    func_call = M.color.lack,
-    func_def = M.color.lack,
-    func_builtin = M.color.lack,
-    func_param = M.color.gray6,
-    special = M.color.lack,
-    type = M.color.gray7,
-    type_def = M.color.lack,
-    type_primitave = M.color.blue,
-    keyword = M.color.gray6,
-    str = M.color.lack,
-    str_esc = M.color.blue,
-    punctuation = M.color.lack,
-    comment = M.color._special_comment,
-    documentation = M.color._special_comment,
-}
-
-M.color.syntax_mint = {
-    var = M.color.gray7,
-    var_member = M.color.gray8,
-    const = M.color.gray7,
-    const_builtin = M.color.gray7,
-    tag = M.color.gray5,
-    func_call = M.color.gray6,
-    func_def = M.color.blue,
-    func_builtin = M.color.lack,
-    func_param = M.color.gray6,
-    special = M.color.lack,
-    type = M.color.gray7,
-    type_def = M.color.blue,
-    type_primitave = M.color.green,
-    keyword = M.color.gray6,
-    str = M.color.lack,
+    keyword_return = M.color._special_return,
+    keyword_exception = M.color._special_return,
+    str = M.color._special_dark_string,
     str_esc = M.color.blue,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
@@ -366,6 +346,8 @@ M.theme = function(c)
 
         -- treesitter overrides
         fg('@keyword', c.syntax.keyword),
+        fg('@keyword.return', c.syntax.keyword_return),
+        fg('@keyword.exception', c.syntax.keyword_exception),
         fg('@attribute', c.syntax.keyword),
         fg('@type', c.syntax.type),
         fg('@type.definition', c.syntax.type_def),
@@ -442,6 +424,7 @@ M.theme = function(c)
         fg('@type.builtin', c.syntax.type_primitave),
         fg('@tag.builtin', c.syntax.tag),
         fg('@function.builtin', c.syntax.func_builtin),
+        fg('@module.builtin', c.syntax.func_builtin),
         fg('@constant.builtin', c.syntax.const_builtin),
 
         -- treesitter diff
@@ -499,7 +482,7 @@ M.theme = function(c)
         -- lua
         -- NOTE: i find it a lot nicer to find the (end) of a lua func if has a
         -- different color than other (end) keywords
-        fg('@keyword.function.lua', c.lack),
+        -- fg('@keyword.function.lua', c.lack),
 
         -- zig
         fg('@keyword.import.zig', c.syntax.func_builtin),
@@ -704,16 +687,23 @@ M.load = function(opt)
 
     c.syntax = c.syntax_default
 
-    if opt.theme == "night" then
-        c.syntax = c.syntax_night
-    end
 
-    if opt.theme == "dark" then
-        c.syntax = c.syntax_dark
+    -- official themes
+    if opt.theme == "trace" then
+        c.syntax = c.syntax_trace
     end
 
     if opt.theme == "mint" then
         c.syntax = c.syntax_mint
+    end
+
+    -- expieramental themes
+    if opt.theme == "dark" then
+        c.syntax = c.syntax_dark
+    end
+
+    if opt.theme == "night" then
+        c.syntax = c.syntax_night
     end
 
     for _, hi_spec in ipairs(M.theme(c)) do
