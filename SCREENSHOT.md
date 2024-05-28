@@ -1,44 +1,44 @@
 ## lualine
 >  the statusline with a dark background is used for out of focus
 
-![](./asset/lackluster-lualine.png)
+![](./asset/img/lackluster-lualine.png)
 
 ## lackluster tabs
-![](./asset/lackluster-tabs.png)
+![](./asset/img/lackluster-tabs.png)
 
 ## visual select
-![](./asset/lackluster-visual.png)
+![](./asset/img/lackluster-visual.png)
 
 ## nvim_cmp
 > darker gray options are deprecated
 
-![](./asset/lackluster-cmp.png)
+![](./asset/img/lackluster-cmp.png)
 
 ## telescope.nvim
 > with preview
 
-![](./asset/lackluster-telescope-preview.png)
+![](./asset/img/lackluster-telescope-preview.png)
 > without preview
 
-![](./asset/lackluster-telescope-find.png)
+![](./asset/img/lackluster-telescope-find.png)
 > fuzzy search buffer
 
-![](./asset/lackluster-telescope-search.png)
+![](./asset/img/lackluster-telescope-search.png)
 
 ## nvim-tree-lua
-![](./asset/lackluster-tree.png)
+![](./asset/img/lackluster-tree.png)
 
 ## oil.nvim
-![](./asset/lackluster-oil.png)
+![](./asset/img/lackluster-oil.png)
 
 ## lazy.nvim
-![](./asset/lackluster-lazy.png)
+![](./asset/img/lackluster-lazy.png)
 
 ## mason.nvim
-![](./asset/lackluster-mason.png)
+![](./asset/img/lackluster-mason.png)
 
 ## which-key.nvim
-![](./asset/lackluster-which-key.png)
+![](./asset/img/lackluster-which-key.png)
 
 ## todo-comment.nvim
-![](./asset/lackluster-todo.png)
+![](./asset/img/lackluster-todo.png)

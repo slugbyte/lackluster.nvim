@@ -1,4 +1,7 @@
 # how to use the lackluster dev tools!
+> lackluster-mint (types are green)
+
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/lackluster-theme-mint.png)
 > these tools are not required for development but they make life easier
 
 ## SETUP DEVELOPMENT ENVIRONMENT
@@ -66,7 +69,7 @@ lackluster_dev.create_usercmds()
 ## COLOR NAMES
 > don't let the main readme fool you, the actual color names are red, orange, green, and blue
 
-![](./asset/lackluster-pallet-dev.png)
+![](./asset/img/lackluster-pallet-dev.png)
 
 ## API
 * `lackluster_dev.lackluster_reload()` - reload any changes made to lackluster

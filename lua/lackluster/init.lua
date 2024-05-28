@@ -150,9 +150,8 @@ M.color.syntax_mint = vim.tbl_deep_extend("force", M.color.syntax_default, {
 })
 
 M.color.syntax_night = vim.tbl_deep_extend("force", M.color.syntax_default, {
-    keyword = M.color.blue,
-    keyword_return = M.color.blue,
-    keyword_exception = M.color.blue,
+    keyword = M.color.lack,
+    str = M.color.blue,
 })
 
 M.color.syntax_dark = {
