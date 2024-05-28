@@ -1,10 +1,11 @@
 # LACKLUSTER SCREENSHOTS
 
+## NAV
 * [lualine highlights](#lualine)
-* [neovim highlights](#builtin)
+* [neovim highlights](#neovim)
 * [plugin highlights](#plugin)
 * [lackluster variations](#lackluster-variations)
-* [experimental themes](#experimental-variations)
+* [lackluster experimental variations](#experimental-variations)
 
 ## LUALINE
 >  the statusline with a dark background is used for out of focus
