@@ -50,7 +50,6 @@ require('lualine').setup({
 ![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-mint.png)
 
 [more variations..](./SCREENSHOT.md#experimental-variations)
-[old more variations..](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md#experimental-variations)
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
