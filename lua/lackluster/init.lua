@@ -22,6 +22,7 @@ M.color = {
 
     -- NOTE: special colors are for special cases and should only be used for backgrounds,
     -- they help make sure other highlights dont look garbage when placed on top or adjacent
+    -- _special_gray_background = "#101010",
     _special_gray_background = "#101010",
     _special_gray_popup_dark = '#101010',
     _special_gray_popup_pale = '#1a1a1c',
@@ -138,7 +139,7 @@ M.color.syntax_default = {
     documentation = M.color._special_comment,
 }
 
-M.color.syntax_trace = vim.tbl_deep_extend("force", M.color.syntax_default, {
+M.color.syntax_overt = vim.tbl_deep_extend("force", M.color.syntax_default, {
     keyword_return = M.color.green,
     keyword_exception = M.color.blue,
 })
@@ -688,8 +689,8 @@ M.load = function(opt)
 
 
     -- official themes
-    if opt.theme == "trace" then
-        c.syntax = c.syntax_trace
+    if opt.theme == "overt" then
+        c.syntax = c.syntax_overt
     end
 
     if opt.theme == "mint" then
