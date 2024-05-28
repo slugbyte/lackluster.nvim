@@ -536,14 +536,14 @@ M.theme = function(c)
 
         -- telescope
         co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
-        co('TelescopeTitle', c.gray9, c._special_gray_popup_dark),
+        co('TelescopeTitle', c.gray8, c._special_gray_popup_dark),
         co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
         co('TelescopeSelection', c.gray8, c.gray3),
         op('TelescopeMatching', { italic = true, }),
         fg('TelescopeMultiSelection', c.gray8),
         fg('TelescopeMultiIcon', c.gray8),
         fg('TelescopePromptPrefix', c.ui.fg_normal),
-        co('TelescopeBorder', c.gray8, c._special_gray_popup_dark),
+        co('TelescopeBorder', c.gray7, c._special_gray_popup_dark),
         co('TelescopePreviewLine', c.black, c.gray9),
         co('TelescopePreviewMatch', c.black, c.gray9),
         fg('TelescopePromptCounter', c.gray7),
