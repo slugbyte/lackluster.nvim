@@ -53,6 +53,9 @@ require('lualine').setup({
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
+
+Screenshots of many the plugins can be found [here](./SCREENSHOT.md)
+
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 * [lazy.nvim](https://github.com/folke/lazy.nvim)

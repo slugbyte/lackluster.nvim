@@ -92,27 +92,26 @@ M.color.ui = {
     bg_tab            = M.color.gray2,
     bg_tab_cur        = M.color.gray8,
 
-    fg_border         = M.color.lack,
+    fg_border         = M.color.gray4,
     fg_line_num       = M.color.gray4,
     fg_line_num_cur   = M.color.gray7,
-    bg_colorcolumn    = M.color.black,
+    bg_colorcolumn    = M.color.gray1,
     bg_cursorline     = M.color.gray2,
 
-    bg_visual         = M.color.gray9,
+    bg_visual         = M.color.gray8,
     fg_visual         = M.color.black,
 
     fg_search         = M.color.black,
     bg_search_item    = M.color.lack,
     bg_search_cur     = M.color.gray8,
 
+    bg_scrollbar      = M.color.gray3,
+    fg_scrollbar      = M.color.gray5,
 
-    bg_scrollbar    = M.color.gray3,
-    fg_scrollbar    = M.color.gray5,
-
-    fg_popup        = M.color.gray6,
-    bg_popup_dark   = M.color._special_gray_popup_dark,
-    bg_popup_normal = M.color.gray2,
-    bg_popup_pale   = M.color._special_gray_popup_pale,
+    fg_popup          = M.color.gray6,
+    bg_popup_dark     = M.color._special_gray_popup_dark,
+    bg_popup_normal   = M.color.gray2,
+    bg_popup_pale     = M.color._special_gray_popup_pale,
 }
 
 M.color.syntax_default = {
@@ -469,24 +468,8 @@ M.theme = function(c)
         fg('DiffLine', c.diff.change),
         fg('DiffIndexLine', c.diff.info),
 
-        -- go
-        fg('@type.builtin.go', c.syntax.type_primitave),
-        -- fg('@variable.parameter.go', c.syntax.func_param),
-
-        -- fg('@function.go', c.gray6),
-        -- fg('@function.method.go', c.gray6),
-        -- fg('@function.call.go', c.gray6),
-        -- fg('@function.method.call.go', c.gray6),
-        -- fg('@type.definition.go', c.green),
-
-        -- lua
-        -- NOTE: i find it a lot nicer to find the (end) of a lua func if has a
-        -- different color than other (end) keywords
-        -- fg('@keyword.function.lua', c.lack),
-
         -- zig
         fg('@keyword.import.zig', c.syntax.func_builtin),
-        -- fg('@variable.member.zig', c.syntax.func_param),
 
         -- zsh
         fg('zshFunction', c.syntax.func_def),
@@ -554,14 +537,21 @@ M.theme = function(c)
 
         -- telescope
         co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
-        co('TelescopeBorder', c.ui.fg_border, c._special_gray_popup_dark),
         co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
-        fg('TelescopeMatching', c.gray4),
-        fg('TelescopeMultiSelection', c.green),
-        fg('TelescopeMultiIcon', c.green),
-        fg('TelescopePromptPrefix', c.gray6),
-        fg('TelescopePromptCounter', c.gray6),
-        co('TelescopeSelection', c.gray1, c.gray8),
+        co('TelescopeMatching', c.none, c.none, {
+            italic = true,
+        }),
+        fg('TelescopeMultiSelection', c.lack),
+        fg('TelescopeMultiIcon', c.lack),
+        fg('TelescopePromptPrefix', c.ui.fg_normal),
+        co('TelescopeSelection', c.black, c.gray9),
+        co('TelescopePreviewLine', c.black, c.gray9),
+        co('TelescopePreviewMatch', c.black, c.gray9),
+
+
+        co('TelescopeBorder', c.gray7, c._special_gray_popup_dark),
+        fg('TelescopeTitle', c.gray8),
+        fg('TelescopePromptCounter', c.gray7),
 
         -- nvim_cmp
         fg('CmpItemKind', c.gray7),
@@ -637,6 +627,7 @@ M.theme = function(c)
         co('LazyButtonActive', c.gray4, c.gray8),
         ln('LazyH1', 'LazyButtonActive'),
         fg('LazyComment', c.lack),
+        -- fg('LazyReasonSource', c.green),
 
         -- mason.nvim
         fg('MasonHighlight', c.lack),
