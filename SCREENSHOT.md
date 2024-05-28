@@ -61,9 +61,9 @@
 
 ![](./asset/img/theme/lackluster-default.png)
 
-> lackluster-overt (return is green, exception is blue)
+> lackluster-hack (return is green, exception is blue)
 
-![](./asset/img/theme/lackluster-overt.png)
+![](./asset/img/theme/lackluster-hack.png)
 
 > lackluster-mint (types are green)
 
