@@ -510,7 +510,6 @@ M.theme = function(c)
         fg('@property.css', c.ui.fg_normal),
         fg('@tag.css', c.ui.fg_normal),
 
-
         -- markdown
         fg('markdownCodeDelimiter', c.green),
         fg('markdownLinkDelimiter', c.gray6),
@@ -537,21 +536,36 @@ M.theme = function(c)
 
         -- telescope
         co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
+        co('TelescopeTitle', c.gray9, c._special_gray_popup_dark),
         co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
-        co('TelescopeMatching', c.none, c.none, {
-            italic = true,
-        }),
-        fg('TelescopeMultiSelection', c.lack),
-        fg('TelescopeMultiIcon', c.lack),
+        co('TelescopeSelection', c.gray8, c.gray3),
+        op('TelescopeMatching', { italic = true, }),
+        fg('TelescopeMultiSelection', c.gray8),
+        fg('TelescopeMultiIcon', c.gray8),
         fg('TelescopePromptPrefix', c.ui.fg_normal),
-        co('TelescopeSelection', c.black, c.gray9),
+        co('TelescopeBorder', c.gray8, c._special_gray_popup_dark),
         co('TelescopePreviewLine', c.black, c.gray9),
         co('TelescopePreviewMatch', c.black, c.gray9),
-
-
-        co('TelescopeBorder', c.gray7, c._special_gray_popup_dark),
-        fg('TelescopeTitle', c.gray8),
         fg('TelescopePromptCounter', c.gray7),
+        fg('TelescopeResultsSpecialComment', c.gray5),
+        fg('TelescopeResultsDiffUntracked', c.gray5),
+        fg('TelescopeResultsIdentifier', c.gray5),
+        fg('TelescopeResultsDiffDelete', c.gray5),
+        fg('TelescopeResultsDiffChange', c.gray5),
+        fg('TelescopeResultsVariable', c.gray5),
+        fg('TelescopeResultsOperator', c.gray5),
+        fg('TelescopeResultsFunction', c.gray5),
+        fg('TelescopeResultsConstant', c.gray5),
+        fg('TelescopeResultsDiffAdd', c.gray5),
+        fg('TelescopeResultsComment', c.gray5),
+        fg('TelescopeResultsSymbol', c.gray5),
+        fg('TelescopeResultsStruct', c.gray5),
+        fg('TelescopeResultsNumber', c.gray5),
+        fg('TelescopeResultsMethod', c.gray5),
+        fg('TelescopeResultsLineNr', c.gray5),
+        fg('TelescopeResultsField', c.gray5),
+        fg('TelescopeResultsClass', c.gray5),
+
 
         -- nvim_cmp
         fg('CmpItemKind', c.gray7),
