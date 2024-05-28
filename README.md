@@ -14,7 +14,7 @@
 
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`, `lackluster-night`, `lackluster-mint` or `lackluster-dark`
+2. Set your colorscheme to `lackluster`, `lackluster-trace`, or `lackluster-mint`
 3. (optional) setup lualine
 
 ```lua 
@@ -25,13 +25,11 @@ return {
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
-        -- vim.cmd.colorscheme("lackluster-night")
+        -- vim.cmd.colorscheme("lackluster-trace")
         -- vim.cmd.colorscheme("lackluster-mint")
-        -- vim.cmd.colorscheme("lackluster-dark")
     end,
 }
 ```
-
 
 ##### LUALINE SETUP
 ```lua
