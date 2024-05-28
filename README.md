@@ -31,7 +31,7 @@ return {
 }
 ```
 
-##### LUALINE SETUP
+#### LUALINE SETUP
 ```lua
 require('lualine').setup({
   options = {
@@ -40,7 +40,7 @@ require('lualine').setup({
 })
 ```
 
-#### VARIATIONS
+## VARIATIONS
 > lackluster-hack (return is green, exception is blue)
 
 ![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-hack.png)
@@ -51,10 +51,10 @@ require('lualine').setup({
 
 [more variations..](./SCREENSHOT.md#experimental-variations)
 
-#### EXPLICITLY SUPPORTED PLUGINS
+## EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
 
-Screenshots of many the plugins can be found [here](./SCREENSHOT.md)
+Screenshots of many of the plugins can be found [here](./SCREENSHOT.md)
 
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -84,8 +84,8 @@ suggested implementation! Your contribution is mega much appreciated.
 
 See the [CONTRIBUTING](./CONTRIBUTING.md) and [DEVELOPMENT](./DEVELOPMENT.md) Guides!
 
-### ACKNOWLEDGEMENT
-> I referenced the following colorschemes when creating lackluster
+## ACKNOWLEDGEMENT
+> I referenced the following colorscheme's source code when creating lackluster :)
+* [rose-pine/neovim](https://github.com/rose-pine/neovim)
 * [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim/tree/main)
 * [nyoom-engineering/oxocarbon.nvim](https://github.com/nyoom-engineering/oxocarbon.nvim)
-* [rose-pine/neovim](https://github.com/rose-pine/neovim)
