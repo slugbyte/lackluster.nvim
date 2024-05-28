@@ -3,7 +3,7 @@
 
 ![a screenshot of neovim with the lackluster colorscheme](./asset/img/lackluster.png)
 
-![a picture of lackluster lualine variations](./asset/img/lackluster-lualine.png)
+![a picture of lackluster lualine variations](./asset/img/detail/lackluster-lualine.png)
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
 
@@ -43,13 +43,14 @@ require('lualine').setup({
 #### VARIATIONS
 > lackluster-overt (return is green, exception is blue)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-overt.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-overt.png)
 
 > lackluster-mint (types are green)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-mint.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-mint.png)
 
-[more variations..](./SCREENSHOT.md)
+[more variations..](./SCREENSHOT.md#experimental-variations)
+[old more variations..](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md#experimental-variations)
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!

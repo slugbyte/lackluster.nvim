@@ -3,7 +3,7 @@
 ### lualine
 >  the statusline with a dark background is used for out of focus
 
-![](./asset/img/detail/detail/lackluster-lualine.png)
+![](./asset/img/detail/lackluster-lualine.png)
 
 ### lackluster tabs
 ![](./asset/img/detail/lackluster-tabs.png)
