@@ -25,7 +25,7 @@ M.color = {
     -- _special_gray_background = "#101010",
     _special_gray_background = "#101010",
     _special_gray_popup_dark = '#101010',
-    _special_gray_popup_pale = '#1a1a1c',
+    _special_gray_popup_pale = '#1A1A1A',
     _special_gray_statusline = '#242424',
     _special_comment = '#343434',
     _special_return = '#505050',
@@ -92,27 +92,26 @@ M.color.ui = {
     bg_tab            = M.color.gray2,
     bg_tab_cur        = M.color.gray8,
 
-    fg_border         = M.color.lack,
+    fg_border         = M.color.gray4,
     fg_line_num       = M.color.gray4,
     fg_line_num_cur   = M.color.gray7,
-    bg_colorcolumn    = M.color.black,
+    bg_colorcolumn    = M.color.gray1,
     bg_cursorline     = M.color.gray2,
 
-    bg_visual         = M.color.gray9,
+    bg_visual         = M.color.gray8,
     fg_visual         = M.color.black,
 
     fg_search         = M.color.black,
     bg_search_item    = M.color.lack,
     bg_search_cur     = M.color.gray8,
 
+    bg_scrollbar      = M.color.gray3,
+    fg_scrollbar      = M.color.gray5,
 
-    bg_scrollbar    = M.color.gray3,
-    fg_scrollbar    = M.color.gray5,
-
-    fg_popup        = M.color.gray6,
-    bg_popup_dark   = M.color._special_gray_popup_dark,
-    bg_popup_normal = M.color.gray2,
-    bg_popup_pale   = M.color._special_gray_popup_pale,
+    fg_popup          = M.color.gray6,
+    bg_popup_dark     = M.color._special_gray_popup_dark,
+    bg_popup_normal   = M.color.gray2,
+    bg_popup_pale     = M.color._special_gray_popup_pale,
 }
 
 M.color.syntax_default = {
@@ -469,24 +468,8 @@ M.theme = function(c)
         fg('DiffLine', c.diff.change),
         fg('DiffIndexLine', c.diff.info),
 
-        -- go
-        fg('@type.builtin.go', c.syntax.type_primitave),
-        -- fg('@variable.parameter.go', c.syntax.func_param),
-
-        -- fg('@function.go', c.gray6),
-        -- fg('@function.method.go', c.gray6),
-        -- fg('@function.call.go', c.gray6),
-        -- fg('@function.method.call.go', c.gray6),
-        -- fg('@type.definition.go', c.green),
-
-        -- lua
-        -- NOTE: i find it a lot nicer to find the (end) of a lua func if has a
-        -- different color than other (end) keywords
-        -- fg('@keyword.function.lua', c.lack),
-
         -- zig
         fg('@keyword.import.zig', c.syntax.func_builtin),
-        -- fg('@variable.member.zig', c.syntax.func_param),
 
         -- zsh
         fg('zshFunction', c.syntax.func_def),
@@ -527,7 +510,6 @@ M.theme = function(c)
         fg('@property.css', c.ui.fg_normal),
         fg('@tag.css', c.ui.fg_normal),
 
-
         -- markdown
         fg('markdownCodeDelimiter', c.green),
         fg('markdownLinkDelimiter', c.gray6),
@@ -554,14 +536,36 @@ M.theme = function(c)
 
         -- telescope
         co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
-        co('TelescopeBorder', c.ui.fg_border, c._special_gray_popup_dark),
+        co('TelescopeTitle', c.gray8, c._special_gray_popup_dark),
         co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
-        fg('TelescopeMatching', c.gray4),
-        fg('TelescopeMultiSelection', c.green),
-        fg('TelescopeMultiIcon', c.green),
-        fg('TelescopePromptPrefix', c.gray6),
-        fg('TelescopePromptCounter', c.gray6),
-        co('TelescopeSelection', c.gray1, c.gray8),
+        co('TelescopeSelection', c.gray8, c.gray3),
+        op('TelescopeMatching', { italic = true, }),
+        fg('TelescopeMultiSelection', c.gray8),
+        fg('TelescopeMultiIcon', c.gray8),
+        fg('TelescopePromptPrefix', c.ui.fg_normal),
+        co('TelescopeBorder', c.gray7, c._special_gray_popup_dark),
+        co('TelescopePreviewLine', c.black, c.gray9),
+        co('TelescopePreviewMatch', c.black, c.gray9),
+        fg('TelescopePromptCounter', c.gray7),
+        fg('TelescopeResultsSpecialComment', c.gray5),
+        fg('TelescopeResultsDiffUntracked', c.gray5),
+        fg('TelescopeResultsIdentifier', c.gray5),
+        fg('TelescopeResultsDiffDelete', c.gray5),
+        fg('TelescopeResultsDiffChange', c.gray5),
+        fg('TelescopeResultsVariable', c.gray5),
+        fg('TelescopeResultsOperator', c.gray5),
+        fg('TelescopeResultsFunction', c.gray5),
+        fg('TelescopeResultsConstant', c.gray5),
+        fg('TelescopeResultsDiffAdd', c.gray5),
+        fg('TelescopeResultsComment', c.gray5),
+        fg('TelescopeResultsSymbol', c.gray5),
+        fg('TelescopeResultsStruct', c.gray5),
+        fg('TelescopeResultsNumber', c.gray5),
+        fg('TelescopeResultsMethod', c.gray5),
+        fg('TelescopeResultsLineNr', c.gray5),
+        fg('TelescopeResultsField', c.gray5),
+        fg('TelescopeResultsClass', c.gray5),
+
 
         -- nvim_cmp
         fg('CmpItemKind', c.gray7),
@@ -637,10 +641,11 @@ M.theme = function(c)
         co('LazyButtonActive', c.gray4, c.gray8),
         ln('LazyH1', 'LazyButtonActive'),
         fg('LazyComment', c.lack),
+        -- fg('LazyReasonSource', c.green),
 
         -- mason.nvim
         fg('MasonHighlight', c.lack),
-        co('MasonHeader', c.gray8, c.lack),
+        co('MasonHeader', c.lack, c.ui.bg_popup_pale),
         co('MasonHighlightBlockBold', c.gray5, c.gray8),
         co('MasonHighlightBlock', c.gray4, c.gray8),
         co('MasonMutedBlock', c.gray5, c.ui.bg_popup_pale),
