@@ -7,6 +7,7 @@
 * [lackluster experimental variations](#experimental-variations)
 
 ## PLUGIN
+### lualine
 > the statusline with a dark background is used for out of focus
 
 ![](./asset/img/detail/lackluster-lualine.png)
