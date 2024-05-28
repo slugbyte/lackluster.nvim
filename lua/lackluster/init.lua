@@ -138,7 +138,7 @@ M.color.syntax_default = {
     documentation = M.color._special_comment,
 }
 
-M.color.syntax_overt = vim.tbl_deep_extend("force", M.color.syntax_default, {
+M.color.syntax_hack = vim.tbl_deep_extend("force", M.color.syntax_default, {
     keyword_return = M.color.green,
     keyword_exception = M.color.blue,
 })
@@ -694,8 +694,8 @@ M.load = function(opt)
 
 
     -- official themes
-    if opt.theme == "overt" then
-        c.syntax = c.syntax_overt
+    if opt.theme == "hack" then
+        c.syntax = c.syntax_hack
     end
 
     if opt.theme == "mint" then

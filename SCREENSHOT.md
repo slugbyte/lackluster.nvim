@@ -1,25 +1,15 @@
 # LACKLUSTER SCREENSHOTS
 
 ## NAV
-* [lualine highlights](#lualine)
-* [neovim highlights](#neovim)
 * [plugin highlights](#plugin)
+* [neovim highlights](#neovim)
 * [lackluster variations](#lackluster-variations)
 * [lackluster experimental variations](#experimental-variations)
 
-## LUALINE
->  the statusline with a dark background is used for out of focus
+## PLUGIN
+> the statusline with a dark background is used for out of focus
 
 ![](./asset/img/detail/lackluster-lualine.png)
-
-## NEOVIM
-### lackluster tabs
-![](./asset/img/detail/lackluster-tabs.png)
-
-### visual select
-![](./asset/img/detail/lackluster-visual.png)
-
-## PLUGIN
 
 ### nvim_cmp
 > darker gray options are deprecated
@@ -55,15 +45,23 @@
 ### todo-comment.nvim
 ![](./asset/img/detail/lackluster-todo.png)
 
+## NEOVIM
+### lackluster tabs
+![](./asset/img/detail/lackluster-tabs.png)
+
+### visual select
+![](./asset/img/detail/lackluster-visual.png)
+
+
 ## LACKLUSTER VARIATIONS
 
 > lackluster (default)
 
 ![](./asset/img/theme/lackluster-default.png)
 
-> lackluster-overt (return is green, exception is blue)
+> lackluster-hack (return is green, exception is blue)
 
-![](./asset/img/theme/lackluster-overt.png)
+![](./asset/img/theme/lackluster-hack.png)
 
 > lackluster-mint (types are green)
 

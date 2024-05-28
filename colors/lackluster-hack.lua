@@ -1,3 +1,3 @@
 require("lackluster").load({
-    theme = "overt",
+    theme = "hack",
 })

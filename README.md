@@ -14,7 +14,7 @@
 
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`, `lackluster-overt`, or `lackluster-mint`
+2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) setup lualine
 
 ```lua 
@@ -25,7 +25,7 @@ return {
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
-        -- vim.cmd.colorscheme("lackluster-overt")
+        -- vim.cmd.colorscheme("lackluster-hack")
         -- vim.cmd.colorscheme("lackluster-mint")
     end,
 }
@@ -41,9 +41,9 @@ require('lualine').setup({
 ```
 
 #### VARIATIONS
-> lackluster-overt (return is green, exception is blue)
+> lackluster-hack (return is green, exception is blue)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-overt.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-hack.png)
 
 > lackluster-mint (types are green)
 
