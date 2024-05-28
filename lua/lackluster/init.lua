@@ -25,7 +25,7 @@ M.color = {
     -- _special_gray_background = "#101010",
     _special_gray_background = "#101010",
     _special_gray_popup_dark = '#101010',
-    _special_gray_popup_pale = '#1a1a1c',
+    _special_gray_popup_pale = '#1A1A1A',
     _special_gray_statusline = '#242424',
     _special_comment = '#343434',
     _special_return = '#505050',
@@ -645,7 +645,7 @@ M.theme = function(c)
 
         -- mason.nvim
         fg('MasonHighlight', c.lack),
-        co('MasonHeader', c.gray8, c.lack),
+        co('MasonHeader', c.lack, c.ui.bg_popup_pale),
         co('MasonHighlightBlockBold', c.gray5, c.gray8),
         co('MasonHighlightBlock', c.gray4, c.gray8),
         co('MasonMutedBlock', c.gray5, c.ui.bg_popup_pale),

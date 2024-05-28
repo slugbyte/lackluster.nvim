@@ -41,15 +41,15 @@ require('lualine').setup({
 ```
 
 #### VARIATIONS
-> lackluster-mint (types are green)
-
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-mint.png)
-
 > lackluster-overt (return is green, exception is blue)
 
 ![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-overt.png)
 
-[more variations..](./VARIATION.md)
+> lackluster-mint (types are green)
+
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-mint.png)
+
+[more variations..](./SCREENSHOT.md)
 
 #### EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
