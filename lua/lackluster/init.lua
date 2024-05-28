@@ -13,24 +13,13 @@
 local M = {}
 
 M.color = {
-    red = "#D70000",
-    blue = '#7788AA',
-    green = "#789978",
-    orange = '#ffaa88',
-    luster = "#deeeed",
     lack = "#718493",
-
-    -- NOTE: special colors are for special cases and should only be used for backgrounds,
-    -- they help make sure other highlights dont look garbage when placed on top or adjacent
-    -- _special_gray_background = "#101010",
-    _special_gray_background = "#101010",
-    _special_gray_popup_dark = '#101010',
-    _special_gray_popup_pale = '#1A1A1A',
-    _special_gray_statusline = '#242424',
-    _special_comment = '#343434',
-    _special_return = '#505050',
-    _special_keyword = "#666666",
-    _special_dark_string = "#aa6666",
+    luster = "#deeeed",
+    orange = '#ffaa88',
+    green = "#789978",
+    blue = '#7788AA',
+    red = "#D70000",
+    none = "none",
 
     black = '#000000',
     gray1 = "#080808",
@@ -42,7 +31,17 @@ M.color = {
     gray7 = "#aaaaaa",
     gray8 = "#cccccc",
     gray9 = '#DDDDDD',
-    none = "none",
+
+    -- NOTE: special colors are for special cases and should only be overused
+    -- they help make like sure other highlights dont look garbage when placed
+    -- on top or adjacent to one another
+    _special_main_background = '#101010',
+    _special_pale_background = '#1A1A1A',
+    _special_gray_statusline = '#242424',
+    _special_comment = '#343434',
+    _special_return = '#505050',
+    _special_keyword = "#666666",
+    _specail_expieramental_dark_string = "#aa6666",
 }
 
 M.color.log = {
@@ -85,7 +84,7 @@ M.color.diff = {
 M.color.ui = {
     fg_normal         = M.color.gray8,
     fg_title          = M.color.gray5,
-    bg_normal         = M.color._special_gray_background,
+    bg_normal         = M.color._special_main_background,
 
     bg_statusline     = M.color.gray1,
     bg_statusline_cur = M.color._special_gray_statusline,
@@ -109,9 +108,9 @@ M.color.ui = {
     fg_scrollbar      = M.color.gray5,
 
     fg_popup          = M.color.gray6,
-    bg_popup_dark     = M.color._special_gray_popup_dark,
+    bg_popup_dark     = M.color._special_main_background,
     bg_popup_normal   = M.color.gray2,
-    bg_popup_pale     = M.color._special_gray_popup_pale,
+    bg_popup_pale     = M.color._special_pale_background,
 }
 
 M.color.syntax_default = {
@@ -171,7 +170,7 @@ M.color.syntax_dark = {
     keyword = M.color.gray5,
     keyword_return = M.color._special_return,
     keyword_exception = M.color._special_return,
-    str = M.color._special_dark_string,
+    str = M.color._specail_expieramental_dark_string,
     str_esc = M.color.blue,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
@@ -535,15 +534,15 @@ M.theme = function(c)
         fg('makeSpecial', c.syntax.special),
 
         -- telescope
-        co('TelescopeNormal', c.ui.fg_normal, c._special_gray_popup_dark),
-        co('TelescopeTitle', c.gray8, c._special_gray_popup_dark),
-        co('TelescopeResultsNormal', c.gray5, c._special_gray_popup_dark),
+        co('TelescopeNormal', c.ui.fg_normal, c._special_main_background),
+        co('TelescopeTitle', c.gray8, c._special_main_background),
+        co('TelescopeResultsNormal', c.gray5, c._special_main_background),
         co('TelescopeSelection', c.gray8, c.gray3),
         op('TelescopeMatching', { italic = true, }),
         fg('TelescopeMultiSelection', c.gray8),
         fg('TelescopeMultiIcon', c.gray8),
         fg('TelescopePromptPrefix', c.ui.fg_normal),
-        co('TelescopeBorder', c.gray7, c._special_gray_popup_dark),
+        co('TelescopeBorder', c.gray7, c._special_main_background),
         co('TelescopePreviewLine', c.black, c.gray9),
         co('TelescopePreviewMatch', c.black, c.gray9),
         fg('TelescopePromptCounter', c.gray7),
@@ -691,7 +690,6 @@ M.load = function(opt)
     local c = M.color
 
     c.syntax = c.syntax_default
-
 
     -- official themes
     if opt.theme == "hack" then
