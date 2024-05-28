@@ -1,14 +1,9 @@
 # how to use the lackluster dev tools!
-> lackluster-mint (types are green)
-
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/lackluster-theme-mint.png)
-> these tools are not required for development but they make life easier
-
 ## SETUP DEVELOPMENT ENVIRONMENT
 
 <details>
 
-<summary>(recomended) How to setup dev env with lazy.nvim</summary>
+<summary>(RECOMENDED) How to setup dev env with lazy.nvim</summary>
 
 1. fork this repository
 2. create a directory where you want to develop neovim plugins
@@ -34,6 +29,10 @@ require("lazy").setup(
 -- setup your lazy plugin config with dev = true
 return {
     "slugbyte/lackluster.nvim",
+    dependencies = {
+        -- NOTE: plenary.nvim is required for lackluster_reload() to work
+        "nvim-lua/plenary.nvim",
+    },
     lazy = false,
     dev = true,
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -58,6 +57,8 @@ return {
 4. clone your fork into your development direcotry
   * `cd ~/code/neovim_dev`
   * `git clone <your fork>`
+4. use your package manager to install `nvim-lua/plenary.nvim` a dependency of
+   `lackluster_reload()`
 5. load the dev lib and user commands
 ```lua
 local lackluster_dev = require("lackluster.dev")
@@ -65,19 +66,23 @@ lackluster_dev.create_usercmds()
 ```
 </details>
 
-
 ## COLOR NAMES
-> don't let the main readme fool you, the actual color names are red, orange, green, and blue
+> Don't let the main readme fool you, the actual color names are red, orange, green, and blue
+
+> there are are also quite a few other colors that start with `_specail_`
+> that I ended up creating to ensure UIs consistently look good `¯\_(ツ)_/¯`
 
 ![](./asset/img/lackluster-pallet-dev.png)
 
 ## API
 * `lackluster_dev.lackluster_reload()` - reload any changes made to lackluster
-* `lackluster_dev.try_fg(hl_group, color_name)` - test out a lackluster color on a hl\_group
-* `lackluster_dev.try_bg(hl_group, color_name)` - test out a lackluster color on a hl\_group
+* `lackluster_dev.try_fg(hl_group, color_name)` - test out a lackluster color\_name or a hexcode a hl\_group
+  * hex codes need to start with `#` like `#99ffaa`
+* `lackluster_dev.try_bg(hl_group, color_name)` - test out a lackluster color\_name or a hexcode on a hl\_group
+  * hex codes need to start with `#` like `#99ffaa`
 * `lackluster_dev.create_usercmds()` - create lack luster development user commands
 
 ## USER COMMANDS
 * `:LLR` - reload lackluster
-* `:LLFG <hl_group> <color_name>` - try a lackluster color on the foreground
-* `:LLBG <hl_group> <color_name>` - try a lackluster color on background
+* `:LLF <hl_group> <color_name>` - try a lackluster color on the foreground
+* `:LLB <hl_group> <color_name>` - try a lackluster color on background
