@@ -1,15 +1,24 @@
 # LACKLUSTER SCREENSHOTS
 
-### lualine
+* [lualine highlights](#lualine)
+* [neovim highlights](#builtin)
+* [plugin highlights](#plugin)
+* [lackluster variations](#lackluster-variations)
+* [experimental themes](#experimental-variations)
+
+## LUALINE
 >  the statusline with a dark background is used for out of focus
 
 ![](./asset/img/detail/lackluster-lualine.png)
 
+## NEOVIM
 ### lackluster tabs
 ![](./asset/img/detail/lackluster-tabs.png)
 
 ### visual select
 ![](./asset/img/detail/lackluster-visual.png)
+
+## PLUGIN
 
 ### nvim_cmp
 > darker gray options are deprecated
@@ -17,15 +26,15 @@
 ![](./asset/img/detail/lackluster-cmp.png)
 
 ### telescope.nvim
-> with preview
-
-![](./asset/img/detail/lackluster-telescope-preview.png)
-> without preview
+> telescope without preview
 
 ![](./asset/img/detail/lackluster-telescope-no-preview.png)
-> fuzzy search buffer
+> telescope with preview
 
-![](./asset/img/detail/lackluster-telescope-fuzzy.png)
+![](./asset/img/detail/lackluster-telescope-preview.png)
+> telescope with drop-down
+
+![](./asset/img/detail/lackluster-telescope-dropdown.png)
 
 ### nvim-tree-lua
 ![](./asset/img/detail/lackluster-tree.png)
@@ -45,7 +54,7 @@
 ### todo-comment.nvim
 ![](./asset/img/detail/lackluster-todo.png)
 
-## COLORSCHEME VARIATIONS
+## LACKLUSTER VARIATIONS
 
 > lackluster (default)
 
