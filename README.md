@@ -1,13 +1,13 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/lackluster-theme-default.png)
+![a screenshot of neovim with the lackluster colorscheme](./asset/img/lackluster.png)
 
-![a picture of lackluster lualine variations](./asset/lackluster-lualine.png)
+![a picture of lackluster lualine variations](./asset/img/lackluster-lualine.png)
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
 
-![a picture of the lackluster color pallet](./asset/lackluster-pallet.png)
+![a picture of the lackluster color pallet](./asset/img/lackluster-pallet.png)
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
@@ -43,17 +43,13 @@ require('lualine').setup({
 ```
 
 #### VARIATIONS
-> lackluster-night
+> lackluster-mint (types are green)
 
-![a screenshot of neovim with the lackluster-night colorscheme](./asset/lackluster-theme-night.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-mint.png)
 
-> lackluster-mint
+> lackluster-trace (return is green, exception is blue)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/lackluster-theme-mint.png)
-
-> lackluster-dark
-
-![a screenshot of neovim with the lackluster-dark colorscheme](./asset/lackluster-theme-dark.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/lackluster-theme-trace.png)
 
 
 #### EXPLICITLY SUPPORTED PLUGINS

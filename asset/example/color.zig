@@ -13,7 +13,7 @@ const Color = union(enum) {
                 return std.fmt.allocPrint(alloc, fmt, args);
             },
             .HSLA => |hsla| {
-                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})\n";
+                const fmt = "hsla({d:.2}, {d:.2}, {d:.2}, {d:.2})";
                 const args = .{ hsla.h, hsla.s, hsla.l, hsla.a };
                 return std.fmt.allocPrint(alloc, fmt, args);
             },
@@ -26,6 +26,7 @@ const Color = union(enum) {
         const raw_s: f32 = @floatFromInt((value >> 16) & 0xff);
         const raw_l: f32 = @floatFromInt((value >> 8) & 0xff);
         const raw_a: f32 = @floatFromInt(value & 0xff);
+
         return Color{ .HSLA = .{
             .h = (raw_h / 255.0) * 360.0,
             .s = raw_s / 255.0,
