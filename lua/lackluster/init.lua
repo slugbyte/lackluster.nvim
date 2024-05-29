@@ -522,13 +522,6 @@ M.theme = function(c)
         fg('sqlStatement', c.syntax.keyword),
         fg('sqlVariable', c.syntax.special),
 
-        -- javascript
-        -- NOTE: warn because js builtins are sketchy and throw errors willy nilly
-        fg("@function.builtin.javascript", c.log.warn),
-        fg("@function.builtin.typescript", c.log.warn),
-        fg("@keyword.exception.javascript", c.log.warn),
-        fg("@keyword.exception.typescript", c.log.warn),
-
         -- make
         fg('@string.special.symbol.make', c.syntax.str),
         fg('makeSpecial', c.syntax.special),
