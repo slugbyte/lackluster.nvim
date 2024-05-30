@@ -1,13 +1,13 @@
 # lackluster
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
 
-![a screenshot of neovim with the lackluster colorscheme](./asset/img/lackluster.png)
+![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
 
-![a picture of lackluster lualine variations](./asset/img/detail/lackluster-lualine.png)
+![a picture of lackluster lualine variations](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/detail/lackluster-lualine.png)
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
 
-![a picture of the lackluster color pallet](./asset/img/lackluster-pallet.png)
+![a picture of the lackluster color pallet](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster-pallet.png)
 
 [a bunch more screenshots...](./SCREENSHOT.md)
 
