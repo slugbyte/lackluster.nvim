@@ -54,7 +54,7 @@ M.color.log = {
 }
 
 M.color.diagnostic = {
-    -- NOTE: text often is used for hover/virtual text and the colors are used as signs
+    -- NOTE: "text" is used for hover/virtual text and the colors are used as signs
     -- this reduces visual noise (except for error text which should always be red)
     text = M.color.gray4,
     ok = M.color.green,
@@ -302,27 +302,27 @@ M.theme = function(c)
         ln('Exception', 'Keyword'),
         ln('PreProc', 'Keyword'),
 
-        -- literals
+        -- CONSTANTS
+        fg('Constant', c.syntax.const),
         fg('String', c.syntax.str),
         ln('Character', 'String'),
-        fg('Constant', c.syntax.const),
         ln('Number', 'Constant'),
         ln('Boolean', 'Constant'),
         ln('Float', 'Constant'),
 
-        -- puctuation
+        -- PUNCTUATION
         fg('Quote', c.syntax.str),
         fg('Operator', c.syntax.punctuation),
         fg('Delimiter', c.syntax.punctuation),
         co('MatchParen', c.ui.bg_search_cur, c.ui.bg_search_item),
 
-        -- comment
+        -- COMMENT
         fg('Todo', c.log.hint),
         fg('Question', c.log.hint),
         fg('Comment', c.syntax.comment),
         fg('SpecialComment', c.syntax.documentation),
 
-        -- diagnostics
+        -- DIAGNOSTICS
         fg('DiagnosticOk', c.diagnostic.text),
         fg('DiagnosticHint', c.diagnostic.text),
         fg('DiagnosticInfo', c.diagnostic.text),
@@ -344,7 +344,8 @@ M.theme = function(c)
         fg('DiagnosticSignError', c.diagnostic.error),
         fg('DiagnosticSignDeprecated', c.diagnostic.depricated),
 
-        -- treesitter overrides
+        -- TREESITTER
+        -- treesitter syntax
         fg('@keyword', c.syntax.keyword),
         fg('@keyword.return', c.syntax.keyword_return),
         fg('@keyword.exception', c.syntax.keyword_exception),
@@ -469,8 +470,11 @@ M.theme = function(c)
         fg('DiffLine', c.diff.change),
         fg('DiffIndexLine', c.diff.info),
 
-        -- zig
-        fg('@keyword.import.zig', c.syntax.func_builtin),
+        -- lisp
+        fg('@string.special.symbol.clojure', c.syntax.type), -- :symbols
+        ln('lispFunc', '@variable.parameter'),
+        ln('lispSymbol', "@variable"),
+        ln('lispDecl', "@keyword"),
 
         -- zsh
         fg('zshFunction', c.syntax.func_def),
@@ -609,14 +613,14 @@ M.theme = function(c)
         fg('MiniDiffSignDelete', c.diff.delete),
 
         -- todo-comments.nvim
-        fg('TodoBgTodo', c.gray6),
-        fg('TodoBgNote', c.gray6),
-        ln('TodoBgPerf', 'TodoBgNote'),
+        fg('TodoBgTodo', c.log.hint),
         fg('TodoBgWarn', c.log.warn),
-        ln('TodoBgHack', 'TodoBgWarn'),
         fg('TodoBgFix', c.log.error),
         fg('TodoFgFix', c.log.error),
         fg('TodoFgTodo', c.syntax.comment),
+        ln('TodoBgNote', 'TodoBgTodo'),
+        ln('TodoBgPerf', 'TodoBgTodo'),
+        ln('TodoBgHack', 'TodoBgWarn'),
         ln('TodoFgNote', 'TodoFgTodo'),
         ln('TodoFgPerf', 'TodoFgTodo'),
         ln('TodoFgWarn', 'TodoFgTodo'),
@@ -635,7 +639,6 @@ M.theme = function(c)
         co('LazyButtonActive', c.gray4, c.gray8),
         ln('LazyH1', 'LazyButtonActive'),
         fg('LazyComment', c.lack),
-        -- fg('LazyReasonSource', c.green),
 
         -- mason.nvim
         fg('MasonHighlight', c.lack),
