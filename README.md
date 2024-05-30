@@ -71,6 +71,7 @@ require('lualine').setup({
 Screenshots of many of the plugins can be found [here](./SCREENSHOT.md)
 
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
+* [flash.nvim](https://github.com/folke/flash.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 * [lazy.nvim](https://github.com/folke/lazy.nvim)
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
