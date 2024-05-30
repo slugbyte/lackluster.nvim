@@ -679,6 +679,11 @@ M.theme = function(c)
         fg('NvimTreeDiagnosticInfoFileHl', c.diagnostic.info),
         fg('NvimTreeDiagnosticHintFileHl', c.diagnostic.hint),
         fg('NvimTreeDiagnosticWarnFileHl', c.diagnostic.warn),
+
+        -- flash.nvm
+        co('FlashLabel', c._special_pale_background, c.blue),
+        co('FlashMatch', c.gray6, c._special_main_background),
+        co('FlashCurrent', c.black, c.gray9),
     }
 end
 
