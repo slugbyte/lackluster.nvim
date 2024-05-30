@@ -5,7 +5,7 @@
 -- |     7|  |  ||     7|  7  ||     7|  !  |7     |  |  |  |     7|  7  |
 -- !_____!!__!__!!_____!!__!__!!_____!!_____!!_____!  !__!  !_____!!__!__!
 --
---  Name: lackluster.nvim
+--  Na e: lackluster.nvim
 --  License: MIT
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
@@ -43,6 +43,16 @@ M.color = {
     _special_keyword = "#666666",
     _special_param = "#8E8E8E",
     _specail_expieramental_dark_string = "#aa6666",
+}
+
+M.color.rainbow = {
+    red = "#555555",
+    yellow = "#999999",
+    blue = "#aaaaaa",
+    orange = "#cccccc",
+    green = "#666666",
+    violet = "#BBBBBB",
+    cyan = "#DDDDDD",
 }
 
 M.color.log = {
@@ -684,6 +694,15 @@ M.theme = function(c)
         co('FlashLabel', c._special_pale_background, c.blue),
         co('FlashMatch', c.gray6, c._special_main_background),
         co('FlashCurrent', c.black, c.gray9),
+
+        -- rainbow-delimiters.nvim
+        fg('RainbowDelimiterRed', c.rainbow.red),
+        fg('RainbowDelimiterYellow', c.rainbow.yellow),
+        fg('RainbowDelimiterBlue', c.rainbow.blue),
+        fg('RainbowDelimiterOrange', c.rainbow.orange),
+        fg('RainbowDelimiterGreen', c.rainbow.green),
+        fg('RainbowDelimiterViolet', c.rainbow.violet),
+        fg('RainbowDelimiterCyan', c.rainbow.cyan),
     }
 end
 
