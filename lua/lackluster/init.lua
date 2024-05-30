@@ -424,6 +424,7 @@ M.theme = function(c)
         -- treesitter builtin
         fg('@type.builtin', c.syntax.type_primitave),
         fg('@tag.builtin', c.syntax.tag),
+        fg('@variable.builtin', c.syntax.var),
         fg('@function.builtin', c.syntax.func_builtin),
         fg('@module.builtin', c.syntax.func_builtin),
         fg('@constant.builtin', c.syntax.const_builtin),
