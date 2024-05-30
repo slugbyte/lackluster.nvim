@@ -41,6 +41,7 @@ M.color = {
     _special_comment = '#343434',
     _special_return = '#505050',
     _special_keyword = "#666666",
+    _special_param = "#8E8E8E",
     _specail_expieramental_dark_string = "#aa6666",
 }
 
@@ -122,7 +123,7 @@ M.color.syntax_default = {
     func_def = M.color.luster,
     func_call = M.color.gray6,
     func_builtin = M.color.gray5,
-    func_param = M.color.gray7,
+    func_param = M.color._special_param,
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray8,
@@ -146,6 +147,7 @@ M.color.syntax_mint = vim.tbl_deep_extend("force", M.color.syntax_default, {
     type = M.color.green,
     type_def = M.color.green,
     type_primitave = M.color.green,
+    func_param = M.color.gray7
 })
 
 M.color.syntax_night = vim.tbl_deep_extend("force", M.color.syntax_default, {
