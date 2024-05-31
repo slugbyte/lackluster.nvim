@@ -1,4 +1,6 @@
-### GOALS
+# LACKLUSTER DEVELOPMENT GUIDE
+
+## GOALS
 * Maximize code readability and minimize visual noise
 * Make it easy to quickly visually identify...
   * Function and type definitions
@@ -12,7 +14,6 @@
 ### NON GOALS
 * light mode or other new themes
 
-# How to use the lackluster dev tools!
 ## SETUP DEVELOPMENT ENVIRONMENT
 
 <details>
