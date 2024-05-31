@@ -93,7 +93,7 @@ Screenshots of many of the plugins can be found [here](./SCREENSHOT.md)
 If you like this project star the GitHub repository :)
 
 ## HELP WANTED
-If you find in bugs, or syntax issues feel free to open a ticket!
+If you find a bug please open a ticket :) and please include screenshots if relevant :)
 
 Is `lackluster` missing support for a plugin you love? Feel free to open a PR with a
 suggested implementation! Your contribution is mega much appreciated.
