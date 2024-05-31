@@ -11,6 +11,6 @@ yellow = '#ffAA88'
 blue = '#7788AA'
 magenta = '#D7007D'
 # cyan is set to lack
-cyan = '#5D6D6D' 
+cyan = '#708090' 
 # white is set to luster
-white = '#cfecf3'
+white = '#DEEEED'
