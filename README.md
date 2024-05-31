@@ -9,10 +9,10 @@
 
 ![a picture of the lackluster color pallet](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster-pallet.png)
 
-[a bunch more screenshots...](./SCREENSHOT.md)
+[a bunch more screenshots...](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md)
 
 ### ABOUT
-* Syntax highlights are defined with treesitter
+* Treesitter syntax highlights
 * Set `colorscheme` is the only configuration
 * Uses 24bit [true color](https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
 * Easy on the eyes
@@ -48,18 +48,18 @@ require('lualine').setup({
 ## VARIATIONS
 > lackluster-hack (return is green, exception is blue)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-hack.png)
+![a screenshot of neovim with the lackluster-hack colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/theme/lackluster-hack.png)
 
 > lackluster-mint (types are green)
 
-![a screenshot of neovim with the lackluster-mint colorscheme](./asset/img/theme/lackluster-mint.png)
+![a screenshot of neovim with the lackluster-mint colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/theme/lackluster-mint.png)
 
-[more variations..](./SCREENSHOT.md#experimental-variations)
+[more variations..](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md#experimental-variations)
 
 ## EXPLICITLY SUPPORTED PLUGINS
 > lots of other plugins should work right out of the box too!
 
-Screenshots of many of the plugins can be found [here](./SCREENSHOT.md)
+Screenshots of many of the plugins can be found [here](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md)
 
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [flash.nvim](https://github.com/folke/flash.nvim)
@@ -89,7 +89,7 @@ If you find a bug please open a ticket :) and please include screenshots if rele
 Is `lackluster` missing support for a plugin you love? Feel free to open a PR with a
 suggested implementation! Your contribution is mega much appreciated.
 
-See the [CONTRIBUTING](./CONTRIBUTING.md) and [DEVELOPMENT](./DEVELOPMENT.md) Guides!
+See the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md) and [DEVELOPMENT](https://github.com/slugbyte/lackluster.nvim/blob/main/DEVELOPMENT.md) Guides!
 
 ## ACKNOWLEDGEMENT
 > I referenced the following colorscheme's source code when creating lackluster :)
