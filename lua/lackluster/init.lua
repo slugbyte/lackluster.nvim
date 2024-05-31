@@ -672,6 +672,7 @@ M.theme = function(c)
         fg('NvimTreeSymlink', c.fs.link),
         fg('NvimTreeSymlinkIcon', c.fs.link),
         fg('NvimTreeSymlinkFolderName', c.fs.link),
+        fg('NvimTreeSpecialFile', c.fs.binary_data),
         fg('NvimTreeImageFile', c.fs.binary_data),
         fg('NvimTreeRootFolder', c.fs.dir),
         fg('NvimTreeFolder', c.fs.dir),
