@@ -1,4 +1,18 @@
-# how to use the lackluster dev tools!
+### GOALS
+* Maximize code readability and minimize visual noise
+* Make it easy to quickly visually identify...
+  * Function and type definitions
+  * Function return and exception points
+  * Function calls
+  * Builtin modules and functions
+  * Diagnostic errors
+* Support commonly used neovim plugins
+* Be easy on the eyes
+
+### NON GOALS
+* light mode or other new themes
+
+# How to use the lackluster dev tools!
 ## SETUP DEVELOPMENT ENVIRONMENT
 
 <details>

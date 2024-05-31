@@ -15,15 +15,6 @@
 * Syntax highlights are defined with treesitter
 * Set `colorscheme` is the only configuration
 * Uses 24bit [true color](https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
-
-### GOALS
-* Maximize code readability and minimize visual noise
-* Make it easy to quickly visually identify...
-  * Function and type definitions
-  * Function return and exception points
-  * Language builtin modules and functions
-  * Diagnostic errors
-* Support commonly used neovim plugins
 * Easy on the eyes
 
 ## SETUP
