@@ -13,7 +13,6 @@
 local M = {}
 
 M.color = {
-    -- lack = "#718493",
     lack = "#708090",
     luster = "#deeeed",
     orange = '#ffaa88',
