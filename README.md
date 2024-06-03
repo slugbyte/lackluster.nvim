@@ -46,7 +46,7 @@ require('lualine').setup({
 ```
 
 ## VARIATIONS
-> lackluster-hack (return is green, exception is blue)
+> lackluster-hack (return is green, exception is blue) **my default**
 
 ![a screenshot of neovim with the lackluster-hack colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/theme/lackluster-hack.png)
 
