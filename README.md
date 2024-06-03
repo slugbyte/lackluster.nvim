@@ -30,7 +30,7 @@ return {
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
-        -- vim.cmd.colorscheme("lackluster-hack")
+        -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
         -- vim.cmd.colorscheme("lackluster-mint")
     end,
 }
@@ -46,7 +46,7 @@ require('lualine').setup({
 ```
 
 ## VARIATIONS
-> lackluster-hack (return is green, exception is blue) **my default**
+> lackluster-hack (return is green, exception is blue)
 
 ![a screenshot of neovim with the lackluster-hack colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/theme/lackluster-hack.png)
 
