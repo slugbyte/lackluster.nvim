@@ -13,7 +13,6 @@
 
 ### ABOUT
 * Treesitter syntax highlights
-* Set `colorscheme` is the only configuration
 * Uses 24bit [true color](https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
 * Easy on the eyes
 
@@ -44,6 +43,54 @@ require('lualine').setup({
   },
 })
 ```
+
+<details>
+  <summary> (OPTIONAL) Syntax Tweaks </summary>
+
+> ! `setup()` MUST be called before setting your colorscheme !
+
+```lua 
+      local lackluster = require("lackluster")
+      lackluster.setup({
+          -- You can overwrite the following syntax colors by setting them to a hexcode
+          -- `"default"` or `nil` will just use whatever lackluster's default is.
+          tweek_syntax = {
+              -- ('default' is default) or ('#ffaaff' is a custom colorcode)
+              string = "default",
+              string_escape = "default",
+              comment = "default",
+              builtin = "default", -- builtin modules and functions
+              type = "default",
+              keyword = "default",
+              keyword_return = "default",
+              keyword_exception = "default",
+          },
+      })
+      vim.cmd.colorscheme("lackluster-hack")
+```
+</details>
+
+<details>
+  <summary> (OPTIONAL) Background Transparency and Tweaks </summary>
+
+> ! `setup()` MUST be called before setting your colorscheme !
+
+```lua 
+      local lackluster = require("lackluster")
+        -- You can overwrite the following background colors by setting them to a hexcode
+        -- `"default"` or `nil` will just use whatever lackluster's default is.
+      lackluster.setup({
+          tweek_background = {
+              -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
+              normal = 'default',    -- main background
+              menu = 'default',      -- nvim_cmp, wildmenu ...
+              popup = 'default',     -- lazy, mason, whichkey ...
+              telescope = 'default', -- telescope
+          },
+      })
+      vim.cmd.colorscheme("lackluster-hack")
+```
+</details>
 
 ## VARIATIONS
 > lackluster-hack (return is green, exception is blue)
