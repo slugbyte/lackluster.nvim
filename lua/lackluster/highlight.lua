@@ -49,6 +49,7 @@ local ln = function(name, link)
     }
 end
 
+-- TODO: ?? refactor theme and highlight() so that highlight() does not need color or special
 local highlight = function(theme, color, special)
     return {
         -- TEXT
