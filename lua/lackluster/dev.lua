@@ -1,4 +1,4 @@
-local lackluster = require("lackluster")
+local lackluster_color = require("lackluster.color")
 local plenary_found, plenary_reload = pcall(require, "plenary.reload")
 
 local M = {}
@@ -40,7 +40,7 @@ end
 
 --- try out a lackluster color on a hl_group
 M.try_fg = function(hl_group, color_name)
-    local color = lackluster.color[color_name]
+    local color = lackluster_color[color_name]
     if string.sub(color_name, 1, 1) == "#" then
         color = color_name
     end
@@ -56,7 +56,7 @@ end
 
 --- try out a lackluster color on a hl_group
 M.try_bg = function(hl_group, color_name)
-    local color = lackluster.color[color_name]
+    local color = lackluster_color[color_name]
     if string.sub(color_name, 1, 1) == "#" then
         color = color_name
     end

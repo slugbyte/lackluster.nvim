@@ -1,5 +1,5 @@
 # lackluster
-> a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
+> a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of neovim plugins
 
 ![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
 
@@ -19,9 +19,8 @@
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
-3. (optional) setup lualine
-3. (optional) tweak syntax colors
-3. (optional) tweak background transparency/colors
+3. (optional) Setup Lualine
+3. (optional) Tweek Color and Transparency
 
 ```lua 
 -- example lazy.nvim install setup
@@ -47,22 +46,26 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Syntax Tweaks </summary>
+  <summary> (OPTIONAL) Tweek Color and Transparency </summary>
 
-> ! `setup()` MUST be called before setting your colorscheme !
+> !! `setup()` **MUST** be called before setting your colorscheme !!
+
+> !! `setup()` will overwrite the colors of whatever lackluster-variant colorscheme you apply !!
 
 ```lua 
 local lackluster = require("lackluster")
+
 local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
+
+-- setup before set colorscheme
 lackluster.setup({
     -- You can overwrite the following syntax colors by setting them to one of...
-    --   1) a hexcode like `#ddaadd` for a custom color
-    --   2) `"default"` or `nil` will just use whatever lackluster's default is.
+    --   1) a hexcode like "#a1b2c3" for a custom color
+    --   2) "default" or nil will just use whatever lackluster's default is.
     tweek_syntax = {
-        -- ('default' is default) or ('#ddaadd' is a custom colorcode)
         string = "default",
-        -- string = "#ff0000",
-        -- string = color.green,
+        -- string = "#a1b2c3", -- custom hexcode
+        -- string = color.green, -- lackluster color
         string_escape = "default",
         comment = "default",
         builtin = "default", -- builtin modules and functions
@@ -71,36 +74,44 @@ lackluster.setup({
         keyword_return = "default",
         keyword_exception = "default",
     },
-})
-vim.cmd.colorscheme("lackluster-hack")
-```
-</details>
-
-<details>
-  <summary> (OPTIONAL) Background Transparency and Tweaks </summary>
-
-> ! `setup()` MUST be called before setting your colorscheme !
-
-```lua 
-local lackluster = require("lackluster")
-local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
-  -- You can overwrite the following background colors by setting them to one of...
-  --   1) a hexcode like `#ddaadd` for a custom color
-  --   2) `"none"` for transparency
-  --   3) `"default"` or `nil` will just use whatever lackluster's default is.
-lackluster.setup({
+    -- You can overwrite the following background colors by setting them to one of...
+    --   1) a hexcode like "#a1b2c3" for a custom color
+    --   2) "none" for transparency
+    --   3) "default" or nil will just use whatever lackluster's default is.
+    -- NOTE: when testing transparent backgrounds I found that comments where often hard
+    --       to read but setting `tweek_syntax` to a lighter gray fixed that.
     tweek_background = {
-        -- ('default' is default) ('none' is transparent) ('#ddaadd' is a custom hexcode)
         normal = 'default',    -- main background
-        -- normal = 'none',    -- main background
-        -- normal = '#111111',    -- main background
-        -- normal = color.green,    -- main background
-        menu = 'default',      -- nvim_cmp, wildmenu ...
-        popup = 'default',     -- lazy, mason, whichkey ...
+        -- normal = 'none',    -- transparent
+        -- normal = '#a1b2c3',    -- hexcode 
+        -- normal = color.green,    -- lackluster color
         telescope = 'default', -- telescope
+        menu = 'default',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+        popup = 'default',     -- lazy, mason, whichkey ... (bad idea to transparent)
     },
 })
-vim.cmd.colorscheme("lackluster-hack")
+
+-- colorscheme must be set after after setup()!
+vim.cmd.colorscheme("lackluster")
+```
+
+> Example transparent background `setup()`
+```lua 
+local lackluster = require("lackluster")
+
+lackluster.setup({
+    tweek_syntax = {
+        comment = lackluster.color.gray4, -- or gray5
+    },
+    tweek_background = {
+        normal = 'none',
+        telescope = 'none',
+        menu = lackluster.color.gray3,
+        popup = 'default',
+    },
+})
+
+vim.cmd.colorscheme("lackluster")
 ```
 </details>
 
@@ -146,7 +157,7 @@ If you like this project star the GitHub repository :)
 If you find a bug please open a ticket :) and please include screenshots if relevant :)
 
 Is `lackluster` missing support for a plugin you love? Feel free to open a PR with a
-suggested implementation! Your contribution is mega much appreciated.
+suggested implementation! Your contribution is mega appreciated.
 
 See the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md) and [DEVELOPMENT](https://github.com/slugbyte/lackluster.nvim/blob/main/DEVELOPMENT.md) Guides!
 
