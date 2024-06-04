@@ -51,7 +51,7 @@ require('lualine').setup({
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
 `setup()` can be used to configure a limited set of default settings. It will overwrite the
-colors of whatever `lackluster-variant` colorscheme you apply.
+colors of whatever lackluster-variant colorscheme you apply.
 
 ```lua 
 local lackluster = require("lackluster")
