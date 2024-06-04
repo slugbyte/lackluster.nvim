@@ -19,8 +19,8 @@
 ## SETUP
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
-3. (optional) setup lualine
-3. (optional) color and transparency tweaks
+3. (optional) Setup Lualine
+3. (optional) Color and Transparency Tweeks
 
 ```lua 
 -- example lazy.nvim install setup
@@ -46,15 +46,20 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Color and Transparency Tweaks </summary>
+  <summary> (OPTIONAL) Color and Transparency Tweeks </summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
+
+The `setup()` function can be called **before** setting the colorscheme to modify a limited
+set of defaults. `setup()` will overwrite the colors of whatever `lackluster-variant`
+colorscheme you apply.
 
 ```lua 
 local lackluster = require("lackluster")
 
 local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
 
+-- setup before set colorscheme
 lackluster.setup({
     -- You can overwrite the following syntax colors by setting them to one of...
     --   1) a hexcode like "#a1b2c3" for a custom color
@@ -76,7 +81,7 @@ lackluster.setup({
     --   2) "none" for transparency
     --   3) "default" or nil will just use whatever lackluster's default is.
     -- NOTE: when testing transparent backgrounds I found that comments where often hard
-    --       to read and I found that setting lighter gray looked nice.
+    --       to read and I found that setting lighter gray with `tweek_syntax` looked nice.
     tweek_background = {
         normal = 'default',    -- main background
         -- normal = 'none',    -- transparent
@@ -88,6 +93,7 @@ lackluster.setup({
     },
 })
 
+-- colorscheme must be set after after setup()!
 vim.cmd.colorscheme("lackluster")
 ```
 </details>
