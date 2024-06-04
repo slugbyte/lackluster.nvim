@@ -10,6 +10,7 @@
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
 
+local dev = require("lackluster.dev")
 local color = require("lackluster.color")
 local color_special = require("lackluster.color-special")
 local theme = require("lackluster.theme")
@@ -18,6 +19,7 @@ local highlight = require("lackluster.highlight")
 
 local M = {
     color = color,
+    dev = dev,
 }
 
 ---@class LacklusterConfigTweekSyntax

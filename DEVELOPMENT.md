@@ -52,8 +52,8 @@ return {
     dev = true,
     priority = 1000, -- make sure to load this before all the other start plugins
     init = function()
-        local lackluster_dev = require("lackluster.dev")
-        lackluster_dev.create_usercmds()
+        local lackluster = require("lackluster")
+        lackluster.dev.create_usercmds()
         vim.cmd.colorscheme("lackluster")
     end,
 }
@@ -76,8 +76,8 @@ return {
    `lackluster_reload()`
 5. load the dev lib and user commands
 ```lua
-local lackluster_dev = require("lackluster.dev")
-lackluster_dev.create_usercmds()
+local lackluster = require("lackluster")
+lackluster.dev.create_usercmds()
 ```
 </details>
 
