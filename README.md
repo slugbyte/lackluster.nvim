@@ -20,7 +20,7 @@
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
-3. (optional) Color and Transparency Tweeks
+3. (optional) Tweek Color and Transparency
 
 ```lua 
 -- example lazy.nvim install setup
@@ -46,7 +46,7 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Color and Transparency Tweeks </summary>
+  <summary> (OPTIONAL) Tweek Color and Transparency </summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
