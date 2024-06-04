@@ -65,7 +65,7 @@ local default_config = {
 }
 
 ---configure lackluster with optional settings
----@param config LacklusterConfig
+---@param config ?LacklusterConfig
 M.setup = function(config)
     config = vim.tbl_extend("force", default_config, config or {})
     config.tweek_background = config.tweek_background or {}

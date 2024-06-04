@@ -50,8 +50,7 @@ require('lualine').setup({
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
-`setup()` can be used to configure a limited set of default settings. It will overwrite the
-colors of whatever lackluster-variant colorscheme you apply.
+> !! `setup()` will overwrite the colors of whatever lackluster-variant colorscheme you apply !!
 
 ```lua 
 local lackluster = require("lackluster")
@@ -93,6 +92,25 @@ lackluster.setup({
 })
 
 -- colorscheme must be set after after setup()!
+vim.cmd.colorscheme("lackluster")
+```
+
+> Example transparent background `setup()`
+```lua 
+local lackluster = require("lackluster")
+
+lackluster.setup({
+    tweek_syntax = {
+        comment = lackluster.color.gray4, -- or gray5
+    },
+    tweek_background = {
+        normal = 'none',
+        telescope = 'none',
+        menu = lackluster.color.gray3,
+        popup = 'default',
+    },
+})
+
 vim.cmd.colorscheme("lackluster")
 ```
 </details>
