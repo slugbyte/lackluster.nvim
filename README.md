@@ -78,8 +78,6 @@ lackluster.setup({
     --   1) a hexcode like "#a1b2c3" for a custom color
     --   2) "none" for transparency
     --   3) "default" or nil will just use whatever lackluster's default is.
-    -- NOTE: when testing transparent backgrounds I found that comments where often hard
-    --       to read but setting `tweek_syntax` to a lighter gray fixed that.
     tweek_background = {
         normal = 'default',    -- main background
         -- normal = 'none',    -- transparent
@@ -97,6 +95,8 @@ vim.cmd.colorscheme("lackluster")
 
 > Example transparent background `setup()`
 ```lua 
+--  When testing transparent backgrounds I found that comments where often hard to read, 
+--  and menus didn't look good but using setup() tweeks you can easily address that!
 local lackluster = require("lackluster")
 
 lackluster.setup({
