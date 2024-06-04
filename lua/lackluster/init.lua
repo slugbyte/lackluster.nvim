@@ -741,6 +741,8 @@ local tweek_syntax_keys = {
 ---@field string_escape string
 ---@field comment string
 ---@field builtin string
+---@field type string
+---@field keyword string
 ---@field keyword_return string
 ---@field keyword_exception string
 
