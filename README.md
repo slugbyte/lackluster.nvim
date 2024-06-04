@@ -1,5 +1,5 @@
 # lackluster
-> a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of plugins
+> a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of neovim plugins
 
 ![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
 
@@ -80,15 +80,15 @@ lackluster.setup({
     --   2) "none" for transparency
     --   3) "default" or nil will just use whatever lackluster's default is.
     -- NOTE: when testing transparent backgrounds I found that comments where often hard
-    --       to read and I found that setting lighter gray with `tweek_syntax` looked nice.
+    --       to read but setting `tweek_syntax` to a lighter gray fixed that.
     tweek_background = {
         normal = 'default',    -- main background
         -- normal = 'none',    -- transparent
         -- normal = '#a1b2c3',    -- hexcode 
         -- normal = color.green,    -- lackluster color
-        menu = 'default',      -- nvim_cmp, wildmenu ...
-        popup = 'default',     -- lazy, mason, whichkey ...
         telescope = 'default', -- telescope
+        menu = 'default',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+        popup = 'default',     -- lazy, mason, whichkey ... (bad idea to transparent)
     },
 })
 
