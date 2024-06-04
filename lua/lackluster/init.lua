@@ -5,12 +5,15 @@
 -- |     7|  |  ||     7|  7  ||     7|  !  |7     |  |  |  |     7|  7  |
 -- !_____!!__!__!!_____!!__!__!!_____!!_____!!_____!  !__!  !_____!!__!__!
 --
---  Na e: lackluster.nvim
+--  Name: lackluster.nvim
 --  License: MIT
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
 
-local M = {}
+local M = {
+    color = {},
+    theme = {},
+}
 
 M.color = {
     lack = "#708090",
@@ -36,7 +39,8 @@ M.color = {
     -- they help make like sure other highlights dont look garbage when placed
     -- on top or adjacent to one another
     _special_main_background = '#101010',
-    _special_pale_background = '#1A1A1A',
+    _special_menu_background = '#191919',
+    _special_popup_background = '#1A1A1A',
     _special_gray_statusline = '#242424',
     _special_comment = '#343434',
     _special_return = '#505050',
@@ -94,17 +98,20 @@ M.color.diff = {
 
 M.color.ui = {
     fg_normal         = M.color.gray8,
-    fg_title          = M.color.gray5,
     bg_normal         = M.color._special_main_background,
+
+    fg_title          = M.color.gray5,
 
     bg_statusline     = M.color.gray1,
     bg_statusline_cur = M.color._special_gray_statusline,
+
     bg_tab            = M.color.gray2,
     bg_tab_cur        = M.color.gray8,
 
     fg_border         = M.color.gray4,
     fg_line_num       = M.color.gray4,
     fg_line_num_cur   = M.color.gray7,
+
     bg_colorcolumn    = M.color.gray1,
     bg_cursorline     = M.color.gray2,
 
@@ -119,33 +126,38 @@ M.color.ui = {
     fg_scrollbar      = M.color.gray5,
 
     fg_popup          = M.color.gray6,
-    bg_popup_dark     = M.color._special_main_background,
-    bg_popup_normal   = M.color.gray2,
-    bg_popup_pale     = M.color._special_pale_background,
+    bg_popup          = M.color._special_popup_background,
+
+    fg_menu           = M.color.gray6,
+    bg_menu           = M.color._special_menu_background,
+
+    fg_telescope      = M.color.gray8,
+    bg_telescope      = M.color._special_main_background,
 }
 
+M.color.syntax_tweek = {}
+
 M.color.syntax_default = {
+    tag = M.color.gray5,
     var = M.color.gray8,
     var_member = M.color.gray7,
     const = M.color.gray7,
     const_builtin = M.color.gray6,
-    tag = M.color.gray5,
     func_def = M.color.luster,
     func_call = M.color.gray6,
-    func_builtin = M.color.gray5,
     func_param = M.color._special_param,
     special = M.color.lack,
     type = M.color.gray7,
     type_def = M.color.gray8,
     type_primitave = M.color.gray7,
+    builtin = M.color.gray5,
     keyword = M.color._special_keyword,
     keyword_return = M.color._special_return,
     keyword_exception = M.color._special_return,
-    str = M.color.lack,
-    str_esc = M.color.green,
+    string = M.color.lack,
+    string_escape = M.color.green,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
-    documentation = M.color._special_comment,
 }
 
 M.color.syntax_hack = vim.tbl_deep_extend("force", M.color.syntax_default, {
@@ -155,7 +167,6 @@ M.color.syntax_hack = vim.tbl_deep_extend("force", M.color.syntax_default, {
 
 M.color.syntax_mint = vim.tbl_deep_extend("force", M.color.syntax_default, {
     type = M.color.green,
-    type_def = M.color.green,
     type_primitave = M.color.green,
     func_param = M.color.gray7
 })
@@ -173,7 +184,7 @@ M.color.syntax_dark = {
     tag = M.color.gray5,
     func_call = M.color.gray5,
     func_def = M.color._special_keyword,
-    func_builtin = M.color.gray4,
+    builtin = M.color.gray4,
     func_param = M.color.gray6,
     special = M.color.lack,
     type = M.color.gray5,
@@ -182,11 +193,10 @@ M.color.syntax_dark = {
     keyword = M.color.gray5,
     keyword_return = M.color._special_return,
     keyword_exception = M.color._special_return,
-    str = M.color._specail_expieramental_dark_string,
-    str_esc = M.color.blue,
+    string = M.color._specail_expieramental_dark_string,
+    string_escape = M.color.blue,
     punctuation = M.color.gray6,
     comment = M.color._special_comment,
-    documentation = M.color._special_comment,
 }
 
 --- create a color spec
@@ -283,12 +293,12 @@ M.theme = function(c)
         co('TablineSel', c.gray1, c.ui.bg_tab_cur),
 
         -- FLOAT
-        co('NormalFloat', c.ui.fg_normal, c.ui.bg_popup_pale),
-        co('FloatBorder', c.ui.fg_border, c.ui.bg_popup_normal),
+        co('NormalFloat', c.ui.fg_normal, c.ui.bg_popup),
+        co('FloatBorder', c.ui.fg_border, c.ui.bg_popup),
         fg('FloatTitle', c.ui.fg_title),
 
         -- MENU
-        co('Pmenu', c.ui.fg_popup, c.ui.bg_popup_normal),
+        co('Pmenu', c.ui.fg_menu, c.ui.bg_menu),
         co('PmenuSbar', c.ui.bg_scrollbar, c.ui.bg_scrollbar),
         co('PmenuThumb', c.ui.fg_scrollbar, c.ui.fg_scrollbar),
         co('PmenuSel', c.ui.fg_search, c.ui.bg_search_cur),
@@ -314,14 +324,14 @@ M.theme = function(c)
 
         -- CONSTANTS
         fg('Constant', c.syntax.const),
-        fg('String', c.syntax.str),
+        fg('String', c.syntax.string),
         ln('Character', 'String'),
         ln('Number', 'Constant'),
         ln('Boolean', 'Constant'),
         ln('Float', 'Constant'),
 
         -- PUNCTUATION
-        fg('Quote', c.syntax.str),
+        fg('Quote', c.syntax.string),
         fg('Operator', c.syntax.punctuation),
         fg('Delimiter', c.syntax.punctuation),
         co('MatchParen', c.ui.bg_search_cur, c.ui.bg_search_item),
@@ -330,7 +340,7 @@ M.theme = function(c)
         fg('Todo', c.log.hint),
         fg('Question', c.log.hint),
         fg('Comment', c.syntax.comment),
-        fg('SpecialComment', c.syntax.documentation),
+        fg('SpecialComment', c.syntax.comment),
 
         -- DIAGNOSTICS
         fg('DiagnosticOk', c.diagnostic.text),
@@ -389,11 +399,11 @@ M.theme = function(c)
         fg('@variable.parameter', c.syntax.func_param),
 
         -- treesiter string
-        fg('@string', c.syntax.str),
-        fg('@character', c.syntax.str),
-        fg('@string.escape', c.syntax.str_esc),
-        fg('@string.special', c.syntax.str_esc),
-        fg('@string.regexp', c.syntax.str_esc),
+        fg('@string', c.syntax.string),
+        fg('@character', c.syntax.string),
+        fg('@string.escape', c.syntax.string_escape),
+        fg('@string.special', c.syntax.string_escape),
+        fg('@string.regexp', c.syntax.string_escape),
 
         -- treesitter comment
         -- QUESTION: not sure if (todo, note, warn should actual bye c.syntax.comment)
@@ -403,7 +413,7 @@ M.theme = function(c)
         fg('@comment.note', c.diagnostic.hint),
         fg('@comment.warn', c.diagnostic.warn),
         fg('@comment.error', c.diagnostic.error),
-        fg('@comment.documentation', c.syntax.documentation),
+        fg('@comment.documentation', c.syntax.comment),
 
         -- treesitter markup
         fg('@markup.heading', c.ui.fg_title),
@@ -417,7 +427,7 @@ M.theme = function(c)
         }),
 
         fg('@markup.list', c.gray4),
-        fg('@markup.list.checked', c.syntax.str_esc),
+        fg('@markup.list.checked', c.syntax.string_escape),
         fg('@markup.list.unchecked', c.red),
 
         fg('@markup.link', c.gray6),
@@ -435,8 +445,8 @@ M.theme = function(c)
         fg('@type.builtin', c.syntax.type_primitave),
         fg('@tag.builtin', c.syntax.tag),
         fg('@variable.builtin', c.syntax.var),
-        fg('@function.builtin', c.syntax.func_builtin),
-        fg('@module.builtin', c.syntax.func_builtin),
+        fg('@function.builtin', c.syntax.builtin),
+        fg('@module.builtin', c.syntax.builtin),
         fg('@constant.builtin', c.syntax.const_builtin),
 
         -- treesitter diff
@@ -534,25 +544,25 @@ M.theme = function(c)
         ln('markdownUrl', '@markup.link.url'),
 
         -- sql
-        fg('sqlType', c.syntax.str),
+        fg('sqlType', c.syntax.string),
         fg('sqlKeyword', c.syntax.keyword),
         fg('sqlStatement', c.syntax.keyword),
         fg('sqlVariable', c.syntax.special),
 
         -- make
-        fg('@string.special.symbol.make', c.syntax.str),
+        fg('@string.special.symbol.make', c.syntax.string),
         fg('makeSpecial', c.syntax.special),
 
         -- telescope
-        co('TelescopeNormal', c.ui.fg_normal, c._special_main_background),
-        co('TelescopeTitle', c.gray8, c._special_main_background),
-        co('TelescopeResultsNormal', c.gray5, c._special_main_background),
+        co('TelescopeNormal', c.ui.fg_telescope, c.ui.bg_telescope),
+        co('TelescopeTitle', c.ui.fg_telescope, c.ui.bg_telescope),
+        co('TelescopeResultsNormal', c.gray5, c.ui.bg_telescope),
         co('TelescopeSelection', c.gray8, c.gray3),
         op('TelescopeMatching', { italic = true, }),
         fg('TelescopeMultiSelection', c.gray8),
         fg('TelescopeMultiIcon', c.gray8),
         fg('TelescopePromptPrefix', c.ui.fg_normal),
-        co('TelescopeBorder', c.gray7, c._special_main_background),
+        co('TelescopeBorder', c.gray7, c.ui.bg_telescope),
         co('TelescopePreviewLine', c.black, c.gray9),
         co('TelescopePreviewMatch', c.black, c.gray9),
         fg('TelescopePromptCounter', c.gray7),
@@ -644,8 +654,8 @@ M.theme = function(c)
         fg('lspInfoTip', c.gray5),
 
         -- lazy.nvim
-        co('LazyNormal', c.gray8, c.ui.bg_popup_pale),
-        co('LazyButton', c.gray5, c.ui.bg_popup_pale),
+        co('LazyNormal', c.gray8, c.ui.bg_popup),
+        co('LazyButton', c.gray5, c.ui.bg_popup),
         fg('LazySpecial', c.gray5),
         co('LazyButtonActive', c.gray4, c.gray8),
         ln('LazyH1', 'LazyButtonActive'),
@@ -653,13 +663,13 @@ M.theme = function(c)
 
         -- mason.nvim
         fg('MasonHighlight', c.lack),
-        co('MasonHeader', c.lack, c.ui.bg_popup_pale),
+        co('MasonHeader', c.lack, c.ui.bg_popup),
         co('MasonHighlightBlockBold', c.gray5, c.gray8),
         co('MasonHighlightBlock', c.gray4, c.gray8),
-        co('MasonMutedBlock', c.gray5, c.ui.bg_popup_pale),
+        co('MasonMutedBlock', c.gray5, c.ui.bg_popup),
 
         -- trouble.nvim
-        co('TroubleNormal', c.gray5, c.ui.bg_popup_normal),
+        co('TroubleNormal', c.gray5, c.ui.bg_popup),
         fg('TroubleSource', c.gray5),
         fg('TroubleCode', c.gray6),
         fg('TroubleLocation', c.gray5),
@@ -692,7 +702,7 @@ M.theme = function(c)
         fg('NvimTreeDiagnosticWarnFileHl', c.diagnostic.warn),
 
         -- flash.nvm
-        co('FlashLabel', c._special_pale_background, c.blue),
+        co('FlashLabel', c._special_popup_background, c.blue),
         co('FlashMatch', c.gray6, c._special_main_background),
         co('FlashCurrent', c.black, c.gray9),
 
@@ -705,6 +715,92 @@ M.theme = function(c)
         fg('RainbowDelimiterViolet', c.rainbow.violet),
         fg('RainbowDelimiterCyan', c.rainbow.cyan),
     }
+end
+
+
+local tweek_background_keys = {
+    "normal",
+    "menu",
+    "popup",
+    "telescope",
+}
+
+local tweek_syntax_keys = {
+    "string",
+    "string_escape",
+    "comment",
+    "builtin",
+    "type",
+    "keyword",
+    "keyword_return",
+    "keyword_exception",
+}
+
+---@class LacklusterConfigTweekSyntax
+---@field string string
+---@field string_escape string
+---@field comment string
+---@field builtin string
+---@field keyword_return string
+---@field keyword_exception string
+
+
+---@class LacklusterConfigTweekBackground
+---@field normal string
+---@field menu string
+---@field popup string
+---@field telescope string
+
+---@class LacklusterConfig
+---@field tweek_syntax LacklusterConfigTweekSyntax
+---@field tweek_background LacklusterConfigTweekBackground
+
+--- @type LacklusterConfig
+local setup_default_config = {
+    tweek_syntax = {
+        -- ('default' is default) ('#ffaaff' is a custom colorcode)
+        string = "default",
+        string_escape = "default",
+        comment = "default",
+        builtin = "default", -- builtin modules and functions
+        type = "default",
+        keyword = "default",
+        keyword_return = "default",
+        keyword_exception = "default",
+    },
+    tweek_background = {
+        -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
+        normal = 'default',    -- main background
+        menu = 'default',      -- nvim_cmp, wildmenu ...
+        popup = 'default',     -- lazy, mason, whichkey ...
+        telescope = 'default', -- telescope
+    },
+}
+
+---configure lackluster with optional settings
+---@param config LacklusterConfig
+M.setup = function(config)
+    config = vim.tbl_extend("force", setup_default_config, config or {})
+    config.tweek_background = config.tweek_background or {}
+    config.tweek_syntax = config.tweek_syntax or {}
+
+    for _, key in ipairs(tweek_background_keys) do
+        local value = config.tweek_background[key]
+        if value and (value ~= 'default') then
+            M.color.ui["bg_" .. key] = value
+        end
+    end
+
+    for _, key in ipairs(tweek_syntax_keys) do
+        local value = config.tweek_syntax[key]
+        if value and (value ~= 'default') then
+            M.color.syntax_tweek[key] = value
+            if key == 'type' then
+                -- M.color.syntax_tweek.type_def = value
+                M.color.syntax_tweek.type_primitave = value
+            end
+        end
+    end
 end
 
 M.load = function(opt)
@@ -732,6 +828,8 @@ M.load = function(opt)
     if opt.theme == "night" then
         c.syntax = c.syntax_night
     end
+
+    c.syntax = vim.tbl_extend('force', c.syntax, c.syntax_tweek)
 
     for _, hi_spec in ipairs(M.theme(c)) do
         local name = hi_spec.name
