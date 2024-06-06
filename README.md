@@ -1,4 +1,5 @@
 # lackluster
+
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of neovim plugins
 
 ![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
