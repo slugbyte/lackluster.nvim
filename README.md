@@ -2,6 +2,8 @@
 
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of neovim plugins
 
+![the lackluster.nvim logo](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/logo/asset/lackluster.png)
+
 ![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
 
 ![a picture of lackluster lualine variations](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/detail/lackluster-lualine.png)
