@@ -83,23 +83,29 @@ M.load = function(opt)
     local t = theme
 
     t.syntax = t.syntax_default
+    vim.o.termguicolors = true
+    vim.g.colors_name = "lackluster"
 
     -- official themes
     if opt.theme == "hack" then
         t.syntax = t.syntax_hack
+        vim.g.colors_name = "lackluster-hack"
     end
 
     if opt.theme == "mint" then
         t.syntax = t.syntax_mint
+        vim.g.colors_name = "lackluster-mint"
     end
 
     -- expieramental themes
     if opt.theme == "dark" then
         t.syntax = t.syntax_dark
+        vim.g.colors_name = "lackluster-dark"
     end
 
     if opt.theme == "night" then
         t.syntax = t.syntax_night
+        vim.g.colors_name = "lackluster-night"
     end
 
     t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweek)
