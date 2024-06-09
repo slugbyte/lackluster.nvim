@@ -22,6 +22,7 @@
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
 3. (optional) Tweek Color and Transparency
+3. (optional) Disable Plugin Highlights
 
 ```lua 
 -- example lazy.nvim install setup
@@ -117,42 +118,39 @@ vim.cmd.colorscheme("lackluster")
 </details>
 
 <details>
-  <summary>(OPTIONAL) Disable Specific Plugin Highlights</summary>
+  <summary>(OPTIONAL) Disable Plugin Highlights</summary>
 
-  ```lua
+```lua
 local lackluster = require("lackluster")
+
+-- if for some reason you want to disable the highlights related to a specific plugin you 
+-- can set any of these to true and the highlights will not be set
 
 -- !must called setup() before setting the colorscheme!
 lackluster.setup({
-    -- set any plugin to false if you don't like that plugins highlights
-    -- it will then just default to whatever that plugins highlights are.
-
-    -- manly this config exists because lackluster's rainbow_delimiters are all different grays
-    -- if  you want the default rainbow colors just set `rainbow_delimiter` to false
-    plugin = {
-        cmp = true,
-        oil = true,
-        tree = true,
-        flash = true,
-        mason = true,
-        trouble = true,
-        git_signs = true,
-        lightbulb = true,
-        mini_diff = true,
-        telescope = true,
-        which_key = true,
-        git_gutter = true,
-        lsp_config = true,
-        todo_comments = true,
-        rainbow_delimiter = true
+    disable_plugin = {
+        cmp = false,
+        flash = false,
+        git_gutter = false,
+        git_signs = false,
+        lazy = false,
+        lightbulb = false,
+        lsp_config = false,
+        mason = false,
+        mini_diff = false,
+        oil = false,
+        rainbow_delimiter = false, -- if you want color-rainbows you should disable this
+        telescope = false,
+        todo_comments = false,
+        tree = false,
+        trouble = false,
+        which_key = false,
     },
 })
 
 -- !must set colorscheme after calling setup()!
 vim.cmd.colorscheme("lackluster")
-
-
-  ```
+```
   </details>
 
 ## VARIATIONS
