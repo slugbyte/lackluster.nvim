@@ -22,6 +22,7 @@ local M = {
     dev = dev,
 }
 
+
 ---@class LacklusterConfigTweekSyntax
 ---@field string string
 ---@field string_escape string
@@ -38,9 +39,30 @@ local M = {
 ---@field popup string
 ---@field telescope string
 
+---@class LacklusterConfigPlugin
+---@field cmp boolean
+---@field oil boolean
+---@field tree boolean
+---@field flash boolean
+---@field mason boolean
+---@field trouble boolean
+---@field git_signs boolean
+---@field lightbulb boolean
+---@field mini_diff boolean
+---@field telescope boolean
+---@field which_key boolean
+---@field git_gutter boolean
+---@field lsp_config boolean
+---@field todo_comments boolean
+---@field rainbow_delimiter boolean
+
 ---@class LacklusterConfig
 ---@field tweek_syntax LacklusterConfigTweekSyntax
 ---@field tweek_background LacklusterConfigTweekBackground
+---@field plugin LacklusterConfigPlugin
+
+--- @type LacklusterConfig | nil
+local USER_CONFIG = nil
 
 --- @type LacklusterConfig
 local default_config = {
@@ -62,15 +84,30 @@ local default_config = {
         popup = 'default',     -- lazy, mason, whichkey ...
         telescope = 'default', -- telescope
     },
+    plugin = {
+        cmp = true,
+        oil = true,
+        tree = true,
+        flash = true,
+        mason = true,
+        trouble = true,
+        git_signs = true,
+        lightbulb = true,
+        mini_diff = true,
+        telescope = true,
+        which_key = true,
+        git_gutter = true,
+        lsp_config = true,
+        todo_comments = true,
+        rainbow_delimiter = true
+    },
 }
 
 ---configure lackluster with optional settings
 ---@param config ?LacklusterConfig
 M.setup = function(config)
-    config = vim.tbl_extend("force", default_config, config or {})
-    config.tweek_background = config.tweek_background or {}
-    config.tweek_syntax = config.tweek_syntax or {}
-
+    config = vim.tbl_deep_extend("keep", config or {}, default_config)
+    USER_CONFIG = config
     tweek.background(config.tweek_background, theme)
     tweek.syntax(config.tweek_syntax, theme)
 end
@@ -79,8 +116,11 @@ end
 M.load = function(opt)
     opt = opt or {}
     local dedup_set = {}
-
     local t = theme
+
+    if USER_CONFIG == nil then
+        USER_CONFIG = vim.tbl_deep_extend("force", {}, default_config)
+    end
 
     t.syntax = t.syntax_default
     vim.o.termguicolors = true
@@ -110,16 +150,23 @@ M.load = function(opt)
 
     t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweek)
 
-    local highlight_list = highlight(t, color, color_special)
+    local highlight_group_list = highlight(t, color, color_special)
 
-    for _, hi_spec in ipairs(highlight_list) do
-        local name = hi_spec.name
-        if dedup_set[name] then
-            vim.notify("error: duplicate hidark :: " .. name, vim.log.levels.ERROR)
-        else
-            dedup_set[name] = true
-            hi_spec.name = nil
-            vim.api.nvim_set_hl(0, name, hi_spec)
+    for _, highlight_group in ipairs(highlight_group_list) do
+        local group_name = highlight_group.name
+        local group_highlight = highlight_group.highlight
+        if group_name == "general" or USER_CONFIG.plugin[group_name] then
+            for _, hi_spec in ipairs(group_highlight) do
+                -- vim.print("hi_spec", hi_spec)
+                local name = hi_spec.name
+                if dedup_set[name] then
+                    vim.notify("error: duplicate hidark :: " .. name, vim.log.levels.ERROR)
+                else
+                    dedup_set[name] = true
+                    hi_spec.name = nil
+                    vim.api.nvim_set_hl(0, name, hi_spec)
+                end
+            end
         end
     end
 end
