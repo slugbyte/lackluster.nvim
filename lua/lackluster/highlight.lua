@@ -8,8 +8,8 @@ local spec = require("lackluster.spec")
 -- TODO: ?? refactor theme and highlight() so that highlight() does not need color or special
 
 ---@param theme LacklusterTheme
-local highlight = function(theme, color, special)
-    ---@type LacklusterHightlightGroup[]
+---@return LacklusterHightlightGroup[]
+local highlight = function(theme, color)
     return {
         {
             dont_skip = true,
@@ -313,21 +313,21 @@ local highlight = function(theme, color, special)
                 spec.fg('makeSpecial', theme.syntax.special),
             },
         },
-        require("lackluster.plugin.telescope")(theme),
         require("lackluster.plugin.cmp")(theme),
-        require("lackluster.plugin.which-key")(theme),
-        require("lackluster.plugin.oil")(theme),
-        require("lackluster.plugin.git_signs")(theme),
-        require("lackluster.plugin.git_gutter")(theme),
-        require("lackluster.plugin.todo_comments")(theme),
+        require("lackluster.plugin.flash")(theme),
+        require("lackluster.plugin.git-gutter")(theme),
+        require("lackluster.plugin.git-signs")(theme),
+        require("lackluster.plugin.lazy")(theme),
         require("lackluster.plugin.lightbulb")(theme),
         require("lackluster.plugin.lsp-config")(theme),
-        require("lackluster.plugin.lazy")(theme),
         require("lackluster.plugin.mason")(theme),
-        require("lackluster.plugin.trouble")(theme),
+        require("lackluster.plugin.oil")(theme),
+        require("lackluster.plugin.rainbow-delimiter")(theme),
+        require("lackluster.plugin.telescope")(theme),
+        require("lackluster.plugin.todo-comments")(theme),
         require("lackluster.plugin.tree")(theme),
-        require("lackluster.plugin.flash")(theme),
-        require("lackluster.plugin.rainbow_delimiter")(theme),
+        require("lackluster.plugin.trouble")(theme),
+        require("lackluster.plugin.which-key")(theme),
     }
 end
 

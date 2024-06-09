@@ -12,7 +12,6 @@
 
 local dev = require("lackluster.dev")
 local color = require("lackluster.color")
-local color_special = require("lackluster.color-special")
 local theme = require("lackluster.theme")
 local tweek = require("lackluster.tweek")
 local highlight = require("lackluster.highlight")
@@ -23,42 +22,43 @@ local M = {
 }
 
 ---@class LacklusterConfigTweekSyntax
----@field string string
----@field string_escape string
----@field comment string
----@field builtin string
----@field type string
----@field keyword string
----@field keyword_return string
----@field keyword_exception string
+---@field string ?string
+---@field string_escape ?string
+---@field comment ?string
+---@field builtin ?string
+---@field type ?string
+---@field keyword ?string
+---@field keyword_return ?string
+---@field keyword_exception ?string
 
 ---@class LacklusterConfigTweekBackground
----@field normal string
----@field menu string
----@field popup string
----@field telescope string
+---@field normal ?string
+---@field menu ?string
+---@field popup ?string
+---@field telescope ?string
 
----@class LacklusterConfigPlugin
----@field cmp boolean
----@field oil boolean
----@field tree boolean
----@field flash boolean
----@field mason boolean
----@field trouble boolean
----@field git_signs boolean
----@field lightbulb boolean
----@field mini_diff boolean
----@field telescope boolean
----@field which_key boolean
----@field git_gutter boolean
----@field lsp_config boolean
----@field todo_comments boolean
----@field rainbow_delimiter boolean
+---@class LacklusterConfigDisablePlugin
+---@field cmp ?boolean
+---@field flash ?boolean
+---@field git_gutter ?boolean
+---@field git_signs ?boolean
+---@field lazy ?boolean
+---@field lightbulb ?boolean
+---@field lsp_config ?boolean
+---@field mason ?boolean
+---@field mini_diff ?boolean
+---@field oil ?boolean
+---@field rainbow_delimiter ?boolean
+---@field telescope ?boolean
+---@field todo_comments ?boolean
+---@field tree ?boolean
+---@field trouble ?boolean
+---@field which_key ?boolean
 
 ---@class LacklusterConfig
----@field tweek_syntax LacklusterConfigTweekSyntax
----@field tweek_background LacklusterConfigTweekBackground
----@field plugin LacklusterConfigPlugin
+---@field tweek_syntax ?LacklusterConfigTweekSyntax
+---@field tweek_background ?LacklusterConfigTweekBackground
+---@field disable_plugin LacklusterConfigDisablePlugin
 
 --- @type LacklusterConfig | nil
 local USER_CONFIG = nil
@@ -83,22 +83,23 @@ local default_config = {
         popup = 'default',     -- lazy, mason, whichkey ...
         telescope = 'default', -- telescope
     },
-    plugin = {
-        cmp = true,
-        oil = true,
-        tree = true,
-        flash = true,
-        mason = true,
-        trouble = true,
-        git_signs = true,
-        lightbulb = true,
-        mini_diff = true,
-        telescope = true,
-        which_key = true,
-        git_gutter = true,
-        lsp_config = true,
-        todo_comments = true,
-        rainbow_delimiter = true
+    disable_plugin = {
+        cmp = nil,
+        flash = nil,
+        git_gutter = nil,
+        git_signs = nil,
+        lazy = nil,
+        lightbulb = nil,
+        lsp_config = nil,
+        mason = nil,
+        mini_diff = nil,
+        oil = nil,
+        rainbow_delimiter = nil,
+        telescope = nil,
+        todo_comments = nil,
+        tree = nil,
+        trouble = nil,
+        which_key = nil,
     },
 }
 
@@ -149,20 +150,22 @@ M.load = function(opt)
     t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweek)
 
     local dedup_set = {}
-    local highlight_group_list = highlight(t, color, color_special)
-    for _, highlight_group in ipairs(highlight_group_list) do
-        local group_plugin_name = highlight_group.plugin_name
-        local group_highlight = highlight_group.highlight
+    local highlight_group_list = highlight(t, color)
 
-        if highlight_group.dont_skip or USER_CONFIG.plugin[group_plugin_name] then
-            for _, hi_spec in ipairs(group_highlight) do
-                local name = hi_spec.name
-                if dedup_set[name] then
-                    vim.notify("error: duplicate hi_spec :: " .. name, vim.log.levels.ERROR)
+    for _, highlight_group in ipairs(highlight_group_list) do
+        local highlight_spec_list = highlight_group.highlight
+        local is_plugin_enabled = not USER_CONFIG.disable_plugin[highlight_group.plugin_name]
+
+        if highlight_group.dont_skip or is_plugin_enabled then
+            for _, hl_spec in ipairs(highlight_spec_list) do
+                local hl_name = hl_spec.name
+                if dedup_set[hl_name] then
+                    vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
                 else
-                    dedup_set[name] = true
-                    hi_spec.name = nil
-                    vim.api.nvim_set_hl(0, name, hi_spec)
+                    dedup_set[hl_name] = true
+                    hl_spec.name = nil -- must set to nil so that nvim_set_hl doen't freq out
+                    ---@diagnostic disable-next-line: param-type-mismatch
+                    vim.api.nvim_set_hl(0, hl_name, hl_spec)
                 end
             end
         end
