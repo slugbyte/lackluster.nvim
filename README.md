@@ -116,6 +116,45 @@ vim.cmd.colorscheme("lackluster")
 ```
 </details>
 
+<details>
+  <summary>(OPTIONAL) Disable Specific Plugin Highlights</summary>
+
+  ```lua
+local lackluster = require("lackluster")
+
+-- !must called setup() before setting the colorscheme!
+lackluster.setup({
+    -- set any plugin to false if you don't like that plugins highlights
+    -- it will then just default to whatever that plugins highlights are.
+
+    -- manly this config exists because lackluster's rainbow_delimiters are all different grays
+    -- if  you want the default rainbow colors just set `rainbow_delimiter` to false
+    plugin = {
+        cmp = true,
+        oil = true,
+        tree = true,
+        flash = true,
+        mason = true,
+        trouble = true,
+        git_signs = true,
+        lightbulb = true,
+        mini_diff = true,
+        telescope = true,
+        which_key = true,
+        git_gutter = true,
+        lsp_config = true,
+        todo_comments = true,
+        rainbow_delimiter = true
+    },
+})
+
+-- !must set colorscheme after calling setup()!
+vim.cmd.colorscheme("lackluster")
+
+
+  ```
+  </details>
+
 ## VARIATIONS
 > lackluster-hack (return is green, exception is blue)
 
