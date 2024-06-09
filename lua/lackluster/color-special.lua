@@ -2,6 +2,7 @@
 -- they help make like sure other highlights dont look garbage when placed
 -- on top or adjacent to one another
 
+---@class LacklusterColorSpecial
 return {
     main_background = '#101010',
     menu_background = '#191919',
