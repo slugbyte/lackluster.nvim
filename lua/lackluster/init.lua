@@ -22,7 +22,6 @@ local M = {
     dev = dev,
 }
 
-
 ---@class LacklusterConfigTweekSyntax
 ---@field string string
 ---@field string_escape string
@@ -115,13 +114,12 @@ end
 -- apply the colorscheme
 M.load = function(opt)
     opt = opt or {}
-    local dedup_set = {}
-    local t = theme
 
     if USER_CONFIG == nil then
         USER_CONFIG = vim.tbl_deep_extend("force", {}, default_config)
     end
 
+    local t = theme
     t.syntax = t.syntax_default
     vim.o.termguicolors = true
     vim.g.colors_name = "lackluster"
@@ -150,17 +148,17 @@ M.load = function(opt)
 
     t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweek)
 
+    local dedup_set = {}
     local highlight_group_list = highlight(t, color, color_special)
-
     for _, highlight_group in ipairs(highlight_group_list) do
-        local group_name = highlight_group.name
+        local group_plugin_name = highlight_group.plugin_name
         local group_highlight = highlight_group.highlight
-        if group_name == "general" or USER_CONFIG.plugin[group_name] then
+
+        if highlight_group.dont_skip or USER_CONFIG.plugin[group_plugin_name] then
             for _, hi_spec in ipairs(group_highlight) do
-                -- vim.print("hi_spec", hi_spec)
                 local name = hi_spec.name
                 if dedup_set[name] then
-                    vim.notify("error: duplicate hidark :: " .. name, vim.log.levels.ERROR)
+                    vim.notify("error: duplicate hi_spec :: " .. name, vim.log.levels.ERROR)
                 else
                     dedup_set[name] = true
                     hi_spec.name = nil

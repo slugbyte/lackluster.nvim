@@ -1,3 +1,4 @@
+---@class LacklusterColor
 return {
     lack = "#708090",
     luster = "#deeeed",

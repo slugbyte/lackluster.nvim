@@ -1,572 +1,333 @@
---- create a color spec
---- @param fg string
---- @param bg string
---- @param opts ?{[string]:any}
-local co = function(name, fg, bg, opts)
-    opts = opts or {}
-    if fg == nil then
-        assert(false, name .. " fg cannot be nil")
-    end
-    if bg == nil then
-        assert(false, name .. " bg cannot be nil")
-    end
+local spec = require("lackluster.spec")
 
-    return vim.tbl_extend("force", opts, {
-        name = name,
-        fg = fg,
-        bg = bg,
-    })
-end
-
---- set only foreground
---- @param name string
---- @param fg string
-local fg = function(name, fg)
-    return co(name, fg, 'none')
-end
-
---- set only background
---- @param name string
---- @param bg string
-local bg = function(name, bg)
-    return co(name, 'none', bg)
-end
-
---- set only options
---- @param name string
---- @param opts {[string]: any}
-local op = function(name, opts)
-    return co(name, 'none', 'none', opts)
-end
-
---- create a hi link
---- @param name string
---- @param link string
-local ln = function(name, link)
-    return {
-        name = name,
-        link = link,
-    }
-end
+---@class LacklusterHightlightGroup
+---@field plugin_name ?string
+---@field dont_skip ?boolean -- force highlights to run if true
+---@field highlight LacklusterHighlightSpec[]
 
 -- TODO: ?? refactor theme and highlight() so that highlight() does not need color or special
+
+---@param theme LacklusterTheme
 local highlight = function(theme, color, special)
+    ---@type LacklusterHightlightGroup[]
     return {
         {
-            name = "general",
+            dont_skip = true,
             highlight = {
                 -- TEXT
-                co('Normal', theme.ui.fg_normal, theme.ui.bg_normal),
-                fg('Title', theme.ui.fg_title),
+                spec.co('Normal', theme.ui.fg_normal, theme.ui.bg_normal),
+                spec.fg('Title', theme.ui.fg_title),
 
                 -- CURSOR
-                co('CursorLine', color.none, theme.ui.bg_cursorline),
-                fg('CursorLineNr', theme.ui.fg_line_num_cur),
-                fg('LineNr', theme.ui.fg_line_num),
-                bg('ColorColumn', theme.ui.bg_colorcolumn),
+                spec.co('CursorLine', theme.none, theme.ui.bg_cursorline),
+                spec.fg('CursorLineNr', theme.ui.fg_line_num_cur),
+                spec.fg('LineNr', theme.ui.fg_line_num),
+                spec.bg('ColorColumn', theme.ui.bg_colorcolumn),
 
                 -- SEARCH
-                co('Search', theme.ui.fg_search, theme.ui.bg_search_item),
-                co('CurSearch', theme.ui.fg_search, theme.ui.bg_search_cur),
-                ln('IncSearch', 'CurSearch'),
-                ln('Substitue', 'Search'),
+                spec.co('Search', theme.ui.fg_search, theme.ui.bg_search_item),
+                spec.co('CurSearch', theme.ui.fg_search, theme.ui.bg_search_cur),
+                spec.ln('IncSearch', 'CurSearch'),
+                spec.ln('Substitue', 'Search'),
 
                 -- VISUAL
-                co('VISUAL', theme.ui.fg_visual, theme.ui.bg_visual),
-                ln('VISUALNOS', 'VISUAL'),
+                spec.co('VISUAL', theme.ui.fg_visual, theme.ui.bg_visual),
+                spec.ln('VISUALNOS', 'VISUAL'),
 
                 -- MESSAGE
-                fg('Error', theme.log.error),
-                fg('ModeMsg', theme.log.info),
-                fg('MsgArea', theme.log.info),
-                ln('ErrorMsg', 'Error'),
-                fg('WarningMsg', theme.log.warn),
-                fg('NvimInternalError', theme.log.error),
-                fg('healthError', theme.log.error),
-                fg('healthSuccess', theme.log.success),
-                fg('healthWarning', theme.log.warn),
+                spec.fg('Error', theme.log.error),
+                spec.fg('ModeMsg', theme.log.info),
+                spec.fg('MsgArea', theme.log.info),
+                spec.ln('ErrorMsg', 'Error'),
+                spec.fg('WarningMsg', theme.log.warn),
+                spec.fg('NvimInternalError', theme.log.error),
+                spec.fg('healthError', theme.log.error),
+                spec.fg('healthSuccess', theme.log.success),
+                spec.fg('healthWarning', theme.log.warn),
 
                 -- StatusLine
-                co('StatusLine', color.gray7, theme.ui.bg_statusline_cur),
-                co('StatusLineNC', color.gray4, theme.ui.bg_statusline),
+                spec.co('StatusLine', theme.ui.fg_statusline, theme.ui.bg_statusline),
+                spec.co('StatusLineNC', theme.ui.fg_statusline_nc, theme.ui.bg_statusline_nc),
 
                 -- TABLINE
-                co('Tabline', color.gray4, theme.ui.bg_tab),
-                co('TablineFill', color.gray7, theme.ui.bg_statusline_cur),
-                co('TablineSel', color.gray1, theme.ui.bg_tab_cur),
+                spec.co('Tabline', theme.ui.fg_tab_nc, theme.ui.bg_tab_nc),
+                spec.co('TablineSel', theme.ui.fg_tab_active, theme.ui.bg_tab_active),
+                spec.co('TablineFill', theme.ui.fg_statusline, theme.ui.bg_statusline),
 
                 -- FLOAT
-                co('NormalFloat', theme.ui.fg_normal, theme.ui.bg_popup),
-                co('FloatBorder', theme.ui.fg_border, theme.ui.bg_popup),
-                fg('FloatTitle', theme.ui.fg_title),
+                spec.co('NormalFloat', theme.ui.fg_normal, theme.ui.bg_popup),
+                spec.co('FloatBorder', theme.ui.fg_border, theme.ui.bg_popup),
+                spec.fg('FloatTitle', theme.ui.fg_title),
 
                 -- MENU
-                co('Pmenu', theme.ui.fg_menu, theme.ui.bg_menu),
-                co('PmenuSbar', theme.ui.bg_scrollbar, theme.ui.bg_scrollbar),
-                co('PmenuThumb', theme.ui.fg_scrollbar, theme.ui.fg_scrollbar),
-                co('PmenuSel', theme.ui.fg_search, theme.ui.bg_search_cur),
+                spec.co('Pmenu', theme.ui.fg_menu, theme.ui.bg_menu),
+                spec.co('PmenuSbar', theme.ui.bg_scrollbar, theme.ui.bg_scrollbar),
+                spec.co('PmenuThumb', theme.ui.fg_scrollbar, theme.ui.fg_scrollbar),
+                spec.co('PmenuSel', theme.ui.fg_search, theme.ui.bg_search_cur),
 
                 -- OTHER UI
-                fg('WinSeparator', theme.ui.fg_border),
-                fg('EndOfBuffer', color.gray4),
-                fg('QuickFixLine', color.green),
+                spec.fg('WinSeparator', theme.ui.fg_border),
+                spec.fg('EndOfBuffer', color.gray4),
+                spec.fg('QuickFixLine', color.green),
 
                 -- SYNTAX
-                fg('Identifier', theme.syntax.type),
-                fg('Function', theme.syntax.func_call),
-                fg('Type', theme.syntax.type),
-                fg('Variable', theme.syntax.var),
-                fg('Statement', theme.syntax.var),
-                fg('Special', theme.syntax.special),
-                fg('Keyword', theme.syntax.keyword),
-                ln('Conditional', 'Keyword'),
-                ln('Repeat', 'Keyword'),
-                ln('Label', 'Keyword'),
-                ln('Exception', 'Keyword'),
-                ln('PreProc', 'Keyword'),
+                spec.fg('Identifier', theme.syntax.type),
+                spec.fg('Function', theme.syntax.func_call),
+                spec.fg('Type', theme.syntax.type),
+                spec.fg('Variable', theme.syntax.var),
+                spec.fg('Statement', theme.syntax.var),
+                spec.fg('Special', theme.syntax.special),
+                spec.fg('Keyword', theme.syntax.keyword),
+                spec.ln('Conditional', 'Keyword'),
+                spec.ln('Repeat', 'Keyword'),
+                spec.ln('Label', 'Keyword'),
+                spec.ln('Exception', 'Keyword'),
+                spec.ln('PreProc', 'Keyword'),
 
                 -- CONSTANTS
-                fg('Constant', theme.syntax.const),
-                fg('String', theme.syntax.string),
-                ln('Character', 'String'),
-                ln('Number', 'Constant'),
-                ln('Boolean', 'Constant'),
-                ln('Float', 'Constant'),
+                spec.fg('Constant', theme.syntax.const),
+                spec.fg('String', theme.syntax.string),
+                spec.ln('Character', 'String'),
+                spec.ln('Number', 'Constant'),
+                spec.ln('Boolean', 'Constant'),
+                spec.ln('Float', 'Constant'),
 
                 -- PUNCTUATION
-                fg('Quote', theme.syntax.string),
-                fg('Operator', theme.syntax.punctuation),
-                fg('Delimiter', theme.syntax.punctuation),
-                co('MatchParen', theme.ui.bg_search_cur, theme.ui.bg_search_item),
+                spec.fg('Quote', theme.syntax.string),
+                spec.fg('Operator', theme.syntax.punctuation),
+                spec.fg('Delimiter', theme.syntax.punctuation),
+                spec.co('MatchParen', theme.ui.bg_search_cur, theme.ui.bg_search_item),
 
                 -- COMMENT
-                fg('Todo', theme.log.hint),
-                fg('Question', theme.log.hint),
-                fg('Comment', theme.syntax.comment),
-                fg('SpecialComment', theme.syntax.comment),
+                spec.fg('Todo', theme.log.hint),
+                spec.fg('Question', theme.log.hint),
+                spec.fg('Comment', theme.syntax.comment),
+                spec.fg('SpecialComment', theme.syntax.comment),
 
                 -- DIAGNOSTICS
-                fg('DiagnosticOk', theme.diagnostic.text),
-                fg('DiagnosticHint', theme.diagnostic.text),
-                fg('DiagnosticInfo', theme.diagnostic.text),
-                fg('DiagnosticWarn', theme.diagnostic.text),
-                fg('DiagnosticError', theme.diagnostic.error),
-                fg('DiagnosticDeprecated', theme.diagnostic.text),
-                fg('DiagnosticUnnecessary', theme.diagnostic.text),
+                spec.fg('DiagnosticOk', theme.diagnostic.text),
+                spec.fg('DiagnosticHint', theme.diagnostic.text),
+                spec.fg('DiagnosticInfo', theme.diagnostic.text),
+                spec.fg('DiagnosticWarn', theme.diagnostic.text),
+                spec.fg('DiagnosticError', theme.diagnostic.error),
+                spec.fg('DiagnosticDeprecated', theme.diagnostic.text),
+                spec.fg('DiagnosticUnnecessary', theme.diagnostic.text),
 
-                fg('DiagnosticVirtualTextOk', theme.diagnostic.text),
-                fg('DiagnosticVirtualTextHint', theme.diagnostic.text),
-                fg('DiagnosticVirtualTextInfo', theme.diagnostic.text),
-                fg('DiagnosticVirtualTextWarn', theme.diagnostic.text),
-                fg('DiagnosticVirtualTextError', theme.diagnostic.error),
+                spec.fg('DiagnosticVirtualTextOk', theme.diagnostic.text),
+                spec.fg('DiagnosticVirtualTextHint', theme.diagnostic.text),
+                spec.fg('DiagnosticVirtualTextInfo', theme.diagnostic.text),
+                spec.fg('DiagnosticVirtualTextWarn', theme.diagnostic.text),
+                spec.fg('DiagnosticVirtualTextError', theme.diagnostic.error),
 
-                fg('DiagnosticSignOk', theme.diagnostic.ok),
-                fg('DiagnosticSignInfo', theme.diagnostic.info),
-                fg('DiagnosticSignHint', theme.diagnostic.hint),
-                fg('DiagnosticSignWarn', theme.diagnostic.warn),
-                fg('DiagnosticSignError', theme.diagnostic.error),
-                fg('DiagnosticSignDeprecated', theme.diagnostic.depricated),
+                spec.fg('DiagnosticSignOk', theme.diagnostic.ok),
+                spec.fg('DiagnosticSignInfo', theme.diagnostic.info),
+                spec.fg('DiagnosticSignHint', theme.diagnostic.hint),
+                spec.fg('DiagnosticSignWarn', theme.diagnostic.warn),
+                spec.fg('DiagnosticSignError', theme.diagnostic.error),
+                spec.fg('DiagnosticSignDeprecated', theme.diagnostic.depricated),
 
-                -- TREESITTER
                 -- treesitter syntax
-                fg('@keyword', theme.syntax.keyword),
-                fg('@keyword.return', theme.syntax.keyword_return),
-                fg('@keyword.exception', theme.syntax.keyword_exception),
-                fg('@attribute', theme.syntax.keyword),
-                fg('@type', theme.syntax.type),
-                fg('@type.definition', theme.syntax.type_def),
-                fg('@property', color.gray7),
-                fg('@label', theme.ui.fg_title),
+                spec.fg('@keyword', theme.syntax.keyword),
+                spec.fg('@keyword.return', theme.syntax.keyword_return),
+                spec.fg('@keyword.exception', theme.syntax.keyword_exception),
+                spec.fg('@attribute', theme.syntax.keyword),
+                spec.fg('@type', theme.syntax.type),
+                spec.fg('@type.definition', theme.syntax.type_def),
+                spec.fg('@property', color.gray7),
+                spec.fg('@label', theme.ui.fg_title),
 
                 -- treesitter variable
-                fg('@variable', theme.syntax.var),
-                fg('@variable.member', theme.syntax.var_member),
+                spec.fg('@variable', theme.syntax.var),
+                spec.fg('@variable.member', theme.syntax.var_member),
 
                 -- treesistter constant
-                fg('@constant', theme.syntax.const),
-                fg('@boolean', theme.syntax.const),
-                fg('@number', theme.syntax.const),
+                spec.fg('@constant', theme.syntax.const),
+                spec.fg('@boolean', theme.syntax.const),
+                spec.fg('@number', theme.syntax.const),
 
                 -- treesitter punctuation
-                fg('@operator', theme.syntax.punctuation),
-                fg('@punctuation.bracket', theme.syntax.punctuation),
-                fg('@punctuation.special', theme.syntax.punctuation),
-                fg('@punctuation.delimiter', theme.syntax.punctuation),
-                fg('@constructor', theme.syntax.punctuation),
+                spec.fg('@operator', theme.syntax.punctuation),
+                spec.fg('@punctuation.bracket', theme.syntax.punctuation),
+                spec.fg('@punctuation.special', theme.syntax.punctuation),
+                spec.fg('@punctuation.delimiter', theme.syntax.punctuation),
+                spec.fg('@constructor', theme.syntax.punctuation),
 
                 -- treesitter func
-                fg('@function', theme.syntax.func_def),
-                fg('@function.method', theme.syntax.func_def),
-                fg('@function.call', theme.syntax.func_call),
-                fg('@function.method.call', theme.syntax.func_call),
-                fg('@variable.parameter', theme.syntax.func_param),
+                spec.fg('@function', theme.syntax.func_def),
+                spec.fg('@function.method', theme.syntax.func_def),
+                spec.fg('@function.call', theme.syntax.func_call),
+                spec.fg('@function.method.call', theme.syntax.func_call),
+                spec.fg('@variable.parameter', theme.syntax.func_param),
 
                 -- treesiter string
-                fg('@string', theme.syntax.string),
-                fg('@character', theme.syntax.string),
-                fg('@string.escape', theme.syntax.string_escape),
-                fg('@string.special', theme.syntax.string_escape),
-                fg('@string.regexp', theme.syntax.string_escape),
+                spec.fg('@string', theme.syntax.string),
+                spec.fg('@character', theme.syntax.string),
+                spec.fg('@string.escape', theme.syntax.string_escape),
+                spec.fg('@string.special', theme.syntax.string_escape),
+                spec.fg('@string.regexp', theme.syntax.string_escape),
 
                 -- treesitter comment
                 -- QUESTION: not sure if (todo, note, warn should actual bye c.syntax.comment)
                 -- if it ends up highlighting the whole line I thing i would prefer .comment
-                fg('@comment', theme.syntax.comment),
-                fg('@comment.todo', theme.diagnostic.hint),
-                fg('@comment.note', theme.diagnostic.hint),
-                fg('@comment.warn', theme.diagnostic.warn),
-                fg('@comment.error', theme.diagnostic.error),
-                fg('@comment.documentation', theme.syntax.comment),
+                spec.fg('@comment', theme.syntax.comment),
+                spec.fg('@comment.todo', theme.diagnostic.hint),
+                spec.fg('@comment.note', theme.diagnostic.hint),
+                spec.fg('@comment.warn', theme.diagnostic.warn),
+                spec.fg('@comment.error', theme.diagnostic.error),
+                spec.fg('@comment.documentation', theme.syntax.comment),
 
                 -- treesitter markup
-                fg('@markup.heading', theme.ui.fg_title),
-                fg('@markup.quote', color.gray6),
-
-                fg('@markup.strong', color.gray4),
-                fg('@markup.italic', color.gray4),
-                fg('@markup.strikethrough', color.gray4),
-                op('@markup.underline', {
+                spec.fg('@markup.heading', theme.ui.fg_title),
+                spec.fg('@markup.quote', color.gray6),
+                spec.fg('@markup.strong', color.gray4),
+                spec.fg('@markup.italic', color.gray4),
+                spec.fg('@markup.strikethrough', color.gray4),
+                spec.op('@markup.underline', {
                     undercurl = true,
                 }),
 
-                fg('@markup.list', color.gray4),
-                fg('@markup.list.checked', theme.syntax.string_escape),
-                fg('@markup.list.unchecked', color.red),
+                spec.fg('@markup.list', color.gray4),
+                spec.fg('@markup.list.checked', theme.syntax.string_escape),
+                spec.fg('@markup.list.unchecked', color.red),
 
-                fg('@markup.link', color.gray6),
-                fg('@markup.link.label', color.gray6),
-                fg('@markup.link.url', color.gray4),
+                spec.fg('@markup.link', color.gray6),
+                spec.fg('@markup.link.label', color.gray6),
+                spec.fg('@markup.link.url', color.gray4),
 
-                fg('@markup.math', color.orange),
+                spec.fg('@markup.math', color.orange),
 
                 -- treesitter tags
-                fg('@tag', theme.syntax.tag),
-                fg('@tag.delimiter', theme.syntax.tag),
-                fg('@tag.attribute', color.gray4),
+                spec.fg('@tag', theme.syntax.tag),
+                spec.fg('@tag.delimiter', theme.syntax.tag),
+                spec.fg('@tag.attribute', color.gray4),
 
                 -- treesitter builtin
-                fg('@type.builtin', theme.syntax.type_primitave),
-                fg('@tag.builtin', theme.syntax.tag),
-                fg('@variable.builtin', theme.syntax.var),
-                fg('@function.builtin', theme.syntax.builtin),
-                fg('@module.builtin', theme.syntax.builtin),
-                fg('@constant.builtin', theme.syntax.const_builtin),
+                spec.fg('@type.builtin', theme.syntax.type_primitave),
+                spec.fg('@tag.builtin', theme.syntax.tag),
+                spec.fg('@variable.builtin', theme.syntax.var),
+                spec.fg('@function.builtin', theme.syntax.builtin),
+                spec.fg('@module.builtin', theme.syntax.builtin),
+                spec.fg('@constant.builtin', theme.syntax.const_builtin),
 
                 -- treesitter diff
-                fg('@diff.pluss', theme.diff.add),
-                fg('@diff.minus', theme.diff.delete),
-                fg('@diff.delta', theme.diff.change),
+                spec.fg('@diff.pluss', theme.diff.add),
+                spec.fg('@diff.minus', theme.diff.delete),
+                spec.fg('@diff.delta', theme.diff.change),
 
                 -- lsp links to treesiter
-                ln('@lsp.type.keyword', '@keyword'),
-                ln('@lsp.type.function', '@function'),
-                ln('@lsp.type.variable', '@variable'),
-                ln('@lsp.type.operator', '@operator'),
-                ln('@lsp.type.type', '@type'),
-                ln('@lsp.type.string', '@string'),
-                ln('@lsp.type.number', '@number'),
-                ln('@lsp.type.boolean', '@boolean'),
-                ln('@lsp.type.enumMember', '@variable.memeber'),
+                spec.ln('@lsp.type.keyword', '@keyword'),
+                spec.ln('@lsp.type.function', '@function'),
+                spec.ln('@lsp.type.variable', '@variable'),
+                spec.ln('@lsp.type.operator', '@operator'),
+                spec.ln('@lsp.type.type', '@type'),
+                spec.ln('@lsp.type.string', '@string'),
+                spec.ln('@lsp.type.number', '@number'),
+                spec.ln('@lsp.type.boolean', '@boolean'),
+                spec.ln('@lsp.type.enumMember', '@variable.memeber'),
 
                 --spell
-                op('SpellBad', {
+                spec.op('SpellBad', {
                     undercurl = true,
                 }),
-                ln('SpellLocal', 'SpellBad'),
-                ln('SpellCap', 'SpellBad'),
-                ln('SpellRare', 'SpellBad'),
+                spec.ln('SpellLocal', 'SpellBad'),
+                spec.ln('SpellCap', 'SpellBad'),
+                spec.ln('SpellRare', 'SpellBad'),
 
                 -- diff
-                fg('Added', theme.diff.add),
-                fg('Changed', theme.diff.change),
-                fg('Removed', theme.diff.delete),
-                fg('DiffAdd', theme.diff.add),
-                fg('DiffChange', theme.diff.change),
-                fg('DiffDelete', theme.diff.delete),
-                fg('DiffText', theme.diff.info),
-                fg('DiffAdded', theme.diff.add),
-                fg('DiffRemoved', theme.diff.delete),
-                fg('DiffChanged', theme.diff.change),
-                fg('DiffOldFile', theme.diff.info),
-                fg('DiffNewFile', theme.diff.add),
-                fg('DiffFile', theme.diff.change),
-                fg('DiffLine', theme.diff.change),
-                fg('DiffIndexLine', theme.diff.info),
+                spec.fg('Added', theme.diff.add),
+                spec.fg('Changed', theme.diff.change),
+                spec.fg('Removed', theme.diff.delete),
+                spec.fg('DiffAdd', theme.diff.add),
+                spec.fg('DiffChange', theme.diff.change),
+                spec.fg('DiffDelete', theme.diff.delete),
+                spec.fg('DiffText', theme.diff.info),
+                spec.fg('DiffAdded', theme.diff.add),
+                spec.fg('DiffRemoved', theme.diff.delete),
+                spec.fg('DiffChanged', theme.diff.change),
+                spec.fg('DiffOldFile', theme.diff.info),
+                spec.fg('DiffNewFile', theme.diff.add),
+                spec.fg('DiffFile', theme.diff.change),
+                spec.fg('DiffLine', theme.diff.change),
+                spec.fg('DiffIndexLine', theme.diff.info),
 
                 -- lisp
-                fg('@string.special.symbol.clojure', theme.syntax.type), -- :symbols
-                ln('lispFunc', '@variable.parameter'),
-                ln('lispSymbol', "@variable"),
-                ln('lispDecl', "@keyword"),
+                spec.fg('@string.special.symbol.clojure', theme.syntax.type), -- :symbols
+                spec.ln('lispFunc', '@variable.parameter'),
+                spec.ln('lispSymbol', "@variable"),
+                spec.ln('lispDecl', "@keyword"),
 
                 -- zsh
-                fg('zshFunction', theme.syntax.func_def),
+                spec.fg('zshFunction', theme.syntax.func_def),
 
                 -- json,yaml,toml
-                fg('@property.json', color.gray6),
-                fg('@property.yaml', color.gray6),
-                fg('@property.toml', color.gray6),
-                fg('@type.toml', color.gray8),
+                spec.fg('@property.json', color.gray6),
+                spec.fg('@property.yaml', color.gray6),
+                spec.fg('@property.toml', color.gray6),
+                spec.fg('@type.toml', color.gray8),
 
                 -- xml
-                fg('xmlTag', color.gray5),
-                fg('xmlTagName', color.gray5),
-                fg('xmlAttrib', color.gray4),
+                spec.fg('xmlTag', color.gray5),
+                spec.fg('xmlTagName', color.gray5),
+                spec.fg('xmlAttrib', color.gray4),
 
                 -- html
-                fg('htmlTagName', theme.syntax.tag),
+                spec.fg('htmlTagName', theme.syntax.tag),
 
                 -- text
-                fg('texStatement', color.gray5),
-                fg('texDefCmd', color.gray5),
-                fg('texDefName', color.gray5),
-                fg('texDocType', color.gray5),
-                fg('texDocZone', color.gray5),
-                fg('texDocAbstract', color.gray5),
-                fg('texBeginEnd', color.gray5),
+                spec.fg('texStatement', color.gray5),
+                spec.fg('texDefCmd', color.gray5),
+                spec.fg('texDefName', color.gray5),
+                spec.fg('texDocType', color.gray5),
+                spec.fg('texDocZone', color.gray5),
+                spec.fg('texDocAbstract', color.gray5),
+                spec.fg('texBeginEnd', color.gray5),
 
                 -- css
-                fg('cssMediaProp', theme.ui.fg_normal),
-                fg('cssTransitionProp', theme.ui.fg_normal),
-                fg('cssTextProp', theme.ui.fg_normal),
-                fg('cssBoxProp', theme.ui.fg_normal),
-                fg('cssFontProp', theme.ui.fg_normal),
-                fg('cssPositioningProp', theme.ui.fg_normal),
-                fg('cssBorderProp', theme.ui.fg_normal),
-                fg('cssBackgroundProp', theme.ui.fg_normal),
-                fg('cssTransformProp', theme.ui.fg_normal),
-                fg('@property.css', theme.ui.fg_normal),
-                fg('@tag.css', theme.ui.fg_normal),
+                spec.fg('cssMediaProp', theme.ui.fg_normal),
+                spec.fg('cssTransitionProp', theme.ui.fg_normal),
+                spec.fg('cssTextProp', theme.ui.fg_normal),
+                spec.fg('cssBoxProp', theme.ui.fg_normal),
+                spec.fg('cssFontProp', theme.ui.fg_normal),
+                spec.fg('cssPositioningProp', theme.ui.fg_normal),
+                spec.fg('cssBorderProp', theme.ui.fg_normal),
+                spec.fg('cssBackgroundProp', theme.ui.fg_normal),
+                spec.fg('cssTransformProp', theme.ui.fg_normal),
+                spec.fg('@property.css', theme.ui.fg_normal),
+                spec.fg('@tag.css', theme.ui.fg_normal),
 
                 -- markdown
-                fg('markdownCodeDelimiter', color.green),
-                fg('markdownLinkDelimiter', color.gray6),
-                ln('markdownLinkTextDelimiter', '@markup.link'),
-                ln('markdownLinkText', '@markup.link'),
-                ln('markdownUrl', '@markup.link.url'),
+                spec.fg('markdownCodeDelimiter', color.green),
+                spec.fg('markdownLinkDelimiter', color.gray6),
+                spec.ln('markdownLinkTextDelimiter', '@markup.link'),
+                spec.ln('markdownLinkText', '@markup.link'),
+                spec.ln('markdownUrl', '@markup.link.url'),
 
                 -- sql
-                fg('sqlType', theme.syntax.string),
-                fg('sqlKeyword', theme.syntax.keyword),
-                fg('sqlStatement', theme.syntax.keyword),
-                fg('sqlVariable', theme.syntax.special),
+                spec.fg('sqlType', theme.syntax.string),
+                spec.fg('sqlKeyword', theme.syntax.keyword),
+                spec.fg('sqlStatement', theme.syntax.keyword),
+                spec.fg('sqlVariable', theme.syntax.special),
 
                 -- make
-                fg('@string.special.symbol.make', theme.syntax.string),
-                fg('makeSpecial', theme.syntax.special),
+                spec.fg('@string.special.symbol.make', theme.syntax.string),
+                spec.fg('makeSpecial', theme.syntax.special),
             },
         },
-        {
-            name = "telescope",
-            highlight = {
-                co('TelescopeNormal', theme.ui.fg_telescope, theme.ui.bg_telescope),
-                co('TelescopeTitle', theme.ui.fg_telescope, theme.ui.bg_telescope),
-                co('TelescopeResultsNormal', color.gray5, theme.ui.bg_telescope),
-                co('TelescopeSelection', color.gray8, color.gray3),
-                op('TelescopeMatching', { italic = true, }),
-                fg('TelescopeMultiSelection', color.gray8),
-                fg('TelescopeMultiIcon', color.gray8),
-                fg('TelescopePromptPrefix', theme.ui.fg_normal),
-                co('TelescopeBorder', color.gray7, theme.ui.bg_telescope),
-                co('TelescopePreviewLine', color.black, color.gray9),
-                co('TelescopePreviewMatch', color.black, color.gray9),
-                fg('TelescopePromptCounter', color.gray7),
-                fg('TelescopeResultsSpecialComment', color.gray5),
-                fg('TelescopeResultsDiffUntracked', color.gray5),
-                fg('TelescopeResultsIdentifier', color.gray5),
-                fg('TelescopeResultsDiffDelete', color.gray5),
-                fg('TelescopeResultsDiffChange', color.gray5),
-                fg('TelescopeResultsVariable', color.gray5),
-                fg('TelescopeResultsOperator', color.gray5),
-                fg('TelescopeResultsFunction', color.gray5),
-                fg('TelescopeResultsConstant', color.gray5),
-                fg('TelescopeResultsDiffAdd', color.gray5),
-                fg('TelescopeResultsComment', color.gray5),
-                fg('TelescopeResultsSymbol', color.gray5),
-                fg('TelescopeResultsStruct', color.gray5),
-                fg('TelescopeResultsNumber', color.gray5),
-                fg('TelescopeResultsMethod', color.gray5),
-                fg('TelescopeResultsLineNr', color.gray5),
-                fg('TelescopeResultsField', color.gray5),
-                fg('TelescopeResultsClass', color.gray5),
-            },
-        },
-        {
-            name = "cmp",
-            highlight = {
-                fg('CmpItemKind', color.gray7),
-                fg('CmpItemKindSnippet', color.lack),
-                fg('CmpItemAbbrDeprecated', color.gray4),
-            },
-        },
-        {
-            name = "which_key",
-            highlight = {
-                fg('WhichKey', color.gray5),
-                fg('WhichKeyGroup', color.lack),
-                fg('WhichKeyDesc', color.gray5),
-                fg('WhichKeySeparator', color.gray4),
-            },
-        },
-        {
-            name = "oil",
-            highlight = {
-                fg('Directory', theme.fs.dir),
-                fg('OilFile', theme.fs.file),
-                fg('OilDir', theme.fs.dir),
-                fg('OilDirIcon', theme.fs.dir),
-                fg('OilLink', theme.fs.link),
-                ln('OilLinkTarget', 'OilLink'),
-                fg('OilSocket', theme.fs.socket),
-                fg('OilCreate', theme.diff.add),
-                fg('OilCopy', theme.diff.add),
-                fg('OilRestore', theme.diff.add),
-                fg('OilDelete', theme.diff.delete),
-                fg('OilPurge', theme.diff.delete),
-                fg('OilTrash', theme.diff.delete),
-                fg('OilTrashSourcePath', theme.diff.delete),
-                fg('OilMove', theme.diff.change),
-                fg('OilChange', theme.diff.change),
-            },
-        },
-        {
-            name = "git_signs",
-            highlight = {
-                fg('GitSignsAdd', theme.diff.info),
-                fg('GitSignsChange', theme.diff.change),
-                fg('GitSignsDelete', theme.diff.delete),
-            },
-        },
-        {
-            name = "git_gutter",
-            highlight = {
-                fg('GitGutterAdd', theme.diff.info),
-                fg('GitGutterAddLineNr', theme.diff.info),
-                fg('GitGutterChange', theme.diff.change),
-                fg('GitGutterChangeLineNr', theme.diff.change),
-                fg('GitGutterDelete', theme.diff.delete),
-                fg('GitGutterDeleteLineNr', theme.diff.delete),
-            },
-        },
-        {
-            name = "mini_diff",
-            highlight = {
-                fg('MiniDiffSignAdd', theme.diff.info),
-                fg('MiniDiffSignChange', theme.diff.change),
-                fg('MiniDiffSignDelete', theme.diff.delete),
-            },
-        },
-        {
-            name = "todo_comments",
-            highlight = {
-                fg('TodoBgTodo', theme.log.hint),
-                fg('TodoBgWarn', theme.log.warn),
-                fg('TodoBgFix', theme.log.error),
-                fg('TodoFgFix', theme.log.error),
-                fg('TodoFgTodo', theme.syntax.comment),
-                ln('TodoBgNote', 'TodoBgTodo'),
-                ln('TodoBgPerf', 'TodoBgTodo'),
-                ln('TodoBgHack', 'TodoBgWarn'),
-                ln('TodoFgNote', 'TodoFgTodo'),
-                ln('TodoFgPerf', 'TodoFgTodo'),
-                ln('TodoFgWarn', 'TodoFgTodo'),
-                ln('TodoFgHack', 'TodoFgTodo'),
-            },
-        },
-        {
-            name = "lightbulb",
-            highlight = {
-                fg('lightbulbSign', theme.diagnostic.text),
-            },
-        },
-        {
-            name = "lspconfig",
-            highlight = {
-                fg('lspInfoTip', color.gray5),
-            },
-        },
-        {
-            name = "lazy",
-            highlight = {
-                co('LazyNormal', color.gray8, theme.ui.bg_popup),
-                co('LazyButton', color.gray5, theme.ui.bg_popup),
-                fg('LazySpecial', color.gray5),
-                co('LazyButtonActive', color.gray4, color.gray8),
-                ln('LazyH1', 'LazyButtonActive'),
-                fg('LazyComment', color.lack),
-            },
-        },
-        {
-            name = "mason",
-            highlight = {
-                fg('MasonHighlight', color.lack),
-                co('MasonHeader', color.lack, theme.ui.bg_popup),
-                co('MasonHighlightBlockBold', color.gray5, color.gray8),
-                co('MasonHighlightBlock', color.gray4, color.gray8),
-                co('MasonMutedBlock', color.gray5, theme.ui.bg_popup),
-
-            },
-        },
-        {
-            name = "trouble",
-            highlight = {
-                co('TroubleNormal', color.gray5, theme.ui.bg_popup),
-                fg('TroubleSource', color.gray5),
-                fg('TroubleCode', color.gray6),
-                fg('TroubleLocation', color.gray5),
-                fg('TroubleInformation', color.gray7),
-                fg('TroubleTextError', theme.diagnostic.error),
-                fg('TroubleTextWarning', color.gray7),
-            },
-        },
-        {
-            name = "tree",
-            highlight = {
-                fg('NvimTreeExecFile', theme.fs.exec),
-                fg('NvimTreeSymlink', theme.fs.link),
-                fg('NvimTreeSymlinkIcon', theme.fs.link),
-                fg('NvimTreeSymlinkFolderName', theme.fs.link),
-                fg('NvimTreeSpecialFile', theme.fs.binary_data),
-                fg('NvimTreeImageFile', theme.fs.binary_data),
-                fg('NvimTreeRootFolder', theme.fs.dir),
-                fg('NvimTreeFolder', theme.fs.dir),
-                fg('NvimTreeFolderIcon', theme.fs.dir),
-                fg('NvimTreeBookmarkIcon', color.lack),
-                fg('NvimTreeBookmarkHl', color.lack),
-                fg('NvimTreeGitDeletedIcon', theme.diff.delete),
-                fg('NvimTreeGitMergeIcon', theme.diff.change),
-                fg('NvimTreeGitRenamedIcon', theme.diff.change),
-                fg('NvimTreeGitNewIcon', theme.diff.add),
-                fg('NvimTreeGitDirtyIcon', theme.diff.change),
-                fg('NvimTreeModifiedIcon', theme.diff.change),
-                co('NvimTreeWindowPicker', color.gray8, color.lack),
-                fg('NvimTreeDiagnosticErrorFileHl', theme.diagnostic.error),
-                fg('NvimTreeDiagnosticInfoFileHl', theme.diagnostic.info),
-                fg('NvimTreeDiagnosticHintFileHl', theme.diagnostic.hint),
-                fg('NvimTreeDiagnosticWarnFileHl', theme.diagnostic.warn),
-            },
-        },
-        {
-            name = "flash",
-            highlight = {
-                -- flash.nvm
-                co('FlashLabel', special.popup_background, color.blue),
-                co('FlashMatch', color.gray6, special.main_background),
-                co('FlashCurrent', color.black, color.gray9),
-            },
-        },
-        {
-            name = "rainbow_delimiter",
-            highlight = {
-                fg('RainbowDelimiterRed', theme.rainbow.red),
-                fg('RainbowDelimiterYellow', theme.rainbow.yellow),
-                fg('RainbowDelimiterBlue', theme.rainbow.blue),
-                fg('RainbowDelimiterOrange', theme.rainbow.orange),
-                fg('RainbowDelimiterGreen', theme.rainbow.green),
-                fg('RainbowDelimiterViolet', theme.rainbow.violet),
-                fg('RainbowDelimiterCyan', theme.rainbow.cyan),
-            },
-        },
+        require("lackluster.plugin.telescope")(theme),
+        require("lackluster.plugin.cmp")(theme),
+        require("lackluster.plugin.which-key")(theme),
+        require("lackluster.plugin.oil")(theme),
+        require("lackluster.plugin.git_signs")(theme),
+        require("lackluster.plugin.git_gutter")(theme),
+        require("lackluster.plugin.todo_comments")(theme),
+        require("lackluster.plugin.lightbulb")(theme),
+        require("lackluster.plugin.lsp-config")(theme),
+        require("lackluster.plugin.lazy")(theme),
+        require("lackluster.plugin.mason")(theme),
+        require("lackluster.plugin.trouble")(theme),
+        require("lackluster.plugin.tree")(theme),
+        require("lackluster.plugin.flash")(theme),
+        require("lackluster.plugin.rainbow_delimiter")(theme),
     }
 end
 
