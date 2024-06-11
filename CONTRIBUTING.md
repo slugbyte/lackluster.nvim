@@ -7,7 +7,7 @@ If you find a bug please open a ticket :) if the issue is color related, please 
 screenshot
 
 ## Adding Plugin Support
-If you want to add support for a pluggin open a PR with your suggested colors and include 
+If you want to add support for a plugin open a PR with your suggested colors and include 
 some screenshots! I reserve the right to change or reject any PRs as I see fit, but If
 It seems to follow the rest of the `lackluster` vibe, I would love love to merge your
 work!

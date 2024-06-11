@@ -13,7 +13,7 @@
 local dev = require("lackluster.dev")
 local color = require("lackluster.color")
 local theme = require("lackluster.theme")
-local tweek = require("lackluster.tweek")
+local tweak = require("lackluster.tweak")
 local highlight = require("lackluster.highlight")
 
 local M = {
@@ -21,7 +21,7 @@ local M = {
     dev = dev,
 }
 
----@class LacklusterConfigTweekSyntax
+---@class LacklusterConfigTweakSyntax
 ---@field string ?string
 ---@field string_escape ?string
 ---@field comment ?string
@@ -31,7 +31,7 @@ local M = {
 ---@field keyword_return ?string
 ---@field keyword_exception ?string
 
----@class LacklusterConfigTweekBackground
+---@class LacklusterConfigTweakBackground
 ---@field normal ?string
 ---@field menu ?string
 ---@field popup ?string
@@ -56,8 +56,8 @@ local M = {
 ---@field which_key ?boolean
 
 ---@class LacklusterConfig
----@field tweek_syntax ?LacklusterConfigTweekSyntax
----@field tweek_background ?LacklusterConfigTweekBackground
+---@field tweak_syntax ?LacklusterConfigTweakSyntax
+---@field tweak_background ?LacklusterConfigTweakBackground
 ---@field disable_plugin LacklusterConfigDisablePlugin
 
 --- @type LacklusterConfig | nil
@@ -65,7 +65,7 @@ local USER_CONFIG = nil
 
 --- @type LacklusterConfig
 local default_config = {
-    tweek_syntax = {
+    tweak_syntax = {
         -- ('default' is default) ('#ffaaff' is a custom colorcode)
         string = "default",
         string_escape = "default",
@@ -76,7 +76,7 @@ local default_config = {
         keyword_return = "default",
         keyword_exception = "default",
     },
-    tweek_background = {
+    tweak_background = {
         -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
         normal = 'default',    -- main background
         menu = 'default',      -- nvim_cmp, wildmenu ...
@@ -108,8 +108,8 @@ local default_config = {
 M.setup = function(config)
     config = vim.tbl_deep_extend("keep", config or {}, default_config)
     USER_CONFIG = config
-    tweek.background(config.tweek_background, theme)
-    tweek.syntax(config.tweek_syntax, theme)
+    tweak.background(config.tweak_background, theme)
+    tweak.syntax(config.tweak_syntax, theme)
 end
 
 -- apply the colorscheme
@@ -147,7 +147,7 @@ M.load = function(opt)
         vim.g.colors_name = "lackluster-night"
     end
 
-    t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweek)
+    t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweak)
 
     local dedup_set = {}
     local highlight_group_list = highlight(t, color)
@@ -163,7 +163,7 @@ M.load = function(opt)
                     vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
                 else
                     dedup_set[hl_name] = true
-                    hl_spec.name = nil -- must set to nil so that nvim_set_hl doen't freq out
+                    hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freq out
                     ---@diagnostic disable-next-line: param-type-mismatch
                     vim.api.nvim_set_hl(0, hl_name, hl_spec)
                 end

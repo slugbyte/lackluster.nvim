@@ -6,7 +6,7 @@ pub fn NumberBuffer(comptime T: type) type {
         .Int => {},
         .Float => {},
         else => {
-            @compileError("NumberBuffer only suports int and float types!");
+            @compileError("NumberBuffer only supports int and float types!");
         },
     }
     return struct {
