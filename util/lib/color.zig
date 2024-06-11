@@ -4,6 +4,7 @@ const TERM_RESET = @import("./util.zig").TERM_RESET;
 
 const Color = @This();
 name: []const u8,
+hexcode: []const u8,
 r: u8,
 g: u8,
 b: u8,
@@ -24,6 +25,24 @@ pub const Gray6 = Color.init("gray6", "7a7a7a");
 pub const Gray7 = Color.init("gray7", "aaaaaa");
 pub const Gray8 = Color.init("gray8", "cccccc");
 pub const Gray9 = Color.init("gray9", "DDDDDD");
+pub const pallet_list = [_]Color{
+    Color.Lack,
+    Color.Luster,
+    Color.Orange,
+    Color.Green,
+    Color.Blue,
+    Color.Red,
+    Color.Black,
+    Color.Gray1,
+    Color.Gray2,
+    Color.Gray3,
+    Color.Gray4,
+    Color.Gray5,
+    Color.Gray6,
+    Color.Gray7,
+    Color.Gray8,
+    Color.Gray9,
+};
 
 pub fn init(name: []const u8, comptime hexcode: []const u8) Color {
     if (hexcode.len != 6) {
@@ -45,6 +64,7 @@ pub fn init(name: []const u8, comptime hexcode: []const u8) Color {
         .g = g,
         .b = b,
         .name = name,
+        .hexcode = hexcode,
     };
 }
 
@@ -60,10 +80,14 @@ pub fn toStringRGB(self: Color) []u8 {
     return strfmt("rgb({d}, {d}, {d})", .{ self.r, self.g, self.b });
 }
 
-pub fn toExa(self: Color) []u8 {
+pub fn toStringHexcode(self: Color) []u8 {
+    return strfmt("#{s}", .{self.hexcode});
+}
+
+pub fn toStringExa(self: Color) []u8 {
     return strfmt("38;2;{d};{d};{d}", .{ self.r, self.g, self.b });
 }
 
 pub fn describe(self: Color) []u8 {
-    return strfmt("{s}name{s} {s: <6} {s: <18} {s}", .{ self.toTermcolor(), TERM_RESET, self.name, self.toStringRGB(), self.toTermcolorEscape() });
+    return strfmt("{s}name{s} {s: <6} {s} {s: <18} {s}", .{ self.toTermcolor(), TERM_RESET, self.name, self.toStringHexcode(), self.toStringRGB(), self.toTermcolorEscape() });
 }

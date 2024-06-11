@@ -101,3 +101,27 @@ lackluster.dev.create_usercmds()
 * `:LLR` - reload lackluster
 * `:LLF <hl_group> <color_name>` - try a lackluster color on the foreground
 * `:LLB <hl_group> <color_name>` - try a lackluster color on background
+
+## colors in different forms
+> pallet in (name) (hexcode) (rgb) (24bit termcode)
+
+```txt 
+reset                             \x1b[0m
+
+lack   #708090 rgb(112, 128, 144) \x1b[38;2;112;128;144m
+luster #deeeed rgb(222, 238, 237) \x1b[38;2;222;238;237m
+orange #ffaa88 rgb(255, 170, 136) \x1b[38;2;255;170;136m
+green  #789978 rgb(120, 153, 120) \x1b[38;2;120;153;120m
+blue   #7788AA rgb(119, 136, 170) \x1b[38;2;119;136;170m
+red    #D70000 rgb(215, 0, 0)     \x1b[38;2;215;0;0m
+black  #000000 rgb(0, 0, 0)       \x1b[38;2;0;0;0m
+gray1  #080808 rgb(8, 8, 8)       \x1b[38;2;8;8;8m
+gray2  #191919 rgb(25, 25, 25)    \x1b[38;2;25;25;25m
+gray3  #2a2a2a rgb(42, 42, 42)    \x1b[38;2;42;42;42m
+gray4  #444444 rgb(68, 68, 68)    \x1b[38;2;68;68;68m
+gray5  #555555 rgb(85, 85, 85)    \x1b[38;2;85;85;85m
+gray6  #7a7a7a rgb(122, 122, 122) \x1b[38;2;122;122;122m
+gray7  #aaaaaa rgb(170, 170, 170) \x1b[38;2;170;170;170m
+gray8  #cccccc rgb(204, 204, 204) \x1b[38;2;204;204;204m
+gray9  #DDDDDD rgb(221, 221, 221) \x1b[38;2;221;221;221m
+```

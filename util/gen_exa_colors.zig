@@ -10,7 +10,7 @@ fn setItem(name: []const u8, color: Color) void {
     if (DEBUG) {
         exa_colors.write(strfmt("\n{s}={s}", .{ name, color.name }));
     } else {
-        exa_colors.write(strfmt(":{s}={s}", .{ name, color.toExa() }));
+        exa_colors.write(strfmt(":{s}={s}", .{ name, color.toStringExa() }));
     }
 }
 
