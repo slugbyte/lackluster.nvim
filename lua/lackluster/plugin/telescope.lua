@@ -1,7 +1,7 @@
 local spec = require("lackluster.spec")
 
 ---@param theme LacklusterTheme
----@return LacklusterHightlightGroup
+---@return LacklusterHighlightGroup
 return function(theme)
     local telescope = theme.plugin_telescope
     return {

@@ -59,7 +59,7 @@ pub fn main() !void {
         "so", // socket
     });
 
-    // permisions
+    // permissions
     setGroup(Color.Gray6, &.{
         "ux", // user execute
         "ur", // user read
@@ -75,7 +75,7 @@ pub fn main() !void {
         //
         "su", // higher bits files
         "sf", // higher bits non-file
-        "xa", // extended atribute
+        "xa", // extended attribute
     });
 
     // metadata

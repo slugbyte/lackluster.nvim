@@ -18,7 +18,7 @@
 
 <details>
 
-<summary>(RECOMENDED) How to setup dev env with lazy.nvim</summary>
+<summary>(RECOMMENDED) How to setup dev env with lazy.nvim</summary>
 
 1. fork this repository
 2. create a directory where you want to develop neovim plugins
@@ -34,7 +34,7 @@ require("lazy").setup(
     },
 )
 ```
-4. clone your fork into your development direcotry
+4. clone your fork into your development directory
   * `cd ~/code/neovim_dev`
   * `git clone <your fork>`
 
@@ -69,7 +69,7 @@ return {
   * like `mkdir ~/code/neovim_dev`
 3. add your directory to the vim runtime path
   * `vim.opt.runtimepath:append(',~/code/neovim_dev')`
-4. clone your fork into your development direcotry
+4. clone your fork into your development directory
   * `cd ~/code/neovim_dev`
   * `git clone <your fork>`
 4. use your package manager to install `nvim-lua/plenary.nvim` a dependency of
@@ -84,7 +84,7 @@ lackluster.dev.create_usercmds()
 ## COLOR NAMES
 > Don't let the main readme fool you, the actual color names are red, orange, green, and blue
 
-> there are are also quite a few other colors that start with `_specail_`
+> there are are also quite a few other colors that start with `_special_`
 > that I ended up creating to ensure UIs consistently look good `¯\_(ツ)_/¯`
 
 ![](./asset/img/lackluster-pallet-dev.png)

@@ -1,7 +1,7 @@
 local spec = require("lackluster.spec")
 
 ---@param theme LacklusterTheme
----@return LacklusterHightlightGroup
+---@return LacklusterHighlightGroup
 return function(theme)
     local which_key = theme.plugin_which_key
     return {
@@ -10,7 +10,7 @@ return function(theme)
             spec.fg('WhichKey', which_key.key),
             spec.fg('WhichKeyGroup', which_key.group),
             spec.fg('WhichKeyDesc', which_key.key),
-            spec.fg('WhichKeySeparator', which_key.spearator),
+            spec.fg('WhichKeySeparator', which_key.separator),
         },
     }
 end

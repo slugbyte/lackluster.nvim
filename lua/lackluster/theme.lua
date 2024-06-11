@@ -73,7 +73,7 @@ M.syntax_default = {
     special = color.lack,
     type = color.gray7,
     type_def = color.gray8,
-    type_primitave = color.gray7,
+    type_primitive = color.gray7,
     builtin = color.gray5,
     keyword = color_special.keyword,
     keyword_return = color_special.exception,
@@ -93,7 +93,7 @@ M.syntax_hack = vim.tbl_deep_extend("force", M.syntax_default, {
 ---@type LacklusterThemeSyntax
 M.syntax_mint = vim.tbl_deep_extend("force", M.syntax_default, {
     type = color.green,
-    type_primitave = color.green,
+    type_primitive = color.green,
     func_param = color.gray7
 })
 
@@ -117,7 +117,7 @@ M.syntax_dark = {
     special = color.lack,
     type = color.gray5,
     type_def = color.gray5,
-    type_primitave = color.gray5,
+    type_primitive = color.gray5,
     keyword = color.gray5,
     keyword_return = color_special.exception,
     keyword_exception = color_special.exception,
@@ -127,9 +127,9 @@ M.syntax_dark = {
     comment = color_special.comment,
 }
 
---- syntax_tweeks get appyed by setup()
+--- syntax_tweaks get appyed by setup()
 ---@type LacklusterThemeSyntax
-M.syntax_tweek = {}
+M.syntax_tweak = {}
 
 ---@class LacklusterThemeLog
 M.log = {
@@ -151,7 +151,7 @@ M.diagnostic = {
     info = color.gray6,
     warn = color.orange,
     unnecessary = color.gray4,
-    depricated = color.orange,
+    deprecated = color.orange,
 }
 
 ---@class LacklusterThemeFS
@@ -188,14 +188,14 @@ M.plugin_telescope = {
 M.plugin_cmp = {
     kind = color.gray7,
     snippet = color.lack,
-    depricated = color.gray4,
+    deprecated = color.gray4,
 }
 
 ---@class LacklusterThemePluginWhichKey
 M.plugin_which_key = {
     key = color.gray5,
     group = color.lack,
-    spearator = color.gray4,
+    separator = color.gray4,
 }
 
 ---@class LacklusterThemePluginLazy

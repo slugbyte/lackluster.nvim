@@ -2,7 +2,7 @@ local spec = require('lackluster.spec')
 
 
 ---@param theme LacklusterTheme
----@return LacklusterHightlightGroup
+---@return LacklusterHighlightGroup
 return function(theme)
     local cmp = theme.plugin_cmp
     return {
@@ -10,7 +10,7 @@ return function(theme)
         highlight = {
             spec.fg('CmpItemKind', cmp.kind),
             spec.fg('CmpItemKindSnippet', cmp.snippet),
-            spec.fg('CmpItemAbbrDeprecated', cmp.depricated),
+            spec.fg('CmpItemAbbrDeprecated', cmp.deprecated),
         },
     }
 end
