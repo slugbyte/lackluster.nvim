@@ -1,7 +1,7 @@
 local spec = require("lackluster.spec")
 
 ---@param theme LacklusterTheme
----@return LacklusterHightlightGroup
+---@return LacklusterHighlightGroup
 return function(theme)
     return {
         plugin_name = "oil",

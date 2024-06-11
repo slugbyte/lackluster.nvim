@@ -1,6 +1,6 @@
 local spec = require("lackluster.spec")
 
----@class LacklusterHightlightGroup
+---@class LacklusterHighlightGroup
 ---@field plugin_name ?string
 ---@field dont_skip ?boolean -- force highlights to run if true
 ---@field highlight LacklusterHighlightSpec[]
@@ -8,7 +8,7 @@ local spec = require("lackluster.spec")
 -- TODO: ?? refactor theme and highlight() so that highlight() does not need color or special
 
 ---@param theme LacklusterTheme
----@return LacklusterHightlightGroup[]
+---@return LacklusterHighlightGroup[]
 local highlight = function(theme, color)
     return {
         {
@@ -28,7 +28,7 @@ local highlight = function(theme, color)
                 spec.co('Search', theme.ui.fg_search, theme.ui.bg_search_item),
                 spec.co('CurSearch', theme.ui.fg_search, theme.ui.bg_search_cur),
                 spec.ln('IncSearch', 'CurSearch'),
-                spec.ln('Substitue', 'Search'),
+                spec.ln('Substitute', 'Search'),
 
                 -- VISUAL
                 spec.co('VISUAL', theme.ui.fg_visual, theme.ui.bg_visual),
@@ -124,7 +124,7 @@ local highlight = function(theme, color)
                 spec.fg('DiagnosticSignHint', theme.diagnostic.hint),
                 spec.fg('DiagnosticSignWarn', theme.diagnostic.warn),
                 spec.fg('DiagnosticSignError', theme.diagnostic.error),
-                spec.fg('DiagnosticSignDeprecated', theme.diagnostic.depricated),
+                spec.fg('DiagnosticSignDeprecated', theme.diagnostic.deprecated),
 
                 -- treesitter syntax
                 spec.fg('@keyword', theme.syntax.keyword),
@@ -202,7 +202,7 @@ local highlight = function(theme, color)
                 spec.fg('@tag.attribute', color.gray4),
 
                 -- treesitter builtin
-                spec.fg('@type.builtin', theme.syntax.type_primitave),
+                spec.fg('@type.builtin', theme.syntax.type_primitive),
                 spec.fg('@tag.builtin', theme.syntax.tag),
                 spec.fg('@variable.builtin', theme.syntax.var),
                 spec.fg('@function.builtin', theme.syntax.builtin),
@@ -223,7 +223,7 @@ local highlight = function(theme, color)
                 spec.ln('@lsp.type.string', '@string'),
                 spec.ln('@lsp.type.number', '@number'),
                 spec.ln('@lsp.type.boolean', '@boolean'),
-                spec.ln('@lsp.type.enumMember', '@variable.memeber'),
+                spec.ln('@lsp.type.enumMember', '@variable.member'),
 
                 --spell
                 spec.op('SpellBad', {

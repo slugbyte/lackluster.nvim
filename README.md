@@ -21,7 +21,7 @@
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
-3. (optional) Tweek Color and Transparency
+3. (optional) Tweak Color and Transparency
 3. (optional) Disable Plugin Highlights
 
 ```lua 
@@ -48,7 +48,7 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Tweek Color and Transparency </summary>
+  <summary> (OPTIONAL) Tweak Color and Transparency </summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
@@ -64,7 +64,7 @@ lackluster.setup({
     -- You can overwrite the following syntax colors by setting them to one of...
     --   1) a hexcode like "#a1b2c3" for a custom color
     --   2) "default" or nil will just use whatever lackluster's default is.
-    tweek_syntax = {
+    tweak_syntax = {
         string = "default",
         -- string = "#a1b2c3", -- custom hexcode
         -- string = color.green, -- lackluster color
@@ -80,7 +80,7 @@ lackluster.setup({
     --   1) a hexcode like "#a1b2c3" for a custom color
     --   2) "none" for transparency
     --   3) "default" or nil will just use whatever lackluster's default is.
-    tweek_background = {
+    tweak_background = {
         normal = 'default',    -- main background
         -- normal = 'none',    -- transparent
         -- normal = '#a1b2c3',    -- hexcode 
@@ -98,14 +98,14 @@ vim.cmd.colorscheme("lackluster")
 > Example transparent background `setup()`
 ```lua 
 --  When testing transparent backgrounds I found that comments where often hard to read, 
---  and menus didn't look good but using setup() tweeks you can easily address that!
+--  and menus didn't look good but using setup() tweaks you can easily address that!
 local lackluster = require("lackluster")
 
 lackluster.setup({
-    tweek_syntax = {
+    tweak_syntax = {
         comment = lackluster.color.gray4, -- or gray5
     },
-    tweek_background = {
+    tweak_background = {
         normal = 'none',
         telescope = 'none',
         menu = lackluster.color.gray3,
