@@ -103,10 +103,25 @@ local default_config = {
     },
 }
 
+local fix_legacy_tweak_typo = function(config)
+    config = config or {}
+    -- TODO: set health check error
+    if config.tweek_background then
+        config.tweak_background = config.tweek_background
+        config.tweek_background = nil
+    end
+    if config.tweek_syntax then
+        config.tweak_syntax = config.tweek_syntax
+        config.tweek_background = nil
+    end
+    return config
+end
+
 ---configure lackluster with optional settings
 ---@param config ?LacklusterConfig
 M.setup = function(config)
-    config = vim.tbl_deep_extend("keep", config or {}, default_config)
+    config = fix_legacy_tweak_typo(config)
+    config = vim.tbl_deep_extend("keep", config, default_config)
     USER_CONFIG = config
     tweak.background(config.tweak_background, theme)
     tweak.syntax(config.tweak_syntax, theme)
