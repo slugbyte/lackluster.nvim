@@ -8,7 +8,7 @@ return function(theme)
         plugin_name = "telescope",
         highlight = {
             spec.co('TelescopeNormal', telescope.fg_normal, telescope.bg_normal),
-            spec.fg('TelescopeBorder', telescope.fg_border),
+            spec.co('TelescopeBorder', telescope.fg_border, telescope.bg_normal),
 
             spec.op('TelescopeMatching', { italic = true, }),
             spec.co('TelescopeSelection', telescope.fg_normal, telescope.bg_selection),
@@ -22,7 +22,7 @@ return function(theme)
             spec.ln('TelescopePromptPrefix', 'TelescopeTitle'),
             spec.fg('TelescopePromptCounter', telescope.fg_counter),
 
-            spec.fg('TelescopeResultsNormal', telescope.fg_results),
+            spec.co('TelescopeResultsNormal', telescope.fg_results, telescope.bg_normal),
             spec.ln('TelescopeResultsSpecialComment', 'TelescopeResultsNormal'),
             spec.ln('TelescopeResultsDiffUntracked', 'TelescopeResultsNormal'),
             spec.ln('TelescopeResultsIdentifier', 'TelescopeResultsNormal'),

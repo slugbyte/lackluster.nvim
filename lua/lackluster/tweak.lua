@@ -12,8 +12,14 @@ local tweak_background_keys = {
 M.background = function(tweak_background, theme)
     for _, key in ipairs(tweak_background_keys) do
         local value = tweak_background[key]
-        if value and (value ~= 'default') then
-            theme.ui["bg_" .. key] = value
+        if key == "telescope" then
+            if value and (value ~= 'default') then
+                theme.plugin_telescope["bg_normal"] = value
+            end
+        else
+            if value and (value ~= 'default') then
+                theme.ui["bg_" .. key] = value
+            end
         end
     end
 end
