@@ -37,6 +37,7 @@ local highlight = function(theme, color)
                 -- MESSAGE
                 spec.fg('Error', theme.log.error),
                 spec.fg('ModeMsg', theme.log.info),
+                spec.fg('MoreMsg', theme.log.info),
                 spec.fg('MsgArea', theme.log.info),
                 spec.ln('ErrorMsg', 'Error'),
                 spec.fg('WarningMsg', theme.log.warn),
@@ -332,6 +333,7 @@ local highlight = function(theme, color)
         require("lackluster.plugin.navic")(theme),
         require("lackluster.plugin.yanky")(theme),
         require("lackluster.plugin.headlines")(theme),
+        require("lackluster.plugin.noice")(theme),
     }
 end
 
