@@ -54,5 +54,4 @@ will probably be a slow long term effort.
 * [lukas-reineke/headlines.nvim](https://github.com/lukas-reineke/headlines.nvim)
 * [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 * [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
-* [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify)
 * [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
