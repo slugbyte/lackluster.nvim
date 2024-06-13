@@ -1,6 +1,5 @@
 local spec = require('lackluster.spec')
 
-
 ---@param theme LacklusterTheme
 ---@return LacklusterHighlightGroup
 return function(theme)

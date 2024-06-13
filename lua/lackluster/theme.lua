@@ -232,6 +232,11 @@ M.plugin_flash = {
     bg_current = color.gray9,
 }
 
+M.plugin_navic = {
+    icon = color.gray6,
+    text = color.gray9,
+}
+
 ---@class LacklusterThemePluginRainbow
 M.plugin_rainbow = {
     red = "#555555",

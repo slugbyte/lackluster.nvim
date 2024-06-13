@@ -179,6 +179,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [mini.diff](https://github.com/echasnovski/mini.diff)
 * [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+* [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 * [nvim-notify](https://github.com/rcarriga/nvim-notify)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua/tree/master?tab=readme-ov-file)
 * [nvim\_cmp](https://github.com/hrsh7th/nvim-cmp)

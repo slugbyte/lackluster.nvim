@@ -46,7 +46,6 @@ I don't use these plugins so I makes it quite a bit of work to implement my self
 will probably be a slow long term effort.
 
 > no particular order
-* [SmiteshP/nvim-navic](https://github.com/SmiteshP/nvim-navic)
 * [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 * [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
 * [folke/noice.nvim](https://github.com/folke/noice.nvim)

@@ -47,6 +47,7 @@ local M = {
 ---@field lsp_config ?boolean
 ---@field mason ?boolean
 ---@field mini_diff ?boolean
+---@field navic ?boolean
 ---@field notify ?boolean
 ---@field oil ?boolean
 ---@field rainbow_delimiter ?boolean
@@ -94,6 +95,7 @@ local default_config = {
         lsp_config = false,
         mason = false,
         mini_diff = false,
+        navic = false,
         notify = false,
         oil = false,
         rainbow_delimiter = false,
