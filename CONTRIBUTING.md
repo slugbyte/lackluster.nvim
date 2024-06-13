@@ -15,21 +15,26 @@ reject any contributions as I see fit.
 * Support commonly used neovim plugins
 * Be easy on the eyes
 
-## Bugs and Spellcheck
+## Bugs 
 If you find a bug please open a ticket :) If the issue is color related, please include a
 screenshot.
 
+## Spellcheck
 I'm super dyslexic, and do my best with spellcheck, but that only works so well. So if 
 you find a spelling error free to open a PR :)
 
 ## Suggestions, Feature Request, General Input
-If you have some other input, please open a discussion issue before opening a PR.
+If you have some input or a feature request, please open a discussion issue before opening a PR.
 I'm open to new Ideas I just want chat about them first.
 
 ## Adding Plugin Support
-If you want to add support for a plugin open a PR with your suggested colors and include 
-some screenshots and an example configuration for the plugin you implemented. I will test 
-your PR and probably make some changes to your color choices before I merge.
+If you want to add support for a plugin open a ticket with the `enhancement` label to let
+myself and potentially others know what you are working on. We can also use that as a discussion
+thread for what colors best suite the lackluster aesthetic.
+
+When you open a PR with your plugin implementation please include some screenshots and an example
+configuration for the plugin you implemented. I will test your PR and potentially make some changes 
+to your color choices before I merge.
 
 Your the best! Thanks so much for contributing!
 
@@ -40,27 +45,14 @@ interested in contributing :)
 I don't use these plugins so I makes it quite a bit of work to implement my self, so this
 will probably be a slow long term effort.
 
-### plugins
 > no particular order
-* barbar.nvim
-* barbecue
-* bufferline.nivm
-* dashboard-nvim
-* headlines.nvim
-* more mini.nvim
-* navic.nvim
-* noice.nvim
-* notify nvim
-* scrollbar
-* ts-rainbow
-* ts-rainbow2
-* vim-illuminate
-* vim-lightline
-* yanky
-
-### extra
-> I still need to figure out what i want pale termcolors to look like
-* kitty
-* iterm
-* tmux
-* fzf
+* [SmiteshP/nvim-navic](https://github.com/SmiteshP/nvim-navic)
+* [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+* [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
+* [folke/noice.nvim](https://github.com/folke/noice.nvim)
+* [gbprod/yanky.nvim](https://github.com/gbprod/yanky.nvim)
+* [lukas-reineke/headlines.nvim](https://github.com/lukas-reineke/headlines.nvim)
+* [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+* [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
+* [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify)
+* [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
