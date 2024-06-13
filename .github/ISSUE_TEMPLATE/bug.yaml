@@ -1,0 +1,45 @@
+name: Bug Report
+description: Bug Report
+title: "bug: "
+labels: [bug]
+body:
+  - type: checkboxes
+    attributes:
+      label: Did you check docs and existing issues?
+      description: Make sure you checked all of the below before submitting an issue
+      options:
+        - label: I have read all the docs
+          required: true
+        - label: I have searched the open and closed issues
+          required: true
+        - label: I have added screenshots if relevant
+          required: true
+  - type: input
+    attributes:
+      label: "Whats your neovim version?"
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: "Operating System"
+      placeholder: "linux"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Describe the bug
+      description: Write a detailed description of the issue
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: what did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots about the feature request here.
