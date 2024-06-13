@@ -42,6 +42,7 @@ local M = {
 ---@field flash ?boolean
 ---@field git_gutter ?boolean
 ---@field git_signs ?boolean
+---@field headlines ?boolean
 ---@field lazy ?boolean
 ---@field lightbulb ?boolean
 ---@field lsp_config ?boolean
@@ -91,6 +92,7 @@ local default_config = {
         flash = false,
         git_gutter = false,
         git_signs = false,
+        headlines = false,
         lazy = false,
         lightbulb = false,
         lsp_config = false,

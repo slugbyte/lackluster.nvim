@@ -232,9 +232,18 @@ M.plugin_flash = {
     bg_current = color.gray9,
 }
 
+---@class LacklusterThemePluginNavic
 M.plugin_navic = {
     icon = color.gray6,
     text = color.gray9,
+}
+
+---@class LacklusterThemePluginHeadline
+M.plugin_headline = {
+    bg_headline = color.gray5,
+    fg_headline = color.gray2,
+    bg_code_block = color.gray1,
+    fg_dash = color.gray4,
 }
 
 ---@class LacklusterThemePluginRainbow

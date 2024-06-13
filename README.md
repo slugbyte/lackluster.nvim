@@ -1,5 +1,4 @@
 # lackluster
-
 > a delightful mostly grayscale colorscheme thats soft on the eyes, and supports heaps of neovim plugins
 
 ![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/slugbyte/lackluster.nvim/main/asset/img/lackluster.png)
@@ -133,6 +132,7 @@ lackluster.setup({
         flash = false,
         git_gutter = false,
         git_signs = false,
+        headline = false,
         lazy = false,
         lightbulb = false,
         lsp_config = false,
@@ -175,6 +175,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [flash.nvim](https://github.com/folke/flash.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+* [headlines.nvim](https://github.com/lukas-reineke/headlines.nvim)
 * [lazy.nvim](https://github.com/folke/lazy.nvim)
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
