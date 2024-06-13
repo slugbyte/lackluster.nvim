@@ -49,6 +49,7 @@ local M = {
 ---@field mason ?boolean
 ---@field mini_diff ?boolean
 ---@field navic ?boolean
+---@field noice ?boolean
 ---@field notify ?boolean
 ---@field oil ?boolean
 ---@field rainbow_delimiter ?boolean
@@ -99,6 +100,7 @@ local default_config = {
         mason = false,
         mini_diff = false,
         navic = false,
+        noice = false,
         notify = false,
         oil = false,
         rainbow_delimiter = false,

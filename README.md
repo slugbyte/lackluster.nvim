@@ -139,6 +139,7 @@ lackluster.setup({
         mason = false,
         mini_diff = false,
         navic = false,
+        noice = false,
         notify = false,
         oil = false,
         rainbow_delimiter = false, -- if you want color-rainbows you should disable this
@@ -180,6 +181,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
 * [mini.diff](https://github.com/echasnovski/mini.diff)
+* [noice.nvim](https://github.com/folke/noice.nvim)
 * [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-navic](https://github.com/SmiteshP/nvim-navic)
