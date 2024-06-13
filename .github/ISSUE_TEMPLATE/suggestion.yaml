@@ -1,0 +1,30 @@
+name: Suggestion
+description: Suggest Something
+title: "suggestion: "
+labels: [enhancement]
+body:
+  - type: checkboxes
+    attributes:
+      label: Did you read the docs?
+      description: Are you sure lackluster doesn't support this suggestion all ready?
+      options:
+        - label: I have read the docs.
+          required: true
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: What would you like to change? 
+      description: A clear description of what you want to change.
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Why do you think this will improve lackluster?
+      description: Describe what you think the beniffit would be or what painpoints would be addressed.
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots about the feature request here.
