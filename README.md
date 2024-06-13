@@ -138,6 +138,7 @@ lackluster.setup({
         lsp_config = false,
         mason = false,
         mini_diff = false,
+        navic = false,
         notify = false,
         oil = false,
         rainbow_delimiter = false, -- if you want color-rainbows you should disable this
@@ -146,6 +147,7 @@ lackluster.setup({
         tree = false,
         trouble = false,
         which_key = false,
+        yanky = false,
     },
 })
 
@@ -190,6 +192,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [trouble.nvim](https://github.com/folke/trouble.nvim)
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
+* [yanky.nvim](https://github.com/gbprod/yanky.nvim)
 
 ## SELF-PROMO
 If you like this project star the GitHub repository :)

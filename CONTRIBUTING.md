@@ -49,7 +49,6 @@ will probably be a slow long term effort.
 * [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 * [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
 * [folke/noice.nvim](https://github.com/folke/noice.nvim)
-* [gbprod/yanky.nvim](https://github.com/gbprod/yanky.nvim)
 * [lukas-reineke/headlines.nvim](https://github.com/lukas-reineke/headlines.nvim)
 * [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 * [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)

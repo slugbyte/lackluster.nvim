@@ -56,6 +56,7 @@ local M = {
 ---@field tree ?boolean
 ---@field trouble ?boolean
 ---@field which_key ?boolean
+---@field yanky ?boolean
 
 ---@class LacklusterConfig
 ---@field tweak_syntax ?LacklusterConfigTweakSyntax
@@ -104,6 +105,7 @@ local default_config = {
         tree = false,
         trouble = false,
         which_key = false,
+        yanky = false,
     },
 }
 

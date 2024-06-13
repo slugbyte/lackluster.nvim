@@ -330,6 +330,7 @@ local highlight = function(theme, color)
         require("lackluster.plugin.which-key")(theme),
         require("lackluster.plugin.notify")(theme),
         require("lackluster.plugin.navic")(theme),
+        require("lackluster.plugin.yanky")(theme),
     }
 end
 
