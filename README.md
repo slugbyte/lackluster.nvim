@@ -138,6 +138,7 @@ lackluster.setup({
         lsp_config = false,
         mason = false,
         mini_diff = false,
+        notify = false,
         oil = false,
         rainbow_delimiter = false, -- if you want color-rainbows you should disable this
         telescope = false,
@@ -178,6 +179,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [mini.diff](https://github.com/echasnovski/mini.diff)
 * [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+* [nvim-notify](https://github.com/rcarriga/nvim-notify)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua/tree/master?tab=readme-ov-file)
 * [nvim\_cmp](https://github.com/hrsh7th/nvim-cmp)
 * [oil.nvim](https://github.com/stevearc/oil.nvim)

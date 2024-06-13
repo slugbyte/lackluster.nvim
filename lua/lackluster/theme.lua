@@ -137,6 +137,7 @@ M.log = {
     info = color.luster,
     warn = color.orange,
     error = color.red,
+    debug = color.blue,
     hint = color.gray6,
 }
 
