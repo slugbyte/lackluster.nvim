@@ -1,6 +1,6 @@
-name: Contributing Issue
-description: Contribution Discussion Ticket
-title: "feature: "
+name: Contributing Proposal
+description: Contribution Proposal Discussion Ticket
+title: "proposal: "
 labels: [enhancement]
 body:
   - type: checkboxes

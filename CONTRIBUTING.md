@@ -21,22 +21,26 @@ screenshot.
 
 ## Spellcheck
 I'm super dyslexic, and do my best with spellcheck, but that only works so well. So if 
-you find a spelling error free to open a PR :)
+you find a spelling error free to directly open a PR, no need to create an issue first :)
 
 ## Suggestions, Feature Request, General Input
 If you have some input or a feature request, please open a discussion issue before opening a PR.
 I'm open to new Ideas I just want chat about them first.
 
-## Adding Plugin Support
-If you want to add support for a plugin open a ticket with the `enhancement` label to let
-myself and potentially others know what you are working on. We can also use that as a discussion
-thread for what colors best suite the lackluster aesthetic.
-
-When you open a PR with your plugin implementation please include some screenshots and an example
-configuration for the plugin you implemented. I will test your PR and potentially make some changes 
-to your color choices before I merge.
+## Contributing New Features Process
+1) Open A `Contribution Proposal` ticket an let me know what you want to work on :)
+2) Get an Approval
+3) Make your feature and open a Pull Request
+4) Get a review, and potentially be asked for a few changes
+5) Get merged!!!
 
 Your the best! Thanks so much for contributing!
+
+#### What To Put In your feature Pull Request?
+A description of you feature, and a screenshot of what it looks like on your machine.
+
+If you are adding support for a new plugin/extra tool, please add a code block containing
+the your configuration for that plugin/tool so that I can test it out easier :)
 
 ## TODO / GREAT FIRST ISSUE
 I plan on slowly adding support for the following tools, and would love help if anyone is
