@@ -20,8 +20,9 @@
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
-3. (optional) Tweak Color and Transparency
-3. (optional) Disable Plugin Highlights
+4. (optional) Tweak Syntax, Color, and Transparency
+5. (optional) Disable Plugin Highlights
+6. (optional) Setup nvim-web-devicons
 
 ```lua 
 -- example lazy.nvim install setup
@@ -47,7 +48,7 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Tweak Color and Transparency </summary>
+  <summary> (OPTIONAL) Tweak Syntax, Color, and Transparency </summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
@@ -157,6 +158,28 @@ lackluster.setup({
 vim.cmd.colorscheme("lackluster")
 ```
   </details>
+
+<details>
+  <summary>(Optional) Setup nvim-web-devicons</summary>
+
+```lua 
+
+-- nvim-web-devicons does not play well with colorschemes so if lackluster style icons
+-- run the following setup before you load lackluster.
+local lackluster = require("lackluster")
+require('nvim-web-devicons').setup({
+    color_icons = false,
+    override = {
+        ["default_icon"] = {
+            color = lackluster.color.gray4,
+            name = "Default",
+        }
+    }
+})
+vim.cmd.colorscheme("lackluster")
+```
+
+</details>
 
 ## VARIATIONS
 > lackluster-hack (return is green, exception is blue)
