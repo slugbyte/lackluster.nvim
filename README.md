@@ -129,6 +129,7 @@ local lackluster = require("lackluster")
 -- !must called setup() before setting the colorscheme!
 lackluster.setup({
     disable_plugin = {
+        bufferline = false,
         cmp = false,
         dashboard = false,
         flash = false,
@@ -198,6 +199,7 @@ vim.cmd.colorscheme("lackluster")
 
 Screenshots of many of the plugins can be found [here](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md)
 
+* [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 * [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [flash.nvim](https://github.com/folke/flash.nvim)
