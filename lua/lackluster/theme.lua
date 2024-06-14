@@ -248,6 +248,12 @@ M.plugin_headline = {
     fg_dash = color.gray4,
 }
 
+---@clas LacklusterThemePluginScrollbar
+M.plugin_scrollbar = {
+    bg = color.gray2,
+    cursor = color.gray4,
+}
+
 ---@class LacklusterThemePluginRainbow
 M.plugin_rainbow = {
     red = "#555555",

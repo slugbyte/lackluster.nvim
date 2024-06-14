@@ -54,6 +54,7 @@ local M = {
 ---@field notify ?boolean
 ---@field oil ?boolean
 ---@field rainbow_delimiter ?boolean
+---@field scrollbar ?boolean
 ---@field telescope ?boolean
 ---@field todo_comments ?boolean
 ---@field tree ?boolean
@@ -106,6 +107,7 @@ local default_config = {
         notify = false,
         oil = false,
         rainbow_delimiter = false,
+        scrollbar = false,
         telescope = false,
         todo_comments = false,
         tree = false,

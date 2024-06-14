@@ -145,6 +145,7 @@ lackluster.setup({
         notify = false,
         oil = false,
         rainbow_delimiter = false, -- if you want color-rainbows you should disable this
+        scollbar = false,
         telescope = false,
         todo_comments = false,
         tree = false,
@@ -160,7 +161,7 @@ vim.cmd.colorscheme("lackluster")
   </details>
 
 <details>
-  <summary>(Optional) Setup nvim-web-devicons</summary>
+  <summary>(OPTIONAL) Setup nvim-web-devicons</summary>
 
 ```lua 
 
@@ -211,6 +212,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
 * [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 * [nvim-notify](https://github.com/rcarriga/nvim-notify)
+* [nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua/tree/master?tab=readme-ov-file)
 * [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 * [nvim\_cmp](https://github.com/hrsh7th/nvim-cmp)

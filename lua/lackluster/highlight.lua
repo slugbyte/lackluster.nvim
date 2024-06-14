@@ -338,6 +338,7 @@ local highlight = function(theme, color)
         require("lackluster.plugin.headlines")(theme),
         require("lackluster.plugin.noice")(theme),
         require("lackluster.plugin.dashboard")(theme),
+        require("lackluster.plugin.scrollbar")(theme),
     }
 end
 
