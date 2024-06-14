@@ -50,5 +50,15 @@ I don't use these plugins so I makes it quite a bit of work to implement my self
 will probably be a slow long term effort.
 
 > no particular order
-* [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
+* [mini-completion.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md)
+* [mini-starter.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md)
+* [mini-statusline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-statusline.md)
+* [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
+* [mini-tabline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md)
+* [mini-test.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-test.md)
+* [mini-trailspace.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md)
+* [mini-jump.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump.md)
+* [mini-jump2d.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md)
+* [mini-indentscope.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md)
+* [mini-cursorword.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
 * [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
