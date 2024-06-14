@@ -227,12 +227,14 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 If you like this project star the GitHub repository :)
 
 ## HELP WANTED
-If you find a bug please open a ticket :) and please include screenshots if relevant :)
+If you find a bug please open a issue :) and please include screenshots if relevant :)
 
-Is `lackluster` missing support for a plugin you love? Feel free to open a PR with a
-suggested implementation! Your contribution is mega appreciated.
+Is `lackluster` missing support for a plugin/extra you love? Open a suggestion issue, or
+better yet Read the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md) 
+and [DEVELOPMENT](https://github.com/slugbyte/lackluster.nvim/blob/main/DEVELOPMENT.md) Guides,
+and make a contribution!
 
-See the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md) and [DEVELOPMENT](https://github.com/slugbyte/lackluster.nvim/blob/main/DEVELOPMENT.md) Guides!
+Your feedback and contributions are mega appreciated!
 
 ## ACKNOWLEDGEMENT
 > I referenced the following colorscheme's source code when creating lackluster :)
