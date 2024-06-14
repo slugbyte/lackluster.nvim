@@ -1,4 +1,9 @@
+## Checklist 
+- [ ] I read the [CONTRIBUTING GUIDE](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md)
+- [ ] I opened a CONTRIBUTING ISSUE before opening the PR
+
 ## Description
+
 
 ### Screenshots
 > if relevant please add screenshots to show how it looks on your machine
