@@ -38,6 +38,7 @@ local M = {
 ---@field telescope ?string
 
 ---@class LacklusterConfigDisablePlugin
+---@field bufferline ?boolean
 ---@field cmp ?boolean
 ---@field dashboard ?boolean
 ---@field flash ?boolean
@@ -91,6 +92,7 @@ local default_config = {
         telescope = 'default', -- telescope
     },
     disable_plugin = {
+        bufferline = false,
         cmp = false,
         dashboard = false,
         flash = false,

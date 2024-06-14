@@ -1,21 +1,27 @@
-name: Contributing A Plugin
-description: Contributing support for a new plugin.
+name: Contributing Issue
+description: Contribution Discussion Ticket
 title: "plugin: "
 labels: [enhancement]
 body:
   - type: checkboxes
     attributes:
-      label: Did you read the Contributing guide?
+      label: Did you read the Contributing Guide?
       description: Make sure you have read the Contributing guide
       options:
-        - label: I have read the Contributing guide
+        - label: I have read the Contributing Guide
           required: true
-  - type: input
-    attributes:
-      label: "Link"
-      description: "Privide a link to the plugin you are working on adding support for!"
+  - type: textarea
     validations:
       required: true
+    attributes:
+      label: Description
+      description: What do you want to add to lackluster and why?
+  - type: input
+    validations:
+      required: false
+    attributes:
+      label: "Link"
+      description: "If relevant privide a link to the plugin/tool you are working on adding support for!"
   - type: textarea
     validations:
       required: false
