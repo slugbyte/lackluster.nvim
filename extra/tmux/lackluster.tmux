@@ -16,25 +16,28 @@ color_gray7="#aaaaaa"
 color_gray8="#cccccc"
 color_gray9="#DDDDDD"
 
+# set to 12 for a 12-hour clock
+set-option -g clock-mode-style              24 
+set-option -g clock-mode-colour             "$color_gray6"
+
 # NOTE: color variable expansion only works in double quotes
 set-option -g status-fg                     "$color_luster"
-set-option -g status-bg                     "$color_gray1"
-set-option -g clock-mode-colour             "$color_gray1"
-set-option -g copy-mode-current-match-style "bg=$color_gray1,fg=$color_luster"
-set-option -g copy-mode-match-style         "bg=$color_gray1,fg=$color_luster"
-set-option -g menu-selected-style           "bg=$color_gray1,fg=$color_luster"
-set-option -g menu-style                    "bg=$color_luster,fg=$color_gray1"
-set-option -g message-command-style         "bg=$color_gray1,fg=$color_luster"
-set-option -g message-style                 "bg=$color_luster,fg=$color_gray1"
-set-option -g mode-style                    "bg=$color_gray1,fg=$color_luster"
+set-option -g status-bg                     "$color_gray2"
+set-option -g copy-mode-current-match-style "fg=$color_gray1,bg=$color_gray8"
+set-option -g copy-mode-match-style         "fg=$color_gray1,bg=$color_gray8"
+set-option -g menu-selected-style           "fg=$color_gray1,bg=$color_luster"
+set-option -g menu-style                    "fg=$color_luster,bg=$color_gray1"
+set-option -g message-style                 "bg=$color_gray6,fg=$color_gray1" # command in vi-insert mode
+set-option -g message-command-style         "bg=$color_gray6,fg=$color_gray4" # command in vi-normal mode
+set-option -g mode-style                    "bg=$color_gray8,fg=$color_gray1"
 set-option -g pane-active-border-style      "fg=$color_gray1"
 set-option -g pane-border-lines             "heavy"
 set-option -g pane-border-style             "fg=$color_gray1"
-set-option -g pane-border-style             "fg=$color_luster"
+set-option -g pane-border-style             "fg=$color_gray5"
 set-option -g popup-border-lines            "rounded"
-set-option -g status-right-style            "fg=$color_luster"
-set-option -g window-status-current-style   "fg=$color_lack"
-set-option -g window-status-style           "fg=$color_luster"
+set-option -g status-right-style            "fg=$color_gray6"
+set-option -g window-status-current-style   "fg=$color_gray8"
+set-option -g window-status-style           "fg=$color_gray6"
 
 # display the window index number or index-number:name if has a name
 set-option -g window-status-format         '#{?#{==:#W,},#I,#I:#W}'
