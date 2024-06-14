@@ -89,5 +89,5 @@ pub fn toStringExa(self: Color) []u8 {
 }
 
 pub fn describe(self: Color) []u8 {
-    return strfmt("{s}name{s} {s: <6} {s} {s: <18} {s}", .{ self.toTermcolor(), TERM_RESET, self.name, self.toStringRGB(), self.toTermcolorEscape() });
+    return strfmt("{s}name{s} {s: <6} {s} {s: <18} {s}", .{ self.toTermcolor(), TERM_RESET, self.name, self.toStringHexcode(), self.toStringRGB(), self.toTermcolorEscape() });
 }
