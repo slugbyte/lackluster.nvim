@@ -1,7 +1,6 @@
 local color = require("lackluster.color")
 local color_special = require("lackluster.color-special")
 
-
 ---@class LacklusterTheme
 ---@field syntax LacklusterThemeSyntax
 local M = {}
