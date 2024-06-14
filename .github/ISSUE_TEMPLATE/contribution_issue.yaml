@@ -1,6 +1,6 @@
 name: Contributing Issue
 description: Contribution Discussion Ticket
-title: "plugin: "
+title: "feature: "
 labels: [enhancement]
 body:
   - type: checkboxes
