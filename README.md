@@ -129,6 +129,7 @@ local lackluster = require("lackluster")
 lackluster.setup({
     disable_plugin = {
         cmp = false,
+        dashboard = false,
         flash = false,
         git_gutter = false,
         git_signs = false,
@@ -173,6 +174,7 @@ vim.cmd.colorscheme("lackluster")
 
 Screenshots of many of the plugins can be found [here](https://github.com/slugbyte/lackluster.nvim/blob/main/SCREENSHOT.md)
 
+* [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 * [figet.nvim](https://github.com/j-hui/fidget.nvim)
 * [flash.nvim](https://github.com/folke/flash.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
@@ -187,6 +189,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 * [nvim-notify](https://github.com/rcarriga/nvim-notify)
 * [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua/tree/master?tab=readme-ov-file)
+* [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
 * [nvim\_cmp](https://github.com/hrsh7th/nvim-cmp)
 * [oil.nvim](https://github.com/stevearc/oil.nvim)
 * [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)

@@ -48,6 +48,5 @@ will probably be a slow long term effort.
 > no particular order
 * [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 * [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim)
-* [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
 * [petertriho/nvim-scrollbar](https://github.com/petertriho/nvim-scrollbar)
 * [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)

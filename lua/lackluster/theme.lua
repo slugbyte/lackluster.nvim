@@ -13,6 +13,8 @@ M.ui = {
     fg_normal        = color.gray8,
     bg_normal        = color_special.main_background,
 
+    fg_icon          = color.gray4,
+
     fg_button        = color.gray5,
     bg_button        = color_special.popup_background,
 

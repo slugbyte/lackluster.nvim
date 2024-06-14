@@ -39,6 +39,7 @@ local M = {
 
 ---@class LacklusterConfigDisablePlugin
 ---@field cmp ?boolean
+---@field dashboard ?boolean
 ---@field flash ?boolean
 ---@field git_gutter ?boolean
 ---@field git_signs ?boolean
@@ -90,6 +91,7 @@ local default_config = {
     },
     disable_plugin = {
         cmp = false,
+        dashboard = false,
         flash = false,
         git_gutter = false,
         git_signs = false,

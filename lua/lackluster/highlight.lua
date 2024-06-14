@@ -312,6 +312,9 @@ local highlight = function(theme, color)
                 -- make
                 spec.fg('@string.special.symbol.make', theme.syntax.string),
                 spec.fg('makeSpecial', theme.syntax.special),
+
+                -- webdevicon
+                spec.co('DevIconDefault', theme.ui.fg_icon, theme.none, { force = true }),
             },
         },
         require("lackluster.plugin.cmp")(theme),
@@ -334,6 +337,7 @@ local highlight = function(theme, color)
         require("lackluster.plugin.yanky")(theme),
         require("lackluster.plugin.headlines")(theme),
         require("lackluster.plugin.noice")(theme),
+        require("lackluster.plugin.dashboard")(theme),
     }
 end
 
