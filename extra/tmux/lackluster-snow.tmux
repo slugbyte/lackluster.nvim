@@ -16,10 +16,13 @@ color_gray7="#aaaaaa"
 color_gray8="#cccccc"
 color_gray9="#DDDDDD"
 
+set-option -g default-terminal              "screen-256color"
+set-option -g clock-mode-style              24 
+set-option -g clock-mode-colour             "$color_gray6"
+
 # NOTE: color variable expansion only works in double quotes
 set-option -g status-fg                     "$color_gray1"
 set-option -g status-bg                     "$color_luster"
-set-option -g clock-mode-colour             "$color_luster"
 set-option -g copy-mode-current-match-style "bg=$color_luster,fg=$color_gray1"
 set-option -g copy-mode-match-style         "bg=$color_luster,fg=$color_gray1"
 set-option -g menu-selected-style           "bg=$color_luster,fg=$color_gray1"

@@ -17,6 +17,7 @@ color_gray8="#cccccc"
 color_gray9="#DDDDDD"
 
 # set to 12 for a 12-hour clock
+set-option -g default-terminal              "screen-256color"
 set-option -g clock-mode-style              24 
 set-option -g clock-mode-colour             "$color_gray6"
 
