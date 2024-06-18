@@ -16,8 +16,13 @@ color_gray7="#aaaaaa"
 color_gray8="#cccccc"
 color_gray9="#DDDDDD"
 
-# set to 12 for a 12-hour clock
 set-option -g default-terminal              "screen-256color"
+
+# by default window names will just be their index
+set-option -g automatic-rename              on
+set-option -g automatic-rename-format       "#I"
+
+# set to 12 for a 12-hour clock
 set-option -g clock-mode-style              24 
 set-option -g clock-mode-colour             "$color_gray6"
 
