@@ -3,6 +3,7 @@ return {
     lack = "#708090",
     luster = "#deeeed",
     orange = '#ffaa88',
+    yellow = "#abab77",
     green = "#789978",
     blue = '#7788AA',
     red = "#D70000",

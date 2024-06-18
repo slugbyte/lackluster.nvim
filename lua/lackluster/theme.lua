@@ -100,8 +100,12 @@ M.syntax_mint = vim.tbl_deep_extend("force", M.syntax_default, {
 
 ---@type LacklusterThemeSyntax
 M.syntax_night = vim.tbl_deep_extend("force", M.syntax_default, {
+    string = color.yellow,
+    string_escape = color.blue,
+    builtin = color.blue,
     keyword = color.lack,
-    str = color.blue,
+    keyword_return = color.blue,
+    keyword_exception = color.blue,
 })
 
 ---@type LacklusterThemeSyntax
