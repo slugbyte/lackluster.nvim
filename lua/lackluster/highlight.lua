@@ -340,6 +340,9 @@ local highlight = function(theme, color)
         require("lackluster.plugin.dashboard")(theme),
         require("lackluster.plugin.scrollbar")(theme),
         require("lackluster.plugin.bufferline")(theme),
+        -- TODO: decide if each individual mini plugin should be opt in
+        -- can wait until all are supported before deciding
+        require("lackluster.plugin.mini")(theme),
     }
 end
 
