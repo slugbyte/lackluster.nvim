@@ -1,0 +1,107 @@
+* {
+    y-offset: -400; // (negitive goes up positive goes down)
+    width: 1000;
+    items: 10;
+
+    lack:   #708090;
+    luster: #deeeed;
+    orange: #ffaa88;
+    green:  #789978;
+    blue:   #7788AA;
+    red:    #D70000;
+    black:  #000000;
+    gray1:  #080808;
+    gray2:  #191919;
+    gray3:  #2a2a2a;
+    gray4:  #444444;
+    gray5:  #555555;
+    gray6:  #7a7a7a;
+    gray7:  #aaaaaa;
+    gray8:  #cccccc;
+    gray9:  #DDDDDD;
+}
+
+* {
+    // font name <space> font style <space> font size
+    font: "DejaVu Sans Mono Regular 16";
+    background-color: transparent;
+    text-color: @gray9;
+    margin: 0px;
+    padding: 0px;
+    spacing: 0px;
+}
+
+window {
+    background-color:   @gray2;
+    y-offset: @y-offset;
+    width: @width;
+}
+
+mainbox {
+    padding: 10px;
+}
+
+inputbar {
+    background-color: @gray3;
+    padding: 8px 16px;
+    spacing: 16px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @gray6;
+}
+
+entry {
+    placeholder: "...";
+    placeholder-color: @gray5;
+}
+
+message {
+    margin: 16px 0 0;
+    background-color: @gray2;
+}
+
+textbox {
+    padding: 8px 24px;
+}
+
+listview {
+    background-color:transparent;
+    scrollbar: true;
+    scrollbar-width: 5;
+    margin: 10px 0 0;
+    columns: 1;
+    lines: @items;
+    dynamic: true;
+    fixed-height: false;
+}
+
+scrollbar {
+    background-color: @gray3;
+    handle-width: 10px;
+    handle-color: @gray5;
+    margin: 0px 0px 0px 10px;
+}
+
+element {
+    padding: 8px 16px;
+    spacing: 8px;
+}
+
+element-icon {
+    size: 1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: @gray6;
+}
+element selected normal, element selected active {
+    background-color: @gray9;
+    text-color: @gray0;
+}
+
+element-text selected {
+    text-color: @gray1;
+}
