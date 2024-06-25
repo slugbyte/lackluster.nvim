@@ -111,30 +111,39 @@ pub fn main() !void {
         "gn", // group not yours
     });
 
-    // normal
-    setGroup(Color.Gray8, &.{ "Makefile", "Cargo.toml", "SConstruct", "CMakeLists.txt", "build.gradle", "pom.xml", "Rakefile", "package.json", "Gruntfile.js", "Gruntfile.coffee", "BUILD", "BUILD.bazel", "WORKSPACE", "build.xml", "Podfile", "webpack.config.js", "meson.build", "composer.json", "RoboFile.php", "PKGBUILD", "Justfile", "Procfile", "Dockerfile", "Containerfile", "Vagrantfile", "Brewfile", "Gemfile", "Pipfile", "build.sbt", "mix.exs", "bsconfig.json", "tsconfig.json", "build.zig", "build.zig.zon" });
-    setGlobGroup(Color.Gray8, &.{ "md", "txt", "json", "toml", "yaml", "js", "djvu", "doc", "docx", "dvi", "eml", "eps", "fotd", "key", "odp", "odt", "pdf", "ppt", "pptx", "rtf", "xls", "xlsx" });
+    // source files
+    setItem("sc", Color.Gray8);
 
-    // compiled
-    setGlobGroup(Color.Gray6, &.{ "class", "elc", "hi", "o", "pyc", "zwc", "ko" });
+    // build files (like Makefile)
+    setItem("bu", Color.Gray8);
 
-    // image
-    setGlobGroup(Color.Gray6, &.{ "arb", "bmp", "cbr", "cbz", "cr2", "dvi", "eps", "gif", "heif", "ico", "jpeg", "jpg", "nef", "orf", "pbm", "pgm", "png", "pnm", "ppm", "ps", "raw", "stl", "svg", "tif", "tiff", "webp" });
+    // compiled/build artifact (like .o files)
+    setItem("cm", Color.Gray6);
 
-    // video
-    setGlobGroup(Color.Gray6, &.{ "avi", "flv", "heic", "m2ts", "m2v", "mkv", "mov", "mp4", "mpeg", "mpg", "ogm", "ogv", "ts", "vob", "webm", "wmv" });
+    // temp
+    setItem("tm", Color.Gray6);
 
-    // audio
-    setGlobGroup(Color.Gray6, &.{ "aac", "alac", "ape", "flac", "m4a", "mka", "mp3", "ogg", "opus", "wav", "wma" });
+    // compressed file
+    setItem("co", Color.Gray6);
 
-    // archive
-    setGlobGroup(Color.Gray6, &.{ "7z", "a", "ar", "bz2", "deb", "dmg", "gz", "iso", "lzma", "par", "rar", "rpm", "tar", "tc", "tgz", "txz", "z", "Z", "zip", "zst" });
-
-    //temp
-    setGlobGroup(Color.Gray6, &.{ "bak", "bk", "swn", "swo", "swp", "tmp" });
+    // doc
+    setItem("do", Color.Gray6);
 
     // crypto
-    setGlobGroup(Color.Orange, &.{ "asc", "enc", "gpg", "p12", "pfx", "pgp", "sig", "signature" });
+    setItem("cr", Color.Orange);
+
+    // image
+    setItem("im", Color.Gray6);
+
+    // audio
+    setItem("lo", Color.Gray6);
+    setItem("mu", Color.Gray6);
+
+    // video
+    setItem("vi", Color.Gray6);
+
+    // mount point
+    setItem("mp", Color.Gray6);
 
     // first char is a colon and should not be printed
     util.logfmt("export EZA_COLORS='{s}'", .{exa_colors.getString()[1..]});
