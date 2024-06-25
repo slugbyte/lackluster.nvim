@@ -36,11 +36,9 @@ pub fn main() !void {
 
     // order matters for exa_colors
     // git
-    setItem("hd", Color.Gray4);
-
+    setItem("ex", Color.Green); // executable
     setItem("fi", Color.Gray8); // file
     setItem("di", Color.Gray5); // dir
-    setItem("ex", Color.Blue); // executable
     setGroup(Color.Red, &.{
         "b0", // broken link path
         "or", // broken symlink
@@ -61,24 +59,23 @@ pub fn main() !void {
 
     // permissions
     setGroup(Color.Gray6, &.{
-        "ux", // user execute
         "ur", // user read
         "uw", // user write
-        //
+        "ux", // user execute (files)
+        "ue", // user execute (file types)
         "gr", // group read
         "gw", // group write
         "gx", // group execute
-        //
         "tr", // other read
         "tw", // other write
         "tx", // other execute
-        //
         "su", // higher bits files
         "sf", // higher bits non-file
         "xa", // extended attribute
     });
 
     // metadata
+    setItem("hd", Color.Gray4); // headers
     setGroup(Color.Gray6, &.{
         "bl", // number of blocks
         "cc", // control char
@@ -140,5 +137,5 @@ pub fn main() !void {
     setGlobGroup(Color.Orange, &.{ "asc", "enc", "gpg", "p12", "pfx", "pgp", "sig", "signature" });
 
     // first char is a colon and should not be printed
-    util.logfmt("export EXA_COLORS='{s}'", .{exa_colors.getString()[1..]});
+    util.logfmt("export EZA_COLORS='{s}'", .{exa_colors.getString()[1..]});
 }
