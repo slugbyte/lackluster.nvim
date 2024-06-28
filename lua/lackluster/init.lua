@@ -194,9 +194,16 @@ M.load = function(opt)
 					vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
 				else
 					dedup_set[hl_name] = true
-					hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freq out
+					hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
+					-- Filter out invalid keys here
+					local valid_spec = {}
+					for key, value in pairs(hl_spec) do
+						if key ~= "force" then
+							valid_spec[key] = value
+						end
+					end
 					---@diagnostic disable-next-line: param-type-mismatch
-					vim.api.nvim_set_hl(0, hl_name, hl_spec)
+					vim.api.nvim_set_hl(0, hl_name, valid_spec)
 				end
 			end
 		end
