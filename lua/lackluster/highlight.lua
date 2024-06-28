@@ -314,7 +314,7 @@ local highlight = function(theme, color)
                 spec.fg('makeSpecial', theme.syntax.special),
 
                 -- webdevicon
-                spec.co('DevIconDefault', theme.ui.fg_icon, theme.none, { force = true }),
+                spec.fg('DevIconDefault', theme.ui.fg_icon),
             },
         },
         require("lackluster.plugin.cmp")(theme),
