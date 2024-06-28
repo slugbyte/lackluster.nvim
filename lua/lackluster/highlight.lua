@@ -68,7 +68,7 @@ local highlight = function(theme, color)
 
                 -- OTHER UI
                 spec.fg('WinSeparator', theme.ui.fg_border),
-                spec.fg('EndOfBuffer', color.gray4),
+                spec.fg('EndOfBuffer', theme.ui.bg_normal),
                 spec.fg('QuickFixLine', color.green),
 
                 -- SYNTAX
