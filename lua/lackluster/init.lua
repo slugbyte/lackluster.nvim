@@ -195,7 +195,7 @@ M.load = function(opt)
 				else
 					dedup_set[hl_name] = true
 					hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
-					-- Filter out invalid keys here
+					-- Filtering out invalid keys here
 					local valid_spec = {}
 					for key, value in pairs(hl_spec) do
 						if key ~= "force" then
