@@ -63,6 +63,8 @@ local M = {
 ---@field which_key ?boolean
 ---@field yanky ?boolean
 
+-- TODO: @JuanBaut add @field tweak_pallet to LacklusterConfig
+
 ---@class LacklusterConfig
 ---@field tweak_syntax ?LacklusterConfigTweakSyntax
 ---@field tweak_background ?LacklusterConfigTweakBackground
@@ -70,6 +72,8 @@ local M = {
 
 --- @type LacklusterConfig | nil
 local USER_CONFIG = nil
+
+-- TODO: @JuanBaut add tweak_pallet to the default_config
 
 --- @type LacklusterConfig
 local default_config = {
@@ -141,6 +145,7 @@ M.setup = function(config)
     USER_CONFIG = config
     tweak.background(config.tweak_background, theme)
     tweak.syntax(config.tweak_syntax, theme)
+    -- TODO: @JuanBaut tweak.pallet(config.tweak_pallet, color) tweak.pallet should mutate the color table
 end
 
 -- apply the colorscheme

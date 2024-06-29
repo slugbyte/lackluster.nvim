@@ -8,6 +8,9 @@ local tweak_background_keys = {
     "telescope",
 }
 
+-- TODO: @JuanBaut create M.pallet(tweak_pallet, color), a function that takes in tweak_pallet and color
+-- and then overides color with anything set on tweak pallet (using mutation)
+
 -- modify the theme based on setup's config.tweak_background
 M.background = function(tweak_background, theme)
     for _, key in ipairs(tweak_background_keys) do
