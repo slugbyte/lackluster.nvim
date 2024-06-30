@@ -9,6 +9,8 @@ M.none = "none"
 
 ---@class LacklusterThemeUI
 M.ui = {
+    use_undercurl    = true,
+    fg_end_of_buffer = color_special.main_background,
     fg_normal        = color.gray8,
     bg_normal        = color_special.main_background,
 
