@@ -4,6 +4,7 @@
 ---@field fg ?string fg color
 ---@field link ?string highlight link name
 ---@field undercurl ?boolean undercurl toggle
+---@field underline ?boolean undercurl toggle
 
 local M = {}
 

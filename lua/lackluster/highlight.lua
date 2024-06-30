@@ -68,7 +68,7 @@ local highlight = function(theme, color)
 
                 -- OTHER UI
                 spec.fg('WinSeparator', theme.ui.fg_border),
-                spec.fg('EndOfBuffer', theme.ui.bg_normal),
+                spec.fg('EndOfBuffer', theme.ui.fg_end_of_buffer),
                 spec.fg('QuickFixLine', color.green),
 
                 -- SYNTAX
@@ -127,6 +127,27 @@ local highlight = function(theme, color)
                 spec.fg('DiagnosticSignError', theme.diagnostic.error),
                 spec.fg('DiagnosticSignDeprecated', theme.diagnostic.deprecated),
 
+                spec.op('DiagnosticUnderlineWarn', {
+                    undercurl = theme.ui.use_undercurl,
+                    underline = not theme.ui.use_undercurl,
+                    sp = theme.diagnostic.warn
+                }),
+                spec.op('DiagnosticUnderlineInfo', {
+                    undercurl = theme.ui.use_undercurl,
+                    underline = not theme.ui.use_undercurl,
+                    sp = theme.diagnostic.info
+                }),
+                spec.op('DiagnosticUnderlineHint', {
+                    undercurl = theme.ui.use_undercurl,
+                    underline = not theme.ui.use_undercurl,
+                    sp = theme.diagnostic.hint
+                }),
+                spec.op('DiagnosticUnderlineError', {
+                    undercurl = theme.ui.use_undercurl,
+                    underline = not theme.ui.use_undercurl,
+                    sp = theme.diagnostic.error
+                }),
+
                 -- treesitter syntax
                 spec.fg('@keyword', theme.syntax.keyword),
                 spec.fg('@keyword.return', theme.syntax.keyword_return),
@@ -184,7 +205,7 @@ local highlight = function(theme, color)
                 spec.fg('@markup.italic', color.gray4),
                 spec.fg('@markup.strikethrough', color.gray4),
                 spec.op('@markup.underline', {
-                    undercurl = true,
+                    underline = true,
                 }),
 
                 spec.fg('@markup.list', color.gray4),
@@ -228,7 +249,8 @@ local highlight = function(theme, color)
 
                 --spell
                 spec.op('SpellBad', {
-                    undercurl = true,
+                    undercurl = theme.ui.use_undercurl,
+                    underline = not theme.ui.use_undercurl,
                 }),
                 spec.ln('SpellLocal', 'SpellBad'),
                 spec.ln('SpellCap', 'SpellBad'),

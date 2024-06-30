@@ -17,8 +17,9 @@
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
 4. (optional) Tweak Syntax, Color, and Transparency
-5. (optional) Disable Plugin Highlights
-6. (optional) Setup nvim-web-devicons
+5. (optional) Tweak UI
+6. (optional) Disable Plugin Highlights
+7. (optional) Setup nvim-web-devicons
 
 ```lua 
 -- example lazy.nvim install setup
@@ -44,18 +45,16 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary> (OPTIONAL) Tweak Syntax, Color, and Transparency </summary>
+  <summary>(OPTIONAL) Tweak Syntax, Color, and Transparency</summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
-
-> !! `setup()` will overwrite the colors of whatever lackluster-variant colorscheme you apply !!
 
 ```lua 
 local lackluster = require("lackluster")
 
 local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
 
--- setup before set colorscheme
+-- !must called setup() before setting the colorscheme!
 lackluster.setup({
     -- You can overwrite the following syntax colors by setting them to one of...
     --   1) a hexcode like "#a1b2c3" for a custom color
@@ -87,7 +86,7 @@ lackluster.setup({
     },
 })
 
--- colorscheme must be set after after setup()!
+-- !must set colorscheme after calling setup()!
 vim.cmd.colorscheme("lackluster")
 ```
 
@@ -97,6 +96,7 @@ vim.cmd.colorscheme("lackluster")
 --  and menus didn't look good but using setup() tweaks you can easily address that!
 local lackluster = require("lackluster")
 
+-- !must called setup() before setting the colorscheme!
 lackluster.setup({
     tweak_syntax = {
         comment = lackluster.color.gray4, -- or gray5
@@ -109,12 +109,37 @@ lackluster.setup({
     },
 })
 
+-- !must set colorscheme after calling setup()!
 vim.cmd.colorscheme("lackluster")
 ```
 </details>
 
 <details>
+  <summary>(OPTIONAL) Tweak UI</summary>
+
+> !! `setup()` **MUST** be called before setting your colorscheme !!
+
+```lua 
+local lackluster = require("lackluster")
+
+-- !must called setup() before setting the colorscheme!
+lackluster.setup({
+    tweak_ui = {
+        disable_undercurl = false, -- set to true if you want underline instead of undercurl
+        enable_end_of_buffer = false, -- set to true to show the end_of_buffer ~ symbols in the gutter
+    },
+})
+
+-- !must set colorscheme after calling setup()!
+vim.cmd.colorscheme("lackluster")
+```
+
+</details>
+
+<details>
   <summary>(OPTIONAL) Disable Plugin Highlights</summary>
+
+> !! `setup()` **MUST** be called before setting your colorscheme !!
 
 ```lua
 local lackluster = require("lackluster")
@@ -165,6 +190,7 @@ vim.cmd.colorscheme("lackluster")
 -- nvim-web-devicons does not play well with colorschemes so if lackluster style icons
 -- run the following setup before you load lackluster.
 local lackluster = require("lackluster")
+-- !must called setup() before setting the colorscheme!
 require('nvim-web-devicons').setup({
     color_icons = false,
     override = {

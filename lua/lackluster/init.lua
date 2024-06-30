@@ -63,9 +63,14 @@ local M = {
 ---@field which_key ?boolean
 ---@field yanky ?boolean
 
+---@class LacklusterConfigTweakUI
+---@field disable_undercurl ?boolean
+---@field enable_end_of_buffer ?boolean
+
 -- TODO: @JuanBaut add @field tweak_pallet to LacklusterConfig
 
 ---@class LacklusterConfig
+---@field tweak_ui ?LacklusterConfigTweakUI
 ---@field tweak_syntax ?LacklusterConfigTweakSyntax
 ---@field tweak_background ?LacklusterConfigTweakBackground
 ---@field disable_plugin LacklusterConfigDisablePlugin
@@ -77,6 +82,10 @@ local USER_CONFIG = nil
 
 --- @type LacklusterConfig
 local default_config = {
+    tweak_ui = {
+        disable_undercurl = false,    -- if false undercurl will be underline
+        enable_end_of_buffer = false, -- if false undercurl will be underline
+    },
     tweak_syntax = {
         -- ('default' is default) ('#ffaaff' is a custom colorcode)
         string = "default",
@@ -143,9 +152,11 @@ M.setup = function(config)
     config = fix_legacy_tweak_typo(config)
     config = vim.tbl_deep_extend("keep", config, default_config)
     USER_CONFIG = config
+    -- TODO: @JuanBaut tweak.pallet(config.tweak_pallet, color) tweak.pallet should mutate the color table
+    --       must be called before tweak.ui()
     tweak.background(config.tweak_background, theme)
     tweak.syntax(config.tweak_syntax, theme)
-    -- TODO: @JuanBaut tweak.pallet(config.tweak_pallet, color) tweak.pallet should mutate the color table
+    tweak.ui(config.tweak_ui, theme, color)
 end
 
 -- apply the colorscheme
@@ -200,7 +211,7 @@ M.load = function(opt)
                 else
                     dedup_set[hl_name] = true
                     hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
-                    ---@diagnostic disable-next-line: param-type-mismatch
+                    --- @diagnostic disable-next-line: param-type-mismatch
                     vim.api.nvim_set_hl(0, hl_name, hl_spec)
                 end
             end
