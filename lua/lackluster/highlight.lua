@@ -19,6 +19,7 @@ local highlight = function(theme, color)
                 spec.fg('Title', theme.ui.fg_title),
 
                 -- CURSOR
+                spec.co('SignColumn', theme.ui.fg_line_num, theme.ui.bg_normal),
                 spec.co('CursorLine', theme.none, theme.ui.bg_cursorline),
                 spec.fg('CursorLineNr', theme.ui.fg_line_num_cur),
                 spec.fg('LineNr', theme.ui.fg_line_num),
