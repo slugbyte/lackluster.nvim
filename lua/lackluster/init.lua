@@ -246,7 +246,7 @@ local highlight_apply = function()
             for _, hl_spec in ipairs(highlight_spec_list) do
                 local hl_name = hl_spec.name
                 if dedup_set[hl_name] then
-                    vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
+                    vim.notify('error: duplicate hi_spec :: ' .. hl_name, vim.log.levels.ERROR)
                 else
                     dedup_set[hl_name] = true
                     hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out

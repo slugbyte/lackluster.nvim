@@ -5,10 +5,10 @@ local M = {}
 
 ---limit keys, aka dont allow willy nilly tweaks to theme.ui
 local tweak_background_keys = {
-    "normal",
-    "menu",
-    "popup",
-    "telescope",
+    'normal',
+    'menu',
+    'popup',
+    'telescope',
 }
 
 ---modify the colors base don setup's config.tweak_color
@@ -52,14 +52,14 @@ end
 
 ---limit keys, aka dont allow willy nilly tweaks to theme.syntax
 local tweak_syntax_keys = {
-    "string",
-    "string_escape",
-    "comment",
-    "builtin",
-    "type",
-    "keyword",
-    "keyword_return",
-    "keyword_exception",
+    'string',
+    'string_escape',
+    'comment',
+    'builtin',
+    'type',
+    'keyword',
+    'keyword_return',
+    'keyword_exception',
 }
 
 ---modify the theme based on setup's config.tweak_syntax
