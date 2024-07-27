@@ -68,6 +68,9 @@ M.ui = function(tweak_ui, theme, color)
   if tweak_ui.enable_end_of_buffer then
     ---@diagnostic disable-next-line: inject-field, undefined-field
     theme.ui.fg_end_of_buffer = color.gray4
+  else
+    -- Set the End-of-Buffer (EOB) character to an empty space
+    vim.opt.fillchars:append { eob = ' ' }
   end
 end
 
