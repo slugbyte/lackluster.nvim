@@ -1,1 +1,1 @@
-require("lackluster").load()
+require('lackluster').load()
