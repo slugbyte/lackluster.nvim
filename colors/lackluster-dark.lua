@@ -1,3 +1,3 @@
-require("lackluster").load({
-    theme = "dark",
-})
+require('lackluster').load {
+  theme = 'dark',
+}
