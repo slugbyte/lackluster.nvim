@@ -14,19 +14,19 @@ local M = {}
 --- @param opts ?{[string]:any}
 --- @return LacklusterHighlightSpec
 M.co = function(name, fg, bg, opts)
-    opts = opts or {}
-    if fg == nil then
-        assert(false, name .. " fg cannot be nil")
-    end
-    if bg == nil then
-        assert(false, name .. " bg cannot be nil")
-    end
+  opts = opts or {}
+  if fg == nil then
+    assert(false, name .. ' fg cannot be nil')
+  end
+  if bg == nil then
+    assert(false, name .. ' bg cannot be nil')
+  end
 
-    return vim.tbl_extend("force", opts, {
-        name = name,
-        fg = fg,
-        bg = bg,
-    })
+  return vim.tbl_extend('force', opts, {
+    name = name,
+    fg = fg,
+    bg = bg,
+  })
 end
 
 --- set only foreground
@@ -34,7 +34,7 @@ end
 --- @param fg string
 --- @return LacklusterHighlightSpec
 M.fg = function(name, fg)
-    return M.co(name, fg, 'none')
+  return M.co(name, fg, 'none')
 end
 
 --- set only background
@@ -42,7 +42,7 @@ end
 --- @param bg string
 --- @return LacklusterHighlightSpec
 M.bg = function(name, bg)
-    return M.co(name, 'none', bg)
+  return M.co(name, 'none', bg)
 end
 
 --- set only options
@@ -50,7 +50,7 @@ end
 --- @param opts {[string]: any}
 --- @return LacklusterHighlightSpec
 M.op = function(name, opts)
-    return M.co(name, 'none', 'none', opts)
+  return M.co(name, 'none', 'none', opts)
 end
 
 --- create a hi link
@@ -58,10 +58,10 @@ end
 --- @param link string
 --- @return LacklusterHighlightSpec
 M.ln = function(name, link)
-    return {
-        name = name,
-        link = link,
-    }
+  return {
+    name = name,
+    link = link,
+  }
 end
 
 return M

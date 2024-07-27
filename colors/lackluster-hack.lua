@@ -1,3 +1,3 @@
-require("lackluster").load({
-    theme = "hack",
-})
+require('lackluster').load {
+  theme = 'hack',
+}
