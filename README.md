@@ -21,11 +21,10 @@
 6. (optional) Disable Plugin Highlights
 7. (optional) Setup nvim-web-devicons
 
-```lua 
+```lua
 -- example lazy.nvim install setup
 return {
     "slugbyte/lackluster.nvim",
-    lazy = false,
     priority = 1000,
     init = function()
         vim.cmd.colorscheme("lackluster")
@@ -49,7 +48,7 @@ require('lualine').setup({
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
-```lua 
+```lua
 local lackluster = require("lackluster")
 
 local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
@@ -78,7 +77,7 @@ lackluster.setup({
     tweak_background = {
         normal = 'default',    -- main background
         -- normal = 'none',    -- transparent
-        -- normal = '#a1b2c3',    -- hexcode 
+        -- normal = '#a1b2c3',    -- hexcode
         -- normal = color.green,    -- lackluster color
         telescope = 'default', -- telescope
         menu = 'default',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
@@ -91,8 +90,8 @@ vim.cmd.colorscheme("lackluster")
 ```
 
 > Example transparent background `setup()`
-```lua 
---  When testing transparent backgrounds I found that comments where often hard to read, 
+```lua
+--  When testing transparent backgrounds I found that comments where often hard to read,
 --  and menus didn't look good but using setup() tweaks you can easily address that!
 local lackluster = require("lackluster")
 
@@ -119,7 +118,7 @@ vim.cmd.colorscheme("lackluster")
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
-```lua 
+```lua
 local lackluster = require("lackluster")
 
 -- !must called setup() before setting the colorscheme!
@@ -144,7 +143,7 @@ vim.cmd.colorscheme("lackluster")
 ```lua
 local lackluster = require("lackluster")
 
--- if for some reason you want to disable the highlights related to a specific plugin you 
+-- if for some reason you want to disable the highlights related to a specific plugin you
 -- can set any of these to true and the highlights will not be set
 
 -- !must called setup() before setting the colorscheme!
@@ -185,7 +184,7 @@ vim.cmd.colorscheme("lackluster")
 <details>
   <summary>(OPTIONAL) Setup nvim-web-devicons</summary>
 
-```lua 
+```lua
 
 -- nvim-web-devicons does not play well with colorschemes so if lackluster style icons
 -- run the following setup before you load lackluster.
@@ -257,7 +256,7 @@ If you like this project star the GitHub repository :)
 If you find a bug please open a issue :) and please include screenshots if relevant :)
 
 Is `lackluster` missing support for a plugin/extra you love? Open a suggestion issue, or
-better yet Read the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md) 
+better yet Read the [CONTRIBUTING](https://github.com/slugbyte/lackluster.nvim/blob/main/CONTRIBUTING.md)
 and [DEVELOPMENT](https://github.com/slugbyte/lackluster.nvim/blob/main/DEVELOPMENT.md) Guides,
 and make a contribution!
 
