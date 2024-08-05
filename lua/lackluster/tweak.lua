@@ -5,10 +5,10 @@ local M = {}
 
 ---limit keys, aka dont allow willy nilly tweaks to theme.ui
 local tweak_background_keys = {
-    'normal',
-    'menu',
-    'popup',
-    'telescope',
+    "normal",
+    "menu",
+    "popup",
+    "telescope",
 }
 
 ---modify the colors base don setup's config.tweak_color
@@ -19,10 +19,9 @@ M.color = function(tweak_color, color)
                 color[color_name] = color_value
             else
                 vim.notify(
-                    "ERROR: skiping lackluster tweak color [" ..
-                    color_name .. "] because of invalid value (" ..
-                    color_value .. ")",
-                    vim.log.levels.ERROR)
+                    "ERROR: skiping lackluster tweak color [" .. color_name .. "] because of invalid value (" .. color_value .. ")",
+                    vim.log.levels.ERROR
+                )
             end
         end
     end
@@ -40,11 +39,7 @@ M.background = function(tweak_background, theme)
                     theme.ui["bg_" .. key] = value
                 end
             else
-                vim.notify(
-                    "ERROR: skiping lackluster tweak background [" ..
-                    key .. "] because of invalid value (" ..
-                    value .. ")",
-                    vim.log.levels.ERROR)
+                vim.notify("ERROR: skiping lackluster tweak background [" .. key .. "] because of invalid value (" .. value .. ")", vim.log.levels.ERROR)
             end
         end
     end
@@ -52,14 +47,14 @@ end
 
 ---limit keys, aka dont allow willy nilly tweaks to theme.syntax
 local tweak_syntax_keys = {
-    'string',
-    'string_escape',
-    'comment',
-    'builtin',
-    'type',
-    'keyword',
-    'keyword_return',
-    'keyword_exception',
+    "string",
+    "string_escape",
+    "comment",
+    "builtin",
+    "type",
+    "keyword",
+    "keyword_return",
+    "keyword_exception",
 }
 
 ---modify the theme based on setup's config.tweak_syntax
@@ -76,11 +71,7 @@ M.syntax = function(tweak_syntax, theme)
                     theme.syntax_tweak.type_primitive = value
                 end
             else
-                vim.notify(
-                    "ERROR: skiping lackluster tweak syntax [" ..
-                    key .. "] because of invalid value (" ..
-                    value .. ")",
-                    vim.log.levels.ERROR)
+                vim.notify("ERROR: skiping lackluster tweak syntax [" .. key .. "] because of invalid value (" .. value .. ")", vim.log.levels.ERROR)
             end
         end
     end
@@ -100,7 +91,7 @@ M.ui = function(tweak_ui, theme, color)
         theme.ui.fg_end_of_buffer = color.gray4
     else
         -- Set the End-of-Buffer (EOB) character to an empty space
-        vim.opt.fillchars:append { eob = ' ' }
+        vim.opt.fillchars:append({ eob = " " })
     end
 end
 
