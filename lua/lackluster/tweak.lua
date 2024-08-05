@@ -1,7 +1,7 @@
 ---@diagnostic disable: inject-field
 local M = {}
 
--- limit keys, aka dont allow willy nilly tweaks to theme.ui
+---limit keys, aka dont allow willy nilly tweaks to theme.ui
 local tweak_background_keys = {
     "normal",
     "menu",
@@ -9,15 +9,16 @@ local tweak_background_keys = {
     "telescope",
 }
 
-M.color = function(tweak_pallet, color)
-    for color_name, color_value in pairs(tweak_pallet) do
-        if color_value ~= "default" then
+---modify the colors base don setup's config.tweak_color
+M.color = function(tweak_color, color)
+    for color_name, color_value in pairs(tweak_color) do
+        if color_value and color_value ~= "default" then
             color[color_name] = color_value
         end
     end
 end
 
--- modify the theme based on setup's config.tweak_background
+---modify the theme based on setup's config.tweak_background
 M.background = function(tweak_background, theme)
     for _, key in ipairs(tweak_background_keys) do
         local value = tweak_background[key]
@@ -33,7 +34,7 @@ M.background = function(tweak_background, theme)
     end
 end
 
--- limit keys, aka dont allow willy nilly tweaks to theme.syntax
+---limit keys, aka dont allow willy nilly tweaks to theme.syntax
 local tweak_syntax_keys = {
     "string",
     "string_escape",
@@ -45,7 +46,7 @@ local tweak_syntax_keys = {
     "keyword_exception",
 }
 
--- modify the theme based on setup's config.tweak_syntax
+---modify the theme based on setup's config.tweak_syntax
 ---@param tweak_syntax LacklusterConfigTweakSyntax
 ---@param theme LacklusterTheme
 M.syntax = function(tweak_syntax, theme)
@@ -61,7 +62,7 @@ M.syntax = function(tweak_syntax, theme)
     end
 end
 
--- modify the theme based on config.tweak_ui
+---modify the theme based on config.tweak_ui
 ---@param tweak_ui LacklusterConfigTweakUI
 ---@param theme LacklusterTheme
 ---@param color LacklusterColor

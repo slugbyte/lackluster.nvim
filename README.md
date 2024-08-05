@@ -16,7 +16,8 @@
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
-4. (optional) Tweak Syntax, Color, and Transparency
+4. (optional) Tweak Colors
+4. (optional) Tweak Syntax Colors, and Transparency
 5. (optional) Tweak UI
 6. (optional) Disable Plugin Highlights
 7. (optional) Setup nvim-web-devicons
@@ -45,7 +46,50 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary>(OPTIONAL) Tweak Syntax, Color, and Transparency</summary>
+  <summary>(OPTIONAL) Tweak Color</summary>
+
+> !! `setup()` **MUST** be called before setting your colorscheme !!
+
+```lua 
+local lackluster = require("lackluster")
+
+local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
+
+-- !must called setup() before setting the colorscheme!
+lackluster.setup({
+    tweak_color = {
+        -- ('default' is default) ('#ffaaff' is a custom colorcode)
+        -- lack = "#aaaa77",
+        lack = "default", 
+        luster = "default",
+        orange = "default",
+        yellow = "default",
+        green = "default",
+        blue = "default",
+        red = "default",
+        -- WARN: messing with grays is probs a bad idea, its easy to shoot yourself in the foot!
+        -- black = "default",
+        -- gray1 = "default",
+        -- gray2 = "default",
+        -- gray3 = "default",
+        -- gray4 = "default",
+        -- gray5 = "default",
+        -- gray6 = "default",
+        -- gray7 = "default",
+        -- gray8 = "default",
+        -- gray9 = "default",
+
+    },
+})
+
+-- !must set colorscheme after calling setup()!
+vim.cmd.colorscheme("lackluster")
+```
+
+</details>
+
+<details>
+  <summary>(OPTIONAL) Tweak Syntax Colors, and Transparency</summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 

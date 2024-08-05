@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 -- ____   _________________________   ____________________________________
 -- 7  7   7  _  77     77  7  77  7   7  7  77     77      77     77  _  7
 -- |  |   |  _  ||  ___!|   __!|  |   |  |  ||  ___!!__  __!|  ___!|    _|
@@ -214,7 +215,6 @@ M.setup = function(config)
 end
 
 local load_variant = function(opt)
-    ---@diagnostic disable-next-line: inject-field
     theme.syntax = theme.syntax_default
     vim.o.termguicolors = true
     vim.g.colors_name = "lackluster"
