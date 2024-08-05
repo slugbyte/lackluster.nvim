@@ -10,11 +10,11 @@
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
 
-local dev = require 'lackluster.dev'
-local color = require 'lackluster.color'
-local theme = require 'lackluster.theme'
-local tweak = require 'lackluster.tweak'
-local highlight = require 'lackluster.highlight'
+local dev = require("lackluster.dev")
+local color = require("lackluster.color")
+local theme = require("lackluster.theme")
+local tweak = require("lackluster.tweak")
+local highlight = require("lackluster.highlight")
 
 local M = {
     color = color,
@@ -83,26 +83,26 @@ local USER_CONFIG = nil
 --- @type LacklusterConfig
 local default_config = {
     tweak_ui = {
-        disable_undercurl = false,    -- if false undercurl will be underline
+        disable_undercurl = false, -- if false undercurl will be underline
         enable_end_of_buffer = false, -- if false undercurl will be underline
     },
     tweak_syntax = {
         -- ('default' is default) ('#ffaaff' is a custom colorcode)
-        string = 'default',
-        string_escape = 'default',
-        comment = 'default',
-        builtin = 'default', -- builtin modules and functions
-        type = 'default',
-        keyword = 'default',
-        keyword_return = 'default',
-        keyword_exception = 'default',
+        string = "default",
+        string_escape = "default",
+        comment = "default",
+        builtin = "default", -- builtin modules and functions
+        type = "default",
+        keyword = "default",
+        keyword_return = "default",
+        keyword_exception = "default",
     },
     tweak_background = {
         -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
-        normal = 'default',    -- main background
-        menu = 'default',      -- nvim_cmp, wildmenu ...
-        popup = 'default',     -- lazy, mason, whichkey ...
-        telescope = 'default', -- telescope
+        normal = "default", -- main background
+        menu = "default", -- nvim_cmp, wildmenu ...
+        popup = "default", -- lazy, mason, whichkey ...
+        telescope = "default", -- telescope
     },
     disable_plugin = {
         bufferline = false,
@@ -150,7 +150,7 @@ end
 ---@param config ?LacklusterConfig
 M.setup = function(config)
     config = fix_legacy_tweak_typo(config)
-    config = vim.tbl_deep_extend('keep', config, default_config)
+    config = vim.tbl_deep_extend("keep", config, default_config)
     USER_CONFIG = config
     -- TODO: @JuanBaut tweak.pallet(config.tweak_pallet, color) tweak.pallet should mutate the color table
     --       must be called before tweak.ui()
@@ -164,37 +164,37 @@ M.load = function(opt)
     opt = opt or {}
 
     if USER_CONFIG == nil then
-        USER_CONFIG = vim.tbl_deep_extend('force', {}, default_config)
+        USER_CONFIG = vim.tbl_deep_extend("force", {}, default_config)
     end
 
     local t = theme
     t.syntax = t.syntax_default
     vim.o.termguicolors = true
-    vim.g.colors_name = 'lackluster'
+    vim.g.colors_name = "lackluster"
 
     -- official themes
-    if opt.theme == 'hack' then
+    if opt.theme == "hack" then
         t.syntax = t.syntax_hack
-        vim.g.colors_name = 'lackluster-hack'
+        vim.g.colors_name = "lackluster-hack"
     end
 
-    if opt.theme == 'mint' then
+    if opt.theme == "mint" then
         t.syntax = t.syntax_mint
-        vim.g.colors_name = 'lackluster-mint'
+        vim.g.colors_name = "lackluster-mint"
     end
 
     -- expieramental themes
-    if opt.theme == 'dark' then
+    if opt.theme == "dark" then
         t.syntax = t.syntax_dark
-        vim.g.colors_name = 'lackluster-dark'
+        vim.g.colors_name = "lackluster-dark"
     end
 
-    if opt.theme == 'night' then
+    if opt.theme == "night" then
         t.syntax = t.syntax_night
-        vim.g.colors_name = 'lackluster-night'
+        vim.g.colors_name = "lackluster-night"
     end
 
-    t.syntax = vim.tbl_extend('force', t.syntax, t.syntax_tweak)
+    t.syntax = vim.tbl_extend("force", t.syntax, t.syntax_tweak)
 
     local dedup_set = {}
     local highlight_group_list = highlight(t, color)
@@ -207,7 +207,7 @@ M.load = function(opt)
             for _, hl_spec in ipairs(highlight_spec_list) do
                 local hl_name = hl_spec.name
                 if dedup_set[hl_name] then
-                    vim.notify('error: duplicate hi_spec :: ' .. hl_name, vim.log.levels.ERROR)
+                    vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
                 else
                     dedup_set[hl_name] = true
                     hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
