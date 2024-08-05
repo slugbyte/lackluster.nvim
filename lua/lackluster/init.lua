@@ -10,15 +10,30 @@
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
 
+-- @slugbyte notes: How should this work?
+-- setup() - apply user preferences
+--   - tweak_color
+--   - generate theme with color tweaks
+--   - tweak theme background
+--   - tweak theme syntax
+--   - tweak theme ui
+-- load() - select variant and apply the highlights
+--  - tweak synax
+
 local dev = require("lackluster.dev")
 local color = require("lackluster.color")
-local theme = require("lackluster.theme")
+local color_specail = require("lackluster.color-special")
+local create_theme = require("lackluster.create-theme")
 local tweak = require("lackluster.tweak")
 local highlight = require("lackluster.highlight")
 
+-- NOTE: theme will get overwriten if user calls setup()
+local theme = create_theme(color, color_specail)
+
 local M = {
-	color = color,
-	dev = dev,
+    theme = create_theme(color, color_specail),
+    color = color,
+    dev = dev,
 }
 
 ---@class LacklusterConfigTweakSyntax
@@ -67,8 +82,7 @@ local M = {
 ---@field disable_undercurl ?boolean
 ---@field enable_end_of_buffer ?boolean
 
--- @JuanBaut
----@class LacklusterConfigTweakPallet
+---@class LacklusterConfigTweakColor
 ---@field	lack ?string
 ---@field	luster ?string
 ---@field	orange ?string
@@ -88,7 +102,7 @@ local M = {
 
 ---@class LacklusterConfig
 ---@field tweak_ui ?LacklusterConfigTweakUI
----@field tweak_pallet ?LacklusterConfigTweakPallet
+---@field tweak_pallet ?LacklusterConfigTweakColor
 ---@field tweak_syntax ?LacklusterConfigTweakSyntax
 ---@field tweak_background ?LacklusterConfigTweakBackground
 ---@field disable_plugin LacklusterConfigDisablePlugin
@@ -98,162 +112,174 @@ local USER_CONFIG = nil
 
 --- @type LacklusterConfig
 local default_config = {
-	tweak_ui = {
-		disable_undercurl = false, -- if false undercurl will be underline
-		enable_end_of_buffer = false, -- if false undercurl will be underline
-	},
-	-- @JuanBaut
-	tweak_pallet = {
-		-- ('default' is default) ('#ffaaff' is a custom colorcode)
-		lack = "default",
-		luster = "default",
-		orange = "default",
-		yellow = "default",
-		green = "default",
-		blue = "default",
-		red = "default",
-		black = "default",
-		gray1 = "default",
-		gray2 = "default",
-		gray3 = "default",
-		gray4 = "default",
-		gray5 = "default",
-		gray6 = "default",
-		gray7 = "default",
-		gray8 = "default",
-		gray9 = "default",
-	},
-	tweak_syntax = {
-		-- ('default' is default) ('#ffaaff' is a custom colorcode)
-		string = "default",
-		string_escape = "default",
-		comment = "default",
-		builtin = "default", -- builtin modules and functions
-		type = "default",
-		keyword = "default",
-		keyword_return = "default",
-		keyword_exception = "default",
-	},
-	tweak_background = {
-		-- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
-		normal = "default", -- main background
-		menu = "default", -- nvim_cmp, wildmenu ...
-		popup = "default", -- lazy, mason, whichkey ...
-		telescope = "default", -- telescope
-	},
-	disable_plugin = {
-		bufferline = false,
-		cmp = false,
-		dashboard = false,
-		flash = false,
-		git_gutter = false,
-		git_signs = false,
-		headlines = false,
-		lazy = false,
-		lightbulb = false,
-		lsp_config = false,
-		mason = false,
-		mini_diff = false,
-		navic = false,
-		noice = false,
-		notify = false,
-		oil = false,
-		rainbow_delimiter = false,
-		scrollbar = false,
-		telescope = false,
-		todo_comments = false,
-		tree = false,
-		trouble = false,
-		which_key = false,
-		yanky = false,
-	},
+    tweak_ui = {
+        disable_undercurl = false,    -- if false undercurl will be underline
+        enable_end_of_buffer = false, -- if false undercurl will be underline
+    },
+    tweak_color = {
+        -- ('default' is default) ('#ffaaff' is a custom colorcode)
+        lack = "default",
+        luster = "default",
+        orange = "default",
+        yellow = "default",
+        green = "default",
+        blue = "default",
+        red = "default",
+        -- WARN: messing with grays is probbably a bad idea
+        black = "default",
+        gray1 = "default",
+        gray2 = "default",
+        gray3 = "default",
+        gray4 = "default",
+        gray5 = "default",
+        gray6 = "default",
+        gray7 = "default",
+        gray8 = "default",
+        gray9 = "default",
+    },
+    tweak_syntax = {
+        -- ('default' is default) ('#ffaaff' is a custom colorcode)
+        string = "default",
+        string_escape = "default",
+        comment = "default",
+        builtin = "default", -- builtin modules and functions
+        type = "default",
+        keyword = "default",
+        keyword_return = "default",
+        keyword_exception = "default",
+    },
+    tweak_background = {
+        -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
+        normal = "default",    -- main background
+        menu = "default",      -- nvim_cmp, wildmenu ...
+        popup = "default",     -- lazy, mason, whichkey ...
+        telescope = "default", -- telescope
+    },
+    disable_plugin = {
+        bufferline = false,
+        cmp = false,
+        dashboard = false,
+        flash = false,
+        git_gutter = false,
+        git_signs = false,
+        headlines = false,
+        lazy = false,
+        lightbulb = false,
+        lsp_config = false,
+        mason = false,
+        mini_diff = false,
+        navic = false,
+        noice = false,
+        notify = false,
+        oil = false,
+        rainbow_delimiter = false,
+        scrollbar = false,
+        telescope = false,
+        todo_comments = false,
+        tree = false,
+        trouble = false,
+        which_key = false,
+        yanky = false,
+    },
 }
 
 local fix_legacy_tweak_typo = function(config)
-	config = config or {}
-	-- TODO: set health check error
-	if config.tweek_background then
-		config.tweak_background = config.tweek_background
-		config.tweek_background = nil
-	end
-	if config.tweek_syntax then
-		config.tweak_syntax = config.tweek_syntax
-		config.tweek_background = nil
-	end
-	return config
+    config = config or {}
+    -- TODO: set health check error
+    if config.tweek_background then
+        config.tweak_background = config.tweek_background
+        config.tweek_background = nil
+    end
+    if config.tweek_syntax then
+        config.tweak_syntax = config.tweek_syntax
+        config.tweek_background = nil
+    end
+    return config
 end
 
 ---configure lackluster with optional settings
 ---@param config ?LacklusterConfig
 M.setup = function(config)
-	config = fix_legacy_tweak_typo(config)
-	config = vim.tbl_deep_extend("keep", config, default_config)
-	USER_CONFIG = config
-	-- @JuanBaut
-	tweak.pallet(config.tweak_pallet, color)
-	tweak.background(config.tweak_background, theme)
-	tweak.syntax(config.tweak_syntax, theme)
-	tweak.ui(config.tweak_ui, theme, color)
+    config = fix_legacy_tweak_typo(config)
+    config = vim.tbl_deep_extend("keep", config, default_config)
+    USER_CONFIG = config
+
+    -- update the colors and regenerate the theme based on colors
+    tweak.color(config.tweak_color, color)
+    theme = create_theme(color, color_specail)
+    -- tweak theme
+    tweak.background(config.tweak_background, theme)
+    tweak.syntax(config.tweak_syntax, theme)
+    tweak.ui(config.tweak_ui, theme, color)
 end
+
+local load_variant = function(opt)
+    ---@diagnostic disable-next-line: inject-field
+    theme.syntax = theme.syntax_default
+    vim.o.termguicolors = true
+    vim.g.colors_name = "lackluster"
+
+    -- official themes
+    if opt.theme == "hack" then
+        theme.syntax = theme.syntax_hack
+        vim.g.colors_name = "lackluster-hack"
+    end
+
+    if opt.theme == "mint" then
+        theme.syntax = theme.syntax_mint
+        vim.g.colors_name = "lackluster-mint"
+    end
+
+    -- expieramental themes
+    if opt.theme == "dark" then
+        theme.syntax = theme.syntax_dark
+        vim.g.colors_name = "lackluster-dark"
+    end
+
+    if opt.theme == "night" then
+        theme.syntax = theme.syntax_night
+        vim.g.colors_name = "lackluster-night"
+    end
+
+    theme.syntax = vim.tbl_extend("force", theme.syntax, theme.syntax_tweak)
+end
+
+local highlight_apply = function()
+    local dedup_set = {}
+    local highlight_group_list = highlight(theme, color)
+
+    for _, highlight_group in ipairs(highlight_group_list) do
+        local highlight_spec_list = highlight_group.highlight
+        ---@diagnostic disable-next-line: need-check-nil
+        local is_plugin_enabled = not USER_CONFIG.disable_plugin[highlight_group.plugin_name]
+
+        if highlight_group.dont_skip or is_plugin_enabled then
+            for _, hl_spec in ipairs(highlight_spec_list) do
+                local hl_name = hl_spec.name
+                if dedup_set[hl_name] then
+                    vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
+                else
+                    dedup_set[hl_name] = true
+                    hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
+                    --- @diagnostic disable-next-line: param-type-mismatch
+                    vim.api.nvim_set_hl(0, hl_name, hl_spec)
+                end
+            end
+        end
+    end
+end
+
 
 -- apply the colorscheme
 M.load = function(opt)
-	opt = opt or {}
+    opt = opt or {}
 
-	if USER_CONFIG == nil then
-		USER_CONFIG = vim.tbl_deep_extend("force", {}, default_config)
-	end
+    if USER_CONFIG == nil then
+        USER_CONFIG = vim.tbl_deep_extend("force", {}, default_config)
+    end
 
-	local t = theme
-	t.syntax = t.syntax_default
-	vim.o.termguicolors = true
-	vim.g.colors_name = "lackluster"
-
-	-- official themes
-	if opt.theme == "hack" then
-		t.syntax = t.syntax_hack
-		vim.g.colors_name = "lackluster-hack"
-	end
-
-	if opt.theme == "mint" then
-		t.syntax = t.syntax_mint
-		vim.g.colors_name = "lackluster-mint"
-	end
-
-	-- expieramental themes
-	if opt.theme == "dark" then
-		t.syntax = t.syntax_dark
-		vim.g.colors_name = "lackluster-dark"
-	end
-
-	if opt.theme == "night" then
-		t.syntax = t.syntax_night
-		vim.g.colors_name = "lackluster-night"
-	end
-
-	t.syntax = vim.tbl_extend("force", t.syntax, t.syntax_tweak)
-
-	local dedup_set = {}
-	local highlight_group_list = highlight(t, color)
-
-	for _, highlight_group in ipairs(highlight_group_list) do
-		local highlight_spec_list = highlight_group.highlight
-		local is_plugin_enabled = not USER_CONFIG.disable_plugin[highlight_group.plugin_name]
-
-		if highlight_group.dont_skip or is_plugin_enabled then
-			for _, hl_spec in ipairs(highlight_spec_list) do
-				local hl_name = hl_spec.name
-				if dedup_set[hl_name] then
-					vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
-				else
-					dedup_set[hl_name] = true
-					hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
-					--- @diagnostic disable-next-line: param-type-mismatch
-					vim.api.nvim_set_hl(0, hl_name, hl_spec)
-				end
-			end
-		end
-	end
+    load_variant(opt)
+    highlight_apply()
 end
 
 return M
