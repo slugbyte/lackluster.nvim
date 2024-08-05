@@ -11,16 +11,6 @@
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
 
--- @slugbyte notes: How should this work?
--- setup() - apply user preferences
---   - tweak_color
---   - generate theme with color tweaks
---   - tweak theme background
---   - tweak theme syntax
---   - tweak theme ui
--- load() - select variant and apply the highlights
---  - tweak synax
-
 local dev = require("lackluster.dev")
 local color = require("lackluster.color")
 local color_specail = require("lackluster.color-special")
@@ -32,7 +22,6 @@ local highlight = require("lackluster.highlight")
 local theme = create_theme(color, color_specail)
 
 local M = {
-    theme = create_theme(color, color_specail),
     color = color,
     dev = dev,
 }
@@ -126,7 +115,7 @@ local default_config = {
         green = "default",
         blue = "default",
         red = "default",
-        -- WARN: messing with grays is probbably a bad idea
+        -- WARN: messing with grays is probbably a bad idea!
         black = "default",
         gray1 = "default",
         gray2 = "default",
