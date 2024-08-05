@@ -103,7 +103,7 @@ local USER_CONFIG = nil
 --- @type LacklusterConfig
 local default_config = {
     tweak_ui = {
-        disable_undercurl = false,    -- if false undercurl will be underline
+        disable_undercurl = false, -- if false undercurl will be underline
         enable_end_of_buffer = false, -- if false undercurl will be underline
     },
     tweak_color = {
@@ -140,9 +140,9 @@ local default_config = {
     },
     tweak_background = {
         -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
-        normal = "default",    -- main background
-        menu = "default",      -- nvim_cmp, wildmenu ...
-        popup = "default",     -- lazy, mason, whichkey ...
+        normal = "default", -- main background
+        menu = "default", -- nvim_cmp, wildmenu ...
+        popup = "default", -- lazy, mason, whichkey ...
         telescope = "default", -- telescope
     },
     disable_plugin = {
@@ -193,7 +193,6 @@ M.setup = function(config)
     config = fix_legacy_tweak_typo(config)
     config = vim.tbl_deep_extend("keep", config, default_config)
     USER_CONFIG = config
-
     -- update the colors and regenerate the theme based on colors
     tweak.color(config.tweak_color, color)
     theme = create_theme(color, color_specail)
@@ -246,7 +245,7 @@ local highlight_apply = function()
             for _, hl_spec in ipairs(highlight_spec_list) do
                 local hl_name = hl_spec.name
                 if dedup_set[hl_name] then
-                    vim.notify('error: duplicate hi_spec :: ' .. hl_name, vim.log.levels.ERROR)
+                    vim.notify("error: duplicate hi_spec :: " .. hl_name, vim.log.levels.ERROR)
                 else
                     dedup_set[hl_name] = true
                     hl_spec.name = nil -- must set to nil so that nvim_set_hl doesn't freak out
@@ -257,7 +256,6 @@ local highlight_apply = function()
         end
     end
 end
-
 
 -- apply the colorscheme
 M.load = function(opt)
