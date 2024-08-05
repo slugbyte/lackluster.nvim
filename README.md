@@ -16,11 +16,11 @@
 1. Install `slugbyte/lackluster.nvim` with your favorite package manager
 2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
-4. (optional) Tweak Colors
-4. (optional) Tweak Syntax Colors, and Transparency
-5. (optional) Tweak UI
-6. (optional) Disable Plugin Highlights
-7. (optional) Setup nvim-web-devicons
+5. (optional) Tweak Color Pallet
+6. (optional) Tweak Syntax Colors and Background Transparency
+7. (optional) Tweak UI
+8. (optional) Disable Plugin Highlights
+9. (optional) Setup nvim-web-devicons
 
 ```lua 
 -- example lazy.nvim install setup
@@ -46,19 +46,19 @@ require('lualine').setup({
 ```
 
 <details>
-  <summary>(OPTIONAL) Tweak Color</summary>
+  <summary>(OPTIONAL) Tweak Color Pallet</summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 
 ```lua 
 local lackluster = require("lackluster")
 
-local color = lackluster.color -- blue, green, red, orange, black, lack, luster, gray1-9
-
 -- !must called setup() before setting the colorscheme!
 lackluster.setup({
+    -- tweak_color allows you to overwrite the default colors in the lackluster theme
     tweak_color = {
-        -- ('default' is default) ('#ffaaff' is a custom colorcode)
+        -- you can set a value to a custom hexcode like' #aaaa77' (hashtag required)
+        -- or if the value is 'default' or nil it will use lackluster's default color
         -- lack = "#aaaa77",
         lack = "default", 
         luster = "default",
@@ -67,7 +67,7 @@ lackluster.setup({
         green = "default",
         blue = "default",
         red = "default",
-        -- WARN: messing with grays is probs a bad idea, its easy to shoot yourself in the foot!
+        -- WARN: Watchout! messing with grays is probs a bad idea, its very easy to shoot yourself in the foot!
         -- black = "default",
         -- gray1 = "default",
         -- gray2 = "default",
@@ -89,7 +89,7 @@ vim.cmd.colorscheme("lackluster")
 </details>
 
 <details>
-  <summary>(OPTIONAL) Tweak Syntax Colors, and Transparency</summary>
+  <summary>(OPTIONAL) Tweak Syntax Colors and Background Transparency</summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 

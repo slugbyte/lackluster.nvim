@@ -1,3 +1,5 @@
+local validate = require("lackluster.validate")
+
 ---@diagnostic disable: inject-field
 local M = {}
 
@@ -13,7 +15,15 @@ local tweak_background_keys = {
 M.color = function(tweak_color, color)
     for color_name, color_value in pairs(tweak_color) do
         if color_value and color_value ~= "default" then
-            color[color_name] = color_value
+            if validate.hexcode(color_value) then
+                color[color_name] = color_value
+            else
+                vim.notify(
+                    "ERROR: skiping lackluster tweak color [" ..
+                    color_name .. "] because of invalid value (" ..
+                    color_value .. ")",
+                    vim.log.levels.ERROR)
+            end
         end
     end
 end
@@ -22,13 +32,19 @@ end
 M.background = function(tweak_background, theme)
     for _, key in ipairs(tweak_background_keys) do
         local value = tweak_background[key]
-        if key == "telescope" then
-            if value and (value ~= "default") then
-                theme.plugin_telescope["bg_normal"] = value
-            end
-        else
-            if value and (value ~= "default") then
-                theme.ui["bg_" .. key] = value
+        if value and (value ~= "default") then
+            if validate.hexcode_or_none(value) then
+                if key == "telescope" then
+                    theme.plugin_telescope["bg_normal"] = value
+                else
+                    theme.ui["bg_" .. key] = value
+                end
+            else
+                vim.notify(
+                    "ERROR: skiping lackluster tweak background [" ..
+                    key .. "] because of invalid value (" ..
+                    value .. ")",
+                    vim.log.levels.ERROR)
             end
         end
     end
@@ -53,10 +69,18 @@ M.syntax = function(tweak_syntax, theme)
     for _, key in ipairs(tweak_syntax_keys) do
         local value = tweak_syntax[key]
         if value and (value ~= "default") then
-            theme.syntax_tweak[key] = value
-            if key == "type" then
-                ---@diagnostic disable-next-line: inject-field
-                theme.syntax_tweak.type_primitive = value
+            if validate.hexcode_or_none(value) then
+                theme.syntax_tweak[key] = value
+                if key == "type" then
+                    ---@diagnostic disable-next-line: inject-field
+                    theme.syntax_tweak.type_primitive = value
+                end
+            else
+                vim.notify(
+                    "ERROR: skiping lackluster tweak syntax [" ..
+                    key .. "] because of invalid value (" ..
+                    value .. ")",
+                    vim.log.levels.ERROR)
             end
         end
     end
