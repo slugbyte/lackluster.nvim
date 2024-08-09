@@ -19,8 +19,9 @@
 5. (optional) Tweak Color Pallet
 6. (optional) Tweak Syntax Colors and Background Transparency
 7. (optional) Tweak UI
-8. (optional) Disable Plugin Highlights
-9. (optional) Setup nvim-web-devicons
+8. (optional) Tweak Highlights Manually (bold, italic, etc...)
+9. (optional) Tweak Disable Plugin Highlights
+10. (optional) Setup nvim-web-devicons
 
 ```lua 
 -- example lazy.nvim install setup
@@ -101,7 +102,7 @@ local color = lackluster.color -- blue, green, red, orange, black, lack, luster,
 -- !must called setup() before setting the colorscheme!
 lackluster.setup({
     -- You can overwrite the following syntax colors by setting them to one of...
-    --   1) a hexcode like "#a1b2c3" for a custom color
+    --   1) a hexcode like "#a1b2c3" for a custom color.
     --   2) "default" or nil will just use whatever lackluster's default is.
     tweak_syntax = {
         string = "default",
@@ -181,7 +182,39 @@ vim.cmd.colorscheme("lackluster")
 </details>
 
 <details>
-  <summary>(OPTIONAL) Disable Plugin Highlights</summary>
+  <summary>(OPTIONAL) Tweak Highlights Manually (bold, italic, etc...)</summary>
+
+```lua
+local lackluster = require("lackluster")
+
+-- !must called setup() before setting the colorscheme!
+lackluster.setup({
+    -- tweak_highlight allows you to update or overwrite the value passed into
+    -- vim.api.nvim_set_hl which allows you to have complete control over modifying all
+    -- highlights on a granular level.
+    tweak_highlight = {
+      -- modify @keyword's highlights to be bold and italic
+      ["@keyword"] = {
+        overwrite = false, -- overwrite falsey will extend/update lackluster's defaults (nil also does this)
+        bold = true,
+        italic = true,
+        -- see `:help nvim_set_hl` for all possible keys
+      },
+      -- overwrite @function to link to @keyword
+      ["@function"] = {
+        overwrite = true, -- overwrite == true will force overwrite lackluster's default highlights
+        link = "@keyword",
+      },
+    },
+})
+
+-- !must set colorscheme after calling setup()!
+vim.cmd.colorscheme("lackluster")
+```
+</details>
+
+<details>
+  <summary>(OPTIONAL) Tweak Disable Plugin Highlights</summary>
 
 > !! `setup()` **MUST** be called before setting your colorscheme !!
 

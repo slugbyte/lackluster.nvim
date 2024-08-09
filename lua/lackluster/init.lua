@@ -95,6 +95,7 @@ local M = {
 ---@field tweak_pallet ?LacklusterConfigTweakColor
 ---@field tweak_syntax ?LacklusterConfigTweakSyntax
 ---@field tweak_background ?LacklusterConfigTweakBackground
+---@field tweak_highlight ?{[string]:vim.api.keyset.highlight}
 ---@field disable_plugin LacklusterConfigDisablePlugin
 
 --- @type LacklusterConfig | nil
@@ -138,6 +139,7 @@ local default_config = {
         keyword_return = "default",
         keyword_exception = "default",
     },
+    tweak_highlight = {},
     tweak_background = {
         -- ('default' is default) ('none' is transparent) ('#ffaaff' is a custom hexcode)
         normal = "default", -- main background
@@ -232,14 +234,14 @@ local load_variant = function(opt)
     theme.syntax = vim.tbl_extend("force", theme.syntax, theme.syntax_tweak)
 end
 
-local highlight_apply = function()
+---@param config LacklusterConfig
+local highlight_apply = function(config)
     local dedup_set = {}
     local highlight_group_list = highlight(theme, color)
 
     for _, highlight_group in ipairs(highlight_group_list) do
         local highlight_spec_list = highlight_group.highlight
-        ---@diagnostic disable-next-line: need-check-nil
-        local is_plugin_enabled = not USER_CONFIG.disable_plugin[highlight_group.plugin_name]
+        local is_plugin_enabled = not config.disable_plugin[highlight_group.plugin_name]
 
         if highlight_group.dont_skip or is_plugin_enabled then
             for _, hl_spec in ipairs(highlight_spec_list) do
@@ -255,6 +257,10 @@ local highlight_apply = function()
             end
         end
     end
+
+    if config.tweak_highlight ~= nil and (not vim.tbl_isempty(config.tweak_highlight)) then
+        tweak.highlight(config.tweak_highlight)
+    end
 end
 
 -- apply the colorscheme
@@ -266,7 +272,7 @@ M.load = function(opt)
     end
 
     load_variant(opt)
-    highlight_apply()
+    highlight_apply(USER_CONFIG)
 end
 
 return M
