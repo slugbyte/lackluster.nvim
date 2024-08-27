@@ -9,6 +9,10 @@ return function(theme)
         highlight = {
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md
             spec.fg("MiniTrailspace", color.orange),
+
+            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md
+            spec.fg("MiniJump", color.black),
+            spec.bg("MiniJump", color.gray8)
         },
     }
 end
