@@ -11,7 +11,7 @@ return function(theme)
             spec.fg("MiniTrailspace", color.orange),
 
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md
-            spec.co("MiniJump", color.black, color.gray8),
+            spec.co("MiniJump", color.gray1, color.lack),
         },
     }
 end
