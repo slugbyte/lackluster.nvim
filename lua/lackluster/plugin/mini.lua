@@ -10,11 +10,8 @@ return function(theme)
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md
             spec.fg("MiniTrailspace", color.orange),
 
-            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump.md
+            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md
             spec.co("MiniJump", color.gray1, color.lack),
-
-            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md
-            spec.co("MiniJump2dSpot", color.gray1, color.lack)
         },
     }
 end
