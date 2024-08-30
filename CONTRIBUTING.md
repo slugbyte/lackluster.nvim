@@ -56,8 +56,5 @@ will probably be a slow long term effort.
 * [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
 * [mini-tabline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md)
 * [mini-test.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-test.md)
-* [mini-jump.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump.md)
-* [mini-jump2d.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md)
-* [mini-indentscope.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md)
 * [mini-cursorword.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-cursorword.md)
 * [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
