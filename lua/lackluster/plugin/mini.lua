@@ -16,9 +16,6 @@ return function(theme)
 
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md
             spec.co("MiniJump2dSpot", color.gray1, color.lack),
-
-            spec.op("MiniStarterCurrent", { nocombine = true }),
-            spec.co("MiniStarterFooter ", color_special.keyword, color.none)
         },
     }
 end
