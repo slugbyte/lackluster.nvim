@@ -1,5 +1,6 @@
 local spec = require("lackluster.spec")
 local color = require("lackluster.color")
+local color_special = require("lackluster.color-special")
 
 ---@param theme LacklusterTheme
 ---@return LacklusterHighlightGroup
@@ -14,7 +15,10 @@ return function(theme)
             spec.co("MiniJump", color.gray1, color.lack),
 
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md
-            spec.co("MiniJump2dSpot", color.gray1, color.lack)
+            spec.co("MiniJump2dSpot", color.gray1, color.lack),
+
+            spec.op("MiniStarterCurrent", { nocombine = true }),
+            spec.co("MiniStarterFooter ", color_special.keyword, color.none)
         },
     }
 end
