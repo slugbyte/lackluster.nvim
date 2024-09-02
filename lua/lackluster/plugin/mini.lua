@@ -1,6 +1,5 @@
 local spec = require("lackluster.spec")
 local color = require("lackluster.color")
-local color_special = require("lackluster.color-special")
 
 ---@param theme LacklusterTheme
 ---@return LacklusterHighlightGroup
@@ -19,7 +18,7 @@ return function(theme)
 
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md
             spec.co("MiniStarterQuery ", color.lack, color.none),
-            spec.co("MiniStarterItemPrefix", color.gray6, color.none)
+            spec.co("MiniStarterItemPrefix", color.gray6, color.none),
         },
     }
 end
