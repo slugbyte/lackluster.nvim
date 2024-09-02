@@ -16,6 +16,10 @@ return function(theme)
 
             -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md
             spec.co("MiniJump2dSpot", color.gray1, color.lack),
+
+            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md
+            spec.co("MiniStarterQuery ", color.lack, color.none),
+            spec.co("MiniStarterItemPrefix", color.gray6, color.none)
         },
     }
 end
