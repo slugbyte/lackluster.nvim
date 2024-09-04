@@ -308,6 +308,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
 * [mini-indentscope.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md)
+* [mini-starter.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md)
 * [mini-jump.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump.md)
 * [mini-jump2d.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md)
 * [mini.diff](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-diff.md)
