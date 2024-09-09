@@ -52,6 +52,5 @@ will probably be a slow long term effort.
 > no particular order
 * [mini-completion.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-completion.md)
 * [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
-* [mini-tabline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md)
 * [mini-test.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-test.md)
 * [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
