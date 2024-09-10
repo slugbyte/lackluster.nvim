@@ -35,6 +35,20 @@ return function(theme)
             spec.co("MiniStatuslineFilename", color.gray7, color_special.statusline),
             spec.co("MiniStatuslineFileinfo", color.gray7, color_special.statusline),
             spec.co("MiniStatuslineDevinfo", color.gray7, color_special.statusline),
+
+            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md
+            spec.co("MiniTablineCurrent", color.gray6, theme.ui.bg_menu),
+            spec.co("MiniTablineHidden", color.gray4, theme.ui.bg_normal),
+            spec.co("MiniTablineVisible", color.none, theme.ui.bg_normal),
+            spec.bg("MiniTablineFill", theme.ui.bg_normal),
+
+            -- hint
+            spec.co("MiniTablineTabpagesection", color.black, color.gray9),
+
+            -- modified
+            spec.co("MiniTablineModifiedCurrent", color.gray7, theme.ui.bg_menu),
+            spec.co("MiniTablineModifiedHidden", color.gray7, theme.ui.bg_normal),
+            spec.co("MiniTablineModifiedVisible", color.gray7, theme.ui.bg_normal),
         },
     }
 end
