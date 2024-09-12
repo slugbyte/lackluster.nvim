@@ -17,6 +17,10 @@ local highlight = function(theme, color)
                 -- TEXT
                 spec.co("Normal", theme.ui.fg_normal, theme.ui.bg_normal),
                 spec.fg("Title", theme.ui.fg_title),
+                spec.fg("Whitespace", color.gray4),
+
+                -- NON TEXT
+                spec.fg("NonText", color.gray5),
 
                 -- CURSOR
                 spec.co("SignColumn", theme.ui.fg_line_num, theme.ui.bg_normal),
