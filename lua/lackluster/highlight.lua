@@ -17,7 +17,7 @@ local highlight = function(theme, color)
                 -- TEXT
                 spec.co("Normal", theme.ui.fg_normal, theme.ui.bg_normal),
                 spec.fg("Title", theme.ui.fg_title),
-                spec.fg("Whitespace", color.gray4),
+                spec.fg("Whitespace", theme.ui.fg_whitespace),
 
                 -- NON TEXT
                 spec.fg("NonText", color.gray5),

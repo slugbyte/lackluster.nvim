@@ -12,4 +12,5 @@ return {
     exception = "#505050",
     keyword = "#666666",
     param = "#8E8E8E",
+    whitespace = "#202020",
 }

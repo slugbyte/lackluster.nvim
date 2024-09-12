@@ -12,6 +12,7 @@ return function(color, color_special)
         fg_end_of_buffer = color_special.main_background,
         fg_normal = color.gray8,
         bg_normal = color_special.main_background,
+        fg_whitespace = color_special.whitespace,
 
         fg_icon = color.gray4,
 
