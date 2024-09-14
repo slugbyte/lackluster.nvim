@@ -10,19 +10,19 @@
 --  License: MIT
 --  Maintainer: Duncan Marsh (slugbyte@slugbyte.com)
 --  Repository: https://github.com/slugbyte/lackluster.nvim
-
 local dev = require("lackluster.dev")
 local color = require("lackluster.color")
-local color_specail = require("lackluster.color-special")
+local color_special = require("lackluster.color-special")
 local create_theme = require("lackluster.create-theme")
 local tweak = require("lackluster.tweak")
 local highlight = require("lackluster.highlight")
 
 -- NOTE: theme will get overwriten if user calls setup()
-local theme = create_theme(color, color_specail)
+local theme = create_theme(color, color_special)
 
 local M = {
     color = color,
+    color_special = color_special,
     dev = dev,
 }
 
@@ -197,7 +197,7 @@ M.setup = function(config)
     USER_CONFIG = config
     -- update the colors and regenerate the theme based on colors
     tweak.color(config.tweak_color, color)
-    theme = create_theme(color, color_specail)
+    theme = create_theme(color, color_special)
     -- tweak theme
     tweak.background(config.tweak_background, theme)
     tweak.syntax(config.tweak_syntax, theme)
