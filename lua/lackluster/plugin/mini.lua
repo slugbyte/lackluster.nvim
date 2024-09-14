@@ -49,6 +49,9 @@ return function(theme)
             spec.co("MiniTablineModifiedCurrent", color.gray7, theme.ui.bg_menu),
             spec.co("MiniTablineModifiedHidden", color.gray7, theme.ui.bg_normal),
             spec.co("MiniTablineModifiedVisible", color.gray7, theme.ui.bg_normal),
+
+            -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md
+            spec.co("MiniSurround", color.gray1, color.lack),
         },
     }
 end

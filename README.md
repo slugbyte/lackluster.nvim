@@ -316,6 +316,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [mini-statusline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-statusline.md)
 * [mini-tabline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md)
 * [mini-trailspace.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md)
+* [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
 * [noice.nvim](https://github.com/folke/noice.nvim)
 * [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
