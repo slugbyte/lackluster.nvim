@@ -247,8 +247,8 @@ return function(color, color_special)
 
     ---@class LacklusterThemePluginHeadline
     result.plugin_headline = {
-        bg_headline = color.gray5,
-        fg_headline = color.gray2,
+        bg_headline = color.gray2,
+        fg_headline = color.gray4,
         bg_code_block = color.gray1,
         fg_dash = color.gray4,
     }
