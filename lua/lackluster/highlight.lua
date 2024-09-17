@@ -39,6 +39,10 @@ local highlight = function(theme, color)
                 spec.co("VISUAL", theme.ui.fg_visual, theme.ui.bg_visual),
                 spec.ln("VISUALNOS", "VISUAL"),
 
+                -- FOLD
+                spec.fg("Folded", color.gray4),
+                spec.fg("FoldColumn", color.gray4),
+
                 -- MESSAGE
                 spec.fg("Error", theme.log.error),
                 spec.fg("ModeMsg", theme.log.info),
