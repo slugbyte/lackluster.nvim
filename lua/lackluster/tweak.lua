@@ -99,14 +99,14 @@ end
 ---@param hl_name string
 ---@param hl_value vim.api.keyset.highlight
 ---@param force boolean
-local function tweak_highlight_apply(hl_name, hl_value, force)
+M.tweak_highlight_apply = function(hl_name, hl_value, force)
     if force then
         vim.api.nvim_set_hl(0, hl_name, hl_value)
         return
     end
     local old_value = vim.api.nvim_get_hl(0, { name = hl_name })
     if vim.tbl_isempty(old_value) then
-        return tweak_highlight_apply(hl_name, hl_value, true)
+        return M.tweak_highlight_apply(hl_name, hl_value, true)
     end
     vim.api.nvim_set_hl(0, hl_name, vim.tbl_extend("force", old_value, hl_value))
 end
@@ -117,9 +117,9 @@ M.highlight = function(tweak_highlight)
     for hl_name, hl_value in pairs(tweak_highlight) do
         if hl_value.overwrite then
             hl_value.overwrite = nil
-            tweak_highlight_apply(hl_name, hl_value, true)
+            M.tweak_highlight_apply(hl_name, hl_value, true)
         else
-            tweak_highlight_apply(hl_name, hl_value, false)
+            M.tweak_highlight_apply(hl_name, hl_value, false)
         end
     end
 end

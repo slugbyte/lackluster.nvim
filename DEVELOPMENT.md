@@ -15,7 +15,6 @@
 * light mode or other new themes (for now)
 
 ## SETUP DEVELOPMENT ENVIRONMENT
-
 <details>
 
 <summary>(RECOMMENDED) How to setup dev env with lazy.nvim</summary>
@@ -96,10 +95,13 @@ lackluster.dev.create_usercmds()
   * hex codes need to start with `#` like `#99ffaa`
 * `lackluster_dev.try_bg(hl_group, color_name)` - test out a lackluster color\_name or a hexcode on a hl\_group
   * hex codes need to start with `#` like `#99ffaa`
+* `lackluster_dev.try_color(hl_group, fg_color, bg_color)` - test out a lackluster color\_name or a hexcode on a hl\_group
+  * hex codes need to start with `#` like `#99ffaa`
 * `lackluster_dev.create_usercmds()` - create lack luster development user commands
-  * `:LLR` - reload lackluster
-  * `:LLF <hl_group> <color_name>` - try a lackluster color on the foreground
-  * `:LLB <hl_group> <color_name>` - try a lackluster color on background
+  * `:Lr (optinal variant name [mint | hack])` - reload lackluster
+  * `:Fg <hl_group> <color>` - try a lackluster color on the foreground
+  * `:Bg <hl_group> <color>` - try a lackluster color on background
+  * `:Co <hl_group> <fg_color> <bg_color>` - try a lackluster color on background
 
 ## How To Add Plugin Support
  1) create a plugin function in `lua/lackluster/plugin/plugin-name.lua`

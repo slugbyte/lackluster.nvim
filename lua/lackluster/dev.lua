@@ -1,4 +1,5 @@
 local lackluster_color = require("lackluster.color")
+local lackluster_tweak = require("lackluster.tweak")
 local plenary_found, plenary_reload = pcall(require, "plenary.reload")
 
 local M = {}
@@ -48,10 +49,9 @@ M.try_fg = function(hl_group, color_name)
     if color == nil then
         return err("ERROR: %s is not a valid lackluster color", color_name)
     end
-
-    vim.api.nvim_set_hl(0, hl_group, {
+    lackluster_tweak.tweak_highlight_apply(hl_group, {
         fg = color,
-    })
+    }, false)
 end
 
 --- try out a lackluster color on a hl_group
@@ -63,39 +63,60 @@ M.try_bg = function(hl_group, color_name)
     if color == nil then
         return err("ERROR: %s is not a valid lackluster color", color_name)
     end
-    vim.api.nvim_set_hl(0, hl_group, {
+    lackluster_tweak.tweak_highlight_apply(hl_group, {
         bg = color,
-    })
+    }, false)
 end
 
--- define LLF LLFB and LLR usercommands
+M.try_color = function(hl_group, color_fg, color_bg)
+    M.try_fg(hl_group, color_fg)
+    M.try_bg(hl_group, color_bg)
+end
+
+-- define Lr Fg Bg Co
 M.create_usrcmds = function()
     -- reload colorscheme
-    vim.api.nvim_create_user_command("LLR", function()
-        M.lackluster_reload()
+    vim.api.nvim_create_user_command("Lr", function(opt)
+        local theme = opt.fargs[1]
+        M.lackluster_reload({
+            theme = theme,
+        })
     end, {
-        desc = ":LLR (reload colorscheme)",
-        nargs = 0,
+        desc = ":Lr (optional variant name [hack|mint]) (reload colorscheme)",
+        nargs = "*",
     })
     -- try out a
     -- USAGE :LLF <hl_group> <lackluster_color_name>
-    vim.api.nvim_create_user_command("LLF", function(opt)
+    vim.api.nvim_create_user_command("Fg", function(opt)
         local hl_group = opt.fargs[1]
         local color_name = opt.fargs[2]
         M.try_fg(hl_group, color_name)
     end, {
-        desc = ":LLF <hl_group> <lackluster_color_name> (apply color to fg)",
+        desc = ":Bg <hl_group> <lackluster_color_name> (apply color to fg)",
         nargs = "*",
     })
 
     -- try out a bg color
     -- USAGE :LLB <hl_group> <lackluster_color_name>
-    vim.api.nvim_create_user_command("LLB", function(opt)
+    vim.api.nvim_create_user_command("Bg", function(opt)
         local hl_group = opt.fargs[1]
         local color_name = opt.fargs[2]
         M.try_bg(hl_group, color_name)
     end, {
-        desc = ":LLF <hl_group> <lackluster_color_name> (apply color to bg)",
+        desc = ":Fg <hl_group> <lackluster_color_name> (apply color to bg)",
+        nargs = "*",
+    })
+
+    -- test a highlight
+    -- try out a bg color
+    -- USAGE :LLB <hl_group> <lackluster_color_name>
+    vim.api.nvim_create_user_command("Co", function(opt)
+        local hl_group = opt.fargs[1]
+        local color_fg = opt.fargs[2]
+        local color_bg = opt.fargs[3]
+        M.try_color(hl_group, color_fg, color_bg)
+    end, {
+        desc = ":Co <hl_group> <fg_color> <bg_color>",
         nargs = "*",
     })
 end
