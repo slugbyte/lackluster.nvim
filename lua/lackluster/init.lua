@@ -67,6 +67,7 @@ local M = {
 ---@field trouble ?boolean
 ---@field which_key ?boolean
 ---@field yanky ?boolean
+---@field indentmini ?boolean
 
 ---@class LacklusterConfigTweakUI
 ---@field disable_undercurl ?boolean
@@ -154,6 +155,7 @@ local default_config = {
         flash = false,
         git_gutter = false,
         git_signs = false,
+        indentmini = false,
         headlines = false,
         lazy = false,
         lightbulb = false,
