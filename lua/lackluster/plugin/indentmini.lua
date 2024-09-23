@@ -8,8 +8,8 @@ return function(theme)
         plugin_name = "indentmini",
         highlight = {
             -- https://github.com/nvimdev/indentmini.nvim
-            spec.fg("IndentLine", color.gray4),
-            spec.fg("IndentLineCurrent", color.lack),
+            spec.fg("IndentLine", color.gray3),
+            spec.fg("IndentLineCurrent", color.gray5),
         },
     }
 end
