@@ -234,6 +234,7 @@ lackluster.setup({
         git_gutter = false,
         git_signs = false,
         headline = false,
+        indentmini = false,
         lazy = false,
         lightbulb = false,
         lsp_config = false,
@@ -304,6 +305,7 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [flash.nvim](https://github.com/folke/flash.nvim)
 * [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
 * [headlines.nvim](https://github.com/lukas-reineke/headlines.nvim)
+* [indentmini.nvim](https://github.com/nvimdev/indentmini.nvim)
 * [lazy.nvim](https://github.com/folke/lazy.nvim)
 * [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 * [mason.nvim](https://github.com/williamboman/mason.nvim)
@@ -314,9 +316,9 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [mini-jump2d.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-jump2d.md)
 * [mini-starter.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md)
 * [mini-statusline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-statusline.md)
+* [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
 * [mini-tabline.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-tabline.md)
 * [mini-trailspace.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-trailspace.md)
-* [mini-surround.md](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md)
 * [noice.nvim](https://github.com/folke/noice.nvim)
 * [nvim-lightbulb](https://github.com/kosayoda/nvim-lightbulb)
 * [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
@@ -334,7 +336,6 @@ Screenshots of many of the plugins can be found [here](https://github.com/slugby
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 * [yanky.nvim](https://github.com/gbprod/yanky.nvim)
-
 ## SELF-PROMO
 If you like this project star the GitHub repository :)
 
