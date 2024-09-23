@@ -15,6 +15,8 @@ reject any contributions as I see fit.
 * Support commonly used neovim plugins
 * Be easy on the eyes
 
+I've been trying to keep the non-code highlights (UI) darker gray and less colorful. I think it helps create a visual separation between code and UI, allowing the code to be in focus by being brighter and the UI to be darker but visible enough to be useful if you need to pay attention to it. My goal is for code to stand out and UI to sort of fade into the background, but still be useful :)
+
 ## Bugs 
 If you find a bug please open a ticket :) If the issue is color related, please include a
 screenshot.
