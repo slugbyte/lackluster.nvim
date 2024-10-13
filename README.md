@@ -273,6 +273,7 @@ require('nvim-web-devicons').setup({
     color_icons = false,
     override = {
         ["default_icon"] = {
+            icon = "",
             color = lackluster.color.gray4,
             name = "Default",
         }
