@@ -115,12 +115,9 @@ end
 ---@param tweak_highlight {[string]:vim.api.keyset.highlight}
 M.highlight = function(tweak_highlight)
     for hl_name, hl_value in pairs(tweak_highlight) do
-        if hl_value.overwrite then
-            hl_value.overwrite = nil
-            M.tweak_highlight_apply(hl_name, hl_value, true)
-        else
-            M.tweak_highlight_apply(hl_name, hl_value, false)
-        end
+        local force = hl_value.overwrite == true
+        hl_value.overwrite = nil
+        M.tweak_highlight_apply(hl_name, hl_value, force)
     end
 end
 
