@@ -1,0 +1,41 @@
+# Colors:
+
+# gray
+set $lack         #708090 
+# white
+set $luster       #deeeed
+set $black        #080808
+set $black1       #101010
+set $red          #d70000
+set $green        #789978
+set $orange       #ffaa88
+set $blue         #7788aa
+set $magenta      #d7007d
+set $gray         #444444
+
+
+# Color config:         border    bg        text      indicator   child_border
+client.focused          $green    $green    $black1   $gray       $green
+client.focused_inactive $black1   $black1   $luster   $black1     $black1
+client.unfocused        $black1   $black1   $luster   $black1     $black1
+client.urgent           $black    $black    $red      $black      $black
+client.placeholder      $black    $black    $luster   $black      $black
+client.background       $black1
+
+# Status Bar:
+bar {
+    position bottom # or top
+
+    colors {
+        background $black1
+        separator  $green
+        statusline $green
+
+        # Same ordering as for the client
+        focused_workspace   $green  $green  $black1 
+        active_workspace    $green  $green  $black1
+        inactive_workspace  $black1 $black1 $black1 
+        urgent_workspace    $magenta $magenta $lack
+        binding_mode        $red $red $luster
+    }
+}
