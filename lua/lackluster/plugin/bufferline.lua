@@ -2,9 +2,6 @@ local spec = require("lackluster.spec")
 local color = require("lackluster.color")
 
 -- TODO: HELP: I cannot figure out how to make these appear
--- BufferLineDuplicate
--- BufferLineDuplicateSelected
--- BufferLineDuplicateVisible
 -- BufferLineGroupLabel
 
 ---@param theme LacklusterTheme
@@ -61,6 +58,7 @@ return function(theme)
             spec.co("BufferLineWarning", fg_nc, bg_nc),
             spec.co("BufferLineWarningDiagnostic", fg_nc, bg_nc),
             spec.co("BufferLineDiagnostic", fg_nc, bg_nc),
+            spec.co("BufferLineDuplicate", color.blue, bg_nc),
 
             -- visable
             spec.co("BufferLineBufferVisible", fg_vis, bg_vis),
@@ -78,6 +76,7 @@ return function(theme)
             spec.co("BufferLineWarningVisible", fg_nc, bg_nc),
             spec.co("BufferLineWarningDiagnosticVisible", fg_nc, bg_nc),
             spec.co("BufferLineDiagnosticVisible", fg_nc, bg_nc),
+            spec.co("BufferLineDuplicateVisible", color.blue, bg_vis),
 
             -- selected
             spec.co("BufferLineBufferSelected", fg_active, theme.ui.bg_tab_active),
@@ -95,6 +94,7 @@ return function(theme)
             spec.co("BufferLineWarningSelected", fg_active, bg_active),
             spec.co("BufferLineWarningDiagnosticSelected", fg_active, bg_active),
             spec.co("BufferLineDiagnosticSelected", fg_active, bg_active),
+            spec.co("BufferLineDuplicateSelected", fg_active, bg_active, { bold = true }),
         },
     }
 end
