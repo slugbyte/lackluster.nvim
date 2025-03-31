@@ -27,7 +27,7 @@ return function(theme)
             spec.co("BufferLinePickSelected", color.black, color.gray9),
             spec.co("BufferLinePickVisible", color.black, color.gray9),
 
-            -- seperat
+            -- separate
             spec.co("BufferLineSeparator", bg_fill, bg_fill),
             spec.co("BufferLineOffsetSeparator", bg_fill, bg_fill),
             spec.co("BufferLineTabSeparator", bg_fill, bg_fill),
@@ -60,7 +60,7 @@ return function(theme)
             spec.co("BufferLineDiagnostic", fg_nc, bg_nc),
             spec.co("BufferLineDuplicate", color.blue, bg_nc),
 
-            -- visable
+            -- visible
             spec.co("BufferLineBufferVisible", fg_vis, bg_vis),
             spec.co("BufferLineCloseButtonVisible", fg_nc, bg_vis),
             spec.co("BufferLineIndicatorVisible", bg_vis, bg_vis),
