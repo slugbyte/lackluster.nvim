@@ -1,7 +1,9 @@
 # lackluster-light
-> a delightful and customizable mostly monochrome colorscheme thats soft on the eyes and supports treesitter, lsp, and heaps of neovim plugins.
+> a personal light variant of lackluster: a soft, mostly monochrome neovim colorscheme with treesitter, lsp, and plugin support.
 
-![a screenshot of neovim with the lackluster colorscheme](https://raw.githubusercontent.com/dnassx/lackluster-light.nvim/main/asset/lackluster.png)
+personal fork of [slugbyte/lackluster.nvim](https://github.com/slugbyte/lackluster.nvim) by slugbyte (Duncan Marsh), adding the `lackluster-light` theme.
+
+![a screenshot of neovim with the lackluster-light colorscheme](https://raw.githubusercontent.com/dnassx/lackluster-light.nvim/main/asset/lackluster.png)
 
 > a minimal but flexible and good looking pallet made from beautiful hexcodes
 
@@ -15,7 +17,7 @@
 
 ## SETUP
 1. Install `dnassx/lackluster-light.nvim` with your favorite package manager
-2. Set your colorscheme to `lackluster`, `lackluster-hack`, or `lackluster-mint`
+2. Set your colorscheme to `lackluster-light`, `lackluster`, `lackluster-hack`, or `lackluster-mint`
 3. (optional) Setup Lualine
 5. (optional) Tweak Color Pallet
 6. (optional) Tweak Syntax Colors and Background Transparency
@@ -31,8 +33,9 @@ return {
     lazy = false,
     priority = 1000,
     init = function()
-        vim.cmd.colorscheme("lackluster")
-        -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+        vim.cmd.colorscheme("lackluster-light")
+        -- vim.cmd.colorscheme("lackluster")
+        -- vim.cmd.colorscheme("lackluster-hack")
         -- vim.cmd.colorscheme("lackluster-mint")
     end,
 }
@@ -46,6 +49,13 @@ require('lualine').setup({
   },
 })
 ```
+
+## LIGHT THEME
+Enable it with `:colorscheme lackluster-light` or `require("lackluster").load({ theme = "light" })`.
+
+The light palettes live in `lua/lackluster/color-light.lua` and `lua/lackluster/color-special-light.lua`.
+
+> WARN: the lualine theme `lackluster` always uses the dark palette (`lua/lualine/themes/lackluster.lua` reads `lackluster.color`), so with `lackluster-light` the statusline stays dark.
 
 <details>
   <summary>(OPTIONAL) Tweak Color Pallet</summary>
@@ -337,21 +347,14 @@ Screenshots of many of the plugins can be found [here](https://github.com/dnassx
 * [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
 * [which-key.nvim](https://github.com/folke/which-key.nvim)
 * [yanky.nvim](https://github.com/gbprod/yanky.nvim)
-## SELF-PROMO
-If you like this project star the GitHub repository :)
 
 ## HELP WANTED
-If you find a bug please open a issue :) and please include screenshots if relevant :)
-
-Is `lackluster` missing support for a plugin/extra you love? Open a suggestion issue, or
-better yet Read the [CONTRIBUTING](https://github.com/dnassx/lackluster-light.nvim/blob/main/CONTRIBUTING.md) 
-and [DEVELOPMENT](https://github.com/dnassx/lackluster-light.nvim/blob/main/DEVELOPMENT.md) Guides,
-and make a contribution!
-
-Your feedback and contributions are mega appreciated!
+this is a personal project. bugs and suggestions: open an issue.
 
 ## ACKNOWLEDGEMENT
-> I referenced the following colorscheme's source code when creating lackluster :)
+* based on [slugbyte/lackluster.nvim](https://github.com/slugbyte/lackluster.nvim) (MIT)
+
+> slugbyte referenced the following colorscheme's source code when creating lackluster :)
 * [rose-pine/neovim](https://github.com/rose-pine/neovim)
 * [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim/tree/main)
 * [nyoom-engineering/oxocarbon.nvim](https://github.com/nyoom-engineering/oxocarbon.nvim)
