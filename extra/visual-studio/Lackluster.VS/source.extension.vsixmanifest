@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Id="Lackluster.VS.6a1c3f0e-5b7d-4e8a-9c21-7f4d2b8e9a10" Version="1.0.0" Language="en-US" Publisher="lackluster-vs" />
+    <DisplayName>Lackluster Themes</DisplayName>
+    <Description xml:space="preserve">A delightful mostly grayscale color theme, ported from lackluster.nvim. Adds Lackluster, Lackluster Hack, Lackluster Mint, Lackluster Night and Lackluster Dark under Tools &gt; Theme.</Description>
+    <License>LICENSE.md</License>
+    <Tags>theme;dark;monochrome;grayscale;lackluster</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,19.0)">
+      <ProductArchitecture>arm64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[18.0,)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\Lackluster.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\LacklusterHack.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\LacklusterMint.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\LacklusterNight.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Themes\LacklusterDark.pkgdef" />
+  </Assets>
+</PackageManifest>
