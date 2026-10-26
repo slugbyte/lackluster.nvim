@@ -10,6 +10,8 @@ under **Tools > Theme**, one per nvim variant:
 | Lackluster Night | `lackluster-night`  |
 | Lackluster Dark  | `lackluster-dark`   |
 
+![lackluster in Visual Studio 2026](./screenshot.png)
+
 ## Build and install
 Build the VSIX with the MSBuild that ships with Visual Studio (adjust the edition in the path):
 ```
